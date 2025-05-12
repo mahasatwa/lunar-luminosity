@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getPageContent } from '../utils/contentful';
+
+const { slug } = Astro.params;
+const pageContent = await getPageContent(slug || 'home');
+
+if (!pageContent) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={pageContent.title}>
+  <div class="prose lg:prose-xl mx-auto">
+    <h1>{pageContent.title}</h1>
+    <div set:html={pageContent.content} />
+  </div>
+</Layout> 
