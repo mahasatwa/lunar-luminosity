@@ -1,20 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getPageContent } from '../utils/contentful';
+import Hero from '../components/home/Hero.astro';
+import Programs from '../components/home/Programs.astro';
+import AcademicExperience from '../components/home/AcademicExperience.astro';
+import CampusLife from '../components/home/CampusLife.astro';
+import News from '../components/home/News.astro';
+import Events from '../components/home/Events.astro';
 
-const pageContent = await getPageContent('home');
+import {
+  getHero,
+  getPrograms,
+  getAcademicExperience,
+  getCampusLife,
+  getNews,
+  getEvents,
+} from '../utils/contentful';
+
+const hero = await getHero();
+const programs = await getPrograms();
+const academicExperience = await getAcademicExperience();
+const campusLife = await getCampusLife();
+const news = await getNews(3); // Limit to 3 news items
+const events = await getEvents();
+
+// Redirect to 404 if essential content is missing
+if (!hero || !academicExperience || !campusLife) {
+  return Astro.redirect('/404');
+}
 ---
 
-<Layout title="Home">
-  {pageContent ? (
-    <div class="prose lg:prose-xl mx-auto">
-      <h1>{pageContent.title}</h1>
-      <div set:html={pageContent.content} />
-    </div>
-  ) : (
-    <div class="text-center py-12">
-      <h1 class="text-4xl font-bold text-gray-900">Welcome to Our Site</h1>
-      <p class="mt-4 text-xl text-gray-600">Please configure your content in Contentful.</p>
-    </div>
-  )}
+<Layout title="Welcome to Our University">
+  <Hero hero={hero} />
+  <Programs programs={programs} />
+  <AcademicExperience experience={academicExperience} />
+  <CampusLife campusLife={campusLife} />
+  <News news={news} />
+  <Events events={events} />
 </Layout>

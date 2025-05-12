@@ -1,18 +1,43 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getPageContent } from '../utils/contentful';
+// Make sure you have getAllSlugs imported if you choose this path
+import { getPageContent, getAllSlugs } from '../utils/contentful';
+import type { Params } from 'astro'; // Import Params for type safety
 
-const { slug } = Astro.params;
-const pageContent = await getPageContent(slug || 'home');
+// --- Add this function ---
+export async function getStaticPaths() {
+  // Fetch ALL possible slugs from your Contentful source
+  // You NEED to implement the getAllSlugs function in utils/contentful.js/ts
+  const slugs = await getAllSlugs();
+
+  return slugs.map(slug => {
+    // Map the CMS slugs to Astro's params structure
+    // For catch-all [...slug], undefined maps to the root '/'
+    // and a string like 'about' or 'products/widgets' maps to /about or /products/widgets
+    return {
+      params: { slug: slug === undefined ? undefined : slug }
+    };
+  });
+}
+// --- End of function to add ---
+
+
+const { slug } = Astro.params as Params; // Add type assertion for type safety
+
+// Handle the slug for the homepage vs other pages
+const contentSlug = slug === undefined ? 'home' : slug;
+
+
+const pageContent = await getPageContent(contentSlug);
 
 if (!pageContent) {
-  return Astro.redirect('/404');
+  return Astro.redirect('/404');
 }
 ---
 
 <Layout title={pageContent.title}>
-  <div class="prose lg:prose-xl mx-auto">
-    <h1>{pageContent.title}</h1>
-    <div set:html={pageContent.content} />
-  </div>
-</Layout> 
+  <div class="prose lg:prose-xl mx-auto">
+    <h1>{pageContent.title}</h1>
+    <div set:html={pageContent.content} />
+  </div>
+</Layout>

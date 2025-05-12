@@ -45,7 +45,7 @@ export function getResponsiveImageUrl(
   return breakpoints.map((width) =>
     getOptimizedImageUrl(publicId, {
       width,
-      quality: 'auto',
+      quality: 80,
       format: 'auto',
     })
   );

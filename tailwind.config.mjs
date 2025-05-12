@@ -11,7 +11,13 @@ export default {
         'nav-height': '64px',
         'nav-height-mobile': '56px',
       },
+      aspectRatio: {
+        'video': '16 / 9',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }; 
