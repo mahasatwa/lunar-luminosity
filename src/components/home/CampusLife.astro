@@ -1,0 +1,50 @@
+---
+// Imports
+import type { CampusLife } from '../../utils/contentful';
+import { getOptimizedImageUrl } from '../../utils/cloudinary';
+
+// Interface/Type definitions
+interface Props {
+  campusLife: CampusLife;
+}
+
+// Destructure props
+const { campusLife } = Astro.props;
+
+// Variable declarations using JS/TS syntax
+const optimizedImageUrl = getOptimizedImageUrl(campusLife.imageUrl, {
+  width: 800,
+  height: 600,
+  crop: 'fill',
+  quality: 80,
+  format: 'auto',
+});
+---
+
+{/* HTML template goes below this line */}
+
+<section class="py-16 bg-white">
+  <div class="container">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-4xl font-bold mb-6">{campusLife.title}</h2>
+        <div class="prose mb-8" set:html={campusLife.content} />
+        <a
+          href={campusLife.ctaLink}
+          class="inline-block bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+        >
+          {campusLife.ctaText}
+        </a>
+      </div>
+      <div>
+        <img
+          src={optimizedImageUrl}
+          alt="Campus Life"
+          class="rounded-lg shadow-lg w-full"
+          width="800"
+          height="600"
+        />
+      </div>
+    </div>
+  </div>
+</section>

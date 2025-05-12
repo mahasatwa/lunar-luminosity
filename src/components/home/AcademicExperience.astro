@@ -1,0 +1,44 @@
+---
+import type { AcademicExperience } from '../../utils/contentful';
+
+interface Props {
+  experience: AcademicExperience;
+}
+
+const { experience } = Astro.props;
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold mb-4">{experience.title}</h2>
+      <p class="text-xl text-gray-600">{experience.tagline}</p>
+    </div>
+
+    <div class="aspect-w-16 aspect-h-9 mb-12">
+      <iframe
+        src={experience.videoUrl}
+        class="w-full h-full rounded-lg shadow-lg"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <h3 class="text-2xl font-bold mb-4">Metode Pengajaran</h3>
+        <div class="prose" set:html={experience.teachingMethods} />
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <h3 class="text-2xl font-bold mb-4">Dosen & Tenaga Pengajar</h3>
+        <div class="prose" set:html={experience.faculty} />
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <h3 class="text-2xl font-bold mb-4">Fasilitas Laboratorium & Praktikum</h3>
+        <div class="prose" set:html={experience.facilities} />
+      </div>
+    </div>
+  </div>
+</section> 
