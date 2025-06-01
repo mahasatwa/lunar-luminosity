@@ -1,0 +1,320 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Interstitial
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-interstitial {
+	background-color: var(--color-parchment);
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: var(--spacer-40) 0;
+	position: relative;
+	z-index: 2;
+
+	@media (--viewport-medium) {
+		padding: var(--spacer-70) 0;
+		z-index: auto;
+	}
+
+	/* CASE: Light text */
+	&.t-theme--light {
+		background-color: var(--color-wrought-iron);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Hero: Overlay
+ * ----------------------------------------------------------------------------- */
+
+.b-interstitial__img {
+	@media (--viewport-full) {
+
+		&:after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to left, rgba(14, 14, 14, 0) 29.22%, var(--color-wrought-iron) 100%);
+			opacity: 0.9;
+		}
+
+		/* CASE: Layout Right */
+		.feature-layout-right & {
+
+			&:after {
+				background: linear-gradient(to right, rgba(14, 14, 14, 0) 29.22%, var(--color-wrought-iron) 100%);
+			}
+		}
+	}
+}
+
+.b-interstitial__media-overlay--soft .b-interstitial__img {
+
+	&:after {
+		background: linear-gradient(to left, rgba(14, 14, 14, 0) 32.22%, var(--color-wrought-iron) 100%);
+		opacity: 0.85;
+	}
+
+	/* CASE: Layout Right */
+	.feature-layout-right & {
+
+		&:after {
+			background: linear-gradient(to right, rgba(14, 14, 14, 0) 32.22%, var(--color-wrought-iron) 100%);
+		}
+	}
+}
+
+.b-interstitial__media-overlay--medium .b-interstitial__img {
+
+	&:after {
+		background: linear-gradient(to left, rgba(14, 14, 14, 0) 29.22%, var(--color-wrought-iron) 100%);
+		opacity: 0.9;
+	}
+
+	/* CASE: Layout Right */
+	.feature-layout-right & {
+
+		&:after {
+			background: linear-gradient(to right, rgba(14, 14, 14, 0) 29.22%, var(--color-wrought-iron) 100%);
+		}
+	}
+}
+
+.b-interstitial__media-overlay--dark .b-interstitial__img {
+
+	&:after {
+		background: linear-gradient(to left, rgba(14, 14, 14, 0) 19.22%, var(--color-wrought-iron) 100%);
+		opacity: 1;
+	}
+
+	/* CASE: Layout Right */
+	.feature-layout-right & {
+
+		&:after {
+			background: linear-gradient(to right, rgba(14, 14, 14, 0) 19.22%, var(--color-wrought-iron) 100%);
+		}
+	}
+}
+
+.b-interstitial__media-overlay--darker .b-interstitial__img {
+
+	&:after {
+		background: linear-gradient(to left, rgba(14, 14, 14, 0) 9.22%, var(--color-wrought-iron) 100%);
+		opacity: 1;
+	}
+
+	/* CASE: Layout Right */
+	.feature-layout-right & {
+
+		&:after {
+			background: linear-gradient(to right, rgba(14, 14, 14, 0) 9.22%, var(--color-wrought-iron) 100%);
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Interstitial: Header Container
+ * ----------------------------------------------------------------------------- */
+
+.b-interstitial__wrap {
+	background-color: var(--color-parchment);
+	padding-bottom: var(--spacer-30);
+	padding-top: var(--spacer-30);
+	position: relative;
+	z-index: 2;
+
+	@media (--viewport-medium) {
+		padding-bottom: var(--spacer-60);
+		padding-top: var(--spacer-60);
+	}
+
+	.t-theme--light & {
+		background-color: var(--color-wrought-iron);
+	}
+}
+
+.b-interstitial__container {
+	margin-left: -24px;
+	margin-right: -24px;
+	width: calc(100% + 48px);
+	background-color: var(--color-black);
+
+	@media (--viewport-full) {
+		margin: 0;
+		padding: 200px 48px;
+		position: relative;
+		width: 100%;
+	}
+}
+
+.c-content-block.b-interstitial__content-container {
+	max-width: none;
+
+	@media (--viewport-medium) {
+		display: flex;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Columns: Header Container
+ * ----------------------------------------------------------------------------- */
+
+.c-block__content-block.c-block__header.b-interstitial__header {
+	max-width: none;
+	margin-left: -24px;
+	margin-right: -24px;
+	padding-bottom: var(--spacer-30);
+	padding-top: var(--spacer-40);
+	width: calc(100% + (var(--grid-gutter-small) * 2));
+
+	@media (--viewport-medium) {
+		display: flex;
+		flex-direction: row;
+		margin-left: -48px;
+		margin-right: -48px;
+		padding-bottom: var(--spacer-60);
+		width: calc(100% + (var(--grid-gutter) * 2));
+	}
+
+	@media (--viewport-medium) {
+		display: flex;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Columns: Header Title & Text
+ * ----------------------------------------------------------------------------- */
+
+.b-interstitial__title {
+	padding-right: var(--grid-gutter-small);
+
+	@media (--viewport-medium) {
+		padding-right: var(--grid-gutter);
+		width: 50%;
+	}
+}
+
+.b-interstitial .c-content-block__content {
+	margin-top: 0;
+}
+
+.b-interstitial .b-interstitial__feature-text.c-content-block__content {
+	margin-top: 16px;
+}
+
+.b-interstitial .c-block__header .c-content-block__content-wrap {
+	padding-bottom: 12px;
+	padding-right: var(--grid-gutter-small);
+
+	@media (--viewport-medium) {
+		padding-bottom: 0;
+		padding-left: var(--grid-gutter-small);
+		width: 50%;
+	}
+}
+
+.c-block__header .c-block__title.b-interstitial__title {
+	@media (--viewport-medium) {
+		position: relative;
+	}
+}
+
+.c-block__header .c-block__title.b-interstitial__title,
+.b-interstitial__feature-title {
+	@mixin t-display-x-small;
+
+	font-family: var(--font-family-canela-deck);
+	font-weight: normal;
+
+	@media (--viewport-medium) {
+		@mixin t-display;
+	}
+
+	@media (--viewport-full) {
+		@mixin t-display-large;
+	}
+}
+
+.b-interstitial__feature-title {
+	@media (--viewport-medium) {
+		@mixin t-display;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Interstitial: Content
+ * ----------------------------------------------------------------------------- */
+
+.b-interstitial__content {
+	position: relative;
+	z-index: 2;
+}
+
+.c-content-block.b-interstitial__featured_content-container {
+	max-width: none;
+	background-color: var(--color-wrought-iron);
+	padding: 40px 24px;
+
+	@media (--viewport-full) {
+		background: none;
+		max-width: 552px;
+		padding: 0;
+	}
+}
+
+.b-interstitial__container > .b-interstitial__content {
+	/* CASE: Layout Right */
+	.feature-layout-right & {
+		@media (--viewport-medium) {
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Interstitial: Media
+ * ----------------------------------------------------------------------------- */
+
+.b-interstitial__figure.c-image--bg .b-interstitial__img.c-image__image {
+	height: 300px;
+	position: static;
+
+	@media (--viewport-full) {
+		height: 100%;
+		position: absolute;
+	}
+}
+
+/* This is written as a fallback since implementing the mobile image came after content entry. */
+
+.b-interstitial__img--desktop {
+	display: block;
+
+	@media (--viewport-full) {
+		display: block;
+	}
+
+	.has-mobile-img & {
+		display: none;
+
+		@media (--viewport-full) {
+			display: block;
+		}
+	}
+}
+
+.b-interstitial__figure.c-image--overlay-left .c-image__image:after {
+	display: none;
+
+	@media (--viewport-full) {
+		display: block;
+	}
+}
+
+.b-interstitial__img--mobile {
+	@media (--viewport-full) {
+		display: none;
+	}
+}

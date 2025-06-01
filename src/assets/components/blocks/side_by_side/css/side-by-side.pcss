@@ -1,0 +1,66 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Side By Side
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-side-by-side {
+	/* CASE: Light text mode */
+	&.t-theme--light {
+		background-color: var(--color-wrought-iron);
+		padding-top: var(--spacer-40);
+		padding-bottom: var(--spacer-40);
+
+		@container layout (min-width: $container-full) {
+			padding-top: var(--spacer-70);
+			padding-bottom: var(--spacer-70);
+		}
+	}
+
+	&:first-child {
+		padding-top: var(--spacer-40);
+
+		@media (--viewport-medium) {
+			padding-top: var(--spacer-60);
+		}
+	}
+
+	&:last-child {
+		padding-bottom: var(--spacer-40);
+
+		@media (--viewport-medium) {
+			padding-bottom: var(--spacer-60);
+		}
+	}
+
+	.wp-block-group {
+		padding-top: 0;
+		padding-bottom: 0;
+		flex-direction: column;
+		background-color: transparent;
+
+		@media (--viewport-medium) {
+			align-items: flex-start;
+			flex-direction: row;
+			gap: calc(var(--grid-gutter-medium) * 2);
+		}
+
+		@media (--viewport-large) {
+			gap: calc(var(--grid-gutter) * 2);
+		}
+	}
+}
+
+.b-side-by-side__column {
+	container: layout / inline-size;
+	width: 100%;
+
+	@media (--viewport-medium) {
+		width: 50%;
+	}
+
+	.l-container {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

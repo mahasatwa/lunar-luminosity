@@ -1,0 +1,116 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Header: Subheader
+ *
+ * ----------------------------------------------------------------------------- */
+
+.c-subheader {
+    background-color: var(--color-grout);
+	overflow: hidden;
+	padding-bottom: 120px;
+	padding-top: 40px;
+	position: relative;
+	z-index: 2;
+
+	@media (--viewport-full) {
+		padding-bottom: 16px;
+		padding-top: 40px;
+	}
+
+    &.has-featured-image {
+		padding-bottom: 0;
+
+        @media (--viewport-full) {
+            padding-top: 0;
+        }
+    }
+
+	&.no-secondary-nav-mobile,
+	&.no-secondary-nav,
+	&.no-children {
+		padding-bottom: 0;
+	}
+}
+
+.c-subheader__container {
+    @media (--viewport-full) {
+        display: flex;
+		justify-content: center;
+		max-width: none;
+		padding: 0;
+    }
+
+	.c-image--bg {
+		position: relative;
+	}
+
+    .c-image {
+		margin-left: -24px;
+		margin-right: -24px;
+		padding-bottom: 80%;
+		width: calc(100% + 48px);
+
+		@media (--viewport-medium) {
+			margin-left: -48px;
+			margin-right: -48px;
+			width: calc(100% + 96px);
+		}
+
+		@media (--viewport-full) {
+			margin-left: 0;
+			margin-right: 0;
+			padding-bottom: 0;
+			width: 50%;
+		}
+    }
+}
+
+.c-subheader__content {
+    @media (--viewport-medium) {
+        align-self: flex-end;
+		justify-content: center;
+    }
+
+    @media (--viewport-full) {
+		text-align: center;
+        width: 50%;
+    }
+
+    /* CASE: Has Featured Image */
+    .has-featured-image & {
+		align-self: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: left;
+
+		@media (--viewport-full) {
+			min-height: 583px;
+			padding: 180px var(--spacer-70);
+		}
+    }
+}
+
+.c-subheader__desc {
+	@mixin t-body-small;
+
+	padding-bottom: var(--spacer-70);
+	width: 100%;
+
+	/* CASE: Has Featured Image */
+	.has-featured-image & {
+		max-width: var(--grid-6-col);
+	}
+
+	@media (--viewport-full) {
+		@mixin t-body;
+	}
+
+	@media (--viewport-large) {
+
+		/* CASE: Has Featured Image */
+		.has-featured-image & {
+			padding-right: var(--spacer-70);
+		}
+	}
+}

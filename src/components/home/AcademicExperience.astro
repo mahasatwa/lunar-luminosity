@@ -1,11 +1,54 @@
 ---
-import type { AcademicExperience } from '../../utils/contentful';
+// import type { AcademicExperience } from '../../utils/contentful';
 
-interface Props {
-  experience: AcademicExperience;
-}
+// interface Props {
+//   experience: AcademicExperience;
+// }
 
-const { experience } = Astro.props;
+// const { experience } = Astro.props;
+
+// Hardcoded Academic Experience data adapted for STIE Dwimulya
+const experience = {
+  title: "Pengalaman Akademik Berkualitas di STIE Dwimulya",
+  tagline: "Perpaduan Teori, Praktik, dan Teknologi Terkini",
+  videoUrl: "https://www.youtube.com/embed/VqHsmduXhWc", // >>> GANTI DENGAN LINK VIDEO YOUTUBE PROFIL STIE DWIMULYA <<<
+  teachingMethods: `
+    <p>STIE Dwimulya menerapkan metode pengajaran yang interaktif dan relevan dengan dunia kerja:</p>
+    <ul>
+      <li>Kuliah Interaktif & Diskusi</li>
+      <li>Studi Kasus Bisnis Riil</li>
+      <li>Seminar & Workshop Praktisi</li>
+      <li>Proyek Kelompok & Presentasi</li>
+      <li>Penggunaan Teknologi E-learning</li>
+      <li>Pendekatan Belajar Berbasis Masalah (Problem-Based Learning)</li>
+    </ul>
+    <p>Kami fokus pada pengembangan kemampuan analisis, pemecahan masalah, dan komunikasi mahasiswa.</p>
+  `,
+  faculty: `
+    <p>Didukung oleh jajaran Dosen dan Tenaga Pengajar yang kompeten dan berpengalaman:</p>
+    <ul>
+      <li>Akademisi dengan Kualifikasi Tinggi (S2/S3)</li>
+      <li>Praktisi Bisnis & Keuangan dari Berbagai Industri</li>
+      <li>Peneliti Aktif dalam Bidang Ekonomi & Bisnis</li>
+      <li>Pembelajaran dengan Pendekatan Personal</li>
+      <li>Pembimbing Akademik yang Siap Mendukung Studi Anda</li>
+    </ul>
+    <p>Mereka tidak hanya mengajar teori, tetapi juga berbagi pengalaman nyata di lapangan.</p>
+  `,
+  facilities: `
+    <p>STIE Dwimulya menyediakan fasilitas modern untuk menunjang proses belajar mengajar yang efektif:</p>
+    <ul>
+      <li>Ruang Kelas Nyaman & Ber-AC dengan Proyektor</li>
+      <li>Perpustakaan dengan Koleksi Buku dan Jurnal Ilmiah Terkini (baik fisik maupun digital)</li>
+      <li>Laboratorium Komputer dengan Akses Internet</li>
+      <li>Laboratorium Bahasa</li>
+      <li>Ruang Diskusi Kelompok</li>
+      <li>Akses Wi-Fi Gratis di Seluruh Area Kampus</li>
+      <li>Aula Pertemuan/Seminar</li>
+    </ul>
+    <p>Fasilitas kami dirancang untuk menciptakan lingkungan belajar yang kondusif.</p>
+  `,
+};
 ---
 
 <section class="py-16 bg-gray-50">
@@ -17,11 +60,29 @@ const { experience } = Astro.props;
 
     <div class="aspect-w-16 aspect-h-9 mb-12">
       <iframe
+
+
+
+
         src={experience.videoUrl}
+
+
+
+
         class="w-full h-full rounded-lg shadow-lg"
+
+
+
+
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+
+
+
+
         allowfullscreen
-      ></iframe>
+
+
+        ></iframe>
     </div>
 
     <div class="grid md:grid-cols-3 gap-8">
@@ -36,9 +97,11 @@ const { experience } = Astro.props;
       </div>
 
       <div class="bg-white p-8 rounded-lg shadow-sm">
-        <h3 class="text-2xl font-bold mb-4">Fasilitas Laboratorium & Praktikum</h3>
+        <h3 class="text-2xl font-bold mb-4">
+          Fasilitas Laboratorium & Praktikum
+        </h3>
         <div class="prose" set:html={experience.facilities} />
       </div>
     </div>
   </div>
-</section> 
+</section>

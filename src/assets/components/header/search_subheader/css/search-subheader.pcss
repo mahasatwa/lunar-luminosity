@@ -1,0 +1,106 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Search Subheader
+ *
+ * ----------------------------------------------------------------------------- */
+
+.c-search-subheader {
+	@media (--viewport-full) {
+		padding-top: 120px;
+	}
+}
+
+.c-subheader__search-wrap {
+	padding-bottom: var(--spacer-30);
+
+	@media (--viewport-full) {
+		padding-top: var(--spacer-30);
+		padding-bottom: var(--spacer-80);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Search Subheader: Resource Links
+ * ----------------------------------------------------------------------------- */
+
+.c-subheader__resource-links {
+	max-width: var(--grid-8-col);
+	margin-left: calc(-1 * var(--spacer-30));
+	margin-right: calc(-1 * var(--spacer-30));
+	overflow: hidden;
+	position: relative;
+
+	@media (--viewport-full) {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: -1px;
+		width: 61px;
+		height: 60px;
+		background: linear-gradient(180deg, hsla(180, 4%, 89%, 0) 29.22%, var(--color-grout));
+		transform: rotate(-90deg);
+		pointer-events: none;
+	}
+}
+
+.c-subheader__resource-links-wrapper {
+	white-space: nowrap;
+	overflow-x: auto;
+	padding: var(--spacer-20) var(--spacer-30);
+
+	@media (--viewport-full) {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: baseline;
+		padding: var(--spacer-20) 0;
+	}
+}
+
+.c-subheader__resource-links-label {
+	font-weight: 400;
+	font-size: var(--font-size-body-small);
+	color: var(--color-graphite);
+	letter-spacing: -.1px;
+	margin-right: var(--spacer-30);
+}
+
+.c-subheader__resource-links-list {
+	display: inline-block;
+
+	@media (--viewport-full) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Search Subheader: Resource Link Item
+ * ----------------------------------------------------------------------------- */
+
+.c-subheader__resource-links-item {
+	display: inline-block;
+	line-height: 1.15;
+	margin-right: var(--spacer-30);
+
+	@media (--viewport-full) {
+		margin-bottom: var(--spacer-20);
+	}
+}
+
+.c-subheader__resource-links-action {
+	transition: var(--transition);
+
+	.a-btn__text {
+		font-family: var(--font-family-gt-america-standard-bold);
+	}
+
+	&:hover,
+	&:focus {
+		color: var(--color-action-red);
+	}
+}

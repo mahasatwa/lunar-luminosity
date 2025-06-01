@@ -1,0 +1,76 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Header: Secondary Navigation Intro Text
+ *
+ * ----------------------------------------------------------------------------- */
+
+.page-secondary-nav-wrap {
+	background-color: var(--color-parchment);
+	position: relative;
+	z-index: 3;
+
+	@media (--viewport-full) {
+		border-bottom: 1px solid var(--color-shade);
+	}
+
+	&.vertical {
+		border-bottom: none;
+	}
+
+	/* CASE: Secondary Landing Page */
+	.page-template-landing-page-secondary &,
+	.page-template-landing-page-subsite-subheader & {
+		margin-bottom: 0;
+		padding-left: 0;
+		padding-right: 0;
+
+		@media (--viewport-full) {
+			padding-left: var(--grid-margin);
+			padding-right: var(--grid-margin);
+		}
+	}
+}
+
+.secondary-nav-vertical__container {
+	@media (--viewport-full) {
+		display: flex;
+	}
+}
+
+.page-secondary-nav-wrap.vertical {
+	@media (--viewport-full) {
+		padding-top: 114px;
+	}
+}
+
+.page-has-intro-text {
+	@media (--viewport-full) {
+		display: flex;
+	}
+}
+
+.page-secondary-nav {
+
+	.vertical & {
+
+		@media (--viewport-full) {
+			max-width: 400px;
+			padding-left: 0;
+			padding-right: 0;
+			width: 30%;
+		}
+	}
+}
+
+.page-secondary-intro-text {
+	padding: var(--spacer-50) 0;
+
+	@media (--viewport-full) {
+		margin-left: 160px;
+		max-width: var(--grid-6-col);
+		padding-top: 0;
+		position: relative;
+		top: -12px;
+		width: 70%;
+	}
+}

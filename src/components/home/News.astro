@@ -1,19 +1,60 @@
 ---
-import type { News } from '../../utils/contentful';
-import { getOptimizedImageUrl } from '../../utils/cloudinary';
+// import type { News } from '../../utils/contentful';
+import { getOptimizedImageUrl } from "../../utils/cloudinary";
 
-interface Props {
-  news: News[];
-}
+// interface Props {
+//   news: News[];
+// }
 
-const { news } = Astro.props;
+// const { news } = Astro.props;
+
+// Hardcoded array of news/story data for STIE Dwimulya
+const news = [
+  {
+    imageUrl:
+      "https://res.cloudinary.com/your_cloud_name/image/upload/v123456/stie_dwimulya_news1.jpg", // >>> GANTI DENGAN LINK GAMBAR BERITA 1 <<<
+    date: "2025-05-10", // YYYY-MM-DD format
+    title: "Mahasiswa STIE Dwimulya Juara Lomba Bisnis Plan Tingkat Nasional",
+    summary:
+      "Tim mahasiswa program studi Manajemen STIE Dwimulya berhasil meraih juara 1 dalam kompetisi bisnis plan inovatif...",
+    slug: "mahasiswa-juara-lomba-bisnis-plan", // Unique identifier for the news item
+  },
+  {
+    imageUrl:
+      "https://res.cloudinary.com/your_cloud_name/image/upload/v123456/stie_dwimulya_alumni_story.jpg", // >>> GANTI DENGAN LINK GAMBAR KISAH ALUMNI <<<
+    date: "2025-04-28",
+    title: "Kisah Sukses Alumni: Meraih Karir Gemilang di Sektor Keuangan",
+    summary:
+      "Wawancara eksklusif dengan Budi Santoso, alumni Akuntansi STIE Dwimulya angkatan 2018, yang kini menjabat sebagai Manajer Keuangan di perusahaan multinasional...",
+    slug: "kisah-sukses-alumni-budi-santoso",
+  },
+  {
+    imageUrl:
+      "https://res.cloudinary.com/your_cloud_name/image/upload/v123456/stie_dwimulya_seminar.jpg", // >>> GANTI DENGAN LINK GAMBAR BERITA 3 <<<
+    date: "2025-04-15",
+    title: "STIE Dwimulya Gelar Seminar Nasional tentang Ekonomi Digital",
+    summary:
+      "Menghadirkan pakar dari industri, seminar ini membahas peluang dan tantangan ekonomi di era digital...",
+    slug: "seminar-nasional-ekonomi-digital",
+  },
+];
 
 function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('id-ID', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  // Added a check for invalid date string
+  try {
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) {
+      return "Invalid Date";
+    }
+    return date.toLocaleDateString("id-ID", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  } catch (error) {
+    console.error("Error formatting date:", error);
+    return "Invalid Date";
+  }
 }
 ---
 
@@ -26,36 +67,46 @@ function formatDate(dateStr: string): string {
     <div class="grid md:grid-cols-3 gap-8 mb-12">
       {
         news.map((item) => {
-          const optimizedImageUrl = getOptimizedImageUrl(item.imageUrl, {
-            width: 400,
-            height: 300,
-            crop: 'fill',
-            quality: 80,
-            format: 'auto',
-          });
+          // Added a check if imageUrl exists before calling getOptimizedImageUrl
+          const optimizedImageUrl = item.imageUrl
+            ? getOptimizedImageUrl(item.imageUrl, {
+                width: 400,
+                height: 300,
+                crop: "fill",
+                quality: 80,
+                format: "auto",
+              })
+            : "https://via.placeholder.com/400x300?text=No+Image"; // Fallback placeholder image
 
           return (
             <article class="bg-white rounded-lg overflow-hidden shadow-sm">
+                           {" "}
               <img
                 src={optimizedImageUrl}
-                alt={item.title}
+                alt={item.title || "News Image"}
                 class="w-full h-48 object-cover"
                 width="400"
                 height="300"
               />
+              {" "}
               <div class="p-6">
+                {" "}
                 <time class="text-sm text-gray-500 mb-2 block">
-                  {formatDate(item.date)}
+                  {formatDate(item.date)}{" "}
                 </time>
+                {" "}
                 <h3 class="text-xl font-bold mb-2">{item.title}</h3>
-                <p class="text-gray-600 mb-4">{item.summary}</p>
+                  <p class="text-gray-600 mb-4">{item.summary}</p>
+                  {" "}
                 <a
                   href={`/news/${item.slug}`}
                   class="text-primary hover:text-blue-700 font-medium"
                 >
-                  Baca Selengkapnya →
+                  Baca Selengkapnya → {" "}
                 </a>
+                {" "}
               </div>
+              {" "}
             </article>
           );
         })
@@ -63,12 +114,11 @@ function formatDate(dateStr: string): string {
     </div>
 
     <div class="text-center">
-      <a
-        href="/news"
-        class="inline-block bg-white border-2 border-primary text-primary px-8 py-3 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors"
-      >
-        Lihat Semua Berita
+      <a href="/berita">
+        class="inline-block bg-white border-2 border-primary text-primary px-8
+        py-3 rounded-lg font-medium hover:bg-primary hover:text-white
+        transition-colors"       >         Lihat Semua Berita
       </a>
     </div>
   </div>
-</section> 
+</section>

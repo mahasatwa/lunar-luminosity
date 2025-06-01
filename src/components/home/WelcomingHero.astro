@@ -1,0 +1,88 @@
+---
+// Anda mungkin perlu menyesuaikan path ini jika file CSS Anda berada di lokasi lain
+// import '../styles/global.css';
+---
+
+<section
+  class="hero-bg min-h-screen flex items-center justify-center text-white py-20 px-4"
+>
+  <div class="max-w-4xl mx-auto text-center">
+    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+      Selamat Datang di STIE Dwimulya
+    </h1>
+    <p class="text-xl md:text-2xl mb-8 leading-relaxed">
+      Bergabunglah dengan kami untuk meraih masa depan cerah melalui pendidikan
+      berkualitas di bidang ekonomi dan bisnis, didukung oleh dosen
+      berpengalaman dan komunitas akademik yang suportif.
+    </p>
+    <div
+      class="bg-blue-600 inline-block px-6 py-3 rounded-full text-lg font-semibold cursor-pointer"
+    >
+      <span class="mr-2">Telusuri Program Kami</span>
+      <i class="fas fa-arrow-right"></i>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Contoh styling untuk hero-bg jika Anda menggunakan Tailwind CSS */
+  .hero-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("https://res.cloudinary.com/dmadbfz58/image/upload/v1745206217/hero-banner-selamat-datang_r6is6e.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); /* Overlay gelap untuk teks lebih mudah dibaca */
+    z-index: 1;
+  }
+
+  .hero-bg > div {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Jika Anda tidak menggunakan Tailwind CSS, definisikan kelas-kelas berikut secara manual */
+  /*
+    .min-h-screen { min-height: 100vh; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .text-white { color: #fff; }
+    .py-20 { padding-top: 5rem; padding-bottom: 5rem; } // Sesuaikan dengan skala Anda
+    .px-4 { padding-left: 1rem; padding-right: 1rem; } // Sesuaikan
+    .max-w-4xl { max-width: 56rem; } // Sesuaikan
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .text-center { text-align: center; }
+    .text-5xl { font-size: 3rem; } // Sesuaikan
+    .md:text-7xl { // Media query untuk ukuran md, sesuaikan font-size }
+    .font-bold { font-weight: 700; }
+    .mb-6 { margin-bottom: 1.5rem; } // Sesuaikan
+    .text-xl { font-size: 1.25rem; } // Sesuaikan
+    .md:text-2xl { // Media query untuk ukuran md, sesuaikan font-size }
+    .mb-8 { margin-bottom: 2rem; } // Sesuaikan
+    .leading-relaxed { line-height: 1.625; } // Sesuaikan
+    .inline-block { display: inline-block; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; } // Sesuaikan
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; } // Sesuaikan
+    .rounded-full { border-radius: 9999px; } // Sesuaikan
+    .text-lg { font-size: 1.125rem; } // Sesuaikan
+    .font-semibold { font-weight: 600; }
+    .mr-2 { margin-right: 0.5rem; } // Sesuaikan
+    .cursor-pointer { cursor: pointer; }
+
+    .bg-blue-600 { background-color: #2563eb; } // Contoh warna biru, sesuaikan
+    */
+</style>

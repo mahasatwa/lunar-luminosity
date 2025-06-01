@@ -1,0 +1,67 @@
+.nav-primary__back {
+	margin-bottom: 36px;
+}
+
+/* Depth (see: level-two.pcss & level-three.pcss) */
+.nav-primary__back--depth-1 {
+
+}
+
+.nav-primary__back--depth-2 {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Back: Action
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__back-action {
+	text-transform: uppercase;
+	font-family: var(--font-family-gt-america-standard-med);
+	line-height: 1.5;
+	font-size: 14px;
+	letter-spacing: 0.05em;
+	position: relative;
+	padding: 0 0 0 26px;
+	color: var(--color-white);
+	border: 0;
+	background-color: transparent;
+
+	&:hover {
+
+		.nav-primary__back-action-icon {
+			background-color: var(--color-white);
+			color: var(--color-ink);
+		}
+	}
+}
+
+/* Depth */
+.nav-primary__back-action--depth-1 {
+
+}
+
+.nav-primary__back-action--depth-2 {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Back: Icon
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__back-action-icon {
+	@mixin subpixel-text;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+	background-color: var(--color-asphalt);
+	border-radius: 50%;
+	color: var(--color-white);
+	width: 16px;
+	height: 16px;
+	line-height: 17px;
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	top: 2px;
+	font-size: 11px;
+	text-align: center;
+}

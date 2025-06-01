@@ -1,152 +1,162 @@
-import React, { useState, useEffect, useRef } from 'react';
+// src/components/Navigation/Navigation.tsx
+// Komponen ini di-hydrate di client-side (misal: <Navigation client:load /> di Astro)
 
-interface NavigationProps {
-  globalLinks: {
-    title: string;
-    href: string;
-  }[];
-  localLinks: {
-    title: string;
-    href: string;
-    submenu?: {
-      title: string;
-      href: string;
-    }[];
-  }[];
-}
+import React, { useState, useEffect } from "react";
+import styles from "./Navigation.module.css";
+import useBreakpoint from "../../hooks/useBreakpoint"; // Asumsi hook ini berfungsi
+import NavigationOverlay from "./NavigationOverlay";
+import { FiMenu, FiSearch } from "react-icons/fi";
+// Tipe NavItem tidak lagi memerlukan UserRole
+import type { NavItem } from "../../types/navigation";
 
-export const Navigation: React.FC<NavigationProps> = ({ globalLinks, localLinks }) => {
-  const [isSticky, setIsSticky] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
-  const navRef = useRef<HTMLDivElement>(null);
+// --- Impor Data Navigasi dari File Eksternal ---
+import { navigationData, quickLinksData } from "../../data/NavigationData";
 
+// --- SEMUA KODE UserContext, useUser, dan UserProvider DIHAPUS ---
+// Karena situs bersifat statis dan tidak ada sistem role.
+
+// Komponen utama diganti nama kembali menjadi 'Navigation' dan tidak lagi
+// memerlukan wrapper/provider.
+export const Navigation: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
+  const breakpoint = useBreakpoint();
+
+  // Hapus pemanggilan useUser()
+  // const { userRole } = useUser();
+
+  const isMobileOrTablet =
+    breakpoint === "mobile" ||
+    breakpoint === "tabletVertical" ||
+    breakpoint === "tabletHorizontal";
+  const isDesktop = breakpoint === "desktop";
+
+  const handleOpenMenu = () => {
+    setIsMenuOpen(true);
+    document.body.classList.add("overflow-hidden"); // Mencegah body scroll
+  };
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+    document.body.classList.remove("overflow-hidden"); // Mengembalikan body scroll
+  };
+
+  // Efek Header Sticky
   useEffect(() => {
     const handleScroll = () => {
-      if (navRef.current) {
-        const offset = navRef.current.offsetTop;
-        setIsSticky(window.pageYOffset > offset);
+      if (window.scrollY > 50) {
+        setIsHeaderScrolled(true);
+      } else {
+        setIsHeaderScrolled(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Filter tidak lagi diperlukan, kita akan langsung menggunakan navigationData
+  // const visibleDesktopNavItems = navigationData.filter(...)
+
   return (
-    <nav ref={navRef} className="w-full">
-      {/* Global Navigation */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <img className="h-8 w-auto" src="/logo.svg" alt="Logo" />
-              </div>
-            </div>
-            <div className="hidden md:flex items-center space-x-4">
-              {globalLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  {link.title}
-                </a>
-              ))}
-            </div>
-            <div className="flex items-center md:hidden">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
-              >
-                <span className="sr-only">Open main menu</span>
-                {/* Menu icon */}
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
+    <header
+      className={`${styles.header} header-sticky ${
+        isHeaderScrolled ? "scrolled" : ""
+      }`}
+    >
+      <div className={styles.navContainer}>
+        {/* Logo STIE Dwimulya */}
+        <div className={styles.logo}>
+          <a href="/">
+            <img
+              src="https://via.placeholder.com/40x40/A51C30/FFFFFF?text=Logo"
+              alt="STIE Dwimulya Logo"
+            />
+            <span className="hidden md:inline">STIE Dwimulya</span>
+          </a>
         </div>
-      </div>
 
-      {/* Local Navigation */}
-      <div
-        className={`bg-white border-b border-gray-200 ${
-          isSticky ? 'fixed top-0 left-0 right-0 shadow-md z-50' : ''
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-14">
-            <div className="hidden md:flex items-center space-x-4">
-              {localLinks.map((link, index) => (
-                <div
-                  key={index}
-                  className="relative"
-                  onMouseEnter={() => setActiveSubmenu(index)}
-                  onMouseLeave={() => setActiveSubmenu(null)}
-                >
+        {/* Navigasi Desktop */}
+        {isDesktop && (
+          <nav className={styles.desktopNav} aria-label="Main Navigation">
+            {/* Langsung map dari navigationData, tidak perlu filter */}
+            {navigationData.map((item, index) => (
+              <div key={item.id || index} className={styles.desktopNavItem}>
+                {item.link ? (
                   <a
-                    href={link.href}
-                    className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                    href={item.link}
+                    className={styles.desktopNavLink}
+                    target={item.isExternal ? "_blank" : "_self"}
+                    rel={item.isExternal ? "noopener noreferrer" : undefined}
                   >
-                    {link.title}
+                    {item.title}
                   </a>
-                  {link.submenu && activeSubmenu === index && (
-                    <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                      <div className="py-1">
-                        {link.submenu.map((subItem, subIndex) => (
-                          <a
-                            key={subIndex}
-                            href={subItem.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            {subItem.title}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="flex items-center">
-              <button className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">
-                Apply Now
-              </button>
-            </div>
+                ) : (
+                  // Tombol ini sekarang hanya akan membuka mega menu
+                  <button
+                    className={styles.desktopNavButton}
+                    onClick={handleOpenMenu}
+                    aria-haspopup="true"
+                    aria-expanded={isMenuOpen}
+                  >
+                    {item.title}
+                  </button>
+                )}
+              </div>
+            ))}
+            <a
+              href="/search"
+              className={styles.desktopSearch}
+              aria-label="Search"
+            >
+              <FiSearch size={20} />
+            </a>
+            {/* Tombol menu global ini tetap berfungsi untuk membuka overlay */}
+            <button
+              className={styles.desktopGlobalMenuToggle}
+              onClick={handleOpenMenu}
+              aria-label="Buka Menu Utama"
+              aria-expanded={isMenuOpen}
+            >
+              Menu
+            </button>
+          </nav>
+        )}
+
+        {/* Kontrol Mobile/Tablet */}
+        {isMobileOrTablet && (
+          <div className={styles.mobileTabletControls}>
+            <a
+              href="/search"
+              className={styles.mobileTabletSearch}
+              aria-label="Search"
+            >
+              <FiSearch size={20} />
+            </a>
+            <button
+              className={styles.mobileMenuToggle}
+              onClick={handleOpenMenu}
+              aria-label="Buka Menu Utama"
+              aria-expanded={isMenuOpen}
+            >
+              <FiMenu size={24} />
+            </button>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {globalLinks.concat(localLinks).map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-              >
-                {link.title}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
+      {/* Navigation Overlay */}
+      <NavigationOverlay
+        data={navigationData}
+        quickLinks={quickLinksData}
+        isOpen={isMenuOpen}
+        onClose={handleCloseMenu}
+        breakpoint={breakpoint}
+      />
+    </header>
   );
-}; 
+};
+
+// --- Hapus wrapper NavigationWithProvider ---
+
+// Ekspor komponen Navigation secara default
+export default Navigation;

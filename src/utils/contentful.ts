@@ -1,12 +1,15 @@
-import pkg from 'contentful';
-const { createClient } = pkg;
+// src/utils/contentful.ts
+
+import { createClient } from 'contentful';
 import type { Entry, EntryCollection, EntrySkeletonType } from 'contentful';
 
+// This sets up the Contentful client, keep this.
 const client = createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,
   accessToken: import.meta.env.CONTENTFUL_DELIVERY_TOKEN,
 });
 
+// --- Type Definitions (Keep these) ---
 export interface NavigationLink {
   title: string;
   href: string;
@@ -187,46 +190,58 @@ export interface Event {
   description: string;
   registrationLink: string;
 }
+// --- End Type Definitions ---
 
+
+// --- Modified Fetch Functions (Contentful calls commented out) ---
 export async function getNavigation(): Promise<{
   globalLinks: NavigationLink[];
   localLinks: NavigationLink[];
 }> {
   try {
-    const response = await client.getEntries<NavigationSkeleton>({
-      content_type: 'navigation',
-      include: 2,
-    });
+    // const response = await client.getEntries<NavigationSkeleton>({
+    //   content_type: 'navigation',
+    //   include: 2,
+    // });
 
-    const navigationData = response.items[0]?.fields;
+    console.warn("Contentful navigation fetching is commented out.");
 
-    const transformLink = (entry: Entry<NavigationLinkSkeleton>): NavigationLink => {
-      // Cast entry.fields to the expected type
-      const fields = entry.fields as NavigationLinkSkeleton['fields'];
-      return {
-        title: fields.title,
-        href: fields.href,
-        // Safely call map using optional chaining on the array
-        submenu: fields.submenu?.map(transformLink),
-      };
+    // const navigationData = response.items[0]?.fields;
+
+    // const transformLink = (entry: Entry<NavigationLinkSkeleton>): NavigationLink => {
+    //   // Cast entry.fields to the expected type
+    //   const fields = entry.fields as NavigationLinkSkeleton['fields'];
+    //   return {
+    //     title: fields.title,
+    //     href: fields.href,
+    //     // Safely call map using optional chaining on the array
+    //     submenu: fields.submenu?.map(transformLink),
+    //   };
+    // };
+
+    // // Fix: Check if navigationData exists and then directly access links with fallback
+    // if (navigationData) {
+    //   return {
+    //     // Explicitly assert the type to ensure .map is recognized
+    //     globalLinks: (navigationData.globalLinks as Entry<NavigationLinkSkeleton>[] || []).map(transformLink), // Explicit assertion
+    //     localLinks: (navigationData.localLinks as Entry<NavigationLinkSkeleton>[] || []).map(transformLink), // Explicit assertion
+    //   };
+    // } else {
+    //   return {
+    //     globalLinks: [],
+    //     localLinks: [],
+    //   };
+    // }
+
+    // Return empty data structure as a placeholder
+    return {
+      globalLinks: [],
+      localLinks: [],
     };
-
-    // Fix: Check if navigationData exists and then directly access links with fallback
-    if (navigationData) {
-      return {
-        // Explicitly assert the type to ensure .map is recognized
-        globalLinks: (navigationData.globalLinks as Entry<NavigationLinkSkeleton>[] || []).map(transformLink), // Explicit assertion
-        localLinks: (navigationData.localLinks as Entry<NavigationLinkSkeleton>[] || []).map(transformLink), // Explicit assertion
-      };
-    } else {
-      return {
-        globalLinks: [],
-        localLinks: [],
-      };
-    }
 
   } catch (error) {
     console.error('Error fetching navigation:', error);
+    // Still return empty data on error, even if call is commented out
     return {
       globalLinks: [],
       localLinks: [],
@@ -236,27 +251,33 @@ export async function getNavigation(): Promise<{
 
 export async function getPageContent(slug: string): Promise<PageContent | null> {
   try {
-    const response = await client.getEntries<PageSkeleton>({
-      content_type: 'page',
-      // Cast to any to bypass strict type checking for 'fields.slug'
-      'fields.slug': slug,
-      limit: 1,
-    } as any);
+    // const response = await client.getEntries<PageSkeleton>({
+    //   content_type: 'page',
+    //   // Cast to any to bypass strict type checking for 'fields.slug'
+    //   'fields.slug': slug,
+    //   limit: 1,
+    // } as any);
 
-    if (response.items.length === 0) {
-      return null;
-    }
+    console.warn(`Contentful page content fetching for slug "${slug}" is commented out.`);
 
-    // Safely access response.items[0] and cast its fields
-    const pageEntry = response.items[0];
-    if (!pageEntry) return null;
-    const pageFields = pageEntry.fields as PageSkeleton['fields'];
+    // if (response.items.length === 0) {
+    //   return null;
+    // }
 
-    return {
-      title: pageFields.title,
-      slug: pageFields.slug,
-      content: pageFields.content,
-    };
+    // // Safely access response.items[0] and cast its fields
+    // const pageEntry = response.items[0];
+    // if (!pageEntry) return null;
+    // const pageFields = pageEntry.fields as PageSkeleton['fields'];
+
+    // return {
+    //   title: pageFields.title,
+    //   slug: pageFields.slug,
+    //   content: pageFields.content,
+    // };
+
+    // Return null as a placeholder
+    return null;
+
   } catch (error) {
     console.error('Error fetching page content:', error);
     return null;
@@ -266,55 +287,66 @@ export async function getPageContent(slug: string): Promise<PageContent | null> 
 // get All Slugs from Contentful
 export async function getAllSlugs() {
   try {
-      const entries = await client.getEntries({
-          content_type: 'page', // Match your page content type
-          select: ['fields.slug'], // Only fetch the slug field
-          limit: 1000, // Adjust limit if you have many pages
-          // Add any other filters if needed
-      });
+    // const entries = await client.getEntries({
+    //     content_type: 'page', // Match your page content type
+    //     select: ['fields.slug'], // Only fetch the slug field
+    //     limit: 1000, // Adjust limit if you have many pages
+    //     // Add any other filters if needed
+    // });
 
-      // Extract slugs, handle cases where slug might be missing or is the homepage ''
-      const slugs = entries.items
-          .map(item => item.fields.slug)
-          .filter(slug => slug !== undefined); // Filter out entries without a slug field
+    console.warn("Contentful slug fetching is commented out.");
 
-      // Ensure the homepage slug (which is often represented as '' or null in CMS)
-      // is included. If your CMS uses '', add it. If you need a root path,
-      // ensure your mapping in getStaticPaths handles `undefined`.
-      // A common pattern is to include an entry with slug '' for the root.
-      // If your CMS doesn't have an explicit '' slug entry for the home page,
-      // you might manually add undefined to the slugs array if needed for getStaticPaths:
-      // slugs.push(undefined); // Add this if you need the root path `/` and your CMS doesn't provide a '' slug.
+    // // Extract slugs, handle cases where slug might be missing or is the homepage ''
+    // const slugs = entries.items
+    //     .map(item => item.fields.slug)
+    //     .filter(slug => slug !== undefined); // Filter out entries without a slug field
 
-      console.log("Fetched Slugs:", slugs); // Log to check what you're getting
+    // // Ensure the homepage slug (which is often represented as '' or null in CMS)
+    // // is included. If your CMS uses '', add it. If you need a root path,
+    // // ensure your mapping in getStaticPaths handles `undefined`.
+    // // A common pattern is to include an entry with slug '' for the root.
+    // // If your CMS doesn't have an explicit '' slug entry for the home page,
+    // // you might manually add undefined to the slugs array if needed for getStaticPaths:
+    // // slugs.push(undefined); // Add this if you need the root path `/` and your CMS doesn't provide a '' slug.
 
-      return slugs;
+    // console.log("Fetched Slugs:", slugs); // Log to check what you're getting
+
+    // return slugs;
+
+    // Return an empty array or a default slug list if needed for testing
+    return [];
 
   } catch (error) {
-      console.error("Error fetching slugs from Contentful:", error);
-      return []; // Return empty array on error
+    console.error("Error fetching slugs from Contentful:", error);
+    return []; // Return empty array on error
   }
 }
 
 // Fetch functions
 export async function getHero(): Promise<Hero | null> {
   try {
-    const response = await client.getEntries<HeroSkeleton>({
-      content_type: 'hero',
-      limit: 1,
-    });
+    // const response = await client.getEntries<HeroSkeleton>({
+    //   content_type: 'hero',
+    //   limit: 1,
+    // });
 
-    // Add check for response.items[0] and cast its fields
-    if (!response.items.length || !response.items[0]) return null;
-    const heroFields = response.items[0].fields as HeroSkeleton['fields'];
+    console.warn("Contentful hero fetching is commented out.");
 
-    return {
-      headline: heroFields.headline,
-      subhead: heroFields.subhead,
-      mainText: heroFields.mainText,
-      // Safely access nested properties with optional chaining and provide default
-      backgroundImageUrl: heroFields.backgroundImage?.fields?.file?.url || '',
-    };
+    // // Add check for response.items[0] and cast its fields
+    // if (!response.items.length || !response.items[0]) return null;
+    // const heroFields = response.items[0].fields as HeroSkeleton['fields'];
+
+    // return {
+    //   headline: heroFields.headline,
+    //   subhead: heroFields.subhead,
+    //   mainText: heroFields.mainText,
+    //   // Safely access nested properties with optional chaining and provide default
+    //   backgroundImageUrl: heroFields.backgroundImage?.fields?.file?.url || '',
+    // };
+
+    // Return null as a placeholder
+    return null;
+
   } catch (error) {
     console.error('Error fetching hero:', error);
     return null;
@@ -323,19 +355,25 @@ export async function getHero(): Promise<Hero | null> {
 
 export async function getPrograms(): Promise<Program[]> {
   try {
-    const response = await client.getEntries<ProgramSkeleton>({
-      content_type: 'program',
-    });
+    // const response = await client.getEntries<ProgramSkeleton>({
+    //   content_type: 'program',
+    // });
 
-    // Cast item.fields inside the map function to the expected type
-    return response.items.map(item => {
-      const fields = item.fields as ProgramSkeleton['fields'];
-      return {
-        title: fields.title,
-        content: fields.content,
-        links: fields.links,
-      };
-    });
+    console.warn("Contentful programs fetching is commented out.");
+
+    // // Cast item.fields inside the map function to the expected type
+    // return response.items.map(item => {
+    //   const fields = item.fields as ProgramSkeleton['fields'];
+    //   return {
+    //     title: fields.title,
+    //     content: fields.content,
+    //     links: fields.links,
+    //   };
+    // });
+
+    // Return an empty array as a placeholder
+    return [];
+
   } catch (error) {
     console.error('Error fetching programs:', error);
     return [];
@@ -344,16 +382,22 @@ export async function getPrograms(): Promise<Program[]> {
 
 export async function getAcademicExperience(): Promise<AcademicExperience | null> {
   try {
-    const response = await client.getEntries<AcademicExperienceSkeleton>({
-      content_type: 'academicExperience',
-      limit: 1,
-    });
+    // const response = await client.getEntries<AcademicExperienceSkeleton>({
+    //   content_type: 'academicExperience',
+    //   limit: 1,
+    // });
 
-    // Add check for response.items[0] and cast its fields
-    if (!response.items.length || !response.items[0]) return null;
-    const academicExperienceFields = response.items[0].fields as AcademicExperienceSkeleton['fields'];
+    console.warn("Contentful academic experience fetching is commented out.");
 
-    return academicExperienceFields;
+    // // Add check for response.items[0] and cast its fields
+    // if (!response.items.length || !response.items[0]) return null;
+    // const academicExperienceFields = response.items[0].fields as AcademicExperienceSkeleton['fields'];
+
+    // return academicExperienceFields;
+
+    // Return null as a placeholder
+    return null;
+
   } catch (error) {
     console.error('Error fetching academic experience:', error);
     return null;
@@ -362,23 +406,29 @@ export async function getAcademicExperience(): Promise<AcademicExperience | null
 
 export async function getCampusLife(): Promise<CampusLife | null> {
   try {
-    const response = await client.getEntries<CampusLifeSkeleton>({
-      content_type: 'campusLife',
-      limit: 1,
-    });
+    // const response = await client.getEntries<CampusLifeSkeleton>({
+    //   content_type: 'campusLife',
+    //   limit: 1,
+    // });
 
-    // Add check for response.items[0] and cast its fields
-    if (!response.items.length || !response.items[0]) return null;
-    const campusLifeFields = response.items[0].fields as CampusLifeSkeleton['fields'];
+    console.warn("Contentful campus life fetching is commented out.");
 
-    return {
-      title: campusLifeFields.title,
-      content: campusLifeFields.content,
-      // Safely access nested properties with optional chaining and provide default
-      imageUrl: campusLifeFields.image?.fields?.file?.url || '',
-      ctaText: campusLifeFields.ctaText,
-      ctaLink: campusLifeFields.ctaLink,
-    };
+    // // Add check for response.items[0] and cast its fields
+    // if (!response.items.length || !response.items[0]) return null;
+    // const campusLifeFields = response.items[0].fields as CampusLifeSkeleton['fields'];
+
+    // return {
+    //   title: campusLifeFields.title,
+    //   content: campusLifeFields.content,
+    //   // Safely access nested properties with optional chaining and provide default
+    //   imageUrl: campusLifeFields.image?.fields?.file?.url || '',
+    //   ctaText: campusLifeFields.ctaText,
+    //   ctaLink: campusLifeFields.ctaLink,
+    // };
+
+    // Return null as a placeholder
+    return null;
+
   } catch (error) {
     console.error('Error fetching campus life:', error);
     return null;
@@ -387,25 +437,31 @@ export async function getCampusLife(): Promise<CampusLife | null> {
 
 export async function getNews(limit = 3): Promise<News[]> {
   try {
-    const response = await client.getEntries<NewsSkeleton>({
-      content_type: 'news',
-      limit,
-      // Wrap order string in array and cast to any
-      order: ['-fields.date'] as any,
-    });
+    // const response = await client.getEntries<NewsSkeleton>({
+    //   content_type: 'news',
+    //   limit,
+    //   // Wrap order string in array and cast to any
+    //   order: ['-fields.date'] as any,
+    // });
 
-    // Cast item.fields inside the map function to the expected type
-    return response.items.map(item => {
-      const fields = item.fields as NewsSkeleton['fields'];
-      return {
-        title: fields.title,
-        summary: fields.summary,
-        date: fields.date,
-        // Safely access nested properties with optional chaining and provide default
-        imageUrl: fields.image?.fields?.file?.url || '',
-        slug: fields.slug,
-      };
-    });
+    console.warn("Contentful news fetching is commented out.");
+
+    // // Cast item.fields inside the map function to the expected type
+    // return response.items.map(item => {
+    //   const fields = item.fields as NewsSkeleton['fields'];
+    //   return {
+    //     title: fields.title,
+    //     summary: fields.summary,
+    //     date: fields.date,
+    //     // Safely access nested properties with optional chaining and provide default
+    //     imageUrl: fields.image?.fields?.file?.url || '',
+    //     slug: fields.slug,
+    //   };
+    // });
+
+    // Return an empty array as a placeholder
+    return [];
+
   } catch (error) {
     console.error('Error fetching news:', error);
     return [];
@@ -414,13 +470,19 @@ export async function getNews(limit = 3): Promise<News[]> {
 
 export async function getEvents(): Promise<Event[]> {
   try {
-    const response = await client.getEntries<EventSkeleton>({
-      content_type: 'event',
-      // Wrap order string in array and cast to any
-      order: ['fields.date'] as any,
-    });
+    // const response = await client.getEntries<EventSkeleton>({
+    //   content_type: 'event',
+    //   // Wrap order string in array and cast to any
+    //   order: ['fields.date'] as any,
+    // });
 
-    return response.items.map(item => item.fields);
+    console.warn("Contentful events fetching is commented out.");
+
+    // return response.items.map(item => item.fields);
+
+    // Return an empty array as a placeholder
+    return [];
+
   } catch (error) {
     console.error('Error fetching events:', error);
     return [];

@@ -1,0 +1,154 @@
+.nav-primary__subsec {
+
+}
+
+/* Position */
+.nav-primary__subsec--top {
+	margin-bottom: 24px;
+
+	@media (--viewport-medium) {
+		margin-bottom: 41px;
+	}
+}
+
+.nav-primary__subsec--bottom {
+
+	.nav-primary__child-list + & {
+		margin-top: 22px;
+
+		@media (--viewport-medium) {
+			margin-top: 47px;
+		}
+	}
+}
+
+/* Depth (see: level-two.pcss & level-three.pcss) */
+.nav-primary__subsec--depth-1 {
+
+}
+
+.nav-primary__subsec--depth-2 {
+
+}
+
+/* Subsection has content + back action or only back action */
+.nav-primary__subsec--has-content {
+
+}
+
+.nav-primary__subsec--no-content {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Subsection: Header
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__subsec-header {
+
+	& > * + .nav-primary__subsec-cta {
+		margin-top: 30px;
+
+		@media (--viewport-xlarge) {
+			margin-top: 23px;
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Subsection: Title
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__subsec-title {
+	letter-spacing: -0.1px;
+	font-family: var(--font-family-gt-america-standard-bold);
+	font-size: 20px;
+	line-height: 1.5;
+	display: block;
+
+	& + * {
+		margin-top: 10px;
+
+		@media (--viewport-medium) {
+			margin-top: 6px;
+		}
+
+		@media (--viewport-xlarge) {
+			margin-top: 7px;
+		}
+	}
+}
+
+.nav-primary__subsec-title-link {
+
+	&:hover {
+
+		.icon {
+			color: var(--color-white);
+		}
+	}
+
+	.icon {
+		position: relative;
+		top: 3px;
+		color: var(--color-asphalt);
+		line-height: 0;
+		font-size: 21px;
+		transition: color 0.15s ease-in-out;
+
+		&:before {
+			content: "\00a0" var(--icon-arrow-right);
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Subsection: Description
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__subsec-description {
+	display: block;
+	letter-spacing: -0.1px;
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+/* -----------------------------------------------------------------------------
+ * Subsection: CTA
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__subsec-cta {
+	font-family: var(--font-family-gt-america-standard-med);
+	line-height: 1.5;
+	font-size: 18px;
+	position: relative;
+	padding-left: 48px;
+	display: inline-block;
+	padding-top: 4px;
+	padding-bottom: 5px;
+
+	&:hover {
+
+		.icon {
+			background-color: var(--color-white);
+			color: var(--color-ink);
+		}
+	}
+
+	.icon {
+		transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+		background-color: var(--color-asphalt);
+		border-radius: 50%;
+		color: var(--color-white);
+		width: 36px;
+		height: 36px;
+		line-height: 37px;
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 24px;
+		text-align: center;
+	}
+}

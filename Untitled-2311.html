@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigasi STIE Dwimulya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        /* Custom font import */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Style for active menu item */
+        .active-link {
+            color: #FBBF24; /* amber-400 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <button onclick="document.getElementById('site-nav').classList.remove('hidden')" class="px-6 py-3 bg-blue-800 text-white rounded-lg shadow-lg">Buka Menu Navigasi</button>
+
+    <div id="site-nav" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50" x-data="{ activeMenu: 'kampus', activeSubMenu: 'perpustakaan' }">
+        <div class="absolute inset-0 z-0">
+            <template x-if="activeMenu === 'kampus'">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop" alt="Kampus STIE Dwimulya" class="w-full h-full object-cover transition-opacity duration-500">
+            </template>
+            <template x-if="activeMenu === 'akademik'">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" alt="Akademik" class="w-full h-full object-cover transition-opacity duration-500">
+            </template>
+             <template x-if="activeMenu === 'penerimaan'">
+                <img src="https://images.unsplash.com/photo-1571260899052-701ab1b489a8?q=80&w=2070&auto=format&fit=crop" alt="Penerimaan" class="w-full h-full object-cover transition-opacity duration-500">
+            </template>
+            <div class="absolute inset-0 bg-gray-900 opacity-80"></div>
+        </div>
+
+        <div class="relative z-10 flex h-full text-white p-8 lg:p-16">
+            <div class="w-1/3 lg:w-1/4 space-y-4 pt-24">
+                <h1 class="text-2xl font-bold mb-12">STIE DWIMULYA</h1>
+                <nav>
+                    <ul>
+                        <li><button @mouseover="activeMenu = 'akademik'; activeSubMenu = 'prodi'" class="text-4xl lg:text-5xl font-bold hover:text-amber-400 transition-colors" :class="{ 'active-link': activeMenu === 'akademik' }">Akademik</button></li>
+                        <li><button @mouseover="activeMenu = 'kampus'; activeSubMenu = 'perpustakaan'" class="text-4xl lg:text-5xl font-bold hover:text-amber-400 transition-colors" :class="{ 'active-link': activeMenu === 'kampus' }">Kampus</button></li>
+                        <li><button @mouseover="activeMenu = 'penerimaan'; activeSubMenu='info'" class="text-4xl lg:text-5xl font-bold hover:text-amber-400 transition-colors" :class="{ 'active-link': activeMenu === 'penerimaan' }">Penerimaan</button></li>
+                        <li><a href="#" class="text-4xl lg:text-5xl font-bold hover:text-amber-400 transition-colors">Tentang Kami</a></li>
+                        <li><a href="#" class="text-4xl lg:text-5xl font-bold hover:text-amber-400 transition-colors">Berita</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="w-1/3 lg:w-1/4 pt-24 border-l border-gray-700 px-8">
+                <div x-show="activeMenu === 'akademik'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
+                    <div class="mb-8">
+                        <a href="#" class="text-2xl font-bold flex items-center hover:underline">
+                            Akademik
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        </a>
+                        <p class="text-gray-400 mt-2">Jelajahi program studi, kurikulum, dan sumber daya akademik kami.</p>
+                    </div>
+                    <ul class="space-y-3">
+                        <li><button @mouseover="activeSubMenu = 'prodi'" class="flex justify-between w-full text-left text-lg hover:text-amber-400" :class="{'active-link': activeSubMenu === 'prodi'}">Program Studi <span class="text-gray-500">&rarr;</span></button></li>
+                        <li><a href="#" class="text-lg hover:text-amber-400">Kalender Akademik</a></li>
+                        <li><a href="#" class="text-lg hover:text-amber-400">Dosen & Staf</a></li>
+                        <li><a href="#" class="text-lg hover:text-amber-400">Penelitian & Publikasi</a></li>
+                    </ul>
+                </div>
+
+                <div x-show="activeMenu === 'kampus'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
+                    <div class="mb-8">
+                         <a href="#" class="text-2xl font-bold flex items-center hover:underline">
+                            Kehidupan Kampus
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        </a>
+                        <p class="text-gray-400 mt-2">Temukan informasi fasilitas, layanan, dan kegiatan di kampus kami.</p>
+                    </div>
+                    <ul class="space-y-3">
+                        <li><button @mouseover="activeSubMenu = 'perpustakaan'" class="flex justify-between w-full text-left text-lg hover:text-amber-400" :class="{'active-link': activeSubMenu === 'perpustakaan'}">Perpustakaan <span class="text-gray-500">&rarr;</span></button></li>
+                        <li><button @mouseover="activeSubMenu = 'fasilitas'" class="flex justify-between w-full text-left text-lg hover:text-amber-400" :class="{'active-link': activeSubMenu === 'fasilitas'}">Fasilitas <span class="text-gray-500">&rarr;</span></button></li>
+                        <li><a href="#" class="text-lg hover:text-amber-400">Organisasi Mahasiswa</a></li>
+                        <li><a href="#" class="text-lg hover:text-amber-400">Acara Kampus</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w-1/3 lg:w-2/4 pt-24 border-l border-gray-700 px-8">
+                <div x-show="activeMenu === 'akademik' && activeSubMenu === 'prodi'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
+                    <a href="#" class="text-lg font-bold flex items-center hover:underline mb-6">
+                        Jelajahi Program Studi Kami
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </a>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">S1 Akuntansi</a></li>
+                        <li><a href="#" class="hover:text-white">S1 Manajemen</a></li>
+                        <li><a href="#" class="hover:text-white">D3 Akuntansi</a></li>
+                        <li><a href="#" class="hover:text-white">D3 Manajemen Pemasaran</a></li>
+                    </ul>
+                </div>
+
+                <div x-show="activeMenu === 'kampus' && activeSubMenu === 'perpustakaan'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
+                    <a href="#" class="text-lg font-bold flex items-center hover:underline mb-6">
+                        Layanan Perpustakaan
+                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </a>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Katalog Online (OPAC)</a></li>
+                        <li><a href="#" class="hover:text-white">Repositori Digital</a></li>
+                        <li><a href="#" class="hover:text-white">Jurnal Elektronik</a></li>
+                        <li><a href="#" class="hover:text-white">Jam Buka & Lokasi</a></li>
+                    </ul>
+                </div>
+                 <div x-show="activeMenu === 'kampus' && activeSubMenu === 'fasilitas'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
+                    <a href="#" class="text-lg font-bold flex items-center hover:underline mb-6">
+                        Fasilitas Unggulan
+                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </a>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Laboratorium Komputer</a></li>
+                        <li><a href="#" class="hover:text-white">Ruang Kelas Multimedia</a></li>
+                        <li><a href="#" class="hover:text-white">Auditorium</a></li>
+                        <li><a href="#" class="hover:text-white">Area Parkir Luas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="document.getElementById('site-nav').classList.add('hidden')" class="absolute top-8 right-8 text-white hover:text-amber-400 transition-colors">
+            <span class="text-lg mr-2">Close</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <div class="absolute bottom-0 left-0 right-0 p-8 bg-black/30">
+            <nav class="flex items-center space-x-6 text-sm">
+                <strong class="text-white font-bold">Quick Links:</strong>
+                <a href="#" class="text-gray-300 hover:text-white">Pendaftaran Online</a>
+                <a href="#" class="text-gray-300 hover:text-white">Hubungi Kami</a>
+                <a href="#" class="text-gray-300 hover:text-white">Alumni</a>
+                <a href="#" class="text-gray-300 hover:text-white">Lowongan Kerja</a>
+                <a href="#" class="text-gray-300 hover:text-white text-red-400">Darurat</a>
+            </nav>
+        </div>
+    </div>
+
+</body>
+</html>

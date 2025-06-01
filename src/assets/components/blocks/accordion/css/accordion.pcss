@@ -1,0 +1,179 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Accordion
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-accordion {
+	background-color: var(--color-parchment);
+	margin: 0;
+	padding: var(--spacer-40) 0;
+	position: relative;
+	z-index: 2;
+
+	@container layout (min-width: $container-medium) {
+		padding: var(--spacer-70) 0 var(--spacer-90);
+		z-index: auto;
+	}
+
+	.b-accordion__header {
+		position: relative;
+	}
+
+	/* CASE: Light */
+	&.t-theme--light {
+		background-color: var(--color-wrought-iron);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Accordion: Container
+ * ----------------------------------------------------------------------------- */
+
+.b-accordion__container {
+	/* CASE: Accordion: Inline */
+	position: relative;
+	z-index: 2;
+
+	.c-block--layout-inline & {
+		@container layout (min-width: $container-full) {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Columns: Header Container
+ * ----------------------------------------------------------------------------- */
+
+.c-block__content-block.c-block__header.b-accordion__header {
+	max-width: none;
+	margin-left: -24px;
+	margin-right: -24px;
+	width: calc(100% + (var(--grid-gutter-small) * 2));
+
+	@container layout (min-width: $container-medium) {
+		display: flex;
+		flex-direction: row;
+		margin-left: -48px;
+		margin-right: -48px;
+		width: calc(100% + (var(--grid-gutter) * 2));
+	}
+
+	@container layout (min-width: $container-medium) {
+		display: flex;
+	}
+}
+
+.b-accordion__content {
+	background: var(--color-parchment);
+	position: relative;
+	padding-top: var(--spacer-30);
+	z-index: 2;
+
+	@container layout (min-width: $container-medium) {
+		padding-top: var(--spacer-60);
+	}
+
+	/* CASE: Light */
+	.t-theme--light & {
+		background-color: var(--color-wrought-iron);
+	}
+
+	.c-block--layout-inline & {
+		@container layout (min-width: $container-full) {
+			margin-top: calc(-1 * var(--spacer-30));
+		}
+	}
+}
+
+.c-accordion__content-container {
+	display: flex;
+	flex-direction: column;
+
+	@container layout (min-width: $container-medium) {
+		flex-direction: row;
+	}
+
+	.b-accordion__inner-content {
+		order: 2;
+
+		@container layout (min-width: $container-medium) {
+			order: 1;
+			width: 50%;
+		}
+
+		@container layout (min-width: $container-large) {
+			min-width: var(--grid-6-col);
+		}
+
+		&.no-image {
+			width: 100%;
+
+			@container layout (min-width: $container-large) {
+				min-width: 100%;
+			}
+		}
+	}
+
+	.b-accordion__img {
+		margin-bottom: var(--spacer-60);
+		order: 1;
+
+		@container layout (min-width: $container-medium) {
+			margin-bottom: 0;
+			margin-left: var(--spacer-60);
+			order: 2;
+			width: 50%;
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Accordion: Title & Description
+ * ----------------------------------------------------------------------------- */
+
+.b-accordion__title,
+.b-accordion .c-content-block__content-wrap {
+	padding-bottom: 12px;
+	padding-left: var(--grid-gutter-small);
+	padding-right: var(--grid-gutter-small);
+
+	@container layout (min-width: $container-medium) {
+		padding-bottom: 0;
+		padding-left: var(--grid-gutter);
+		padding-right: var(--grid-gutter);
+		width: 50%;
+	}
+}
+
+.b-accordion .c-content-block__content {
+	margin-top: 0;
+}
+
+.b-accordion .c-content-block__content-wrap {
+	@container layout (min-width: $container-medium) {
+		padding-left: var(--grid-gutter-small);
+	}
+}
+
+.c-block__header .c-block__title.b-accordion__title {
+	@mixin t-display-x-small;
+
+	font-family: var(--font-family-canela-deck);
+	font-weight: normal;
+
+	@container layout (min-width: $container-medium) {
+		@mixin t-display;
+	}
+
+	@container layout (min-width: $container-full) {
+		@mixin t-display-large;
+	}
+}
+
+.c-block__header .c-block__title.b-accordion__description {
+	font-family: var(--font-family-gt-america-standard-reg);
+	font-size: 18px;
+}

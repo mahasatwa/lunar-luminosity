@@ -1,29 +1,82 @@
 ---
-import type { Event } from '../../utils/contentful';
+// import type { Event } from '../../utils/contentful';
 
-interface Props {
-  events: Event[];
-}
+// interface Props {
+//   events: Event[];
+// }
 
-const { events } = Astro.props;
+// const { events } = Astro.props;
+
+// Hardcoded array of event data for STIE Dwimulya
+const events = [
+  {
+    type: "openHouse",
+    title: "Open House Kampus STIE Dwimulya",
+    date: "2025-07-15", // YYYY-MM-DD format
+    time: "09:00", // HH:mm format
+    description:
+      "Kunjungi kampus kami, temui dosen, dan dapatkan informasi lengkap tentang program studi.",
+    registrationLink: "#", // >>> GANTI DENGAN LINK PENDAFTARAN OPEN HOUSE <<<
+  },
+  {
+    type: "infoSession",
+    title: "Info Sesi Program Studi Bisnis & Akuntansi",
+    date: "2025-07-20",
+    time: "13:00",
+    description:
+      "Dapatkan penjelasan detail tentang kurikulum, prospek karir, dan keunggulan program studi kami.",
+    registrationLink: "#", // >>> GANTI DENGAN LINK PENDAFTARAN INFO SESI <<<
+  },
+  {
+    type: "webinar",
+    title: "Webinar: Tren Bisnis Digital 2025",
+    date: "2025-07-25",
+    time: "19:00",
+    description:
+      "Bergabunglah dengan webinar interaktif bersama praktisi ahli membahas tren terkini di dunia bisnis digital.",
+    registrationLink: "#", // >>> GANTI DENGAN LINK PENDAFTARAN WEBINAR <<<
+  },
+  {
+    type: "entranceTest",
+    title: "Ujian Saringan Masuk Gelombang 1",
+    date: "2025-08-10",
+    time: "08:00",
+    description:
+      "Jadwal ujian saringan masuk (USM) untuk calon mahasiswa baru Gelombang 1.",
+    registrationLink: "#", // >>> GANTI DENGAN LINK PENDAFTARAN USM <<<
+  },
+  {
+    type: "infoSession",
+    title: "Konsultasi Personal Pendaftaran",
+    date: "2025-08-01",
+    time: "10:00",
+    description:
+      "Jadwalkan sesi konsultasi tatap muka atau online dengan tim penerimaan mahasiswa baru.",
+    registrationLink: "#", // >>> GANTI DENGAN LINK PENDAFTARAN KONSULTASI <<<
+  },
+];
 
 function formatDateTime(date: string, time: string): string {
   const eventDate = new Date(`${date}T${time}`);
-  return eventDate.toLocaleDateString('id-ID', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
+  // Check if the date is valid before formatting
+  if (isNaN(eventDate.getTime())) {
+    return "Invalid Date/Time";
+  }
+  return eventDate.toLocaleDateString("id-ID", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 }
 
 const eventTypeIcons = {
-  openHouse: '🏫',
-  infoSession: 'ℹ️',
-  webinar: '💻',
-  entranceTest: '📝',
+  openHouse: "🏫",
+  infoSession: "ℹ️",
+  webinar: "💻",
+  entranceTest: "📝",
 };
 ---
 
@@ -38,7 +91,10 @@ const eventTypeIcons = {
         events.map((event) => (
           <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
             <div class="flex items-start gap-4">
-              <div class="text-4xl">{eventTypeIcons[event.type]}</div>
+              <div class="text-4xl">
+                {eventTypeIcons[event.type as keyof typeof eventTypeIcons]}
+              </div>{" "}
+              {/* Added type assertion */}
               <div>
                 <h3 class="text-xl font-bold mb-2">{event.title}</h3>
                 <time class="text-sm text-gray-500 mb-2 block">
@@ -59,12 +115,11 @@ const eventTypeIcons = {
     </div>
 
     <div class="text-center">
-      <a
-        href="/events"
-        class="inline-block bg-white border-2 border-primary text-primary px-8 py-3 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors"
-      >
-        Lihat Semua Jadwal Acara
+      <a href="/acara"
+        class="inline-block bg-white border-2 border-primary text-primary px-8
+        py-3 rounded-lg font-medium hover:bg-primary hover:text-white
+        transition-colors" > Lihat Semua Jadwal Acara
       </a>
     </div>
   </div>
-</section> 
+</section>

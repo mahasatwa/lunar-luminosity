@@ -1,0 +1,31 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Keyword Blue Box for Programs
+ * It's the content inside the accordion for single programs.
+ *
+ * ----------------------------------------------------------------------------- */
+
+.c-programs-keyword-blue-box {
+	background-color: var(--color-bluebonnet-light);
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.c-programs-keyword-blue-box__title {
+	font-family: var(--font-family-gt-america-standard-bold);
+	font-size: 20px;
+	@media (--viewport-full) {
+		font-size: 24px;
+		margin-bottom: 12px;
+	}
+}
+.c-programs-keyword-blue-box__description {
+	margin: 7px 0 24px 0;
+	@media (--viewport-full) {
+		max-width: 65%;
+	}
+}
+.c-programs-keyword-blue-box__link {
+	@mixin a-btn-secondary;
+	max-width: 100%;
+	display: inline-block;
+}

@@ -1,0 +1,259 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Blocks
+ *
+ * ----------------------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------------------
+ * Global: Block
+ * ----------------------------------------------------------------------------- */
+
+.c-block {
+	margin-top: var(--spacer-60);
+	margin-bottom: var(--spacer-60);
+
+	@media (--viewport-medium) {
+		margin-top: var(--spacer-80);
+		margin-bottom: var(--spacer-80);
+	}
+
+	/* CASE: Block is full-bleed */
+	&.c-block--full-bleed {
+		max-width: none;
+		width: 100%;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * CASE: If a full-bleed block is followed by a non-component-block element,
+ * the following element should have some additional vertical spacing.
+ * ----------------------------------------------------------------------------- */
+.c-block--full-bleed + *:not(.c-block) {
+	margin-top: var(--spacer-60);
+
+	@media (--viewport-medium) {
+		margin-top: var(--spacer-80);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * CASE: If a non-component-block element is followed by a full-bleed block,
+ * the block should have some additional vertical spacing.
+ * ----------------------------------------------------------------------------- */
+*:not(.c-block) + .c-block--full-bleed {
+	margin-top: var(--spacer-60);
+
+	@media (--viewport-medium) {
+		margin-top: var(--spacer-80);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * CASE: Collapse spacing between any full-bleed or background-applied blocks.
+ * ----------------------------------------------------------------------------- */
+.c-block--full-bleed + .c-block--full-bleed,
+.c-block--full-bleed + .c-block--vertical-padding,
+.c-block--vertical-padding + .c-block--full-bleed,
+.c-block--vertical-padding + .c-block--vertical-padding {
+	margin-top: calc(-1 * var(--spacer-60));
+
+	@media (--viewport-medium) {
+		margin-top: calc(-1 * var(--spacer-80));
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * CASE: Block has vertical padding
+ *
+ * Provides vertical spacing in addition to any vertical margin
+ * applied between blocks. Different from a full-bleed block in that a
+ * full-bleed block generally has custom vertical padding.
+ *
+ * Useful when applying background colors to blocks, or "zebra-striping".
+ * ----------------------------------------------------------------------------- */
+.c-block--vertical-padding {
+	padding-top: var(--spacer-60);
+	padding-bottom: var(--spacer-60);
+	background-color: var(--color-grey-light);
+
+	@media (--viewport-medium) {
+		padding-top: var(--spacer-80);
+		padding-bottom: var(--spacer-80);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Global: Header / Content Block
+ * ----------------------------------------------------------------------------- */
+
+.c-block__content-block {
+
+}
+
+.c-block__header {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Global: Lead In
+ * ----------------------------------------------------------------------------- */
+
+.c-block__leadin {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Global: Title
+ * ----------------------------------------------------------------------------- */
+
+.c-block__header {
+
+	.c-block__title {
+		@mixin t-display;
+
+		@media (--viewport-medium) {
+			@mixin t-display-large;
+
+			padding-right: var(--spacer-30);
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Global: Description
+ * ----------------------------------------------------------------------------- */
+
+.c-block__description {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Global: CTA
+ * ----------------------------------------------------------------------------- */
+
+.c-block__cta {
+
+}
+
+.c-block__cta-link {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Global: Header / Inline Layout
+ * ----------------------------------------------------------------------------- */
+
+.c-block__header.c-block__header--inline {
+	max-width: none;
+    margin-left: -24px;
+    margin-right: -24px;
+	margin-top: 0;
+	margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: var(--spacer-40);
+    width: calc( 100% + (var(--grid-gutter-small) * 2));
+
+    @media (--viewport-medium) {
+        display: flex;
+        flex-direction: row;
+        margin-left: -48px;
+        margin-right: -48px;
+        width: calc( 100% + (var(--grid-gutter) * 2));
+    }
+
+    @media (--viewport-medium) {
+        display: flex;
+    }
+
+	.c-content-block__content-wrap {
+		padding-left: var(--grid-gutter-small);
+		padding-right: var(--grid-gutter-small);
+
+		@media (--viewport-medium) {
+			padding-bottom: 0;
+			padding-top: 0;
+			padding-left: var(--grid-gutter-small);
+			padding-right: var(--grid-gutter);
+			width: 50%;
+		}
+	}
+
+	.c-block__title {
+		padding-bottom: var(--spacer-20);
+		padding-left: var(--grid-gutter-small);
+		padding-right: var(--grid-gutter-small);
+
+		@media (--viewport-medium) {
+			padding-bottom: 0;
+			padding-left: var(--grid-gutter);
+			padding-right: var(--spacer-30);
+			width: 50%;
+		}
+	}
+
+	.c-block__description {
+		margin-top: 0;
+	}
+}
+
+.wp-block-group {
+	background-color: var(--color-parchment);
+	padding: var(--spacer-40) 0;
+	position: relative;
+	z-index: 2;
+
+	@media (--viewport-medium) {
+		padding: var(--spacer-70) 0;
+	}
+
+	&.is-style-group-dark-bg {
+		background-color: var(--color-wrought-iron);
+		padding-left: var(--grid-gutter-small);
+		padding-right: var(--grid-gutter-small);
+
+		@media (--viewport-medium) {
+			padding-left: var(--grid-gutter);
+			padding-right: var(--grid-gutter);
+		}
+
+		.wp-block-group__inner-container > * {
+			border-color: var(--color-parchment);
+			color: var(--color-parchment);
+		}
+
+		.wp-block-group__inner-container {
+
+			.a-btn__text {
+				color: var(--color-parchment);
+			}
+
+			.a-btn-outline > .a-btn__text:after {
+				color: var(--color-parchment);
+			}
+		}
+
+		/* CASE: Light Theme */
+		.t-theme--light & {
+			padding-left: 0;
+			padding-right: 0;
+
+			@media (--viewport-medium) {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+}
+
+.c-block--remove-top-padding {
+	padding-top: 0 !important;
+}
+
+.c-block--remove-bottom-padding {
+	padding-bottom: 0 !important;
+}
+
+.c-block--remove-padding {
+	padding-bottom: 0 !important;
+	padding-top: 0 !important;
+}

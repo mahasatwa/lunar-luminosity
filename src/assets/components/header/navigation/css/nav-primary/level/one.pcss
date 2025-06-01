@@ -1,0 +1,92 @@
+.nav-primary__col-0 {
+	height: 100%;
+
+	@media (--viewport-medium) {
+		overflow: hidden;
+		margin-right: 40px;
+		width: 330px;
+	}
+
+	@media (--viewport-full) {
+		width: 350px;
+	}
+
+	@media (--viewport-xlarge) {
+		width: 345px;
+	}
+
+	@media (--viewport-xxlarge) {
+		width: 350px;
+		margin-right: 57px;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Level 1: Item
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__item--depth-0 {
+	opacity: 0;
+	transform: translate3d(0, -40px, 0);
+	transition: opacity .5s cubic-bezier(0.32, 0.08, 0.24, 1), transform .5s cubic-bezier(0.32, 0.08, 0.24, 1);
+
+	.site-nav--is-active & {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+
+	& + .nav-primary__item--depth-0 {
+		margin-top: 25px;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Level 1: Action
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__action--depth-0 {
+	font-family: var(--font-family-canela-deck);
+	font-size: 40px;
+	line-height: 1.15;
+	letter-spacing: -0.1px;
+
+	@media (--viewport-medium) {
+		font-size: 48px;
+	}
+
+	@media (--viewport-xlarge) {
+		font-size: 56px;
+	}
+
+	&:hover {
+
+		.nav-primary__action-text {
+			background-size: 100% 1px;
+
+			/* CASE: remove underline animation for touch devices */
+			@media (--touch-device) {
+				background-size: 0 1px;
+			}
+		}
+	}
+
+	.site-nav--child-active-depth-0 & {
+		color: var(--color-slate);
+
+		&:hover {
+			color: var(--color-white);
+
+			.nav-primary__action-text {
+				background-size: 0 1px;
+			}
+		}
+	}
+
+	.nav-primary__item--child-active & {
+		color: var(--color-white) !important;
+
+		.nav-primary__action-text {
+			background-size: 100% 1px !important;
+		}
+	}
+}

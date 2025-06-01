@@ -1,0 +1,33 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Landing Page: Vertical Text
+ *
+ * ----------------------------------------------------------------------------- */
+
+.vertical-text {
+	color: transparent;
+	display: none;
+	left: 55px;
+	padding-bottom: 34px;
+	position: absolute;
+	transform: rotate(90deg);
+	top: 25%;
+	transform-origin: left center;
+	white-space: nowrap;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: var(--color-shade);
+	z-index: 2;
+
+	&.graphite {
+		-webkit-text-stroke-color: var(--color-graphite);
+	}
+
+	&::selection {
+		background: none;
+	}
+
+	@media (--viewport-large) {
+		display: block;
+		font-size: 200px;
+	}
+}

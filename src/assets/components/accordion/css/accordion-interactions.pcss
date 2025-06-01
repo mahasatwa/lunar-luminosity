@@ -1,0 +1,21 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Accordion Interactions
+ *
+ * ----------------------------------------------------------------------------- */
+
+ /* Title line hover */
+.c-accordion__header .c-accordion__header-container {
+	@mixin a-line-animation 2px;
+}
+.c-accordion__header:hover .c-accordion__header-container {
+	@mixin a-line-animation-active 2px;
+}
+
+/* Fade content in */
+.b-accordion__inner-content {
+	animation: var(--an-fade-out);
+}
+.active .b-accordion__inner-content {
+	animation: var(--an-fade-in);
+}

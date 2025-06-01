@@ -1,0 +1,69 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Gallery Layout Mixins
+ *
+ * ----------------------------------------------------------------------------- */
+
+/**
+ * Mobile: Top Left
+ */
+@define-mixin gallery-layout-mobile-top-left {
+	top: 100px;
+	left: 0;
+	height: 71px;
+	width: 100px;
+}
+
+/**
+ * Mobile: Top Middle
+ */
+@define-mixin gallery-layout-mobile-top-mid {
+	top: 0;
+	left: calc(50% - 30px);
+	height: 57px;
+	width: 85px;
+	transform: translateX(-100%);
+}
+
+/**
+ * Mobile: Top Right
+ */
+@define-mixin gallery-layout-mobile-top-right {
+	top: 50px;
+	right: 0;
+	height: 91px;
+	width: 137px;
+}
+
+/**
+ * Mobile: Bottom Left
+ */
+@define-mixin gallery-layout-mobile-bot-left {
+	top: auto;
+	bottom: 20px;
+	left: 20px;
+	height: 118px;
+	width: 89px;
+}
+
+/**
+ * Mobile: Bottom Middle
+ */
+@define-mixin gallery-layout-mobile-bot-mid {
+	top: auto;
+	left: calc(50% + 24px);
+	bottom: 0;
+	height: 66px;
+	width: 128px;
+}
+
+/**
+ * Mobile: Bottom Right
+ */
+@define-mixin gallery-layout-mobile-bot-right {
+	top: auto;
+	right: 0;
+	bottom: 104px;
+	height: 58px;
+	width: 79px;
+}

@@ -1,0 +1,147 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Alert
+ *
+ * ----------------------------------------------------------------------------- */
+
+.alert {
+	align-items: center;
+	display: flex;
+	padding: 24px;
+	position: relative;
+	z-index: 2;
+
+	@media (--viewport-medium) {
+		padding: 27px 45px;
+	}
+
+	&.gray {
+		background-color: var(--color-blackboard);
+
+		* {
+			color: var(--color-parchment);
+		}
+
+		.alert__msg:before {
+			background: center center url('/wp-content/themes/core/assets/img/theme/decor/alert-octagon-white.svg') no-repeat;
+			background-size: 16px;
+
+			@media (--viewport-medium) {
+				background-size: 22px;
+			}
+		}
+	}
+
+	&.yellow {
+		background-color: var(--color-yellow);
+	}
+
+	&.tall {
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		min-height: 110px;
+		text-align: left;
+
+		.alert__link-wrap {
+			margin-top: 6px;
+			width: 100%;
+		}
+	}
+
+	&.short {
+		min-height: 60px;
+		justify-content: center;
+
+		.alert__content {
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+
+			@media (--viewport-medium) {
+				flex-wrap: nowrap;
+			}
+
+			@media (--viewport-medium) {
+				width: auto;
+			}
+		}
+
+		.alert__msg {
+			flex: 1;
+
+			@media (--viewport-medium) {
+				font-size: 16px;
+			}
+		}
+
+		.alert__msg:before {
+			display: none;
+		}
+
+		.alert__msg + .alert__link-wrap {
+			position: relative;
+			top: -3px;
+
+			@media (--viewport-medium) {
+				margin-left: 10px;
+				top: 0;
+			}
+		}
+	}
+
+	.alert__msg {
+		font-family: var(--font-family-gt-america-standard-bold);
+		font-size: 14px;
+		text-align: left;
+		width: 100%;
+
+		&:before {
+			background: center center url('/wp-content/themes/core/assets/img/theme/decor/alert-octagon.svg') no-repeat;
+			content: "";
+			display: inline-block;
+			background-size: 16px;
+			height: 16px;
+			margin: 0 var(--spacer-10) 0 0;
+			position: relative;
+			top: 2px;
+			width: 16px;
+
+			@media (--viewport-medium) {
+				background-size: 22px;
+				height: 22px;
+				top: 4px;
+				width: 22px;
+			}
+		}
+
+		@media (--viewport-medium) {
+			font-size: 18px;
+			width: auto;
+		}
+	}
+
+	.alert__link-wrap {
+		display: inline-block;
+	}
+
+	a.alert__link {
+		font-size: 14px;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		@media (--viewport-medium) {
+			font-size: 16px;
+		}
+	}
+
+	.alert__msg + .alert__link-wrap {
+		margin-left: 24px;
+
+		@media (--viewport-medium) {
+			margin-left: 30px;
+		}
+	}
+}

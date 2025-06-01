@@ -1,0 +1,29 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Gazette Interactions
+ *
+ * ----------------------------------------------------------------------------- */
+
+/* Hover line */
+.b-gazette__article .b-gazette__article-title span {
+	@mixin a-line-animation 2px;
+}
+
+.b-gazette__article:focus-within .b-gazette__article-title span,
+.b-gazette__article:hover .b-gazette__article-title span {
+	@mixin a-line-animation-active 2px;
+}
+
+/* Zoom image */
+.b-gazette__article .b-gazette__article-img {
+	overflow: hidden;
+}
+
+.b-gazette__article .b-gazette__article-img .b-gazette__article-img-bg {
+	transition: var(--an-zoom-img-transition);
+}
+
+.b-gazette__article:focus-within .b-gazette__article-img .b-gazette__article-img-bg,
+.b-gazette__article:hover .b-gazette__article-img .b-gazette__article-img-bg {
+	transform: var(--an-zoom-img-transform);
+}

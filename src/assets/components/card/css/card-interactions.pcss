@@ -1,0 +1,33 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Card Interactions
+ *
+ * ----------------------------------------------------------------------------- */
+
+.c-card.has-target-link .c-card__title span {
+	@mixin a-line-animation 2px;
+}
+
+.c-card.has-target-link:focus-within .c-card__title span,
+.c-card.has-target-link:hover .c-card__title span {
+	@mixin a-line-animation-active 2px;
+}
+
+/* Slideup */
+.c-image--spotlight {
+	overflow: hidden;
+}
+
+.c-card .c-image__image {
+	transition: var(--an-zoom-img-transition);
+}
+
+.c-card:hover .c-image__image,
+.c-card:focus-within .c-image__image {
+	transform: var(--an-zoom-img-transform);
+}
+
+.spotlight .c-card:focus .c-card__media:before,
+.spotlight .c-card:hover .c-card__media:before {
+	transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}

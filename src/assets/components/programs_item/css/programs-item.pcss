@@ -1,0 +1,68 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Programs Item
+ * Each row of related programs on single program
+ *
+ * ----------------------------------------------------------------------------- */
+
+.c-programs-item {
+	padding-top: 16px;
+	padding-bottom: 16px;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid var(--color-ink);
+	@media (--viewport-full) {
+		padding-top: 16px;
+		padding-bottom: 16px;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.c-programs-item__title-link,
+.c-programs-item__title {
+	flex: 2;
+}
+.c-programs-item__title-link .c-programs-item__title {
+	border-bottom: 1px solid transparent;
+	display: inline;
+}
+.c-programs-item__title {
+	font-family: var(--font-family-canela-deck);
+	font-size: 24px;
+	@media (--viewport-medium) {
+		font-size: 36px;
+	}
+}
+
+.c-programs-item__initials {
+	color: var(--color-ink);
+	font-size: 14px;
+	display: flex;
+	flex: 1;
+	margin-top: 8px;
+	@media (--viewport-full) {
+		font-size: 18px;
+		margin-top: 0;
+	}
+}
+.c-programs-item__initials button {
+	@mixin a-btn-reset;
+	font-family: var(--font-family-gt-america-standard-reg);
+	font-weight: 400;
+	color: var(--color-ink);
+	font-size: 18px;
+}
+.c-programs-item__initals__comma-separator {
+	display: flex;
+	align-items: center;
+}
+.c-programs-item__initals__comma-separator + .c-programs-item__initals__comma-separator:before {
+	content: ',';
+	margin-right: 10px;
+}
+.c-programs-item__initials__initial {
+	letter-spacing: 0.02em;
+	cursor: default;
+}

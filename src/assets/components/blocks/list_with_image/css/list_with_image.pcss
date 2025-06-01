@@ -1,0 +1,198 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Card Grid
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-list-with-image {
+	background-color: var(--color-parchment);
+	margin: 0;
+	padding: var(--spacer-40) 0 var(--spacer-75);
+	position: relative;
+	z-index: 2;
+
+	@container layout (min-width: $container-medium) {
+		padding: var(--spacer-70) 0 0;
+		z-index: auto;
+	}
+
+	/* CASE: Light */
+	&.t-theme--light {
+		background-color: var(--color-wrought-iron);
+
+		* {
+			color: var(--color-parchment);
+		}
+	}
+}
+
+.b-list-with-image__container {
+	position: relative;
+	z-index: 1;
+}
+
+/* -----------------------------------------------------------------------------
+ * Block Header
+ * ----------------------------------------------------------------------------- */
+
+.b-list-with-image__header.c-block__content-block.c-block__header {
+	max-width: none;
+
+	@container layout (min-width: $container-medium) {
+		display: flex;
+		flex-direction: row;
+	}
+
+	@container layout (min-width: $container-medium) {
+		display: flex;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Block Title
+ * ----------------------------------------------------------------------------- */
+
+.b-list-with-image__title {
+	padding-right: var(--grid-gutter-small);
+
+	@container layout (min-width: $container-medium) {
+		padding-right: var(--grid-gutter);
+		width: 50%;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Block Content
+ * ----------------------------------------------------------------------------- */
+
+.b-list-with-image .c-content-block__content {
+	margin-top: 0;
+}
+
+.b-list-with-image .c-content-block__content-wrap {
+	padding-bottom: var(--spacer-15);
+	padding-right: var(--grid-gutter-small);
+
+	@container layout (min-width: $container-medium) {
+		padding-bottom: 0;
+		padding-left: var(--grid-gutter-small);
+		width: 50%;
+	}
+}
+
+.c-block__header .c-block__title.b-list-with-image__title {
+	@mixin t-display-x-small;
+
+	font-family: var(--font-family-canela-deck);
+	font-weight: normal;
+
+	@container layout (min-width: $container-medium) {
+		@mixin t-display;
+	}
+
+	@container layout (min-width: $container-full) {
+		@mixin t-display-large;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Loop
+ * ----------------------------------------------------------------------------- */
+
+.b-list-with-image__loop {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacer-60);
+	background-color: var(--color-parchment);
+	padding-top: var(--spacer-70);
+
+	@container layout (min-width: $container-full) {
+		padding-top: calc(var(--spacer-40) + var(--spacer-50));
+		padding-bottom: var(--spacer-40);
+	}
+
+	.t-theme--light & {
+		background-color: var(--color-wrought-iron);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Items
+ * ----------------------------------------------------------------------------- */
+
+.b-list-with-image__item {
+	grid-template-columns: 1fr auto;
+	grid-gap: 12px;
+	grid-template-areas:
+		'title image'
+		'description image';
+	display: grid;
+	align-items: flex-start;
+	border-top: 1px solid var(--color-grey);
+	padding-bottom: var(--spacer-30);
+	padding-top: var(--spacer-30);
+
+	@container layout (min-width: $container-full) {
+		grid-gap: 0;
+		grid-template-columns: 492px 1fr auto;
+		grid-template-areas: 'title description image';
+	}
+}
+
+.b-list-with-image__item__title {
+	grid-area: title;
+	margin-right: 0;
+
+	@container layout (min-width: $container-full) {
+		margin-right: var(--spacer-50);
+	}
+
+	h2,
+	h3,
+	h4 {
+		@mixin t-body;
+
+		font-family: var(--font-family-gt-america-standard-bold);
+		font-size: 20px;
+		margin-bottom: var(--spacer-15);
+
+		@container layout (min-width: $container-full) {
+			margin-bottom: var(--spacer-20);
+		}
+
+		@container layout (min-width: $container-medium) {
+			@mixin t-display-xx-small;
+		}
+
+		a {
+			@mixin a-line-animation 2px;
+		}
+	}
+
+	strong {
+		font-family: var(--font-family-gt-america-standard-bold);
+	}
+}
+
+.b-list-with-image__item__description {
+	grid-area: description;
+}
+
+/* A little extra specificity to trump the post single styles for figures. */
+figure.b-list-with-image__item__figure {
+	grid-area: image;
+	width: auto;
+
+	@container layout (min-width: $container-full) {
+		margin-left: var(--spacer-40);
+	}
+
+	.c-image__image {
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+		height: 144px;
+		width: 144px;
+		max-width: 100%;
+	}
+}

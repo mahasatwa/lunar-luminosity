@@ -1,0 +1,47 @@
+.nav-primary__action {
+	color: var(--color-white);
+	border: 0;
+	background-color: transparent;
+	padding: 0;
+	display: inline;
+	text-align: left;
+	transition: color 0.15s ease-in-out;
+
+	/* CASE: layout | content list / gazette */
+	.nav-primary__item--layout-content_list &,
+	.nav-primary__item--layout-gazette & {
+		display: flex;
+	}
+}
+
+/* Depth (see: level-one.pcss & level-two.pcss & level-three.pcss) */
+.nav-primary__action--depth-0 {
+
+}
+
+.nav-primary__action--depth-1 {
+
+}
+
+.nav-primary__action--depth-2 {
+
+}
+
+/* Has Children */
+.nav-primary__action--has-children {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Action: Text Wrapper
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__action-text {
+	/* Setup animated border for hover */
+	background-image: linear-gradient(currentColor, currentColor);
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	background-size: 0 1px;
+	transition: background-size 0.3s;
+	position: relative;
+}

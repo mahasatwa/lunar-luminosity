@@ -1,0 +1,263 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Gallery Layout - 8 Images
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-gallery--layout-8 {
+	padding: 180px 0;
+
+	@media (--viewport-medium) {
+		padding: 200px 0;
+	}
+
+	@media (--viewport-full) {
+		padding: 96px 0 240px;
+	}
+
+	.b-gallery__figure--1 {
+		@mixin gallery-layout-mobile-top-mid;
+
+		@media (--viewport-small) {
+			height: 75px;
+			width: 113px;
+		}
+
+		@media (--viewport-medium) {
+			left: calc(50% - 42px);
+			height: 82px;
+			width: 126px;
+		}
+
+		@media (--viewport-full) {
+			top: auto;
+			bottom: 80px;
+			left: -20px;
+			height: 92px;
+			width: 150px;
+			transform: translateX(0);
+		}
+
+		@media (--viewport-large) {
+			bottom: 80px;
+			left: -40px;
+		}
+
+		@media (--viewport-xlarge) {
+			left: -80px;
+			height: 140px;
+			width: 228px;
+		}
+	}
+
+	.b-gallery__figure--2 {
+		@mixin gallery-layout-mobile-top-right;
+
+		@media (--viewport-small) {
+			height: 122px;
+			width: 182px;
+		}
+
+		@media (--viewport-medium) {
+			top: 78px;
+			left: calc(50% + 42px);
+			height: 92px;
+			width: 146px;
+		}
+
+		@media (--viewport-full) {
+			top: 50px;
+			right: 75px;
+			left: auto;
+			height: 123px;
+			width: 190px;
+		}
+
+		@media (--viewport-xlarge) {
+			top: 75px;
+			right: 60px;
+		}
+
+		@media (--viewport-xxlarge) {
+			top: 100px;
+			right: 45px;
+		}
+	}
+
+	.b-gallery__figure--3 {
+		@mixin gallery-layout-mobile-bot-left;
+
+		@media (--viewport-small) {
+			height: 157px;
+			width: 118px;
+		}
+
+		@media (--viewport-medium) {
+			bottom: 0;
+			left: calc(50% - 38px);
+			height: 167px;
+			width: 126px;
+			transform: translateX(-100%);
+		}
+
+		@media (--viewport-full) {
+			bottom: 186px;
+			left: 196px;
+			transform: translateX(0);
+		}
+
+		@media (--viewport-xlarge) {
+			height: 192px;
+			width: 144px;
+		}
+	}
+
+	.b-gallery__figure--4 {
+		@mixin gallery-layout-mobile-bot-right;
+
+		@media (--viewport-small) {
+			height: 76px;
+			width: 106px;
+		}
+
+		@media (--viewport-medium) {
+			bottom: 160px;
+			height: 113px;
+			width: 183px;
+		}
+
+		@media (--viewport-full) {
+			right: 60px;
+			bottom: 0;
+		}
+
+		@media (--viewport-xlarge) {
+			height: 122px;
+			width: 198px;
+		}
+	}
+
+	.b-gallery__figure--5 {
+		@mixin gallery-layout-mobile-top-left;
+
+		@media (--viewport-small) {
+			height: 94px;
+			width: 133px;
+		}
+
+		@media (--viewport-medium) {
+			top: 105px;
+			height: 130px;
+			width: 183px;
+		}
+
+		@media (--viewport-full) {
+			top: 20px;
+			left: -20px;
+			height: 143px;
+			width: 202px;
+		}
+
+		@media (--viewport-large) {
+			top: 40px;
+			left: -40px;
+		}
+
+		@media (--viewport-xlarge) {
+			height: 216px;
+			width: 306px;
+		}
+
+		@media (--viewport-xxlarge) {
+			top: 80px;
+			left: -80px;
+		}
+	}
+
+	.b-gallery__figure--6 {
+		@mixin gallery-layout-mobile-bot-mid;
+
+		@media (--viewport-small) {
+			height: 88px;
+			width: 171px;
+		}
+
+		@media (--viewport-medium) {
+			bottom: 120px;
+			left: 0;
+			height: 94px;
+			width: 184px;
+		}
+
+		@media (--viewport-full) {
+			bottom: 0;
+			left: calc(50% - 70px);
+			transform: translateX(-100%);
+		}
+
+		@media (--viewport-xlarge) {
+			height: 147px;
+			width: 277px;
+		}
+	}
+
+	.b-gallery__figure--7 {
+		display: none;
+
+		@media (--viewport-medium) {
+			display: block;
+			top: 28px;
+			right: -14px;
+			height: 107px;
+			width: 174px;
+		}
+
+		@media (--viewport-full) {
+			top: 50%;
+			right: 0;
+			height: 147px;
+			width: 277px;
+		}
+
+		@media (--viewport-large) {
+			transform: translateY(-25%);
+		}
+
+		@media (--viewport-xlarge) {
+			height: 147px;
+			width: 277px;
+		}
+
+		@media (--viewport-xxlarge) {
+			transform: translateY(-50%);
+		}
+	}
+
+	.b-gallery__figure--8 {
+		display: none;
+
+		@media (--viewport-medium) {
+			display: block;
+			bottom: 64px;
+			left: calc(50% + 40px);
+			height: 80px;
+			width: 129px;
+		}
+
+		@media (--viewport-full) {
+			left: calc(50% + 60px);
+		}
+
+		@media (--viewport-xlarge) {
+			height: 147px;
+			width: 237px;
+		}
+	}
+
+	.b-gallery__figure--9,
+	.b-gallery__figure--10,
+	.b-gallery__figure--11,
+	.b-gallery__figure--12 {
+		display: none;
+	}
+}

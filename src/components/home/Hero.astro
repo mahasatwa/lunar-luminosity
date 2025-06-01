@@ -1,24 +1,36 @@
 ---
-import type { Hero } from '../../utils/contentful';
-import { getOptimizedImageUrl } from '../../utils/cloudinary';
+// import type { Hero } from '../../utils/contentful';
+import { getOptimizedImageUrl } from "../../utils/cloudinary";
 
-interface Props {
-  hero: Hero;
-}
+// interface Props {
+//   hero: Hero;
+// }
 
-const { hero } = Astro.props;
+// const { hero } = Astro.props;
+
+// Hardcoded Hero data (replace with your desired content)
+const hero = {
+  backgroundImageUrl:
+    "https://res.cloudinary.com/dmadbfz58/image/upload/v1745206217/hero-banner-selamat-datang_r6is6e.jpg", // Replace with a default image URL
+  headline: "Selamat Datang di STIE Dwimulya",
+  subhead: "Selamat datang di STIE Dwimulya, tempat belajar yang berkualitas.",
+  mainText:
+    "Di STIE Dwimulya, kami berkomitmen untuk memberikan pendidikan terbaik dan mempersiapkan mahasiswa untuk masa depan yang sukses. Bergabunglah dengan kami dan jadilah bagian dari komunitas akademis yang inspiratif.",
+};
 
 const optimizedBackgroundUrl = getOptimizedImageUrl(hero.backgroundImageUrl, {
   width: 1920,
   height: 1080,
-  crop: 'fill',
+  crop: "fill",
   quality: 80,
-  format: 'auto',
+  format: "auto",
 });
 ---
 
 <section
+
   class="relative min-h-[80vh] flex items-center justify-center bg-cover bg-center"
+
   style={`background-image: url(${optimizedBackgroundUrl})`}
 >
   <div class="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -33,4 +45,4 @@ const optimizedBackgroundUrl = getOptimizedImageUrl(hero.backgroundImageUrl, {
       {hero.mainText}
     </p>
   </div>
-</section> 
+</section>

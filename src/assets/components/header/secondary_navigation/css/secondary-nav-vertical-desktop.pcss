@@ -1,0 +1,128 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Header: Secondary Navigation Vertical (Desktop)
+ *
+ * ----------------------------------------------------------------------------- */
+
+.secondary-nav-vertical {
+	display: none;
+	max-width: 400px;
+	padding-bottom: var(--spacer-50);
+	width: 100%;
+
+	@media (--viewport-full) {
+		display: block;
+	}
+
+	.sub-menu {
+		display: none;
+	}
+
+	.menu > li.menu-item:first-child {
+		@mixin t-overline;
+
+		border-top: 0;
+		font-family: var(--font-family-gt-america-standard-med);
+
+		> a + .sub-menu > li {
+			@mixin t-body-large;
+
+			border-top: 1px solid var(--color-shade);
+			font-family: var(--font-family-gt-america-standard-bold);
+			text-transform: none;
+
+			&.current-menu-item.menu-item-has-children,
+			&.current-menu-parent.menu-item-has-children {
+				border-top: 1px solid var(--color-ink);
+			}
+
+			.sub-menu {
+				padding-bottom: var(--spacer-20);
+			}
+		}
+	}
+
+	.menu-item {
+
+		> a {
+			display: block;
+			padding: 16px 0;
+
+			> span {
+				/* Setup animated border for hover */
+				background-image: linear-gradient(currentColor, currentColor);
+				background-position: 0 100%;
+				background-repeat: no-repeat;
+				background-size: 0 1px;
+				color: var(--color-blackboard);
+				transition: all 0.3s;
+				position: relative;
+			}
+
+			&:hover {
+
+				> span {
+					background-size: 100% 1px;
+					transition: var(--transition);
+
+					/* CASE: remove underline animation for touch devices */
+					@media (--touch-device) {
+						background-size: 0 1px;
+					}
+				}
+			}
+		}
+
+		.sub-menu {
+
+			.sub-menu {
+
+				li > a {
+					padding-top: 0;
+				}
+
+				li:last-child > a {
+					padding-bottom: 0;
+				}
+
+				li.menu-item {
+					@mixin t-body;
+
+					border-top: 0;
+
+					&.current-menu-item {
+						font-family: var(--font-family-gt-america-standard-bold);
+					}
+
+					.sub-menu {
+						padding-left: 28px;
+						position: relative;
+
+						&:before {
+							border-left: 1px solid var(--color-shade);
+							content: "";
+							height: calc(100% - 38px);
+							left: 0;
+							position: absolute;
+							top: 16px;
+							width: 1px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.current-menu-item,
+	.current-menu-ancestor,
+	.current-menu-parent {
+		display: block;
+
+		&.menu-item-has-children {
+
+			> a + .sub-menu {
+				display: block;
+			}
+		}
+	}
+}

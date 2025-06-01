@@ -1,0 +1,36 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Statistic
+ *
+ * ----------------------------------------------------------------------------- */
+
+.c-statistic {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: var(--spacer-40);
+}
+
+/* -----------------------------------------------------------------------------
+ * Statistic: Value
+ * ----------------------------------------------------------------------------- */
+
+.c-statistic__value {
+	@mixin t-display;
+
+	color: var(--color-primary);
+	/* Break long numbers but try to keep entire words */
+	word-break: normal;
+    overflow-wrap: anywhere;
+}
+
+/* -----------------------------------------------------------------------------
+ * Statistic: Label
+ * ----------------------------------------------------------------------------- */
+
+.c-statistic__label {
+	@mixin t-overline;
+
+	color: var(--color-grey);
+	margin-top: var(--spacer-10);
+}

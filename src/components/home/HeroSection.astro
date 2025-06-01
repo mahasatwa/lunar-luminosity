@@ -1,0 +1,52 @@
+---
+// Komponen ini menampilkan bagian hero atau sambutan utama untuk STIE Dwimulya.
+// Pastikan Anda memiliki setup Tailwind CSS dan Font Awesome jika menggunakan kelas dan ikon tersebut.
+// Ganti warna latar belakang tombol dengan warna branding STIE Dwimulya.
+---
+
+<section class="hero-bg min-h-screen flex items-center justify-center text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">Selamat Datang di STIE Dwimulya</h1>
+        <p class="text-xl md:text-2xl mb-8 leading-relaxed">
+            Menjadi pusat keunggulan dalam pendidikan ekonomi dan bisnis,
+            menciptakan lulusan yang kompeten, berintegritas, dan siap bersaing
+            di era global.
+        </p>
+        <div class="bg-blue-600 inline-block px-6 py-3 rounded-full text-lg font-semibold cursor-pointer">
+            <span class="mr-2">Telusuri Program Kami</span>
+            <i class="fas fa-arrow-right"></i>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Contoh styling untuk hero-bg. Anda mungkin perlu menyesuaikannya. */
+    .hero-bg {
+        /* Ganti dengan gambar latar belakang yang sesuai untuk STIE Dwimulya */
+        background-image: url('https://res.cloudinary.com/dmadbfz58/image/upload/v1745206217/hero-banner-selamat-datang_r6is6e.jpg'); /* Contoh path gambar */
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .hero-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+        z-index: 1;
+    }
+
+    .hero-bg > div {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Warna biru generik, ganti dengan warna branding STIE Dwimulya */
+    .bg-blue-600 {
+        background-color: #2563eb;
+    }
+</style>

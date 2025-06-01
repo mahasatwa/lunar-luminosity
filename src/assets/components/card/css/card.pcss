@@ -1,0 +1,396 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Card
+ *
+ * ----------------------------------------------------------------------------- */
+
+.c-card {
+	display: flex;
+	flex-flow: column nowrap;
+	height: 100%;
+	background-color: var(--color-grout);
+
+	/* CASE: Whole card is a link. */
+	&.has-target-link {
+		transition: var(--transition);
+		position: relative;
+
+		.c-card__wrapper-link {
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 2;
+			font-size: 0;
+		}
+
+		.spotlight & {
+
+			&:focus-within {
+				border: 0;
+				box-shadow: none;
+			}
+
+			&:focus-visible {
+				border: 2px solid var(--color-focus-blue);
+				border-radius: 4px;
+				box-shadow: 0 0 2px 1px var(--color-parchment);
+				cursor: pointer;
+			}
+		}
+	}
+
+	/* CASE: Style: Elevated */
+	&.c-card--style-elevated {
+		padding: var(--spacer-30) 0;
+		box-shadow: var(--box-shadow-20);
+
+		/* CASE: Whole card is a link. */
+		&.has-target-link {
+
+			&:hover,
+			&:focus-within {
+				box-shadow: var(--box-shadow-20-hover);
+			}
+		}
+	}
+
+	/* CASE: Style: Outlined */
+	&.c-card--style-outlined {
+		padding: var(--spacer-30) 0;
+		border: 1px solid var(--color-border);
+
+		/* CASE: Whole card is a link. */
+		&.has-target-link {
+
+			&:hover,
+			&:focus-within {
+				border-color: var(--color-link-hover);
+			}
+		}
+	}
+
+	/* Multimedia Button Hover Effects */
+	&:hover {
+
+		.a-btn-multimedia,
+		.a-btn-multimedia-secondary {
+			color: var(--color-ink);
+
+			.a-btn__text:before {
+				background: none !important; /* need to override huge selector */
+				border-color: transparent !important;
+				box-shadow: 0 0 0 1px var(--color-ink);
+			}
+
+			.a-btn__text:after {
+				background-color: var(--color-ink);
+				border-color: transparent;
+				color: var(--color-parchment);
+			}
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Media Container
+ * ----------------------------------------------------------------------------- */
+
+.c-card__media {
+	/* CASE: Style: Outlined & Elevated */
+	.c-card--style-elevated &,
+	.c-card--style-outlined & {
+		margin-top: calc(-1 * var(--spacer-30));
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Content Container
+ * ----------------------------------------------------------------------------- */
+
+.c-card__content {
+	margin: 0 0 auto; /* Pushes the CTA to the bottom of the card. */
+	padding-left: var(--spacer-40);
+	padding-right: var(--spacer-40);
+	padding-top: 48px;
+
+	/* CASE: Style: Outlined & Elevated */
+	.c-card--style-elevated &,
+	.c-card--style-outlined & {
+		padding: 0 var(--spacer-30);
+	}
+
+	&:last-child { /* if there is no CTA, add some space */
+		margin-bottom: var(--spacer-70);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Meta
+ * ----------------------------------------------------------------------------- */
+
+.c-card__meta {
+	margin-bottom: var(--spacer-10);
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Meta: Secondary
+ * ----------------------------------------------------------------------------- */
+
+.c-card__meta--secondary {
+	@mixin t-body;
+
+	font-weight: 400;
+	margin-top: var(--spacer-10);
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Title
+ * ----------------------------------------------------------------------------- */
+
+.c-card__title {
+	font-family: var(--font-family-canela-deck);
+	font-size: 32px;
+	line-height: 1.15;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: -0.1px;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Description
+ * ----------------------------------------------------------------------------- */
+
+.c-card__description {
+	margin-top: var(--spacer-20);
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Meta Outside
+ * ----------------------------------------------------------------------------- */
+
+.c-card__meta--outside {
+	margin-top: var(--spacer-20); /* Minimum amount of space between cta and content */
+	padding-left: var(--spacer-40);
+	padding-right: var(--spacer-40);
+	margin-bottom: var(--spacer-40);
+
+	@media (--viewport-medium) {
+		margin-top: var(--spacer-70);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Call To Action
+ * ----------------------------------------------------------------------------- */
+
+.c-card__cta {
+	margin-top: var(--spacer-20); /* Minimum amount of space between cta and content */
+	padding-left: var(--spacer-40);
+	padding-right: var(--spacer-40);
+	margin-bottom: var(--spacer-40);
+
+	@media (--viewport-medium) {
+		margin-top: var(--spacer-70);
+	}
+
+	/* CASE: Style: Outlined & Elevated */
+	.c-card--style-elevated &,
+	.c-card--style-outlined & {
+		padding: 0 var(--spacer-30);
+	}
+}
+
+.t-sink .c-card__cta .a-btn-secondary:focus .a-btn__text {
+	outline: none;
+	border: 2px solid var(--color-focus-blue);
+	border-radius: 4px;
+	box-shadow: 0 0 2px 1px var(--color-parchment);
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Style : Full Width
+ * ----------------------------------------------------------------------------- */
+
+.full_width .c-image--bg {
+	position: relative;
+	overflow: hidden;
+
+	.c-image__image {
+		transition: all 0.3s;
+	}
+
+	&:before {
+		position: relative;
+		display: block;
+		content: "";
+		padding-top: 66%;
+		box-sizing: border-box;
+	}
+}
+
+.full_width .c-card {
+	/* CASE: Whole card is a link. */
+	&.has-target-link {
+
+		&:hover,
+		&:focus-within {
+
+			.c-image--bg .c-image__image {
+				transform: scale(1.1);
+				transition: all 0.3s;
+			}
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Style : Inset Image
+ * ----------------------------------------------------------------------------- */
+
+.inset_image .c-card {
+
+	.c-image__image {
+		margin: var(--spacer-40) var(--spacer-40) 0 var(--spacer-40);
+		height: 190px;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	.c-card__media {
+		margin-bottom: 0;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Card Style : Spotlight
+ * ----------------------------------------------------------------------------- */
+
+.spotlight .c-card {
+	position: relative;
+	min-height: 600px;
+	background-color: var(--color-black);
+
+	.c-card__media {
+		position: absolute;
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(0deg, var(--color-wrought-iron) 0%, transparent 100%);
+		}
+
+		&:before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			background: linear-gradient(0deg, #000 0%, #222 25%, transparent 100%);
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+	}
+
+	.c-image--spotlight {
+		width: 100%;
+		height: 100%;
+
+		.c-image__image {
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+	}
+
+	.c-card__content,
+	.c-card__cta {
+		position: relative;
+		z-index: 2;
+		color: var(--color-white);
+
+		p {
+			color: var(--color-white);
+		}
+	}
+
+	.c-card__content {
+		margin-top: auto;
+		margin-bottom: 0;
+		padding-top: var(--spacer-30);
+
+		&:last-child {
+			margin-bottom: var(--spacer-40);
+		}
+	}
+
+	.c-card__cta {
+		margin-top: var(--spacer-20);
+
+		.a-btn__text {
+			color: var(--color-white);
+
+			&:before {
+				border-color: var(--color-slate) !important;
+			}
+		}
+
+		.a-btn:hover .a-btn__text:before {
+			border-color: var(--color-white) !important;
+		}
+	}
+
+	.c-card__title {
+		font-size: 32px;
+		color: var(--color-white);
+	}
+
+	@media (--viewport-medium) and (hover: hover) {
+
+		.c-card__description {
+			max-height: 0;
+			margin: 0;
+			overflow: hidden;
+			transition: max-height 0.5s;
+
+			p {
+				margin-top: 16px;
+			}
+		}
+
+		&:hover,
+		&:focus,
+		&:focus-within {
+
+			.c-card__media:before {
+				opacity: 1;
+				transition: opacity 0.3s;
+			}
+
+			.c-card__description {
+				max-height: 300px;
+				transition: max-height 0.5s;
+				transition-delay: 0s;
+			}
+		}
+	}
+}

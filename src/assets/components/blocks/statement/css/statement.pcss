@@ -1,0 +1,111 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Statement
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-statement {
+	background: var(--color-parchment);
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: var(--spacer-30);
+	position: relative;
+	z-index: 2;
+
+	/* CASE: Reversed out/light theme */
+	&.t-theme--light {
+		background-color: var(--color-wrought-iron);
+
+		.c-block__header {
+			background-color: var(--color-wrought-iron);
+		}
+	}
+
+	.c-block__header {
+		background-color: var(--color-parchment);
+		padding: var(--spacer-40) 0;
+		position: relative;
+		z-index: 2;
+
+		@container layout (min-width: $container-medium) {
+			padding: var(--spacer-70) 0;
+		}
+	}
+
+	@container layout (min-width: $container-medium) {
+		padding: var(--spacer-70) 0;
+		z-index: auto;
+	}
+}
+
+.c-block__header .c-block__title.b-statement__title {
+	padding-right: 0;
+}
+
+.c-block__header .b-statement__title--sm {
+	@mixin t-display-xx-small;
+
+	font-family: var(--font-family-canela-deck);
+	font-weight: normal;
+
+	@container layout (min-width: $container-medium) {
+		@mixin t-display-x-small;
+
+		font-family: var(--font-family-canela-deck);
+		font-weight: normal;
+	}
+
+	@container layout (min-width: $container-full) {
+		@mixin t-display-small;
+	}
+
+	@container layout (min-width: $container-large) {
+		@mixin t-display;
+	}
+}
+
+.c-block__header .b-statement__title--med {
+	@mixin t-display-x-small;
+
+	font-family: var(--font-family-canela-deck);
+	font-weight: normal;
+
+	@container layout (min-width: $container-medium) {
+		@mixin t-display-small;
+
+		font-family: var(--font-family-canela-deck);
+		font-weight: normal;
+	}
+
+	@container layout (min-width: $container-full) {
+		@mixin t-display;
+	}
+
+	@container layout (min-width: $container-large) {
+		@mixin t-display-large;
+	}
+}
+
+.c-block__header .b-statement__title--large {
+	@mixin t-display-small;
+
+	@container layout (min-width: $container-medium) {
+		@mixin t-display;
+
+		font-family: var(--font-family-canela-deck);
+		font-weight: normal;
+	}
+
+	@container layout (min-width: $container-full) {
+		@mixin t-display-large;
+	}
+
+	@container layout (min-width: $container-large) {
+		@mixin t-display-xxx-large;
+	}
+}
+
+.b-statement__btn,
+.b-statement__btn .a-btn__text {
+	margin: 0 auto;
+}

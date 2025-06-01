@@ -1,0 +1,73 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Programs Accordion Content
+ * It's the content inside the accordion for single programs.
+ *
+ * ----------------------------------------------------------------------------- */
+
+.c-programs-accordion-content {
+	display: flex;
+	flex-direction: column;
+	@media (--viewport-full) {
+		flex-direction: row;
+	}
+}
+.c-programs-accordion-content__degree {
+	min-width: 25%;
+}
+.c-programs-accordion-content__degree__title {
+	font-family: var(--font-family-gt-america-standard-bold);
+	font-size: 20px;
+	margin-bottom: 4px;
+	@media (--viewport-full) {
+		margin-bottom: 12px;
+	}
+}
+.c-programs-accordion-content__degree__subtitle,
+.c-programs-accordion-content__description {
+	font-family: var(--font-family-gt-america-standard-reg);
+	font-size: 18px;
+}
+.c-programs-accordion-content__description {
+	padding: 16px 0;
+	@media (--viewport-full) {
+		padding: 0 48px;
+	}
+}
+.c-programs-accordion-content__links {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	@media (--viewport-full) {
+		margin-left: auto;
+	}
+}
+.c-programs-accordion-content__links__link {
+	@mixin a-btn-secondary;
+	max-width: 100%;
+}
+
+.c-programs-accordion-content__links__link .a-btn__text:before {
+	background: transparent;
+	border-color: var(--color-slate);
+}
+
+.c-programs-accordion-content__links__link .a-btn__text:after {
+	color: var(--color-ink);
+}
+
+.c-programs-accordion-content__links__link:hover .a-btn__text:after,
+.c-programs-accordion-content__links__link:focus .a-btn__text:after {
+	color: var(--color-parchment);
+}
+
+.c-programs-accordion-content__links__link
+	+ .c-programs-accordion-content__links__link {
+	margin-top: 16px;
+}
+
+.c-programs-accordion-content + .c-programs-accordion-content {
+	padding-top: 40px;
+	border-top: 1px solid var(--color-shade);
+	margin-top: 40px;
+}

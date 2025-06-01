@@ -1,0 +1,22 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Courses Interactions
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-content-list__list-item-wrapper .b-courses__item-title {
+	@mixin a-line-animation 2px;
+}
+
+.b-content-list__list-item-wrapper:focus-within .b-courses__item-title,
+.b-content-list__list-item-wrapper:hover .b-courses__item-title {
+	@mixin a-line-animation-active 2px;
+}
+
+.b-content-list__list-item-wrapper:focus .c-card .c-image__image {
+	transform: var(--an-zoom-img-transform);
+}
+
+.b-content-list__list-item-wrapper:focus .c-card__title .a-btn__text {
+	@mixin a-line-animation-active 2px;
+}

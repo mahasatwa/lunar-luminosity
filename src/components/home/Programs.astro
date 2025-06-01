@@ -1,11 +1,60 @@
 ---
-import type { Program } from '../../utils/contentful';
+// import type { Program } from '../../utils/contentful';
 
-interface Props {
-  programs: Program[];
-}
+// interface Props {
+//   programs: Program[];
+// }
 
-const { programs } = Astro.props;
+// const { programs } = Astro.props;
+
+// Hardcoded array of program data for STIE Dwimulya
+const programs = [
+  {
+    title: "Program Studi S1 Manajemen",
+    content: `
+      <p>Program Studi S1 Manajemen STIE Dwimulya dirancang untuk menghasilkan lulusan yang kompeten dalam mengelola organisasi di berbagai sektor. Kurikulum mencakup bidang pemasaran, keuangan, sumber daya manusia, dan operasional.</p>
+      <p><strong>Fokus Bidang:</strong></p>
+      <ul>
+        <li>Manajemen Pemasaran</li>
+        <li>Manajemen Keuangan</li>
+        <li>Manajemen Sumber Daya Manusia</li>
+        <li>Manajemen Operasional</li>
+      </ul>
+      <p>Kami membekali mahasiswa dengan keterampilan analitis dan kepemimpinan yang kuat.</p>
+    `,
+    links: [
+      { text: "Info Lengkap S1 Manajemen", url: "#" }, // >>> GANTI DENGAN LINK HALAMAN S1 MANAJEMEN <<<
+      { text: "Prospek Karir Manajemen", url: "#" }, // >>> GANTI DENGAN LINK HALAMAN PROSPEK KARIR MANAJEMEN <<<
+    ],
+  },
+  {
+    title: "Program Studi S1 Akuntansi",
+    content: `
+      <p>Program Studi S1 Akuntansi STIE Dwimulya mempersiapkan Anda untuk menjadi profesional akuntansi yang handal dan berintegritas. Materi perkuliahan mencakup akuntansi keuangan, akuntansi manajerial, perpajakan, dan auditing.</p>
+      <p><strong>Area Pembelajaran:</strong></p>
+      <ul>
+        <li>Akuntansi Keuangan & Pelaporan</li>
+        <li>Akuntansi Manajemen & Biaya</li>
+        <li>Perpajakan</li>
+        <li>Auditing & Asurans</li>
+        <li>Sistem Informasi Akuntansi</li>
+      </ul>
+      <p>Lulusan kami siap menghadapi tantangan di dunia kerja, baik di sektor publik maupun swasta.</p>
+    `,
+    links: [
+      { text: "Info Lengkap S1 Akuntansi", url: "#" }, // >>> GANTI DENGAN LINK HALAMAN S1 AKUNTANSI <<<
+      { text: "Prospek Karir Akuntansi", url: "#" }, // >>> GANTI DENGAN LINK HALAMAN PROSPEK KARIR AKUNTANSI <<<
+    ],
+  },
+  // Add other programs if STIE Dwimulya has them, e.g., D3 or other S1 programs
+  // {
+  //   title: 'Nama Program Studi Lain',
+  //   content: `<p>Deskripsi singkat program studi ini...</p>`,
+  //   links: [
+  //     { text: 'Info Lengkap Program Ini', url: '#' },
+  //   ],
+  // },
+];
 ---
 
 <section class="py-16 bg-white">
@@ -16,20 +65,24 @@ const { programs } = Astro.props;
         programs.map((program) => (
           <div class="bg-gray-50 rounded-lg p-8 shadow-sm">
             <h3 class="text-2xl font-bold mb-4">{program.title}</h3>
-            <div class="prose mb-6" set:html={program.content} />
+              <div class="prose mb-6" set:html={program.content} />
+            {" "}
             <div class="space-y-2">
+              {" "}
               {program.links.map((link) => (
                 <a
                   href={link.url}
                   class="block text-primary hover:text-blue-700 font-medium"
                 >
-                  {link.text} →
+                  {link.text} → {" "}
                 </a>
               ))}
+              {" "}
             </div>
+            {" "}
           </div>
         ))
       }
     </div>
   </div>
-</section> 
+</section>

@@ -1,0 +1,62 @@
+/* src/styles/variables.pcss */
+
+/*
+  Definisi Variabel CSS Global (Custom Properties) untuk STIE Dwimulya.
+  Digunakan dengan Tailwind melalui konfigurasi di tailwind.config.mjs.
+*/
+
+/* Tempatkan definisi variabel dalam @layer base dan :root selector */
+@layer base {
+  :root {
+    /* Palet Warna Utama & Sekunder STIE Dwimulya */
+    /* Menggunakan format RGB tanpa unit untuk kemudahan penggunaan dengan Tailwind */
+    /* Sesuaikan nilai RGB ini dengan branding STIE Dwimulya */
+    --color-primary: 0, 102, 204; /* Biru Utama */
+    --color-primary-light: 102, 153, 255; /* Biru Muda */
+    --color-primary-dark: 0, 51, 102; /* Biru Tua */
+    --color-secondary: 74, 85, 104; /* Sekunder (Abu-abu tua dari base.pcss awal) */
+    --color-secondary-light: 113, 128, 150; /* Contoh */
+    --color-secondary-dark: 45, 55, 72; /* Contoh */
+
+    /* Palet Warna Aksen (Jika Digunakan) */
+    --accent: 136, 58, 234; /* Contoh Aksen Ungu */
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+
+    /* Warna Teks & Background Netral */
+    --color-text-default: 51, 51, 51; /* #333 */
+    --color-text-light: 102, 102, 102; /* #666 */
+    --color-background-light: 246, 246, 246; /* #f6f6f6 */
+    --color-white: 255, 255, 255;
+    --color-black: 0, 0, 0;
+
+    /* Gradient (menggunakan variabel di atas) */
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      rgb(var(--color-white)) 60%
+    );
+
+    /* Variabel Global Lainnya (Opsional) */
+    /* --border-radius-small: 4px; */
+    /* --spacing-unit: 8px; */
+    /* --header-height: 64px; */ /* Jika tinggi header konsisten */
+  }
+
+  /*
+    Variabel untuk mode gelap (opsional).
+    Membutuhkan konfigurasi dark mode di tailwind.config.mjs (mode: 'class' atau 'media').
+    Jika menggunakan mode: 'class', tambahkan class="dark" di elemen teratas (html/body).
+  */
+  /*
+  .dark {
+    --color-primary: 0, 71, 143;
+    --color-secondary: 144, 161, 180;
+    --color-text-default: 230, 230, 230;
+    --color-background-light: 30, 30, 30;
+     --color-white: 0, 0, 0;
+     --color-black: 255, 255, 255;
+  }
+  */
+}

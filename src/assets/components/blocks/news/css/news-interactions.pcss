@@ -1,0 +1,42 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: News Interactions
+ *
+ * ----------------------------------------------------------------------------- */
+
+/* Title lines */
+.b-news__first .b-news__first-title span,
+.b-news__side-wrap .b-news__side-title span {
+	@mixin a-line-animation 2px;
+}
+
+.b-news__first:hover .b-news__first-title span,
+.b-news__side-wrap:hover .b-news__side-title span,
+.b-news__first:focus-within .b-news__first-title span,
+.b-news__side-wrap:focus-within .b-news__side-title span {
+	@mixin a-line-animation-active 2px;
+}
+
+/* Zoom images */
+.b-news__first-img {
+	margin-bottom: var(--spacer-30);
+}
+
+.b-news__first-img,
+.b-news__side-img {
+	overflow: hidden;
+}
+
+.b-news__first-img img,
+.b-news__side-img img {
+	transition: transform 0.4s ease-out 0s;
+}
+
+.b-news__first:hover .b-news__first-img img,
+.b-news__side-wrap:hover .b-news__side-img img,
+.b-news__side-wrap:hover .b-news__first-img img,
+.b-news__first:focus-within .b-news__first-img img,
+.b-news__side-wrap:focus-within .b-news__side-img img,
+.b-news__side-wrap:focus-within .b-news__first-img img {
+	transform: scale(1.07);
+}

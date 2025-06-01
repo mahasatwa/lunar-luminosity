@@ -1,0 +1,60 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Social Follow
+ *
+ * ----------------------------------------------------------------------------- */
+
+.social-follow {
+
+}
+
+.social-follow__list {
+	display: flex;
+}
+
+.social-follow__item {
+	@mixin t-caption;
+
+	color: var(--color-slate);
+	font-size: 16px;
+	margin-right: 24px;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.social-follow__anchor {
+	border-bottom: 1px solid transparent;
+	color: var(--color-slate);
+	padding-bottom: 2px;
+
+	&:visited {
+		color: var(--color-slate);
+	}
+
+	&:hover,
+	&:focus {
+		color: var(--color-parchment);
+	}
+
+	span {
+		@mixin visually-hide;
+	}
+
+	img {
+		transition: var(--transition);
+
+		&:hover,
+		&:focus {
+			/*
+			 * We don't have direct control over the icon colors via CSS, since they
+			 * aren't in-lined. Instead, we have the editor upload icons that already
+			 * have the default state color (--color-slate), and then use the filter
+			 * effects below to obtain the hover state color (--color-parchment) on
+			 * hover.
+			 */
+			filter: brightness(1.65) hue-rotate(353deg) saturate(0.03);
+		}
+	}
+}

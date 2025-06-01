@@ -1,51 +1,81 @@
 ---
-import { Navigation } from '../components/navigation/Navigation';
-import { getNavigation } from '../utils/contentful';
-import '../styles/base.css';
+import Navigation from "../components/navigation/Navigation";
+// Mengimpor base.css yang kini bertanggung jawab untuk mengimpor variabel global
+import "../styles/base.pcss";
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
-const { globalLinks, localLinks } = await getNavigation();
+
+// Data navigasi hardcoded tidak lagi diperlukan di sini
+// karena komponen Navigation mengimpornya sendiri dari src/data/NavigationData.ts
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Navigation client:load globalLinks={globalLinks} localLinks={localLinks} />
-		<main class="container mx-auto px-4 py-8">
-			<slot />
-		</main>
-	</body>
-</html>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
 
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #f6f6f6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
+  <body class="font-sans antialiased text-gray-800">
+    {/* Memanggil komponen Navigation */}
+    {
+      /* Direktif client:load sangat PENTING agar hooks React berfungsi di browser */
+    }
+    {/* Tidak perlu meneruskan prop data navigasi dari sini */}
+    <Navigation client:load />
+
+    <main>
+      <slot />
+      {
+        /* Ini adalah placeholder untuk konten dari halaman .astro yang menggunakan layout ini (misalnya, index.astro) */
+      }
+    </main>
+  </body>
+
+  {
+    /*
+  Blok <style is:global> ini kini bisa kosong atau hanya berisi
+  styling global yang tersisa yang tidak dipindahkan ke base.pcss atau variables.pcss.
+  Definisi variabel global (:root) SUDAH DIPINDAHKAN.
+*/
+  }
+  <style is:global>
+    /* Variabel CSS Global (:root) sudah dipindahkan ke src/styles/variables.pcss */
+    /* dan diimpor melalui src/styles/base.css yang sudah diimpor di atas. */
+    /* Jika ada styling global lain yang spesifik untuk layout ini, letakkan di sini. */
+    /* Contoh: styling dasar untuk elemen HTML atau kelas umum seperti '.prose' */
+    /* Styling dasar untuk kelas prose jika belum disediakan di base.pcss */
+    /* Idealnya styling seperti ini juga ada di base.pcss */
+    .prose h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .prose h3 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .prose p {
+      margin-bottom: 1em;
+      line-height: 1.6;
+    }
+    .prose ul,
+    .prose ol {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+    }
+    .prose li {
+      margin-bottom: 0.5em;
+    }
+  </style>
+</html>

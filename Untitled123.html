@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvard University</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1576495199011-ebd9c8b8a922?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tradition-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item {
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-overlay {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-overlay.open {
+            transform: translateX(0);
+        }
+
+        .main-menu-item {
+            position: relative;
+        }
+
+        .main-menu-item.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 8px;
+            width: 40px;
+            height: 2px;
+            background-color: #f5f5f5;
+        }
+
+        .submenu-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .submenu-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 60%;
+            background-color: #f5f5f5;
+        }
+
+        /* Hamburger animation */
+        .hamburger {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            transform: rotate(0deg);
+            transition: .5s ease-in-out;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: white;
+            border-radius: 2px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 4px;
+        }
+
+        .hamburger span:nth-child(2),
+        .hamburger span:nth-child(3) {
+            top: 12px;
+        }
+
+        .hamburger span:nth-child(4) {
+            top: 20px;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            top: 12px;
+            width: 0%;
+            left: 50%;
+        }
+
+        .hamburger.open span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        .hamburger.open span:nth-child(4) {
+            top: 12px;
+            width: 0%;
+            left: 50%;
+        }
+
+        /* Local menu styles */
+        .local-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .local-menu.open {
+            max-height: 2000px; /* Adjust based on content */
+        }
+
+        .local-menu-item {
+            position: relative;
+        }
+
+        .local-menu-item .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .local-menu-item.open .submenu {
+            max-height: 1000px; /* Adjust based on content */
+        }
+
+        .local-menu-item .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .local-menu-item.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        @media (min-width: 768px) {
+            .nav-overlay {
+                transform: translateX(-100%);
+            }
+            
+            .nav-overlay.open {
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-overlay .flex-col {
+                flex-direction: column;
+            }
+            
+            .nav-overlay .w-1\/5, 
+            .nav-overlay .w-2\/5 {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #374151;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+    <!-- Global Navigation -->
+    <nav class="bg-gray-900 text-white">
+        <div class="flex items-center justify-between p-4">
+            <div class="flex items-center space-x-2">
+                <div class="h-8 w-8 bg-gray-700 flex-shrink-0"></div>
+                <div class="text-sm font-bold leading-tight">
+                    Harvard<br>Business School
+                </div>
+            </div>
+            <div class="flex items-center space-x-4 text-xl">
+                <a href="#" class="text-white hover:text-gray-300">
+                    <i class="fas fa-search"></i>
+                </a>
+                <button id="global-menu-toggle" class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Local Navigation -->
+    <div class="bg-gray-800 text-white">
+        <div class="flex items-center justify-between p-4 border-t border-gray-700">
+            <div class="text-lg font-semibold">
+                MBA
+            </div>
+            <button id="local-menu-toggle" class="flex items-center text-sm">
+                <span>Menu</span>
+                <i class="fas fa-chevron-down ml-1 text-xs toggle-icon"></i>
+            </button>
+        </div>
+
+        <div id="local-menu" class="local-menu">
+            <ul class="list-none p-0 m-0">
+                <!-- Academic Experience -->
+                <li class="local-menu-item border-b border-gray-700">
+                    <div class="px-4 py-3 flex items-center justify-between">
+                        <a href="/mba/academic-experience" class="text-white hover:underline font-semibold">Academic Experience</a>
+                        <button class="toggle-icon text-xs">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <!-- Nested Sub-menu -->
+                    <ul class="submenu list-none p-0 m-0 pl-4">
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="/mba/academic-experience/curriculum" class="text-white hover:underline pl-2">Curriculum</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="/mba/academic-experience/faculty-and-research" class="text-white hover:underline pl-2">Faculty & Research</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="/mba/academic-experience/joint-degree-programs" class="text-white hover:underline pl-2">Joint Degree Programs</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="/mba/academic-experience/the-case-method" class="text-white hover:underline pl-2">The Case Method</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="/mba/academic-experience/the-field-method" class="text-white hover:underline pl-2">The Field Method</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="/mba/academic-experience/global-experience" class="text-white hover:underline pl-2">A Global Experience</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="/mba/academic-experience/the-section-experience" class="text-white hover:underline pl-2">The Section Experience</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Entrepreneurship -->
+                <li class="local-menu-item border-b border-gray-700">
+                    <div class="px-4 py-3 flex items-center justify-between">
+                        <a href="/mba/entrepreneurship" class="text-white hover:underline font-semibold">Entrepreneurship</a>
+                        <button class="toggle-icon text-xs">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <ul class="submenu list-none p-0 m-0 pl-4">
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="#" class="text-white hover:underline pl-2">Startup Resources</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="#" class="text-white hover:underline pl-2">Success Stories</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="#" class="text-white hover:underline pl-2">Venture Competitions</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Student Life -->
+                <li class="local-menu-item border-b border-gray-700">
+                    <div class="px-4 py-3 flex items-center justify-between">
+                        <a href="/mba/student-life" class="text-white hover:underline font-semibold">Student Life</a>
+                        <button class="toggle-icon text-xs">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <ul class="submenu list-none p-0 m-0 pl-4">
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="#" class="text-white hover:underline pl-2">Clubs & Organizations</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="#" class="text-white hover:underline pl-2">Housing</a>
+                        </li>
+                        <li class="border-b border-gray-700 px-4 py-2">
+                            <a href="#" class="text-white hover:underline pl-2">Dining</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Career Journey -->
+                <li class="border-b border-gray-700 px-4 py-3">
+                    <a href="/mba/career-journey" class="text-white hover:underline font-semibold">Career Journey</a>
+                </li>
+                <!-- Admissions -->
+                <li class="border-b border-gray-700 px-4 py-3">
+                    <a href="/mba/admissions" class="text-white hover:underline font-semibold">Admissions</a>
+                </li>
+                <!-- Financial Aid -->
+                <li class="border-b border-gray-700 px-4 py-3">
+                    <a href="/mba/financial-aid" class="text-white hover:underline font-semibold">Financial Aid</a>
+                </li>
+                <!-- Introduce Yourself -->
+                <li class="border-b border-gray-700 px-4 py-3">
+                    <a href="https://apply.hbs.edu/register/get-started" class="text-white hover:underline">Introduce Yourself</a>
+                </li>
+                <!-- Visit -->
+                <li class="border-b border-gray-700 px-4 py-3">
+                    <a href="/mba/visit" class="text-white hover:underline font-semibold">Visit</a>
+                </li>
+                <!-- Frequently Asked Questions -->
+                <li class="border-b border-gray-700 px-4 py-3">
+                    <a href="/mba/frequently-asked-questions" class="text-white hover:underline">Frequently Asked Questions</a>
+                </li>
+                <!-- Student Handbook -->
+                <li class="border-b border-gray-700 px-4 py-3">
+                    <a href="/mba/handbook" class="text-white hover:underline">Student Handbook</a>
+                </li>
+                <!-- Registrar -->
+                <li class="border-b border-gray-700 px-4 py-3">
+                    <a href="/mba/registrar" class="text-white hover:underline font-semibold">Registrar</a>
+                </li>
+                <!-- Apply -->
+                <li class="border-b border-gray-700 px-4 py-3">
+                    <a href="https://apply.hbs.edu/apply/" class="text-white hover:underline">Apply</a>
+                </li>
+            </ul>
+
+            <!-- Apply Button -->
+            <div class="p-4">
+                <a href="https://apply.hbs.edu/apply/" class="block w-full text-center bg-blue-500 text-white py-3 px-4 rounded-md font-semibold hover:bg-blue-600">
+                    Apply →
+                </a>
+            </div>
+
+            <!-- Social Links Section -->
+            <div class="p-4 border-t border-gray-700 mt-4">
+                <p class="text-sm">
+                    <a href="https://www.facebook.com/HarvardBusinessSchool" class="text-blue-300 hover:underline mr-4">HBS Facebook</a>
+                    <a href="https://www.linkedin.com/school/harvard-business-school/" class="text-blue-300 hover:underline mr-4">HBS LinkedIn</a>
+                    <a href="https://www.instagram.com/harvardhbs/" class="text-blue-300 hover:underline mr-4">HBS Instagram</a>
+                    <a href="https://www.youtube.com/user/HarvardBSchool" class="text-blue-300 hover:underline mr-4">HBS Youtube</a>
+                    <a href="https://podcasts.apple.com/us/podcast/cold-call/id1156646189" class="text-blue-300 hover:underline mr-4">Cold Call Podcast iTunes</a>
+                    <a href="https://www.tiktok.com/@harvardhbs?lang=en" class="text-blue-300 hover:underline">HBS TikTok</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Navigation Overlay -->
+    <div id="global-nav" class="nav-overlay fixed inset-0 z-50">
+        <div class="h-full flex flex-col">
+            <!-- Header -->
+            <div class="flex justify-between items-center px-8 py-6 border-b border-gray-700">
+                <div class="flex items-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Harvard_shield_wreath.svg/1200px-Harvard_shield_wreath.svg.png"
+                        alt="Harvard University Logo" class="h-10">
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-white">Apply</a>
+                    <a href="#" class="text-gray-300 hover:text-white">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <button id="global-menu-close" class="close-nav text-gray-300 hover:text-white text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="flex flex-1 overflow-hidden flex-col md:flex-row">
+                <!-- Column 1: Main Menu -->
+                <div class="w-full md:w-1/5 px-8 py-10 border-b md:border-b-0 md:border-r border-gray-700 overflow-y-auto">
+                    <ul class="space-y-8">
+                        <li class="main-menu-item active">
+                            <a href="#" class="text-xl font-bold hover:text-white">About</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="#" class="text-xl font-bold hover:text-white">Schools</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="#" class="text-xl font-bold hover:text-white">Faculty & Research</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="#" class="text-xl font-bold hover:text-white">Admissions & Aid</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="#" class="text-xl font-bold hover:text-white">Campus Life</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="#" class="text-xl font-bold hover:text-white">News</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="#" class="text-xl font-bold hover:text-white">Events</a>
+                        </li>
+                        <li class="main-menu-item">
+                            <a href="#" class="text-xl font-bold hover:text-white">Alumni</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Level 1 Submenu -->
+                <div class="w-full md:w-2/5 px-8 py-10 border-b md:border-b-0 md:border-r border-gray-700 overflow-y-auto">
+                    <h3 class="text-lg font-semibold mb-6">Faculty & Research</h3>
+                    <ul class="space-y-4">
+                        <li class="submenu-item active pl-4 py-2 relative">
+                            <a href="#" class="font-medium hover:text-white">Research</a>
+                        </li>
+                        <li class="submenu-item pl-4 py-2">
+                            <a href="#" class="font-medium hover:text-white">Faculty Directory</a>
+                        </li>
+                        <li class="submenu-item pl-4 py-2">
+                            <a href="#" class="font-medium hover:text-white">Departments</a>
+                        </li>
+                        <li class="submenu-item pl-4 py-2">
+                            <a href="#" class="font-medium hover:text-white">Centers & Initiatives</a>
+                        </li>
+                        <li class="submenu-item pl-4 py-2">
+                            <a href="#" class="font-medium hover:text-white">Labs & Facilities</a>
+                        </li>
+                        <li class="submenu-item pl-4 py-2">
+                            <a href="#" class="font-medium hover:text-white">Academic Divisions</a>
+                        </li>
+                        <li class="submenu-item pl-4 py-2">
+                            <a href="#" class="font-medium hover:text-white">Research Support</a>
+                        </li>
+                        <li class="submenu-item pl-4 py-2">
+                            <a href="#" class="font-medium hover:text-white">Global Research</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Level 2 Submenu Details -->
+                <div class="w-full md:w-2/5 px-8 py-10 overflow-y-auto">
+                    <h3 class="text-lg font-semibold mb-6">Research</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Harvard's research enterprise spans all disciplines, with a focus on addressing fundamental
+                        questions and pressing problems. Our faculty and students work across fields to advance
+                        knowledge and develop solutions.
+                    </p>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-gray-300 hover:text-white hover:underline">Research News</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-300 hover:text-white hover:underline">Research
+                                Administration</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-300 hover:text-white hover:underline">Funding Opportunities</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-300 hover:text-white hover:underline">Research Policies</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-300 hover:text-white hover:underline">Research Computing</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-300 hover:text-white hover:underline">Core Facilities</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-300 hover:text-white hover:underline">Research Integrity</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="flex justify-between items-center px-8 py-4 border-t border-gray-700">
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-apple"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fas fa-music"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">Messages</a>
+                </div>
+                <div class="text-gray-500 text-sm">
+                    © 2025 The President and Fellows of Harvard College
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-white py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Welcome to Harvard</h1>
+            <p class="text-xl md:text-2xl mb-8 leading-relaxed">
+                Where world-class faculty and talented students come together to pursue knowledge,
+                conduct groundbreaking research, and produce transformative scholarly work to help create a better
+                world.
+            </p>
+            <div class="bg-crimson-500 inline-block px-6 py-3 rounded-full text-lg font-semibold">
+                <span class="mr-2">Explore Our Community</span>
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Statement -->
+    <section class="bg-[#A41034] text-white py-12 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-2xl md:text-3xl font-light italic">
+                "For nearly four centuries, people have come to Harvard in the pursuit of truth, knowledge, and the
+                betterment of society."
+            </p>
+        </div>
+    </section>
+
+    <!-- Harvard at a Glance -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Harvard at a Glance</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="stat-item bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-5xl font-bold text-[#A41034] mb-2">1636</div>
+                    <p class="text-gray-600">The year Harvard was founded</p>
+                </div>
+
+                <div class="stat-item bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-5xl font-bold text-[#A41034] mb-2">24,596</div>
+                    <p class="text-gray-600">Undergraduate and graduate students in the 2023-24 academic year</p>
+                </div>
+
+                <div class="stat-item bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-5xl font-bold text-[#A41034] mb-2">420,000+</div>
+                    <p class="text-gray-600">Alumni worldwide</p>
+                </div>
+
+                <div class="stat-item bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-5xl font-bold text-[#A41034] mb-2">402</div>
+                    <p class="text-gray-600">Innovations reported by Harvard researchers in the 2024 fiscal year</p>
+                </div>
+
+                <div class="stat-item bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-5xl font-bold text-[#A41034] mb-2">29.6M</div>
+                    <p class="text-gray-600">Worldwide learners have enrolled in courses on Harvard Online</p>
+                </div>
+
+                <div class="stat-item bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-5xl font-bold text-[#A41034] mb-2">$275M</div>
+                    <p class="text-gray-600">Harvard College's financial aid award budget for the 2025-26 academic year
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traditions Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Where Tradition Comes to Life</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    As the oldest university in America, life at Harvard is steeped in rich traditions that connect
+                    generations
+                    of students and create lasting memories.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="tradition-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-theater-masks text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Hasty Pudding</h3>
+                        <p class="text-gray-600 mb-4">
+                            Each year, performers who have made lasting contributions to the arts are chosen as
+                            Hasty Pudding Man and Woman of the Year and are awarded a coveted pudding pot.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Learn about Hasty Pudding's star-studded history <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tradition-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-home text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Housing Day</h3>
+                        <p class="text-gray-600 mb-4">
+                            A special day every spring where first-year students find out which of the 12 Harvard Houses
+                            they will call home for the remainder of their undergraduate years.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Explore Harvard's Housing Day <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tradition-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-palette text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Harvard Arts Festival</h3>
+                        <p class="text-gray-600 mb-4">
+                            Formerly the Harvard ARTS FIRST Festival, this annual campus-wide event highlights
+                            and celebrates all forms of creativity across the university community.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Learn more about this year's festival <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tradition-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Commencement</h3>
+                        <p class="text-gray-600 mb-4">
+                            Dating back to 1642, Commencement at Harvard celebrates the achievements of our exceptional
+                            degree candidates and those who supported them on their journeys.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Learn more about this year's ceremony <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tradition-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-suitcase text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Move-in Day</h3>
+                        <p class="text-gray-600 mb-4">
+                            An emotional day for incoming students and their families, move-in day marks the beginning
+                            of a new journey filled with discovery and growth.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Read about this pivotal day <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tradition-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-football-ball text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Harvard-Yale Game</h3>
+                        <p class="text-gray-600 mb-4">
+                            Each year, Harvard and Yale vie for bragging rights in a football rivalry dating back to
+                            1875,
+                            known simply as "The Game" to generations of alumni and students.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Find out more about "The Game" <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Aid Section -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Financial Aid at Harvard</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Harvard is committed to making education accessible to talented students from all backgrounds.
+                    Our generous financial aid programs ensure that a Harvard education is within reach for families
+                    across the income spectrum.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-4xl mx-auto">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-[#A41034] text-white p-8 flex items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">Expanding Financial Aid</h3>
+                            <p class="mb-6">
+                                Harvard College is free for students from families with annual incomes of $100,000 or
+                                less
+                                and tuition-free for students from families with annual incomes of $200,000 or less.
+                            </p>
+                            <a href="#"
+                                class="inline-block bg-white text-[#A41034] px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
+                                Learn more about Harvard College financial aid
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8 flex items-center justify-center bg-gray-100">
+                        <div class="text-center">
+                            <i class="fas fa-graduation-cap text-6xl text-[#A41034] mb-4"></i>
+                            <p class="text-lg font-semibold mb-2">$275 million</p>
+                            <p class="text-gray-600">Financial aid award budget for 2025-26</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pull Quote -->
+    <section class="py-16 px-4 bg-[#A41034] text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <blockquote class="text-2xl md:text-3xl font-light italic">
+                "At Harvard, we believe that talent knows no economic boundaries. Our financial aid program ensures
+                that the most promising students can access a Harvard education, regardless of their financial
+                circumstances."
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Welcome to the Community</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Harvard is more than just a university—it's a vibrant, diverse community of scholars, researchers,
+                    and innovators who come together to learn, discover, and make a difference in the world.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-users text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">On Campus and Beyond</h3>
+                        <p class="text-gray-600 mb-4">
+                            From the quiet libraries on campus to the busy streets of Boston, the Harvard community
+                            can enjoy a multitude of resources, activities, and events.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Explore campus life <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-user-graduate text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Meet Our Students</h3>
+                        <p class="text-gray-600 mb-4">
+                            Discover the diverse backgrounds, interests, and aspirations of Harvard students who are
+                            shaping their futures and making an impact.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Student profiles <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-chalkboard-teacher text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">World-Class Faculty</h3>
+                        <p class="text-gray-600 mb-4">
+                            Learn from and work alongside Nobel laureates, Pulitzer Prize winners, and leading experts
+                            in every field of study.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Faculty highlights <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-hockey-puck text-4xl text-[#A41034]"></i>
+                </div>
+                <div class="h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-paint-brush text-4xl text-[#A41034]"></i>
+                </div>
+                <div class="h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-leaf text-4xl text-[#A41034]"></i>
+                </div>
+                <div class="h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-book text-4xl text-[#A41034]"></i>
+                </div>
+                <div class="h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-utensils text-4xl text-[#A41034]"></i>
+                </div>
+                <div class="h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-landmark text-4xl text-[#A41034]"></i>
+                </div>
+                <div class="h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-city text-4xl text-[#A41034]"></i>
+                </div>
+                <div class="h-40 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-plus text-4xl text-[#A41034]"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">The News from Harvard</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From research and advancements to events and happenings on campus, stay up to date on all the news
+                    from Harvard.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="news-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-flask text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-[#A41034]">Research</span>
+                        <h3 class="text-xl font-bold my-2">A Life-Changing New Therapy</h3>
+                        <p class="text-gray-600 mb-4">
+                            An FDA-approved gene therapy, developed at Harvard Medical School, is making a monumental
+                            impact on patients with sickle cell disease across the United States and around the world.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Read more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="news-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-medal text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-[#A41034]">Athletics</span>
+                        <h3 class="text-xl font-bold my-2">Record-Breaking 13 Medals at Paris Olympics</h3>
+                        <p class="text-gray-600 mb-4">
+                            Harvard athletes won a record-breaking 13 medals at the 2024 Paris Olympics, showcasing
+                            the university's commitment to excellence in both academics and athletics.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Read more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="news-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-award text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-[#A41034]">Medicine</span>
+                        <h3 class="text-xl font-bold my-2">Nobel Prize in Physiology or Medicine</h3>
+                        <p class="text-gray-600 mb-4">
+                            Professor Gary Ruvkun wins the Nobel Prize in physiology or medicine for his groundbreaking
+                            discoveries in genetic regulation.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Read more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="news-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-scroll text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-[#A41034]">History</span>
+                        <h3 class="text-xl font-bold my-2">Deciphering Euripides' 3rd Century Plays</h3>
+                        <p class="text-gray-600 mb-4">
+                            Harvard alums have deciphered previously unreadable lines from Euripides' 3rd century plays,
+                            shedding new light on ancient Greek drama.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Read more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="news-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-[#A41034]">Academics</span>
+                        <h3 class="text-xl font-bold my-2">8 Harvard Students Receive Rhodes Scholarships</h3>
+                        <p class="text-gray-600 mb-4">
+                            Eight Harvard College students have been awarded Rhodes Scholarships, one of the oldest and
+                            most prestigious international scholarship programs.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Read more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="news-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-museum text-6xl text-[#A41034]"></i>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-sm font-semibold text-[#A41034]">Arts</span>
+                        <h3 class="text-xl font-bold my-2">Harvard Art Museums Receives Edvard Munch Collection</h3>
+                        <p class="text-gray-600 mb-4">
+                            The Harvard Art Museums has received a significant collection of prints and paintings by
+                            Edvard Munch, enriching its already impressive holdings of modern art.
+                        </p>
+                        <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                            Read more <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#"
+                    class="inline-block bg-[#A41034] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#8a0d2c] transition">
+                    Sign up for the daily Gazette email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Upcoming Events</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-[#A41034] text-white p-6 flex flex-col items-center justify-center">
+                            <div class="text-4xl font-bold">MAY</div>
+                            <div class="text-6xl font-bold">06</div>
+                        </div>
+                        <div class="md:w-2/3 p-6">
+                            <h3 class="text-xl font-bold mb-2">The HBS MBA Experience</h3>
+                            <p class="text-gray-600 mb-4">Student Perspectives from MENA</p>
+                            <div class="flex items-center text-gray-500 mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>Virtual</span>
+                            </div>
+                            <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                                Learn more <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-[#A41034] text-white p-6 flex flex-col items-center justify-center">
+                            <div class="text-4xl font-bold">MAY</div>
+                            <div class="text-6xl font-bold">09</div>
+                        </div>
+                        <div class="md:w-2/3 p-6">
+                            <h3 class="text-xl font-bold mb-2">MBA Program Open House</h3>
+                            <p class="text-gray-600 mb-4">Discover the HBS experience firsthand</p>
+                            <div class="flex items-center text-gray-500 mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>On Campus</span>
+                            </div>
+                            <div class="flex items-center text-gray-500">
+                                <i class="fas fa-clock mr-2"></i>
+                                <span>3:00 PM - 4:30 PM</span>
+                            </div>
+                            <a href="#" class="text-[#A41034] font-semibold hover:underline">
+                                Learn more <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Harvard Schools</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Harvard College</a></li>
+                        <li><a href="#" class="hover:underline">Graduate School of Arts & Sciences</a></li>
+                        <li><a href="#" class="hover:underline">Harvard Medical School</a></li>
+                        <li><a href="#" class="hover:underline">Harvard Law School</a></li>
+                        <li><a href="#" class="hover:underline">Harvard Business School</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">News</a></li>
+                        <li><a href="#" class="hover:underline">Family Engagement and Admissions</a></li>
+                        <li><a href="#" class="hover:underline">Programs of study</a></li>
+                        <li><a href="#" class="hover:underline">Student Center</a></li>
+                        <li><a href="#" class="hover:underline">Navigating Campus</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Visiting Harvard</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Campus Tours</a></li>
+                        <li><a href="#" class="hover:underline">Maps & Directions</a></li>
+                        <li><a href="#" class="hover:underline">Events Calendar</a></li>
+                        <li><a href="#" class="hover:underline">Parking Information</a></li>
+                        <li><a href="#" class="hover:underline">Visitor Center</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p class="mb-2">Harvard University</p>
+                    <p class="mb-2">Massachusetts Hall</p>
+                    <p class="mb-2">Cambridge, MA 02138</p>
+                    <p class="mb-2">+1 (617) 495-1000</p>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>© 2025 The President and Fellows of Harvard College</p>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="#" class="hover:underline">Accessibility</a>
+                    <a href="#" class="hover:underline">Privacy</a>
+                    <a href="#" class="hover:underline">Trademark</a>
+                    <a href="#" class="hover:underline">Copyright</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Global Navigation Toggle
+            const globalNav = document.getElementById('global-nav');
+            const hamburger = document.getElementById('global-menu-toggle');
+            const closeBtn = document.getElementById('global-menu-close');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('open');
+                globalNav.classList.toggle('open');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                hamburger.classList.remove('open');
+                globalNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+
+            // Local Navigation Toggle
+            const localMenuToggle = document.getElementById('local-menu-toggle');
+            const localMenu = document.getElementById('local-menu');
+            
+            localMenuToggle.addEventListener('click', function() {
+                localMenu.classList.toggle('open');
+                this.querySelector('.toggle-icon').classList.toggle('rotate-180');
+            });
+
+            // Local Submenu Toggle
+            const localMenuItems = document.querySelectorAll('.local-menu-item');
+            
+            localMenuItems.forEach(item => {
+                const toggleBtn = item.querySelector('.toggle-icon');
+                
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                });
+            });
+
+            // Simulate active states for demo
+            const mainMenuItems = document.querySelectorAll('.main-menu-item');
+            const subMenuItems = document.querySelectorAll('.submenu-item');
+
+            mainMenuItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    mainMenuItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            subMenuItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    subMenuItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Animation for stat items on scroll
+            const statItems = document.querySelectorAll('.stat-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            statItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'all 0.6s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+
+</html>

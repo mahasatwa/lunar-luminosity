@@ -1,0 +1,42 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Gallery Layout - Common Styles
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-gallery__figure {
+
+	/* CASE: Reversed out/light theme */
+	.t-theme--light & {
+
+		&:after {
+			background-color: var(--color-wrought-iron);
+			bottom: 0;
+			content: "";
+			height: 100%;
+			left: 0;
+			mix-blend-mode: multiply;
+			opacity: 0.3;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 100%;
+		}
+	}
+}
+
+.b-gallery__figure--1,
+.b-gallery__figure--2,
+.b-gallery__figure--3,
+.b-gallery__figure--4,
+.b-gallery__figure--5,
+.b-gallery__figure--6,
+.b-gallery__figure--7,
+.b-gallery__figure--8,
+.b-gallery__figure--9,
+.b-gallery__figure--10,
+.b-gallery__figure--11,
+.b-gallery__figure--12 {
+	position: absolute;
+	z-index: 2;
+}

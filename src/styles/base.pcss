@@ -1,0 +1,123 @@
+/* src/styles/base.pcss */
+
+/*
+  File CSS Dasar yang mengimpor Tailwind dan variabel global.
+  Ini adalah entry point utama CSS Anda yang diimpor di Layout.astro.
+*/
+
+/* Impor variabel CSS dari file terpisah */
+@import "./variables.pcss";
+
+/* Impor direktif dasar Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Layer base.
+  Mengandung styling elemen HTML dasar dan gaya reset/global tambahan.
+*/
+@layer base {
+  body {
+    /* Menerapkan utilitas Tailwind untuk gaya dasar body */
+    /* text-gray-800 akan menggunakan warna dari palet default Tailwind */
+    /* Jika ingin menggunakan variabel global untuk warna teks default,
+       Anda perlu konfigurasi di tailwind.config.mjs */
+    @apply bg-gray-50 text-gray-800 font-sans antialiased;
+
+    /* Contoh penggunaan variabel global langsung jika perlu */
+    /* color: rgb(var(--color-text-default)); */
+    /* background-color: rgb(var(--color-background-light)); */
+  }
+
+  html {
+    /* Gaya dasar html jika perlu */
+    scroll-behavior: smooth; 
+    /* font-size: 100%; */ /* Base font size */
+    /* font-family: system-ui, sans-serif; */ /* Dari apply di body */
+  }
+
+  code {
+    /* Gaya elemen code jika perlu */
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+
+  /*
+     Styling untuk kelas .prose
+     Ini akan menambahkan/menimpa gaya dari plugin @tailwindcss/typography.
+     Idealnya semua styling .prose ada di sini atau file terpisah yang diimpor.
+     Ini menggantikan blok <style> di Layout.astro yang sebelumnya berisi .prose
+   */
+  .prose h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    /* color: rgb(var(--color-primary-dark)); // Contoh penggunaan variabel */
+  }
+  .prose h2 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose p {
+    margin-bottom: 1em;
+    line-height: 1.6;
+  }
+  .prose ul,
+  .prose ol {
+    margin-bottom: 1em;
+    padding-left: 1.5em;
+  }
+  .prose li {
+    margin-bottom: 0.5em;
+  }
+
+  /* Tambahkan gaya elemen dasar lain di sini */
+  /* a { @apply text-blue-600 hover:underline; } */
+}
+
+/*
+  Layer components.
+  Mendefinisikan kelas komponen kustom menggunakan @apply.
+*/
+@layer components {
+  .nav-link {
+    /* Menggunakan kelas Tailwind yang dikonfigurasi */
+    @apply text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors;
+  }
+
+  .nav-link-active {
+    /* Menggunakan warna 'primary' yang dikonfigurasi di tailwind.config.mjs */
+    /* yang merujuk ke variabel CSS --color-primary */
+    @apply text-primary font-semibold;
+  }
+
+  .btn-primary {
+    /* Menggunakan warna 'primary' yang dikonfigurasi di tailwind.config.mjs */
+    /* yang merujuk ke variabel CSS --color-primary */
+    @apply bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors;
+    /* Catatan: hover:bg-blue-700 adalah warna default Tailwind.
+        Jika Anda ingin menggunakan warna dari palet Anda (misalnya warna dark dari primary),
+        pastikan primary-dark juga dikonfigurasi di tailwind.config.mjs dan gunakan:
+        @apply bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-dark transition-colors;
+     */
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Tambahkan definisi komponen kustom lainnya di sini */
+}
+
+/*
+  Layer utilities.
+  Mendefinisikan utilitas kustom tambahan.
+*/
+@layer utilities {
+  /* Tambahkan definisi utilitas kustom lainnya di sini jika diperlukan */
+  /* .filter-grayscale { filter: grayscale(100%); } */
+}

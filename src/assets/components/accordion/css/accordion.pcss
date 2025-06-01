@@ -1,0 +1,193 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Accordion
+ *
+ * ----------------------------------------------------------------------------- */
+
+.c-accordion {
+	margin: 0 auto;
+}
+
+/* -----------------------------------------------------------------------------
+ * Accordion: Row
+ * ----------------------------------------------------------------------------- */
+
+.c-accordion__row {
+	border-top: 1px solid var(--color-ink);
+
+	.t-theme--light & {
+		border-color: var(--color-parchment);
+	}
+}
+.c-accordion__row.active .c-accordion__header{
+	border-color: var(--color-ink);
+}
+
+/* -----------------------------------------------------------------------------
+ * Accordion: Row Header (Trigger)
+ * ----------------------------------------------------------------------------- */
+
+.c-accordion__header {
+	position: relative;
+	padding: var(--spacer-30) var(--spacer-60) var(--spacer-40) 0;
+	background: none;
+	border: 0;
+	width: 100%;
+	text-align: left;
+	border-top: 1px solid transparent;
+
+	&:before {
+		@mixin icon;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid var(--color-slate);
+		border-radius: 50%;
+		position: absolute;
+		right: 0;
+		color: var(--color-ink);
+		content: var(--icon-chevron-down);
+		font-family: var(--font-family-core-icons);
+		font-size: 16px;
+		line-height: 1.8;
+		padding: 0 6px;
+		text-align: center;
+		transition: 0.25s ease-in-out;
+
+		@media (--viewport-medium) {
+			font-size: var(--font-size-body-large);
+			padding: 1px 9px 1px 10px;
+		}
+	}
+
+	&:focus,
+	&:hover {
+
+		&:before {
+			background-color: var(--color-ink);
+			border-color: var(--color-ink);
+			color: var(--color-parchment);
+			transition: 0.25s ease-in-out;
+		}
+	}
+
+	/* CASE: Light */
+	.t-theme--light & {
+
+		&:before {
+			background-color: var(--color-wrought-iron);
+			border-color: var(--color-parchment);
+			color: var(--color-parchment);
+			transition: 0.25s ease-in-out;
+		}
+
+		&:focus,
+		&:hover {
+
+			&:before {
+				background-color: var(--color-parchment);
+				border-color: var(--color-parchment);
+				color: var(--color-ink);
+				transition: 0.25s ease-in-out;
+			}
+		}
+	}
+
+	/* CASE: Row is active */
+	.active & {
+
+		&:before {
+			content: var(--icon-chevron-up);
+		}
+
+		&:focus,
+		&:hover {
+
+			&:before {
+				color: var(--color-parchment);
+			}
+		}
+
+		/* CASE: Light */
+		.t-theme--light & {
+
+			&:focus,
+			&:hover {
+
+				&:before {
+					color: var(--color-ink);
+				}
+			}
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Accordion: Header Container
+ * ----------------------------------------------------------------------------- */
+
+.c-block__content-block.c-block__header.b-accordion__header {
+	padding-bottom: 0;
+	max-width: none;
+
+	@media (--viewport-medium) {
+		display: flex;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Accordion: Header Title & Text
+ * ----------------------------------------------------------------------------- */
+
+.b-accordion__title,
+.b-accordion .c-content-block__content-wrap {
+	@media (--viewport-medium) {
+		width: 50%;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Accordion: Row Content
+ * ----------------------------------------------------------------------------- */
+
+.c-accordion__content {
+	max-height: 0;
+	overflow: hidden;
+
+	.s-sink & {
+
+		.wp-image.alignright {
+			margin-top: 0;
+		}
+
+		.wp-image.alignleft {
+			margin-top: 0;
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Accordion: Row Content Container
+ * ----------------------------------------------------------------------------- */
+
+.c-accordion__content-container {
+	padding-bottom: var(--spacer-40);
+	padding-top: var(--spacer-20);
+
+	@media (--viewport-medium) {
+		padding-bottom: var(--spacer-60);
+		padding-top: var(--spacer-60);
+	}
+}
+
+.c-accordion__header-container {
+	@mixin t-display-xx-small;
+
+	font-family: var(--font-family-canela-deck);
+	font-weight: normal;
+
+	@media (--viewport-medium) {
+		@mixin t-display-small;
+	}
+}

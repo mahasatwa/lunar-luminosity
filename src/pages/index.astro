@@ -1,39 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/home/Hero.astro';
-import Programs from '../components/home/Programs.astro';
-import AcademicExperience from '../components/home/AcademicExperience.astro';
-import CampusLife from '../components/home/CampusLife.astro';
-import News from '../components/home/News.astro';
-import Events from '../components/home/Events.astro';
+import Layout from "../layouts/Layout.astro";
 
-import {
-  getHero,
-  getPrograms,
-  getAcademicExperience,
-  getCampusLife,
-  getNews,
-  getEvents,
-} from '../utils/contentful';
 
-const hero = await getHero();
-const programs = await getPrograms();
-const academicExperience = await getAcademicExperience();
-const campusLife = await getCampusLife();
-const news = await getNews(3); // Limit to 3 news items
-const events = await getEvents();
+import HeroSection from '../components/home/HeroSection.astro'; // Menggunakan nama file yang diubah
+import HeroStatement from '../components/home/HeroStatement.astro';
+import AtAGlance from '../components/home/AtAGlance.astro'; // Menggunakan nama file yang diubah
+import AcademicExperience from "../components/home/AcademicExperience.astro";
+import CampusLifeGrids from '../components/home/CampusLifeGrids.astro'; // Menggunakan nama file yang diubah
+import FinancialAid from '../components/home/FinancialAid.astro'; // Periksa kembali nama file, mungkin ada typo dari langkah sebelumnya? Asumsikan namanya adalah FinancialAidSection.astro
+import PullQuote from '../components/home/PullQuote.astro';
+import Community from '../components/home/Community.astro';
+import BeritaTerkini from '../components/home/BeritaTerkini.astro';
+import KegiatanTerkini from '../components/home/KegiatanTerkini.astro';
 
-// Redirect to 404 if essential content is missing
-if (!hero || !academicExperience || !campusLife) {
-  return Astro.redirect('/404');
-}
+
 ---
 
-<Layout title="Welcome to Our University">
-  <Hero hero={hero} />
-  <Programs programs={programs} />
-  <AcademicExperience experience={academicExperience} />
-  <CampusLife campusLife={campusLife} />
-  <News news={news} />
-  <Events events={events} />
+<Layout title="STIE Dwimulya - Unggul dalam Pendidikan Ekonomi & Bisnis">
+  {/* Updated Title */}
+    <HeroSection />
+    <HeroStatement />
+    <AtAGlance />
+    <AcademicExperience />
+    <CampusLifeGrids />
+    <FinancialAid />
+    <PullQuote />
+    <Community />
+    <BeritaTerkini />
+    <KegiatanTerkini />
+
+
 </Layout>

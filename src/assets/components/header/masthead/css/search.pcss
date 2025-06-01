@@ -1,0 +1,238 @@
+.site-search {
+	background-color: var(--color-wrought-iron);
+	opacity: 0;
+	overflow: hidden;
+	visibility: hidden;
+	height: 0;
+	z-index: var(--z-index-header-under);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	backface-visibility: hidden;
+	transform: translate3d(0, -100%, 0);
+	transition: transform 0.25s cubic-bezier(0.52, 0.16, 0.24, 1);
+
+	@media (--viewport-full) {
+		right: 0;
+		position: absolute;
+		top: 0;
+		left: auto;
+		width: 510px;
+		transition: opacity 0.25s cubic-bezier(0.52, 0.16, 0.24, 1);
+		transform: none;
+	}
+
+	@media (--viewport-xlarge) {
+		width: 575px;
+	}
+
+	/* CASE: search open */
+	.site-search--is-open & {
+		z-index: var(--z-index-header-over);
+		visibility: visible;
+		height: auto;
+		opacity: 1;
+
+		@media (--viewport-full) {
+			opacity: 0;
+		}
+	}
+
+	/* CASE: search active */
+	.site-search--is-active & {
+		transform: translate3d(0, 0, 0);
+
+		@media (--viewport-full) {
+			transform: none;
+			opacity: 1;
+		}
+	}
+
+	/* CASE: logged in */
+	.admin-bar & {
+		top: var(--spacer-wpadmin-mobile);
+
+		@media (--viewport-wpadmin) {
+			top: var(--spacer-wpadmin-desktop);
+		}
+
+		@media (--viewport-full) {
+			top: 0;
+		}
+	}
+
+	/* CASE: logged in & scrolling | sticky masthead active */
+	.site-scrolling--masthead-stuck.admin-bar & {
+		top: 0;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Search: Form
+ * ----------------------------------------------------------------------------- */
+
+.site-header__search {
+	background-color: var(--color-wrought-iron);
+
+	form.gsc-search-box {
+		padding: 0;
+		position: relative;
+		margin-bottom: 0;
+	}
+
+	table {
+		margin-bottom: 0 !important;
+		display: block;
+	}
+
+	tbody,
+	tr,
+	td {
+		display: block;
+	}
+
+	td.gsc-input {
+		width: 100%;
+		height: 70px;
+		position: relative;
+		padding: 2px !important;
+
+		@media (--viewport-full) {
+			height: 75px;
+		}
+
+		@media (--viewport-xlarge) {
+			height: 90px;
+		}
+
+		input {
+			width: 100%;
+			padding: 2px 105px 0 22px !important;
+			height: 66px !important;
+			background: transparent !important;
+			border: 0 !important;
+			border-radius: 0 !important;
+			box-shadow: none !important;
+			margin: 0 !important;
+			color: var(--color-white);
+			font-size: 16px !important;
+			font-family: var(--font-family-gt-america-standard-reg);
+			line-height: 1;
+			letter-spacing: -0.1px;
+
+			@media (--viewport-xsmall) {
+				padding-right: 120px !important;
+				font-size: 18px !important;
+			}
+
+			@media (--viewport-full) {
+				height: 71px !important;
+			}
+
+			@media (--viewport-xlarge) {
+				font-size: 19px;
+				height: 86px !important;
+			}
+
+			/* Styles on mouse-focus for browsers that support :focus-visible */
+			&:focus:not(:focus-visible) {
+				/* remove browser default */
+				outline: 0 !important;
+			}
+
+			/* Styles on keyboard-focus for browsers that support :focus-visible */
+			&:focus-visible {
+				/* add browser default */
+				outline: Highlight auto 1px !important;
+				outline: -webkit-focus-ring-color auto 1px !important;
+			}
+		}
+
+		.gsc-input-box {
+			border: 0 !important;
+			background: transparent !important;
+			height: auto !important;
+			padding: 0 !important;
+
+			.gsib_a {
+				padding: 0;
+			}
+
+			.gsib_b {
+				display: none !important;
+			}
+		}
+	}
+
+	td.gsc-search-button {
+		margin: 0;
+		width: auto;
+
+		button {
+			background-color: transparent;
+			border: 0;
+			border-radius: 0;
+			padding: 0;
+			margin: 0 auto;
+			text-align: center;
+			display: block;
+			min-width: 0;
+			color: var(--color-white);
+			transition: color 0.15s ease-in-out;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 65px;
+			height: 36px;
+			width: 36px;
+
+			&:hover,
+			&:focus {
+				color: var(--color-slate);
+			}
+
+			@media (--viewport-xsmall) {
+				right: 72px;
+			}
+
+			svg {
+				display: none;
+			}
+
+			&:before {
+				@mixin icon;
+				content: var(--icon-search);
+				font-size: 30px;
+				margin: 0 auto;
+				text-align: center;
+				display: block;
+
+				@media (--viewport-xsmall) {
+					font-size: 32px;
+				}
+			}
+		}
+	}
+
+	.gsc-clear-button {
+		display: none !important;
+	}
+
+	@mixin form-control-placeholder {
+		color: var(--color-slate) !important;
+		font-size: 16px !important;
+		font-family: var(--font-family-gt-america-standard-reg);
+		line-height: revert;
+		letter-spacing: -0.1px;
+
+		@media (--viewport-xsmall) {
+			font-size: 18px !important;
+		}
+
+		@media (--viewport-xlarge) {
+			font-size: 19px !important;
+		}
+	}
+}

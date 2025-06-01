@@ -1,0 +1,68 @@
+.nav-primary__child {
+	opacity: 0;
+	visibility: hidden;
+	height: 0;
+	overflow: hidden;
+	backface-visibility: hidden;
+
+	/* CASE: child menu active */
+	.nav-primary__item--child-active > & {
+		opacity: 1;
+		visibility: visible;
+		height: 100%;
+		overflow: visible;
+	}
+}
+
+/* Depth */
+.nav-primary__child--depth-1,
+.nav-primary__child--depth-2 {
+
+	&:after {
+		content: '';
+		display: block;
+		width: 100%;
+
+		@media (--viewport-medium) {
+			height: 50px;
+		}
+
+		@media (--viewport-xlarge) {
+			height: 88px;
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Child List: List
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__child-list {
+
+}
+
+/* Depth */
+.nav-primary__child-list--depth-1 {
+
+}
+
+.nav-primary__child-list--depth-2 {
+
+}
+
+/* Layout */
+.nav-primary__child-list--layout-standard_list {
+
+}
+
+.nav-primary__child-list--layout-content_cards {
+
+}
+
+.nav-primary__child-list--layout-content_list {
+
+}
+
+.nav-primary__child-list--layout-gazette {
+
+}

@@ -1,0 +1,172 @@
+.nav-primary__col-2 {
+	display: none;
+	visibility: hidden;
+
+	@media (--viewport-medium) {
+		flex: 1;
+		display: block;
+		opacity: 0;
+		height: 0;
+		overflow: hidden;
+		backface-visibility: hidden;
+	}
+
+	.site-nav--child-active-depth-1 & {
+		@media (--viewport-medium) {
+			visibility: visible;
+			height: 100%;
+			opacity: 1;
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Level 3: Container
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__child--depth-2 {
+	/* CASE: tablet / desktop active */
+	.nav-primary__col-2 & {
+		padding: 151px 24px 0 5px;
+		height: 100%;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		width: 100%;
+		opacity: 1;
+		visibility: visible;
+
+		@media (--viewport-full) {
+			padding-right: 40px;
+		}
+
+		@media (--viewport-xlarge) {
+			padding-top: 154px;
+			padding-left: 18px;
+			padding-right: 40px;
+		}
+	}
+
+	& > * {
+		@media (--viewport-medium) {
+			max-width: 675px;
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Level 3: List
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__child-list--depth-2 {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Level 3: Item
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__item--depth-2:not(.nav-primary__item--layout-content_cards) {
+	border-top: 1px solid var(--color-graphite);
+	border-bottom: 1px solid var(--color-graphite);
+
+	& + .nav-primary__item--depth-2 {
+		border-top: 0;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Level 3: Action
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__action--depth-2 {
+	display: inline-block;
+}
+
+/* -----------------------------------------------------------------------------
+ * Level 3: Back Action
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__back--depth-2 {
+	@media (--viewport-medium) {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+.nav-primary__back-action--depth-2 {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Level 3: Subsection
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__subsec--depth-2 {
+
+	&.nav-primary__subsec--top {
+		margin-bottom: 37px;
+
+		@media (--viewport-medium) {
+			margin-bottom: 40px;
+		}
+
+		@media (--viewport-xlarge) {
+			margin-bottom: 60px;
+		}
+
+		&.nav-primary__subsec--no-content {
+			@media (--viewport-medium) {
+				margin-bottom: 10px;
+			}
+		}
+
+		.nav-primary__child--no-items & {
+			margin-bottom: 30px;
+
+			@media (--viewport-xlarge) {
+				margin-bottom: 23px;
+			}
+		}
+	}
+
+	.nav-primary__subsec-title {
+
+		& + * {
+			@media (--viewport-medium) {
+				margin-top: 19px;
+			}
+
+			@media (--viewport-xlarge) {
+				margin-top: 8px;
+			}
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Level 3: Item Animations
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__item--depth-2,
+.nav-primary__subsec--depth-2,
+.nav-primary__item--content-card-title {
+	opacity: 0;
+	transform: translate3d(50px, 0, 0);
+	transition: opacity 0.4s cubic-bezier(0.32, 0.08, 0.24, 1), transform 0.4s cubic-bezier(0.32, 0.08, 0.24, 1);
+
+	@media (--viewport-medium) {
+		transform: translate3d(0, 15px, 0);
+		transition: opacity 0.35s cubic-bezier(0.32, 0.08, 0.24, 1), transform 0.25s cubic-bezier(0.32, 0.08, 0.24, 1);
+	}
+
+	@media (--viewport-xlarge) {
+		transform: translate3d(-18px, 0, 0);
+		transition: opacity 0.45s cubic-bezier(0.32, 0.08, 0.24, 1), transform 0.35s cubic-bezier(0.32, 0.08, 0.24, 1);
+	}
+
+	.nav-primary__item--depth-1.nav-primary__item--child-active &,
+	.nav-primary__col--rendered & {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}

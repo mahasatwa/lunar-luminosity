@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBA Program | Harvard Business School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://www.hbs.edu/mba/PublishingImages/2100x1200/mba-hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .nav-shadow {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hbs-red {
+            color: #A41034;
+        }
+        
+        .bg-hbs-red {
+            background-color: #A41034;
+        }
+        
+        .hover-bg-hbs-red:hover {
+            background-color: #8a0d2c;
+        }
+        
+        .border-hbs-red {
+            border-color: #A41034;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover::after {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover .play-icon {
+            background-color: rgba(255, 255, 255, 1);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+        
+        .dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .dropdown-menu.open {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+        
+        .dropdown-toggle .arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown-toggle.open .arrow {
+            transform: rotate(180deg);
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Top Announcement Bar -->
+    <div class="bg-gray-900 text-white text-sm py-2 px-4 text-center">
+        <p>Applications for the 2025-2026 academic year are now open. <a href="#" class="font-semibold underline">Apply now</a></p>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="bg-white nav-shadow sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#">
+                        <img class="h-10" src="https://www.hbs.edu/PublishingImages/HBSLogo.svg" alt="Harvard Business School">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="text-gray-800 hover:text-hbs-red font-medium flex items-center py-2">
+                            <span>Programs</span>
+                            <svg class="w-4 h-4 ml-1 arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">MBA Program</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Doctoral Programs</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Executive Education</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Online Learning</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <button class="text-gray-800 hover:text-hbs-red font-medium flex items-center py-2">
+                            <span>Admissions</span>
+                            <svg class="w-4 h-4 ml-1 arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 font-medium">MBA Admissions</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Doctoral Admissions</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Executive Education</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Financial Aid</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="text-gray-800 hover:text-hbs-red font-medium py-2">Faculty & Research</a>
+                    <a href="#" class="text-gray-800 hover:text-hbs-red font-medium py-2">Alumni</a>
+                    <a href="#" class="text-gray-800 hover:text-hbs-red font-medium py-2">About</a>
+                    
+                    <div class="flex items-center space-x-4 ml-6">
+                        <a href="#" class="text-gray-600 hover:text-hbs-red">
+                            <i class="fas fa-search"></i>
+                        </a>
+                        <a href="#" class="bg-hbs-red text-white px-4 py-2 rounded hover-bg-hbs-red font-medium">
+                            Apply
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-toggle" class="text-gray-800 hover:text-hbs-red">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-3 space-y-2">
+                <div class="dropdown">
+                    <button class="dropdown-toggle w-full flex justify-between items-center py-2 text-gray-800 hover:text-hbs-red font-medium">
+                        <span>Programs</span>
+                        <svg class="w-4 h-4 ml-1 arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu pl-4">
+                        <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red">MBA Program</a>
+                        <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red">Doctoral Programs</a>
+                        <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red">Executive Education</a>
+                        <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red">Online Learning</a>
+                    </div>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="dropdown-toggle w-full flex justify-between items-center py-2 text-gray-800 hover:text-hbs-red font-medium">
+                        <span>Admissions</span>
+                        <svg class="w-4 h-4 ml-1 arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu pl-4">
+                        <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red">MBA Admissions</a>
+                        <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red">Doctoral Admissions</a>
+                        <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red">Executive Education</a>
+                        <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red">Financial Aid</a>
+                    </div>
+                </div>
+                
+                <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red font-medium">Faculty & Research</a>
+                <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red font-medium">Alumni</a>
+                <a href="#" class="block py-2 text-gray-800 hover:text-hbs-red font-medium">About</a>
+                
+                <div class="pt-4 border-t border-gray-200">
+                    <a href="#" class="block bg-hbs-red text-white text-center px-4 py-2 rounded hover-bg-hbs-red font-medium mb-2">
+                        Apply
+                    </a>
+                    <a href="#" class="block text-center text-gray-800 hover:text-hbs-red font-medium py-2">
+                        <i class="fas fa-search mr-2"></i> Search
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MBA Program Navigation -->
+    <div class="bg-gray-100 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4 overflow-x-auto">
+                <div class="flex space-x-8">
+                    <a href="#" class="whitespace-nowrap text-hbs-red font-semibold border-b-2 border-hbs-red pb-2">Overview</a>
+                    <a href="#" class="whitespace-nowrap text-gray-600 hover:text-hbs-red">Academic Experience</a>
+                    <a href="#" class="whitespace-nowrap text-gray-600 hover:text-hbs-red">Entrepreneurship</a>
+                    <a href="#" class="whitespace-nowrap text-gray-600 hover:text-hbs-red">Student Life</a>
+                    <a href="#" class="whitespace-nowrap text-gray-600 hover:text-hbs-red">Career Journey</a>
+                    <a href="#" class="whitespace-nowrap text-gray-600 hover:text-hbs-red">Admissions</a>
+                    <a href="#" class="whitespace-nowrap text-gray-600 hover:text-hbs-red">Financial Aid</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-bg bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">The HBS MBA</h1>
+                <p class="text-xl mb-8 leading-relaxed">
+                    Our two-year MBA program gives students the skills and confidence they need to bring a fresh perspective to business.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#" class="bg-hbs-red text-white px-6 py-3 rounded font-semibold hover-bg-hbs-red text-center">
+                        Explore the MBA Program
+                    </a>
+                    <a href="#" class="bg-white text-gray-800 px-6 py-3 rounded font-semibold hover:bg-gray-100 text-center">
+                        Apply Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="bg-gray-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition flex items-center">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full mr-4">
+                        <i class="fas fa-calendar-alt text-hbs-red"></i>
+                    </div>
+                    <span class="font-medium">Upcoming Events</span>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition flex items-center">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full mr-4">
+                        <i class="fas fa-graduation-cap text-hbs-red"></i>
+                    </div>
+                    <span class="font-medium">Admissions Requirements</span>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition flex items-center">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full mr-4">
+                        <i class="fas fa-dollar-sign text-hbs-red"></i>
+                    </div>
+                    <span class="font-medium">Tuition & Financial Aid</span>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition flex items-center">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-hbs-red"></i>
+                    </div>
+                    <span class="font-medium">Visit Campus</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MBA Experience -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">The HBS MBA Experience</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our MBA program is designed to help students develop the skills and confidence they need to bring a fresh perspective to business.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition card-hover">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-users text-hbs-red text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">The Case Method</h3>
+                    <p class="text-gray-600 mb-4">
+                        Learn through the case method, which presents real-world business challenges and requires students to develop and defend solutions.
+                    </p>
+                    <a href="#" class="text-hbs-red font-semibold hover:underline">
+                        Learn more <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition card-hover">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-globe text-hbs-red text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Global Immersion</h3>
+                    <p class="text-gray-600 mb-4">
+                        Gain international experience through global immersions, exchanges, and independent projects in locations around the world.
+                    </p>
+                    <a href="#" class="text-hbs-red font-semibold hover:underline">
+                        Learn more <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition card-hover">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-briefcase text-hbs-red text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Career Support</h3>
+                    <p class="text-gray-600 mb-4">
+                        Access comprehensive career resources, including career coaching, industry treks, and networking opportunities with alumni.
+                    </p>
+                    <a href="#" class="text-hbs-red font-semibold hover:underline">
+                        Learn more <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">A Transformational Experience</h2>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        The HBS MBA is more than a degree—it's a transformational experience that will shape your perspective and prepare you for leadership.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-hbs-red bg-opacity-10 p-2 rounded-full mr-4 mt-1">
+                                <i class="fas fa-check text-hbs-red"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Develop Leadership Skills</h4>
+                                <p class="text-gray-600">
+                                    Build confidence in your ability to lead through case discussions, team projects, and leadership development programs.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-hbs-red bg-opacity-10 p-2 rounded-full mr-4 mt-1">
+                                <i class="fas fa-check text-hbs-red"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Expand Your Network</h4>
+                                <p class="text-gray-600">
+                                    Join a global community of peers, faculty, and alumni who will support you throughout your career.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-hbs-red bg-opacity-10 p-2 rounded-full mr-4 mt-1">
+                                <i class="fas fa-check text-hbs-red"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Gain Practical Experience</h4>
+                                <p class="text-gray-600">
+                                    Apply classroom learning to real business challenges through field study projects and internships.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative video-thumbnail rounded-lg overflow-hidden">
+                    <img src="https://www.hbs.edu/mba/PublishingImages/800x450/mba-video-thumbnail.jpg" alt="MBA Student Experience" class="w-full">
+                    <div class="play-icon">
+                        <i class="fas fa-play text-hbs-red text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Stories -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Student Stories</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Hear from current students about their experiences in the HBS MBA program.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition card-hover">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://www.hbs.edu/mba/PublishingImages/600x400/student-story-1.jpg" alt="Student Story" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">From Engineer to Entrepreneur</h3>
+                        <p class="text-gray-600 mb-4">
+                            How the HBS MBA helped me transition from engineering to launching my own startup.
+                        </p>
+                        <a href="#" class="text-hbs-red font-semibold hover:underline">
+                            Read story <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition card-hover">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://www.hbs.edu/mba/PublishingImages/600x400/student-story-2.jpg" alt="Student Story" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">A Global Perspective</h3>
+                        <p class="text-gray-600 mb-4">
+                            My experience as an international student at HBS and how it expanded my worldview.
+                        </p>
+                        <a href="#" class="text-hbs-red font-semibold hover:underline">
+                            Read story <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition card-hover">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://www.hbs.edu/mba/PublishingImages/600x400/student-story-3.jpg" alt="Student Story" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Balancing Family and Business School</h3>
+                        <p class="text-gray-600 mb-4">
+                            Navigating the MBA program as a parent and how the HBS community supported me.
+                        </p>
+                        <a href="#" class="text-hbs-red font-semibold hover:underline">
+                            Read story <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-hbs-red text-hbs-red px-6 py-3 rounded font-semibold hover:bg-hbs-red hover:text-white transition">
+                    View all student stories
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">MBA Admissions</h2>
+                    <p class="text-gray-600 mb-6 text-lg">
+                        We seek students who demonstrate leadership potential, analytical aptitude, and a passion for making a difference in the world.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-bold text-xl mb-2">Application Deadlines</h3>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Round 1</span>
+                                    <span class="text-gray-600">September 5, 2024</span>
+                                </div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Round 2</span>
+                                    <span class="text-gray-600">January 6, 2025</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">Round 3</span>
+                                    <span class="text-gray-600">April 8, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-bold text-xl mb-2">Application Requirements</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <div class="bg-hbs-red bg-opacity-10 p-1 rounded-full mr-3 mt-1">
+                                        <i class="fas fa-check text-hbs-red text-xs"></i>
+                                    </div>
+                                    <span>Completed online application</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-hbs-red bg-opacity-10 p-1 rounded-full mr-3 mt-1">
+                                        <i class="fas fa-check text-hbs-red text-xs"></i>
+                                    </div>
+                                    <span>GMAT or GRE score</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-hbs-red bg-opacity-10 p-1 rounded-full mr-3 mt-1">
+                                        <i class="fas fa-check text-hbs-red text-xs"></i>
+                                    </div>
+                                    <span>Academic transcripts</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-hbs-red bg-opacity-10 p-1 rounded-full mr-3 mt-1">
+                                        <i class="fas fa-check text-hbs-red text-xs"></i>
+                                    </div>
+                                    <span>Two letters of recommendation</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-hbs-red bg-opacity-10 p-1 rounded-full mr-3 mt-1">
+                                        <i class="fas fa-check text-hbs-red text-xs"></i>
+                                    </div>
+                                    <span>Application essays</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="bg-hbs-red bg-opacity-10 p-1 rounded-full mr-3 mt-1">
+                                        <i class="fas fa-check text-hbs-red text-xs"></i>
+                                    </div>
+                                    <span>Interview (by invitation)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="#" class="bg-hbs-red text-white px-6 py-3 rounded font-semibold hover-bg-hbs-red inline-block">
+                            Learn more about admissions
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold mb-6">Class Profile</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold mb-2">Class Size</h4>
+                            <div class="bg-gray-100 p-4 rounded-lg">
+                                <p class="text-3xl font-bold text-hbs-red">930</p>
+                                <p class="text-gray-600">students</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">Average Work Experience</h4>
+                            <div class="bg-gray-100 p-4 rounded-lg">
+                                <p class="text-3xl font-bold text-hbs-red">4.7</p>
+                                <p class="text-gray-600">years</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">International Students</h4>
+                            <div class="bg-gray-100 p-4 rounded-lg">
+                                <p class="text-3xl font-bold text-hbs-red">37%</p>
+                                <p class="text-gray-600">from 72 countries</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold mb-2">Women</h4>
+                            <div class="bg-gray-100 p-4 rounded-lg">
+                                <p class="text-3xl font-bold text-hbs-red">43%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alumni Impact -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Alumni Impact</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    HBS graduates go on to lead organizations, launch ventures, and make an impact across industries and around the world.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition card-hover">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-briefcase text-hbs-red text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Career Outcomes</h3>
+                    <p class="text-gray-600 mb-4">
+                        94% of graduates received job offers within three months of graduation.
+                    </p>
+                    <a href="#" class="text-hbs-red font-semibold hover:underline">
+                        View employment report <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition card-hover">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-rocket text-hbs-red text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Entrepreneurship</h3>
+                    <p class="text-gray-600 mb-4">
+                        Over 50% of graduates start or join early-stage companies within 10 years.
+                    </p>
+                    <a href="#" class="text-hbs-red font-semibold hover:underline">
+                        Explore startup resources <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition card-hover">
+                    <div class="bg-hbs-red bg-opacity-10 p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-globe-americas text-hbs-red text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Global Network</h3>
+                    <p class="text-gray-600 mb-4">
+                        Join a network of over 85,000 alumni in 173 countries.
+                    </p>
+                    <a href="#" class="text-hbs-red font-semibold hover:underline">
+                        Connect with alumni <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-hbs-red text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Apply?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                The HBS MBA application is now open for the 2025-2026 academic year. Start your journey today.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#" class="bg-white text-hbs-red px-6 py-3 rounded font-semibold hover:bg-gray-100 text-center">
+                    Apply Now
+                </a>
+                <a href="#" class="border-2 border-white text-white px-6 py-3 rounded font-semibold hover:bg-white hover:text-hbs-red text-center">
+                    Request Information
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">About HBS</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">History</a></li>
+                        <li><a href="#" class="hover:underline">Leadership</a></li>
+                        <li><a href="#" class="hover:underline">Campus</a></li>
+                        <li><a href="#" class="hover:underline">Diversity & Inclusion</a></li>
+                        <li><a href="#" class="hover:underline">Sustainability</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Programs</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">MBA Program</a></li>
+                        <li><a href="#" class="hover:underline">Doctoral Programs</a></li>
+                        <li><a href="#" class="hover:underline">Executive Education</a></li>
+                        <li><a href="#" class="hover:underline">Online Learning</a></li>
+                        <li><a href="#" class="hover:underline">Summer Programs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Admissions</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">MBA Admissions</a></li>
+                        <li><a href="#" class="hover:underline">Doctoral Admissions</a></li>
+                        <li><a href="#" class="hover:underline">Executive Education</a></li>
+                        <li><a href="#" class="hover:underline">Financial Aid</a></li>
+                        <li><a href="#" class="hover:underline">Tuition & Costs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-gray-300"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p class="mb-2">Harvard Business School</p>
+                    <p class="mb-2">Soldiers Field</p>
+                    <p class="mb-2">Boston, MA 02163</p>
+                    <p class="mb-2">+1 (617) 495-6000</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <img src="https://www.hbs.edu/PublishingImages/HBSLogoWhite.svg" alt="Harvard Business School" class="h-8">
+                    </div>
+                    <div class="text-sm text-gray-400">
+                        <p>© 2025 President and Fellows of Harvard College</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('open');
+            });
+            
+            // Dropdown toggles
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const menu = this.nextElementSibling;
+                    this.classList.toggle('open');
+                    menu.classList.toggle('open');
+                });
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Card hover animations
+            const cards = document.querySelectorAll('.card-hover');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.site-nav__brand {
+	height: var(--spacer-site-header-mobile);
+	line-height: var(--spacer-site-header-mobile);
+	z-index: var(--z-index-header-over-2);
+	user-select: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+
+	@media (--viewport-medium) {
+		height: var(--spacer-site-header-tablet);
+		line-height: var(--spacer-site-header-tablet);
+	}
+
+	@media (--viewport-xlarge) {
+		height: var(--spacer-site-header-desktop);
+		line-height: var(--spacer-site-header-desktop);
+	}
+}
+
+.site-nav__brand-inner {
+	padding: 0 24px;
+
+	@media (--viewport-full) {
+		padding: 0 40px;
+	}
+}

@@ -1,0 +1,75 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Social Share
+ *
+ * ----------------------------------------------------------------------------- */
+
+.social-share,
+.social-share-networks {
+	display: flex;
+	align-items: center;
+}
+
+.social-share {
+	margin-top: 34px;
+	@media (--viewport-medium) {
+		margin-top: 0;
+	}
+}
+
+.social-share__title {
+	margin-top: 0;
+	padding-bottom: 3px;
+}
+
+.social-share-networks__item {
+	margin-left: 24px;
+}
+
+.social-share-networks__anchor:before {
+	font-size: 18px;
+}
+.social-share-networks__anchor:hover {
+	color: var(--color-asphalt);
+}
+
+.icon-facebook:before {
+	content: var(--icon-facebook);
+}
+.icon-twitter:before {
+	content: var(--icon-twitter);
+}
+.icon-linkedin:before {
+	content: var(--icon-linkedin);
+}
+.icon-mail:before {
+	content: var(--icon-envelope);
+}
+.icon-link:before {
+	content: var(--icon-link);
+}
+
+.social-share__copytooltip {
+	position: absolute;
+	padding: 8px 24px;
+	background-color: var(--color-white);
+	border-radius: 5px;
+	font-family: var(--font-family-gt-america-standard-reg);
+	animation: fadeIn 0.3s linear;
+	color: var(--color-ink);
+}
+
+/* arrow */
+.social-share__copytooltip:after {
+	content: " ";
+	width: 0;
+	height: 0;
+	display: block;
+	bottom: -8px;
+	position: absolute;
+	left: calc(50% - 8px);
+	background-color: transparent;
+	border-top: 8px solid var(--color-white);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+}

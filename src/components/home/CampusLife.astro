@@ -1,23 +1,43 @@
 ---
 // Imports
-import type { CampusLife } from '../../utils/contentful';
-import { getOptimizedImageUrl } from '../../utils/cloudinary';
+// import type { CampusLife } from '../../utils/contentful';
+import { getOptimizedImageUrl } from "../../utils/cloudinary";
 
 // Interface/Type definitions
-interface Props {
-  campusLife: CampusLife;
-}
+// interface Props {
+//   campusLife: CampusLife;
+// }
 
 // Destructure props
-const { campusLife } = Astro.props;
+// const { campusLife } = Astro.props;
+
+// Hardcoded Campus Life data adapted for STIE Dwimulya
+const campusLife = {
+  imageUrl:
+    "https://res.cloudinary.com/dmadbfz58/image/upload/v1747128672/suasana-mahasiswa-belajar-di-kelas_ixivex.jpg", // >>> GANTI DENGAN LINK GAMBAR KEHIDUPAN KAMPUS/AKTIVITAS MAHASISWA <<<
+  title: "Kehidupan Kampus yang Dinamis",
+  content: `
+    <p>Lebih dari sekadar belajar di kelas, kehidupan kampus STIE Dwimulya menawarkan beragam kesempatan untuk berkembang.</p>
+    <p>Temukan minat Anda melalui berbagai Unit Kegiatan Mahasiswa (UKM), organisasi, dan acara yang diselenggarakan secara rutin. Bangun jaringan pertemanan, asah soft skills, dan ciptakan kenangan tak terlupakan bersama komunitas akademik kami.</p>
+    <ul>
+      <li>Organisasi Mahasiswa Aktif</li>
+      <li>Berbagai Pilihan UKM (Olah Raga, Seni, Akademik, dll.)</li>
+      <li>Acara Kampus Tahunan (Seminar, Lomba, Bakti Sosial)</li>
+      <li>Lingkungan Belajar yang Kekeluargaan</li>
+    </ul>
+    <p>Bergabunglah dan rasakan pengalaman menjadi bagian dari keluarga besar STIE Dwimulya!</p>
+  `,
+  ctaLink: "/mahasiswa/kegiatan", // >>> GANTI DENGAN LINK HALAMAN KEGIATAN MAHASISWA STIE DWIMULYA <<<
+  ctaText: "Lihat Kegiatan Mahasiswa",
+};
 
 // Variable declarations using JS/TS syntax
 const optimizedImageUrl = getOptimizedImageUrl(campusLife.imageUrl, {
   width: 800,
   height: 600,
-  crop: 'fill',
+  crop: "fill",
   quality: 80,
-  format: 'auto',
+  format: "auto",
 });
 ---
 

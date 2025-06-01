@@ -1,0 +1,335 @@
+.b-gallery-carousel {
+	padding: var(--spacer-70) 0;
+	margin: 0;
+	overflow: hidden;
+	background-color: #f3f4f4;
+
+	&.t-theme--light {
+		background-color: var(--color-black);
+	}
+
+	@media (--viewport-large) {
+		padding: var(--spacer-60) 0 84px;
+	}
+}
+
+.b-gallery-carousel__container {
+	padding-block: var(--spacer-70);
+	background-color: var(--color-parchment);
+	position: relative;
+	z-index: 2;
+
+	.t-theme--light & {
+		background-color: var(--color-black);
+	}
+
+	@media (--viewport-large) {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		column-gap: var(--spacer-60);
+		padding-block-end: calc(2 * var(--spacer-70));
+	}
+}
+
+.b-gallery-carousel__header {
+	margin-bottom: var(--spacer-70);
+
+	@media (--viewport-large) {
+		flex: 0 0 40%;
+		opacity: 1;
+		left: 0;
+		transition-property: opacity, margin-left;
+		transition-duration: 600ms, 800ms;
+		transition-delay: 0s, 200ms;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		padding-right: var(--spacer-80);
+	}
+
+	@media (--viewport-xxlarge) {
+		flex: 0 0 40%;
+		opacity: 1;
+		left: 0;
+		transition-property: opacity, margin-left;
+		transition-duration: 600ms, 800ms;
+		transition-delay: 700ms, 200ms;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		padding-right: 120px;
+	}
+
+	.b-gallery-carousel.slider-active & {
+		@media (--viewport-large) {
+			opacity: 0;
+			margin-left: -40%;
+			transition-property: opacity, margin-left;
+			transition-duration: 600ms, 800ms;
+			transition-delay: 0s, 200ms;
+		}
+	}
+
+	.b-gallery-carousel__title {
+		@mixin t-display-x-small;
+
+		font-family: var(--font-family-canela-deck);
+		font-weight: normal;
+
+		@media (--viewport-medium) {
+			@mixin t-display;
+		}
+	}
+}
+
+.b-gallery-carousel__slider {
+
+	.b-gallery-carousel & {
+		@media (--viewport-large) {
+			flex: 0 0 60%;
+		}
+	}
+
+	.c-slider__main {
+		@media (--viewport-large) {
+			overflow: visible;
+		}
+	}
+
+	.c-slider__wrapper {
+		@media (--viewport-large) {
+			transition-delay: 400ms;
+		}
+	}
+
+	.b-gallery-carousel.slider-active & {
+		@media (--viewport-large) {
+		}
+	}
+
+	/* Only display slide meta data in dialog modal */
+
+	.c-slide-caption {
+		display: none;
+
+		.c-dialog & {
+			display: table-caption;
+		}
+	}
+
+	.c-slider__slide {
+		/* Setup slide widths for mobile view in the main gallery */
+
+		.b-gallery-carousel & {
+
+			.b-gallery-carousel__slide-figure {
+				width: auto;
+			}
+
+			&:not(:last-of-type) {
+				max-width: calc(100% - var(--spacer-80));
+			}
+
+			&:last-of-type {
+				max-width: 100%;
+
+				.b-gallery-carousel__slide-figure {
+					width: calc(100% - var(--spacer-60));
+					margin-left: 0;
+
+					@media (--viewport-medium) {
+						width: auto;
+					}
+				}
+			}
+
+			@media (--viewport-medium) {
+				width: auto;
+				max-width: 100%;
+			}
+
+			img {
+				@media (--viewport-medium) {
+					width: auto;
+					height: 400px;
+				}
+
+				@media (--viewport-xxlarge) {
+					width: auto;
+					height: 536px;
+				}
+			}
+		}
+	}
+
+	.b-gallery-carousel__slide-figure {
+
+		.black-and-white & {
+
+			img {
+				filter: grayscale(100%);
+			}
+		}
+	}
+
+	.b-gallery-carousel__slide-image {
+
+		.has-modal & {
+			cursor: pointer;
+		}
+	}
+
+	.c-slider__button {
+		position: static;
+	}
+
+	.c-slider__arrows {
+		border-bottom: 0;
+		height: 48px;
+		margin-top: var(--spacer-20);
+		position: relative;
+		left: calc(-1 * var(--grid-gutter-small));
+		width: 100%;
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+
+		@media (--viewport-medium) {
+			left: 0;
+		}
+
+		@media (--viewport-large) {
+			position: absolute;
+			bottom: var(--spacer-50);
+			max-width: 1440px;
+			justify-content: flex-end;
+			margin-top: 0;
+			padding-right: 72px;
+		}
+
+		.c-slider__button {
+
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
+		background: none;
+		border: 1px solid var(--color-ink);
+		border-radius: 100%;
+		display: block;
+		height: 60px;
+		margin-top: 0;
+		position: relative;
+		transition: all 0.15s linear;
+		width: 60px;
+		margin-left: 7px;
+		margin-right: 7px;
+
+		&:before,
+		&:after {
+			align-items: center;
+			color: var(--color-ink);
+			display: flex;
+			font-family: var(--font-family-core-icons);
+			font-size: 24px;
+			height: 100%;
+			justify-content: center;
+			position: absolute;
+			top: 1px;
+			width: 100%;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: var(--color-ink);
+			transition: all 0.15s linear;
+
+			&:before,
+			&:after {
+				color: var(--color-parchment);
+			}
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 2px var(--color-focus-blue), 0 0 0 4px var(--color-white);
+		}
+	}
+
+	.swiper-button-next {
+		right: initial;
+		left: initial;
+
+		&:after {
+			content: var(--icon-chevron-right);
+			left: 1px;
+		}
+	}
+
+	.swiper-button-prev {
+		left: initial;
+		right: initial;
+
+		&:before {
+			content: var(--icon-chevron-left);
+			right: 1px;
+		}
+	}
+
+	/* CASE: Light */
+
+	.t-theme--light & {
+		background-color: var(--color-wrought-iron);
+
+		.b-featured-stories__title {
+			background-color: var(--color-wrought-iron);
+			color: var(--color-parchment);
+		}
+
+		.c-slider--carousel-pull-right__wrap {
+			background-color: var(--color-wrought-iron);
+		}
+
+		.swiper-button-next,
+		.swiper-button-prev {
+			border: 1px solid var(--color-parchment);
+
+			&:before,
+			&:after {
+				color: var(--color-parchment);
+			}
+
+			&:hover,
+			&:focus-visible {
+				background-color: var(--color-parchment);
+				transition: all 0.15s linear;
+
+				&:before,
+				&:after {
+					color: var(--color-ink);
+				}
+			}
+		}
+	}
+}
+
+.b-gallery-carousel_expand-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: var(--spacer-30);
+	right: var(--spacer-30);
+	z-index: 3;
+	height: var(--spacer-70);
+	width: var(--spacer-70);
+	background-color: var(--color-white);
+	border-radius: 50%;
+	cursor: pointer;
+	opacity: 0;
+	transition: var(--transition-opacity);
+
+	.b-gallery-carousel__slide-figure:hover & {
+		opacity: 1;
+	}
+}

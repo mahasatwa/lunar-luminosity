@@ -1,0 +1,29 @@
+.c-childmasthead__backlink {
+	display: flex;
+	background-color: var(--color-ink);
+	align-items: center;
+	justify-content: space-between;
+	height: 50px;
+	.c-image img {
+		max-width: 100%;
+	}
+}
+
+.childmasthead__backlink__logo {
+	width: 189px;
+	@media (--viewport-medium) {
+		width: 196px;
+	}
+}
+
+a.childmasthead__backlink__cta {
+	@mixin t-pill;
+	background-color: var(--color-blackboard);
+	color: var(--color-parchment);
+	&:hover {
+		background-color: var(--color-black);
+	}
+	@media (--viewport-medium) {
+		font-size: 16px;
+	}
+}

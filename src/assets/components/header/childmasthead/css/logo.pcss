@@ -1,0 +1,49 @@
+.logo {
+	display: inline-block;
+	vertical-align: middle;
+	width: 115px;
+	height: 29px;
+	line-height: 0;
+
+	@media (--viewport-375) {
+		width: 142px;
+		height: 36px;
+	}
+
+	@media (--viewport-medium) {
+		width: 166px;
+		height: 42px;
+	}
+
+	@media (--viewport-xlarge) {
+		width: 190px;
+		height: 48px;
+	}
+}
+
+.logo__wrap {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background-image: svg-inline(logo-dark);
+	transition: none;
+
+	/* CASE: theme | light */
+	.site-header--theme-light & {
+		background-image: svg-inline(logo-light);
+		color: var(--color-white);
+	}
+
+	/* CASE: scrolling | sticky masthead active */
+	.site-header--scrolled-in & {
+		background-image: svg-inline(logo-dark);
+	}
+
+	/* CASE: logo in the site nav */
+	.site-nav & {
+		background-image: svg-inline(logo-light);
+		color: var(--color-white);
+		position: relative;
+		top: -2px;
+	}
+}

@@ -1,0 +1,121 @@
+.nav-primary__item {
+
+}
+
+/* Depth (see: level/one.pcss & level/two.pcss & level/three.pcss) */
+.nav-primary__item--depth-0 {
+
+}
+
+.nav-primary__item--depth-1 {
+
+}
+
+.nav-primary__item--depth-2 {
+
+}
+
+/* Has Children */
+.nav-primary__item--has-children {
+
+}
+
+/* Mobile Visibility For Subsection (for 3rd level items on 2nd level item) */
+.nav-primary__item--sub-mob-vis-true {
+
+}
+
+.nav-primary__item--sub-mob-vis-false {
+
+	& > button.nav-primary__action {
+		display: none;
+		visibility: hidden;
+
+		@media (--viewport-medium) {
+			display: inline;
+			visibility: inherit;
+		}
+	}
+
+	& > a.nav-primary__action {
+		@media (--viewport-medium) {
+			display: none;
+			visibility: hidden;
+		}
+	}
+}
+
+/* Layout */
+.nav-primary__item--layout-standard_list {
+	padding-top: 17px;
+	padding-bottom: 15px;
+
+	@media (--viewport-medium) {
+		padding-top: 9px;
+		padding-bottom: 14px;
+	}
+}
+
+.nav-primary__item--layout-content_cards {
+	border-top: 0;
+	border-bottom: 0;
+	padding: 0;
+	width: calc(50% - 15px);
+
+	@media (--viewport-xlarge) {
+		width: calc(50% - 24px);
+	}
+
+	&:nth-child(n+3) {
+		margin-top: 22px;
+
+		@media (--viewport-xlarge) {
+			margin-top: 40px;
+		}
+	}
+}
+
+.nav-primary__item--layout-content_list,
+.nav-primary__item--layout-gazette {
+	padding-top: 21px;
+	padding-bottom: 23px;
+
+	@media (--viewport-xlarge) {
+		padding-top: 24px;
+		padding-bottom: 24px;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Item: Content Cards Layout
+ * ----------------------------------------------------------------------------- */
+
+.nav-primary__list-content_cards-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: space-between;
+
+	.nav-primary__action {
+		width: 100%;
+	}
+}
+
+.nav-primary__item--content-card-title {
+	display: block;
+	font-size: 14px;
+	font-family: var(--font-family-gt-america-standard-med);
+	line-height: 1;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-bottom: 20px;
+
+	@media (--viewport-medium) {
+		margin-bottom: 23px;
+	}
+
+	@media (--viewport-full) {
+		margin-bottom: 25px;
+	}
+}

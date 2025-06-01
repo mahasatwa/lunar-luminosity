@@ -1,0 +1,73 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Landing Page: The Follower (line)
+ *
+ * ----------------------------------------------------------------------------- */
+
+.the-follower {
+	border-left: 1px solid var(--color-shade);
+	content: "";
+	display: block;
+	height: 100%;
+	left: 50%;
+	position: fixed;
+	top: 0;
+	transform: translateX(-50%);
+	transition: all 0.15s linear;
+	width: 1px;
+	z-index: 1;
+
+	.page-template-landing-page &,
+	.page-template-landing-page-secondary &,
+	.single-in_focus & {
+		min-height: 320px;
+
+		@media (--viewport-medium) {
+			height: auto;
+			transition: all 0.15s linear;
+		}
+	}
+}
+
+/* Remove the line on child themes with hide line enabled */
+
+.child-theme--hide-follower-line .the-follower,
+.child-theme--hide-follower-line .c-secondary-subheader:before,
+.child-theme--hide-follower-line .c-subsite-subheader.c-subsite-subheader--background-alignment::before,
+.child-theme--hide-follower-line .c-subsite-subheader.c-subsite-subheader--background-alignment::after {
+	display: none;
+}
+
+.child-theme--hide-follower-line {
+	.acf-block-component .b-accordion:before,
+	.acf-block-component .b-card-grid:before,
+	.acf-block-component .b-columns:before,
+	.acf-block-component .b-content-list:before,
+	.acf-block-component .b-courses:before,
+	.acf-block-component .b-events-grid:before,
+	.acf-block-component .b-gallery:before,
+	.acf-block-component .b-gazette:before,
+	.acf-block-component .b-hero-split:before,
+	.acf-block-component .b-interstitial:before,
+	.acf-block-component .b-link-list:before,
+	.acf-block-component .b-news:before,
+	.acf-block-component .b-media-text:before,
+	.acf-block-component .b-quote:before,
+	.acf-block-component .b-stats:before,
+	.acf-block-component .b-timeline:before,
+	.acf-block-component .b-statement:before {
+		border-left: none;
+	}
+}
+
+.child-theme--hide-follower-line {
+	.b-hero,
+	.b-hero__bottom-line,
+	.b-spacer,
+	#gsc-results .gsc-results__container,
+	.in-focus__subheader {
+		&:before {
+			border-left: none;
+		}
+	}
+}

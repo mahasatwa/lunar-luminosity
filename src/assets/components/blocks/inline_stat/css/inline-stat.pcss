@@ -1,0 +1,156 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Inline Stat
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-inline-stat {
+	margin: 0;
+}
+
+/* -----------------------------------------------------------------------------
+ * Paragraph Content
+ * ----------------------------------------------------------------------------- */
+
+.b-inline-stat__container {
+	max-width: var(--max-width-sm);
+
+	> p {
+		@mixin t-body;
+	}
+
+	@container layout (min-width: $container-full) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Stats: List
+ * ----------------------------------------------------------------------------- */
+
+.b-inline-stat__list {
+	width: 100%;
+	max-width: var(--grid-3-col);
+	margin-left: auto;
+	margin-right: auto;
+
+	.b-inline-stat--full & {
+		margin-bottom: var(--spacer-40);
+		padding-left: 0;
+	}
+
+	.b-inline-stat--left &,
+	.b-inline-stat--right & {
+		padding-bottom: var(--spacer-40);
+
+		@container layout (min-width: $container-full) {
+			width: auto;
+
+			.c-statistic {
+				align-items: flex-start;
+				text-align: left;
+			}
+		}
+	}
+
+	.b-inline-stat--left & {
+		@container layout (min-width: $container-full) {
+			float: left;
+			padding-right: var(--spacer-60);
+			padding-left: 0;
+			margin-left: calc(-1 * var(--spacer-70));
+		}
+	}
+
+	.b-inline-stat--right & {
+		@container layout (min-width: $container-full) {
+			float: right;
+			padding-left: var(--spacer-60);
+			margin-right: calc(-1 * var(--spacer-70));
+		}
+	}
+
+	.t-sink & {
+		list-style: none;
+	}
+}
+
+.t-sink > .wp-block-group__inner-container {
+
+	.b-inline-stat__list {
+		padding-left: 0;
+		list-style: none;
+	}
+
+	.b-inline-stat--full {
+
+		.b-inline-stat__list {
+			max-width: var(--max-width-sm);
+			width: calc(100% - 2 * var(--grid-gutter-small));
+			margin-left: auto;
+			margin-right: auto;
+
+			@container layout (min-width: $container-medium) {
+				width: calc(100% - 2 * var(--grid-gutter));
+			}
+		}
+	}
+
+	.b-inline-stat--right {
+
+		.b-inline-stat__list {
+			@container layout (min-width: $container-full) {
+				float: right;
+				padding-left: var(--spacer-60);
+				margin-right: calc(-1 * var(--spacer-70));
+			}
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Stats: Statistics
+ * ----------------------------------------------------------------------------- */
+
+.c-statistic {
+
+	.b-inline-stat__list-item & {
+		align-items: center;
+		text-align: center;
+		padding: 0;
+	}
+}
+
+.c-statistic__value {
+
+	.b-inline-stat__list-item & {
+		font-size: 36px; /* update later to match h3 size? */
+		color: var(--color-crimson);
+
+		@container layout (min-width: $container-medium) {
+			font-size: 48px;
+		}
+	}
+}
+
+.c-statistic__label {
+
+	.b-inline-stat__list-item & {
+		@mixin t-body-small;
+
+		font-family: var(--font-family-gt-america-standard-med);
+		font-weight: 500;
+		color: var(--color-ink);
+		text-transform: none;
+		letter-spacing: normal;
+
+		a {
+			color: var(--color-ink);
+		}
+
+		strong {
+			font-weight: 700;
+		}
+	}
+}

@@ -1,0 +1,97 @@
+.site-nav {
+	background-color: var(--color-wrought-iron);
+	opacity: 0;
+	overflow: hidden;
+	visibility: hidden;
+	height: 0;
+	z-index: var(--z-index-header-under);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	backface-visibility: hidden;
+	transform: translate3d(0, -100%, 0);
+	transition: transform 0.4s cubic-bezier(0.52, 0.16, 0.24, 1);
+
+	/* CASE: nav open */
+	.site-nav--is-open & {
+		z-index: var(--z-index-header-over);
+		visibility: visible;
+		height: 100%;
+		opacity: 1;
+	}
+
+	/* CASE: nav active */
+	.site-nav--is-active & {
+		transform: translate3d(0, 0, 0);
+	}
+
+	/* CASE: logged in */
+	.admin-bar & {
+		top: var(--spacer-wpadmin-mobile);
+
+		@media (--viewport-wpadmin) {
+			top: var(--spacer-wpadmin-desktop);
+		}
+	}
+
+	/* Customize scroll bars */
+	/* Works on Firefox */
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: var(--color-graphite) var(--color-blackboard);
+	}
+
+	/* Works on Chrome, Edge, and Safari */
+	*::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+
+	*::-webkit-scrollbar-track {
+		background: var(--color-blackboard);
+	}
+
+	*::-webkit-scrollbar-thumb {
+		background-color: var(--color-graphite);
+		border-radius: 6px;
+		border: 3px solid var(--color-graphite);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Nav: Outer Wrapper
+ * ----------------------------------------------------------------------------- */
+
+.site-nav__outer {
+	height: 100%;
+}
+
+/* -----------------------------------------------------------------------------
+ * Nav: Inner Wrapper
+ * ----------------------------------------------------------------------------- */
+
+.site-nav__inner {
+	padding: 0;
+	height: 100%;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	@media (--viewport-medium) {
+		overflow: hidden;
+	}
+
+	/* CASE: logged in */
+	.admin-bar & {
+		padding-bottom: var(--spacer-wpadmin-mobile);
+
+		@media (--viewport-wpadmin) {
+			padding-bottom: var(--spacer-wpadmin-desktop);
+		}
+	}
+}

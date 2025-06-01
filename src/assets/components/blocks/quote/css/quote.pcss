@@ -1,0 +1,315 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Quote
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-quote {
+	background-color: var(--color-parchment);
+	margin: 0;
+	padding: var(--spacer-40) 0 var(--spacer-50);
+	position: relative;
+	z-index: 2;
+
+	@container layout (min-width: $container-medium) {
+		padding: var(--spacer-70) 0;
+	}
+
+	@container layout (min-width: $container-full) {
+		z-index: auto;
+	}
+
+	.b-side-by-side & {
+
+		&:first-child {
+			padding-top: 0;
+		}
+	}
+
+	&.t-theme--light {
+		background-color: var(--color-wrought-iron);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Container
+ * ----------------------------------------------------------------------------- */
+
+.b-quote__container {
+	flex: 1 1 auto;
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Media Container
+ * ----------------------------------------------------------------------------- */
+
+.b-quote__media {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Figure Element
+ * ----------------------------------------------------------------------------- */
+
+.b-quote__figure {}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Image Element
+ * ----------------------------------------------------------------------------- */
+
+.b-quote__img {}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Content
+ * ----------------------------------------------------------------------------- */
+
+.b-quote__content {
+	position: relative;
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Content Container
+ * ----------------------------------------------------------------------------- */
+
+.b-quote__content-container {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Blockquote
+ * ----------------------------------------------------------------------------- */
+
+.c-quote {
+	display: flex;
+	flex-direction: column;
+
+	@container layout (min-width: $container-medium) {
+		flex-direction: row;
+	}
+
+	.b-quote__layout-left & {
+
+		.c-block__quote-content {
+			@container layout (min-width: $container-medium) {
+				margin-left: 96px;
+				order: 2;
+			}
+		}
+
+		.c-quote__text {
+
+			&:first-child {
+				text-indent: 0;
+
+				&:before {
+					@container layout (min-width: $container-medium) {
+						left: -15px;
+					}
+
+					@container layout (min-width: $container-large) {
+						left: -15px;
+					}
+				}
+			}
+		}
+
+		.c-quote__cite {
+			@container layout (min-width: $container-medium) {
+				margin-left: 0;
+				order: 1;
+			}
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Content
+ * ----------------------------------------------------------------------------- */
+
+.c-block__quote-content {
+	order: 2;
+	padding-top: var(--spacer-60);
+
+	@container layout (min-width: $container-medium) {
+		align-self: center;
+		order: 1;
+		padding-top: var(--spacer-50);
+		width: 50%;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Citation
+ * ----------------------------------------------------------------------------- */
+
+.c-quote__cite {
+	margin-bottom: var(--spacer-60);
+	order: 1;
+
+	@container layout (min-width: $container-medium) {
+		margin-left: var(--spacer-60);
+		order: 2;
+		width: 50%;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Text
+ * ----------------------------------------------------------------------------- */
+
+.c-quote__text {
+	@mixin t-quote;
+
+	font-size: 36px;
+	position: relative;
+
+	@container layout (min-width: $container-medium) {
+		font-size: 32px;
+	}
+
+	@container layout (min-width: $container-full) {
+		font-size: 36px;
+	}
+
+	@container layout (min-width: $container-large) {
+		font-size: 48px;
+	}
+
+	&:first-child {
+		text-indent: 0;
+
+		&:before {
+			background-image: url('/wp-content/themes/core/assets/img/theme/decor/quote-small.svg');
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: '';
+			left: -5px;
+			position: absolute;
+			top: -52px;
+			z-index: 0;
+			height: 80px;
+			width: 80px;
+
+			@container layout (min-width: $container-medium) {
+				left: -15px;
+			}
+
+			@container layout (min-width: $container-large) {
+				background-image: url('/wp-content/themes/core/assets/img/theme/decor/quote-large.svg');
+				height: 97px;
+				left: -35px;
+				top: -62px;
+				width: 110px;
+			}
+		}
+	}
+
+	.b-quote__icon-crimson & {
+
+		&:before {
+			background-image: url('/wp-content/themes/core/assets/img/theme/decor/quote-small-crimson.svg');
+
+			@container layout (min-width: $container-large) {
+				background-image: url('/wp-content/themes/core/assets/img/theme/decor/quote-large-crimson.svg');
+			}
+		}
+	}
+
+	span {
+		position: relative;
+		z-index: 1;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Citation Figure
+ * ----------------------------------------------------------------------------- */
+
+.c-quote__cite-figure {
+	display: block;
+	overflow: hidden;
+}
+
+.c-quote__cite-image {
+	margin: 0;
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Citation Name
+ * ----------------------------------------------------------------------------- */
+
+.c-quote__cite-name p {
+	@mixin t-body;
+
+	display: block;
+	font-family: var(--font-family-gt-america-standard-bold);
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.t-sink .c-quote__cite-name p a {
+	@mixin t-body;
+
+	border-bottom: 1px solid var(--color-parchment);
+	color: var(--color-ink);
+	font-family: var(--font-family-gt-america-standard-bold);
+	font-weight: bold;
+}
+
+.t-sink .t-theme--light .c-quote__cite-name p a {
+	@mixin t-body;
+
+	border-bottom: 1px solid var(--color-parchment);
+	color: var(--color-parchment);
+	font-family: var(--font-family-gt-america-standard-bold);
+	font-weight: bold;
+	margin-top: 8px;
+
+	&:hover,
+	&:focus {
+		color: var(--color-action-red-dark-bg) !important;
+		border-bottom-color: var(--color-action-red-dark-bg) !important;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Quote: Citation Title
+ * ----------------------------------------------------------------------------- */
+
+.c-quote__cite-title p {
+	@mixin t-body;
+
+	display: block;
+	font-family: var(--font-family-gt-america-standard-reg);
+	font-weight: normal;
+}
+
+.t-sink .c-quote__cite-title p a {
+	@mixin t-body;
+
+	border-bottom-color: var(--color-ink);
+	color: var(--color-ink);
+	font-family: var(--font-family-gt-america-standard-reg) !important;
+	font-weight: normal !important;
+}
+
+.t-sink .t-theme--light .c-quote__cite-title p a {
+	@mixin t-body;
+
+	border-bottom: 1px solid var(--color-parchment);
+	color: var(--color-parchment);
+	font-family: var(--font-family-gt-america-standard-reg);
+	font-weight: normal;
+	margin-top: 8px;
+
+	&:hover,
+	&:focus {
+		color: var(--color-action-red-dark-bg) !important;
+		border-bottom-color: var(--color-action-red-dark-bg) !important;
+	}
+}
+
+.c-quote__quote-cta {
+	margin-top: var(--spacer-40);
+}

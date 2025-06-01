@@ -1,0 +1,281 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Card Grid
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-card-grid {
+	background-color: var(--color-parchment);
+	margin: 0;
+	padding: var(--spacer-40) 0;
+	position: relative;
+	z-index: 2;
+
+	@media (--viewport-medium) {
+		padding: var(--spacer-70) 0 var(--spacer-90);
+		z-index: auto;
+	}
+
+	/* CASE: Light */
+	&.t-theme--light {
+		background-color: var(--color-wrought-iron);
+
+		.c-card * {
+			color: var(--color-ink);
+		}
+	}
+
+	&.t-theme--light:not(.spotlight) {
+		background-color: var(--color-wrought-iron);
+
+		.c-card {
+			background-color: var(--color-ink);
+			color: var(--color-ink);
+
+			&.has-target-link {
+
+				&:hover {
+					background-color: var(--color-overcast);
+
+					.a-btn-secondary .a-btn__text:before,
+					a.a-btn-secondary .a-btn__text:before,
+					.t-sink .a-btn-secondary .a-btn__text:before,
+					.t-sink a.a-btn-secondary .a-btn__text:before,
+					.t-sink .wp-block-group__inner-container .a-btn-secondary .a-btn__text:before,
+					.t-sink .wp-block-group__inner-container a.a-btn-secondary .a-btn__text:before {
+						background-color: var(--color-parchment);
+						border-color: var(--color-parchment);
+					}
+
+					.a-btn-secondary .a-btn__text:after,
+					a.a-btn-secondary .a-btn__text:after,
+					.t-sink .a-btn-secondary .a-btn__text:after,
+					.t-sink a.a-btn-secondary .a-btn__text:after,
+					.t-sink .wp-block-group__inner-container .a-btn-secondary .a-btn__text:after,
+					.t-sink .wp-block-group__inner-container a.a-btn-secondary .a-btn__text:after {
+						color: var(--color-ink);
+					}
+
+					.a-btn-multimedia-secondary .a-btn__text:before,
+					a.a-btn-multimedia-secondary .a-btn__text:before,
+					.t-sink a.a-btn-multimedia-secondary .a-btn__text:before,
+					.t-sink .wp-block-group__inner-container a.a-btn-multimedia-secondary .a-btn__text:before {
+						box-shadow: 0 0 1px 1px var(--color-parchment);
+					}
+
+					.a-btn-multimedia-secondary .a-btn__text:after,
+					a.a-btn-multimedia-secondary .a-btn__text:after,
+					.t-sink a.a-btn-multimedia-secondary .a-btn__text:after,
+					.t-sink .wp-block-group__inner-container a.a-btn-multimedia-secondary .a-btn__text:after {
+						background-color: var(--color-parchment);
+						color: var(--color-ink);
+					}
+				}
+			}
+		}
+
+		.c-card * {
+			color: var(--color-parchment);
+		}
+	}
+
+	&.spotlight {
+
+		.a-btn__text {
+
+			&:before {
+				border-color: var(--color-slate);
+			}
+		}
+	}
+
+	&.spotlight.t-theme--light {
+
+		.c-card * {
+			color: var(--color-parchment);
+		}
+	}
+
+	.b-card-grid__header {
+		position: relative;
+		z-index: 2;
+	}
+
+	/* Change breakpoint of card grid */
+	.g-3-up {
+		@media (--viewport-medium) {
+			margin: var(--grid-gutter-medium-half-negative);
+			margin-top: 0;
+		}
+
+		@media (--viewport-full) {
+			margin: var(--grid-gutter-medium-half-negative);
+			margin-top: 0;
+		}
+
+		@media (--viewport-large) {
+			margin: var(--grid-gutter-half-negative);
+			margin-top: 0;
+		}
+
+		& > .c-card,
+		& > .c-card-link-wrapper {
+			@media (--viewport-medium) {
+				width: calc(50% - var(--grid-gutter-medium));
+				margin: var(--grid-gutter-medium-half);
+			}
+
+			@media (--viewport-full) {
+				width: calc(50% - var(--grid-gutter-medium));
+				margin: var(--grid-gutter-medium-half);
+			}
+
+			@media (--viewport-large) {
+				width: calc(33.3333% - var(--grid-gutter));
+				margin: var(--grid-gutter-half);
+			}
+		}
+	}
+
+	.g-2-up {
+		@media (--viewport-medium) {
+			margin: var(--grid-gutter-medium-half-negative);
+			margin-top: 0;
+		}
+
+		@media (--viewport-full) {
+			margin: var(--grid-gutter-medium-half-negative);
+			margin-top: 0;
+		}
+
+		@media (--viewport-large) {
+			margin: var(--grid-gutter-half-negative);
+			margin-top: 0;
+		}
+
+		& > .c-card,
+		& > .c-card-link-wrapper {
+			@media (--viewport-medium) {
+				width: calc(50% - var(--grid-gutter-medium));
+				margin: var(--grid-gutter-medium-half);
+			}
+
+			@media (--viewport-full) {
+				margin: var(--grid-gutter-medium-half);
+			}
+
+			@media (--viewport-large) {
+				width: calc(50% - var(--grid-gutter));
+				margin: var(--grid-gutter-half);
+			}
+		}
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Block Header - need to account for negative card margins
+ * ----------------------------------------------------------------------------- */
+
+.c-block__content-block.c-block__header.b-card-grid__header {
+	max-width: none;
+
+	@media (--viewport-medium) {
+		display: flex;
+		flex-direction: row;
+	}
+
+	@media (--viewport-medium) {
+		display: flex;
+	}
+}
+
+.b-card-grid__title {
+	padding-right: var(--grid-gutter-small);
+
+	@media (--viewport-medium) {
+		padding-right: var(--grid-gutter);
+		width: 50%;
+	}
+}
+
+.b-card-grid .c-content-block__content-wrap {
+	padding-bottom: 12px;
+	padding-right: var(--grid-gutter-small);
+
+	@media (--viewport-medium) {
+		padding-bottom: 0;
+		padding-left: var(--grid-gutter-small);
+		width: 50%;
+	}
+}
+
+.b-card-grid .c-content-block__content {
+	margin-top: 0;
+}
+
+.c-block__header .c-block__title.b-card-grid__title {
+	@mixin t-display-x-small;
+
+	font-family: var(--font-family-canela-deck);
+	font-weight: normal;
+
+	@media (--viewport-medium) {
+		@mixin t-display;
+	}
+
+	@media (--viewport-full) {
+		@mixin t-display-large;
+	}
+}
+
+.b-card-grid .c-image--bg {
+	position: relative;
+	box-sizing: border-box;
+
+	&:before {
+		position: relative;
+		display: block;
+		content: "";
+		padding-top: 66%;
+		box-sizing: border-box;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Cards Loop
+ * ----------------------------------------------------------------------------- */
+
+.b-card-grid__loop {
+	background-color: var(--color-parchment);
+	padding-top: 12px;
+	position: relative;
+	z-index: 2;
+
+	.t-theme--light & {
+		background-color: var(--color-wrought-iron);
+	}
+
+	&.g-3-up {
+
+		&:after {
+			display: none;
+
+			@media (--viewport-medium) {
+				display: block;
+			}
+
+			@media (--viewport-large) {
+				display: none;
+			}
+		}
+	}
+
+	&.g-2-up {
+		position: relative;
+		z-index: auto;
+	}
+
+	@media (--viewport-medium) {
+		padding-bottom: 12px;
+	}
+}

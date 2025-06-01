@@ -1,0 +1,562 @@
+/* src/components/Navigation/Navigation.module.css */
+
+/* Custom Properties (CSS Variables) for easy theming */
+:root {
+  --color-brand-primary: #a51c30;
+  --color-brand-secondary: #ffd700;
+  --color-gray-soft: #f2f2f2;
+  --color-gray-medium: #e0e0e0;
+  --color-text-body: #333333;
+  --color-text-dark: #555555;
+  --color-text-white: #ffffff;
+  --color-red-500: #ef4444; /* Standard Tailwind red-500 */
+  --color-blue-500: #3b82f6; /* Standard Tailwind blue-500 */
+
+  --font-family-body: "Inter", sans-serif;
+  --font-family-heading: "Playfair Display", serif;
+
+  --header-height-initial: 5rem; /* ~py-3/py-4 + icon height */
+  --header-height-scrolled: 3.5rem;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background-color: var(--color-text-white);
+  padding: 0.75rem 1.5rem; /* py-3 px-6 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* shadow-md */
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height-initial); /* Initial height */
+}
+
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  height: var(--header-height-scrolled); /* Shrink vertically */
+  padding-top: 0.5rem; /* Shrink padding */
+  padding-bottom: 0.5rem;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; /* Ensure it spans full width */
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space-x-2 */
+  text-decoration: none;
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700; /* font-bold */
+  color: var(--color-brand-primary);
+  letter-spacing: 0.05em; /* tracking-wide */
+}
+.logo img {
+  height: 2.5rem; /* h-10 */
+  width: 2.5rem; /* w-10 */
+  border-radius: 9999px; /* rounded-full */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* shadow-sm */
+}
+
+/* Desktop Navigation (hidden by default, shown by media query in global CSS) */
+.desktopNav {
+  display: none; /* hidden */
+  align-items: center;
+  gap: 1.5rem; /* space-x-6 */
+}
+@media (min-width: 768px) {
+  /* md breakpoint */
+  .desktopNav {
+    display: flex;
+  }
+}
+
+.desktopNavItem {
+  position: relative; /* For potential sub-menus if not using full overlay for all */
+}
+.desktopNavLink,
+.desktopNavButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem; /* text-base */
+  font-weight: 500; /* font-medium */
+  color: var(--color-text-body);
+  padding: 0.5rem 0.75rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  border-radius: 0.25rem;
+  text-decoration: none; /* For navLink */
+}
+.desktopNavLink:hover,
+.desktopNavButton:hover {
+  color: var(--color-brand-primary);
+  background-color: var(--color-gray-soft);
+}
+.desktopNavButton:focus,
+.desktopGlobalMenuToggle:focus,
+.mobileMenuToggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-brand-secondary); /* focus:ring-2 focus:ring-brand-secondary */
+}
+
+.desktopGlobalMenuToggle {
+  /* Default styling for the hamburger/menu button */
+  padding: 0.5rem; /* p-2 */
+  border-radius: 9999px; /* rounded-full */
+  color: var(--color-brand-primary);
+  background-color: var(--color-gray-soft); /* hover:bg-gray-soft */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.desktopGlobalMenuToggle:hover {
+  background-color: var(--color-gray-medium); /* Slightly darker on hover */
+  color: var(--color-brand-primary);
+}
+
+/* Mobile/Tablet Controls */
+.mobileTabletControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* space-x-4 */
+}
+@media (min-width: 768px) {
+  /* md breakpoint */
+  .mobileTabletControls {
+    display: none; /* hidden */
+  }
+}
+
+.mobileTabletSearch,
+.mobileMenuToggle {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  color: var(--color-brand-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.mobileTabletSearch:hover,
+.mobileMenuToggle:hover {
+  background-color: var(--color-gray-soft);
+}
+
+/* --- Navigation Overlay (Full Screen Menu) --- */
+.navigationOverlay {
+  position: fixed;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem; /* p-4 */
+  background-color: rgba(255, 255, 255, 0.98); /* white, 98% opacity */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 999; /* Ensure it's on top */
+  opacity: 0; /* Start hidden for animation */
+  visibility: hidden; /* Hide completely when not open */
+  transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+}
+
+.navigationOverlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Overlay Content Area */
+.overlayContentArea {
+  background-color: var(--color-text-white);
+  border-radius: 1rem; /* 16px */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  max-width: 1400px;
+  height: 90vh;
+  max-height: 950px;
+  display: flex;
+  flex-direction: column; /* Default: column for mobile drill-down */
+  position: relative;
+  overflow: hidden; /* Hide internal scrollbars initially */
+}
+@media (min-width: 768px) {
+  /* md breakpoint */
+  .overlayContentArea {
+    flex-direction: row; /* Row for desktop multi-column */
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem; /* top-4 */
+  right: 1rem; /* right-4 */
+  z-index: 50;
+  padding: 0.5rem; /* p-2 */
+  border-radius: 9999px; /* rounded-full */
+  background-color: var(--color-gray-medium);
+  color: var(--color-brand-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+.closeButton:hover {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-white);
+}
+.closeButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-brand-secondary);
+}
+
+/* Left Navigation Panel (Categories) */
+.leftNavPanel {
+  background-color: var(--color-gray-soft);
+  padding: 1.5rem; /* p-6 */
+  padding-top: 3rem;
+  flex-shrink: 0; /* Do not shrink */
+  overflow-y: auto; /* Enable scroll if content overflows */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.leftNavPanel::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 768px) {
+  /* md breakpoint */
+  .leftNavPanel {
+    width: 33.3333%; /* w-1/3 */
+    border-right: 1px solid var(--color-gray-medium);
+  }
+}
+@media (min-width: 1024px) {
+  /* lg breakpoint */
+  .leftNavPanel {
+    width: 25%; /* w-1/4 */
+  }
+}
+
+.overlayLogo {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* space-x-4 */
+  margin-bottom: 2rem; /* mb-8 */
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  color: var(--color-brand-primary);
+  letter-spacing: 0.05em; /* tracking-wide */
+  text-decoration: none;
+}
+.overlayLogo img {
+  height: 3.5rem; /* h-14 */
+  width: 3.5rem; /* w-14 */
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+}
+
+.leftNavList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* space-y-2 */
+}
+
+/* Mega Menu Item Button (Left Nav) */
+.megaMenuItemButton {
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem 2rem;
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600;
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-dark);
+}
+.megaMenuItemButton:hover {
+  background-color: var(--color-gray-soft);
+  color: var(--color-text-body);
+}
+.megaMenuItemButton.activeCategory {
+  background-color: var(--color-text-white);
+  color: var(--color-brand-primary);
+}
+.megaMenuItemButton.activeCategory::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  background-color: var(--color-brand-primary);
+  animation: slideInLeft 0.3s forwards;
+}
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.megaMenuItemButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-brand-secondary);
+}
+
+/* Quick Links in Overlay Footer (Desktop only) */
+.quickLinksOverlay {
+  padding: 2rem;
+  border-top: 1px solid var(--color-gray-medium);
+  margin-top: auto; /* Push to bottom */
+  display: none; /* hidden */
+}
+@media (min-width: 768px) {
+  /* md breakpoint */
+  .quickLinksOverlay {
+    display: block; /* block */
+  }
+}
+.quickLinksOverlay h4 {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 1rem; /* mb-4 */
+}
+.quickLinksOverlay ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* space-y-2 */
+}
+.quickLinksOverlay a {
+  color: var(--color-text-dark);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.quickLinksOverlay a:hover {
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+}
+
+/* Right Content Panel (Dynamic) */
+.rightContentPanel {
+  padding: 1.5rem; /* p-6 */
+  overflow-y: auto; /* For scrolling content within the panel */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.rightContentPanel::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 768px) {
+  /* md breakpoint */
+  .rightContentPanel {
+    padding: 2.5rem; /* p-10 */
+  }
+}
+
+.megaMenuGrid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default 1 column for mobile */
+  gap: 2rem; /* gap-8 */
+  height: 100%; /* Ensure it fills parent height */
+}
+@media (min-width: 768px) {
+  /* md breakpoint */
+  .megaMenuGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+  }
+}
+@media (min-width: 1024px) {
+  /* lg breakpoint */
+  .megaMenuGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* lg:grid-cols-3 */
+  }
+}
+
+/* Sub-Link Styles */
+.navSubLink {
+  color: var(--color-text-dark);
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space-x-3 */
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.navSubLink:hover {
+  color: var(--color-brand-primary);
+}
+.navSubLink span:first-child {
+  /* The arrow */
+  color: var(--color-brand-primary);
+  font-size: 1.5rem; /* text-2xl */
+  transition: transform 0.2s ease;
+}
+.navSubLink:hover span:first-child {
+  transform: translateX(0.5rem); /* translate-x-2 */
+}
+
+/* CTA Buttons */
+.ctaButton {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-white);
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(165, 28, 48, 0.2);
+  text-decoration: none; /* For links */
+  display: inline-flex; /* For text and arrow alignment */
+  align-items: center;
+  justify-content: center;
+}
+.ctaButton:hover {
+  background-color: #8c1929;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(165, 28, 48, 0.3);
+}
+
+/* Card Styling */
+.card {
+  background-color: var(--color-text-white);
+  border-radius: 0.75rem; /* 12px */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Ensure content stays within rounded corners */
+}
+.card:hover {
+  transform: translateY(-0.5rem); /* -8px */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.storyCardImage {
+  width: 100%;
+  height: 12.5rem; /* 200px */
+  object-fit: cover;
+  border-radius: 0.5rem; /* 8px */
+  margin-bottom: 1rem;
+}
+
+/* Mobile Drill-down specific styles */
+.menuLevelsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* Enable scrolling for drill-down content */
+}
+.backButton {
+  background: none;
+  border: none;
+  color: var(--color-text-dark);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-gray-medium);
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease;
+}
+.backButton:hover {
+  color: var(--color-brand-primary);
+}
+.backButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-brand-secondary);
+}
+
+.level0.navItemContainer,
+.level1.navItemContainer {
+  /* Common spacing for all levels in drilldown */
+  border-bottom: 1px solid var(--color-gray-soft);
+}
+
+.navLink,
+.navButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 500;
+  color: var(--color-text-body);
+  padding: 1rem 1.5rem; /* py-4 px-6 */
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none; /* For links */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.navLink:hover,
+.navButton:hover {
+  background-color: var(--color-gray-soft);
+  color: var(--color-brand-primary);
+}
+.navButton.active {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-white);
+}
+.navButton.active .arrowIcon {
+  color: var(--color-text-white);
+}
+
+.arrowIcon {
+  color: var(--color-text-dark);
+  transition: color 0.2s ease;
+}
+
+/* Contextual content for active categories in desktop mega-menu */
+.activeColumnContent {
+  /* This would contain the heading, description, featured story, etc. */
+  padding: 1.5rem;
+  background-color: var(--color-text-white);
+  border-radius: 0.75rem;
+}
+
+/* Quick Links in header (desktop) */
+.desktopQuickLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.ctaButtonOutline {
+  /* Used for desktop quick links */
+  background: none;
+  border: 2px solid var(--color-brand-primary);
+  color: var(--color-brand-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.ctaButtonOutline:hover {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-white);
+}
+.ctaButtonSolid {
+  /* Used for desktop quick links */
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-white);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.ctaButtonSolid:hover {
+  background-color: #8c1929;
+}

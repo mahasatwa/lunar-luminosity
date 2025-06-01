@@ -1,0 +1,83 @@
+/* -----------------------------------------------------------------------------
+ *
+ * Component: Block: Spacer
+ *
+ * ----------------------------------------------------------------------------- */
+
+.b-spacer {
+    background-color: var(--color-parchment);
+    margin: 0;
+	overflow: hidden;
+    padding-bottom: var(--spacer-40);
+    padding-top: var(--spacer-40);
+	position: relative;
+
+	&:before {
+		border-left: 1px solid var(--color-shade);
+		content: "";
+		height: 100%;
+		left: 50%;
+		position: absolute;
+		top: 0;
+		transform: translateX(-50%);
+		width: 1px;
+		z-index: 1;
+	}
+
+	/* Remove line on Landing and Secondary Landing pages */
+	.page-template-landing-page &,
+	.page-template-landing-page-secondary & {
+
+		&:before {
+			display: none;
+		}
+	}
+
+	&.no-line {
+		position: relative;
+		z-index: 2;
+
+		&:before {
+			display: none;
+		}
+	}
+
+    @media (--viewport-medium) {
+        padding-bottom: var(--spacer-70);
+        padding-top: var(--spacer-70);
+    }
+
+    /* CASE: Light */
+    &.t-theme--light {
+        background-color: var(--color-wrought-iron);
+    }
+
+	/* CASE: Reduce Spacing */
+	&.reduce-spacing {
+		padding-bottom: var(--spacer-20);
+		padding-top: var(--spacer-20);
+
+		@media (--viewport-medium) {
+			padding-bottom: var(--spacer-40);
+			padding-top: var(--spacer-40);
+		}
+	}
+
+	/* CASE: Display only on desktop */
+	&.desktop-only {
+		display: none;
+
+		@media (--viewport-medium) {
+			display: block;
+		}
+	}
+
+	/* CASE: Display only on desktop */
+	&.mobile-only {
+		display: block;
+
+		@media (--viewport-medium) {
+			display: none;
+		}
+	}
+}

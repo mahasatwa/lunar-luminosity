@@ -1,0 +1,190 @@
+.site-header {
+	position: sticky;
+	user-select: none;
+	z-index: var(--z-index-header);
+
+	/* CASE: site overlay */
+	&:before {
+		content: '';
+		position: fixed;
+		width: 100%;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(14, 14, 14, 0.2);
+		opacity: 0;
+		overflow: hidden;
+		visibility: hidden;
+		height: 0;
+		/* transition: opacity 0.15s ease-in-out; */
+	}
+
+	/* CASE: scrolling */
+	.site-scrolling & {
+
+	}
+
+	/* CASE: ensure hidden from view header does not obstruct site interaction */
+	&:not(.site-search--is-open) {
+
+		.site-scrolling--masthead-stuck:not(.site-scrolling--up) & {
+			pointer-events: none;
+		}
+	}
+
+	.site-scrolling--masthead-stuck &,
+	&.site-search--is-open {
+		top: 0;
+	}
+
+	/* CASE: scrolling | sticky masthead active && logged in */
+	.site-scrolling--masthead-stuck.admin-bar & {
+		top: var(--spacer-wpadmin-mobile);
+
+		@media (--viewport-wpadmin) {
+			top: var(--spacer-wpadmin-desktop);
+		}
+	}
+
+	/* CASE: search active (when not scrolled in) */
+	&.site-search--is-open {
+
+		.admin-bar & {
+			top: var(--spacer-wpadmin-mobile);
+
+			@media (--viewport-wpadmin) {
+				top: var(--spacer-wpadmin-desktop);
+			}
+		}
+	}
+
+	/* CASE: scrolling | down */
+	.site-scrolling--down & {
+
+	}
+
+	/* CASE: scrolling | up */
+	.site-scrolling--up & {
+
+	}
+
+	/* CASE: scrolling | disable transitions opportunity */
+	.site-scrolling--disable-transitions & {
+
+	}
+}
+
+/* CASE: theme | dark */
+.site-header--theme-dark {
+
+}
+
+/* CASE: theme | light */
+.site-header--theme-light {
+
+}
+
+/* CASE: position | static */
+.site-header--position-static {
+
+}
+
+/* CASE: position | fixed / overlaid */
+.site-header--position-fixed {
+	margin-bottom: calc(var(--spacer-site-header-mobile) * -1);
+
+	@media (--viewport-medium) {
+		margin-bottom: calc(var(--spacer-site-header-tablet) * -1);
+	}
+
+	@media (--viewport-full) {
+		margin-bottom: calc(var(--spacer-site-header-desktop) * -1);
+	}
+}
+
+/* -----------------------------------------------------------------------------
+ * Header: Wrapper
+ * ----------------------------------------------------------------------------- */
+
+.site-header__wrapper {
+
+}
+
+/* -----------------------------------------------------------------------------
+ * Header: Brand
+ * ----------------------------------------------------------------------------- */
+
+.site-header__brand {
+	z-index: var(--z-index-header);
+	height: var(--spacer-site-header-mobile);
+	line-height: var(--spacer-site-header-mobile);
+	user-select: none;
+	position: relative;
+	transition: transform 0.15s ease, background-color 0.15s ease;
+	display: flex;
+	justify-content: space-between;
+
+	@media (--viewport-medium) {
+		height: var(--spacer-site-header-tablet);
+		line-height: var(--spacer-site-header-tablet);
+	}
+
+	@media (--viewport-xlarge) {
+		height: var(--spacer-site-header-desktop);
+		line-height: var(--spacer-site-header-desktop);
+	}
+
+	/* CASE: position | static */
+	.site-header--position-static & {
+		background-color: var(--color-grout);
+		border-bottom: 1px solid var(--color-shade);
+	}
+
+	/* CASE: scrolling | sticky masthead active */
+	.site-scrolling--masthead-stuck & {
+		transform: translateY(calc(var(--spacer-site-header-mobile) * -1));
+		background-color: var(--color-white);
+		border-bottom: 1px solid var(--color-shade);
+
+		@media (--viewport-medium) {
+			transform: translateY(calc(var(--spacer-site-header-tablet) * -1));
+		}
+
+		@media (--viewport-full) {
+			transform: translateY(calc(var(--spacer-site-header-desktop) * -1));
+		}
+	}
+
+	/* CASE: scrolling | up || search active (when not scrolled in) */
+	.site-scrolling--masthead-stuck .site-search--is-open &,
+	.site-scrolling--up & {
+		transform: translateY(0);
+	}
+
+	/* CASE: scrolling | disable transitions opportunity */
+	.site-scrolling--disable-transitions & {
+		transition: none;
+	}
+
+	/* CASE: search active (when not scrolled in) */
+	.site-search--is-open & {
+		transition: background-color 0.15s ease;
+	}
+}
+
+.site-header__brand-inner {
+	padding: 0 24px;
+	display: flex;
+	align-items: center;
+	width: 100%;
+
+	@media (--viewport-full) {
+		padding: 0 0 0 40px;
+	}
+}
+
+/* WP Admin Bar */
+#wpadminbar {
+	position: fixed !important;
+}
