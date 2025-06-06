@@ -904,6 +904,186 @@
   animation: fadeInUp 0.4s ease-out forwards;
 }
 
+/* Atur container utama untuk layout tiga kolom */
+.navigationContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem; /* Sesuaikan sesuai desain */
+    gap: 1.5rem; /* Jarak antar elemen utama */
+}
+
+.logo {
+    flex-shrink: 0; /* Mencegah logo mengecil */
+}
+
+/* Styling untuk navigasi tengah */
+.desktopNav {
+    display: flex; /* Defaultnya sudah flex, ini untuk penegasan */
+    justify-content: center;
+    flex-grow: 1; /* Biarkan bagian ini mengisi ruang kosong di tengah */
+    gap: 2.5rem; /* Jarak antar link */
+}
+
+.desktopNavItem {
+    color: var(--color-text-primary); /* Gunakan variabel warna jika ada */
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent; /* Untuk efek hover */
+}
+
+.desktopNavItem:hover {
+    color: #A51C30; /* Warna merah utama Anda */
+    border-bottom-color: #A51C30;
+}
+
+/* Styling untuk grup kontrol di sebelah kanan */
+.rightControls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Jarak antara CTA dan tombol Menu */
+}
+
+/* Styling untuk tombol CTA "Daftar Sekarang" */
+.ctaButton.primary {
+    display: block; /* Pastikan terlihat */
+    padding: 0.75rem 1.5rem;
+    background-color: #A51C30;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
+}
+
+.ctaButton.primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(165, 28, 48, 0.3);
+}
+
+
+/* --- Media Query untuk Responsif --- */
+@media (max-width: 1023px) {
+    /* Sembunyikan navigasi tengah dan tombol CTA di luar desktop */
+    .desktopNav {
+        display: none;
+    }
+    .ctaButton.primary {
+        display: none;
+    }
+
+    /* Pastikan container tetap mengisi ruang */
+    .navigationContainer {
+        padding: 1rem 1.5rem;
+    }
+}
+
+
+/* Styling untuk Sistem Navigasi Drill-Down Baru */
+.drillDownOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: #1A1A1A; /* Warna hitam sesuai visi desain */
+    z-index: 40;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow-y: auto;
+    color: white;
+}
+
+.drillDownOverlayVisible {
+    transform: translateY(0);
+}
+
+.drillDownContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6rem 2rem 2rem; /* pt-24 pb-8 */
+}
+
+.drillDownGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .drillDownGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.drillDownColumn {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    pointer-events: none;
+}
+/* Kolom pertama selalu terlihat */
+.drillDownGrid > :first-child {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.drillDownColumnVisible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.drillDownColumnTitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #FFC107; /* Warna emas */
+    text-transform: uppercase;
+}
+
+.drillDownDescription {
+    color: #a0aec0; /* gray-400 */
+    margin-bottom: 1.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.drillDownList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* space-y-3 */
+}
+
+.drillDownItem {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem; /* text-lg */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease-in-out;
+}
+.drillDownItem:hover {
+    color: #FFC107; /* Emas saat hover */
+}
+.drillDownItemActive {
+    color: #FFC107; /* Emas saat aktif */
+}
+.drillDownLink {
+    text-decoration: none;
+    color: inherit;
+}
+.drillDownArrow {
+    font-size: 1.5rem;
+    color: #a0aec0; /* gray-400 */
+}
+
+
 @keyframes slideInLeft {
   from {
     transform: translateX(-100%);
