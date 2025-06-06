@@ -4,6 +4,8 @@ import { navigationData, quickLinksData } from "../../data/NavigationData";
 import NavigationOverlay from "./NavigationOverlay";
 import useBreakpoint from "../../hooks/useBreakpoint";
 
+import { getOptimizedImageUrl } from "../../utils/cloudinary";
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHeaderScrolled, setIsHeaderScrolled] = useState(false);
@@ -30,6 +32,12 @@ const Navigation = () => {
     )
   );
 
+  const logoUrl = getOptimizedImageUrl("https://res.cloudinary.com/dmadbfz58/image/upload/v1747184641/logo-dwimulya-480_w6qwuq.png", {
+    width: 64,
+    height: 64,
+    crop: "fit",
+  });
+
   return (
     <>
       <header
@@ -44,11 +52,13 @@ const Navigation = () => {
             className={styles.logo}
             aria-label="Beranda STIE Dwimulya"
           >
-            {/* Ganti dengan komponen logo SVG atau gambar Anda */}
+            {/* 3. Gunakan URL yang sudah jadi di tag <img> standar */}
             <img
-              src="/logo-stie-dwimulya.png"
+              src={logoUrl}
               alt="Logo STIE Dwimulya"
-              style={{ height: "40px" }}
+              className={styles.headerLogoImage}
+              width={160}
+              height={64}
             />
           </a>
 

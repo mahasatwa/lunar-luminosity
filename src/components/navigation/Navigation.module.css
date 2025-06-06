@@ -61,8 +61,8 @@
   letter-spacing: 0.05em; /* tracking-wide */
 }
 .logo img {
-  height: 2.5rem; /* h-10 */
-  width: 2.5rem; /* w-10 */
+  height: 4rem; /* h-10 */
+  width: 4rem; /* w-10 */
   border-radius: 9999px; /* rounded-full */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* shadow-sm */
 }
@@ -983,6 +983,147 @@
     }
 }
 
+/*
+ * Sistem Navigasi Drawer Baru
+ */
+
+.drawerOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: #1A1A1A; /* Warna utama dari Visi Desain */
+    color: white;
+    z-index: 50;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.drawerVisible {
+    transform: translateY(0);
+}
+
+.drawerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    flex-shrink: 0;
+}
+
+.backButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.drawerGrid {
+    flex-grow: 1;
+    display: grid;
+    padding: 1rem 1.5rem 2rem;
+    gap: 2rem;
+    overflow: hidden; /* Mencegah scrollbar horizontal saat animasi */
+    
+    /* Mobile: 1 Kolom */
+    grid-template-columns: 1fr;
+}
+
+/* Tablet: 2 Kolom */
+@media (min-width: 768px) {
+    .drawerGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop: 3 Kolom */
+@media (min-width: 1024px) {
+    .drawerGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.drawerColumn {
+    overflow-y: auto; /* Izinkan scroll per kolom jika konten panjang */
+    transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
+}
+
+.columnVisible {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.columnHidden {
+    transform: translateX(-30px); /* Efek slide dari kiri */
+    opacity: 0;
+    pointer-events: none;
+    position: absolute; /* Hilangkan dari layout flow agar tidak memakan tempat */
+}
+
+.columnTitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FFC107; /* Emas dari Visi Desain */
+    margin-bottom: 0.5rem;
+}
+
+.columnDescription {
+    color: #a0aec0;
+    margin-bottom: 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.navButton, .navLink {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.navButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.navButton:hover, .navLink:hover {
+    color: #FFC107; /* Emas saat hover */
+}
+
+
+.headerLogoImage {
+  display: block; 
+  height: 64px;  
+  width: auto; 
+}
 
 /* Styling untuk Sistem Navigasi Drill-Down Baru */
 .drillDownOverlay {

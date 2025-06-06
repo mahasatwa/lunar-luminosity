@@ -1,16 +1,12 @@
 // src/types/navigation.d.ts
 
-// Tipe UserRole dihapus karena tidak lagi digunakan.
-
 export interface NavItem {
-  id: string; // ID unik untuk routing/tracking
+  id: string; 
   title: string;
-  link?: string; // Jika ini adalah link langsung
-  path?: string; // Path relatif untuk link internal (bisa digunakan untuk routing)
+  link?: string; 
+  path?: string; 
   subItems?: NavItem[];
-  // Properti 'roles' telah dihapus.
 
-  // Properti untuk konten kaya (rich content) di MegaMenu
   heading?: string;
   description?: string;
   featured?: {
@@ -24,7 +20,7 @@ export interface NavItem {
     author: string;
   };
 
-  isExternal?: boolean; // Untuk menandai link eksternal seperti portal
+  isExternal?: boolean; 
   // Tambahkan properti lain seperti 'icon' jika diperlukan
 }
 
