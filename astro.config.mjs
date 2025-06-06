@@ -8,6 +8,8 @@ import partytown from "@astrojs/partytown";
 import icon from "astro-icon";
 import compress from "astro-compress";
 
+import vercel from '@astrojs/vercel/serverless'; 
+
 // Add path resolution if needed
 import path from "path";
 import { fileURLToPath } from "url";
@@ -94,8 +96,13 @@ export default defineConfig({
     },
   },
 
-  output: "static",
-  build: {
+  output: "server",
+  adapter: vercel({
+    imageService: true,
+    webAnalytics: {
+      enabled: true,
+    },
+  }),  build: {
     inlineStylesheets: "auto",
   },
 });
