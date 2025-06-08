@@ -157,6 +157,7 @@ const DrawerContent: React.FC<DrawerContentProps> = ({
 
       {/* Footer dengan Quick Links */}
       <div className={styles.drawerFooter}>
+        <span className={styles.quickLinkTitle}>Akses Cepat</span>
         {quickLinksData.map((link) => (
           <a key={link.title} href={link.link} className={styles.quickLink}>
             {link.title}

@@ -1,7 +1,7 @@
 import React from "react";
 
 // 1. Mengimpor fungsi dari file cloudinary.ts Anda, BUKAN dari library eksternal
-import { getOptimizedImageUrl, getSrcSet } from "../utils/cloudinary";
+import { getOptimizedImageUrl, getSrcSet } from "../../utils/cloudinary";
 
 interface ResponsiveImageProps {
   publicId: string;
