@@ -1,1276 +1,154 @@
-/* src/components/Navigation/Navigation.module.css */
-
-/* Custom Properties (CSS Variables) for easy theming */
-:root {
-  --color-brand-primary: #a51c30;
-  --color-brand-secondary: #ffd700;
-  --color-gray-soft: #f2f2f2;
-  --color-gray-medium: #e0e0e0;
-  --color-text-body: #333333;
-  --color-text-dark: #555555;
-  --color-text-white: #ffffff;
-  --color-red-500: #ef4444; /* Standard Tailwind red-500 */
-  --color-blue-500: #3b82f6; /* Standard Tailwind blue-500 */
-
-  --font-family-body: "Inter", sans-serif;
-  --font-family-heading: "Playfair Display", serif;
-
-  --header-height-initial: 5rem; /* ~py-3/py-4 + icon height */
-  --header-height-scrolled: 3.5rem;
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 40;
-  background-color: var(--color-text-white);
-  padding: 0.75rem 1.5rem; /* py-3 px-6 */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* shadow-md */
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: var(--header-height-initial); /* Initial height */
-}
-
-.header.scrolled {
-  background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  height: var(--header-height-scrolled); /* Shrink vertically */
-  padding-top: 0.5rem; /* Shrink padding */
-  padding-bottom: 0.5rem;
-}
-
-.navContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%; /* Ensure it spans full width */
-}
-
-.logo a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* space-x-2 */
-  text-decoration: none;
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 700; /* font-bold */
-  color: var(--color-brand-primary);
-  letter-spacing: 0.05em; /* tracking-wide */
-}
-.logo img {
-  height: 4rem; /* h-10 */
-  width: 4rem; /* w-10 */
-  border-radius: 9999px; /* rounded-full */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* shadow-sm */
-}
-
-/* Desktop Navigation (hidden by default, shown by media query in global CSS) */
-.desktopNav {
-  display: none; /* hidden */
-  align-items: center;
-  gap: 1.5rem; /* space-x-6 */
-}
-@media (min-width: 768px) {
-  /* md breakpoint */
-  .desktopNav {
-    display: flex;
-  }
-}
-
-.desktopNavItem {
-  position: relative; /* For potential sub-menus if not using full overlay for all */
-}
-.desktopNavLink,
-.desktopNavButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem; /* text-base */
-  font-weight: 500; /* font-medium */
-  color: var(--color-text-body);
-  padding: 0.5rem 0.75rem;
-  transition: color 0.2s ease, background-color 0.2s ease;
-  border-radius: 0.25rem;
-  text-decoration: none; /* For navLink */
-}
-.desktopNavLink:hover,
-.desktopNavButton:hover {
-  color: var(--color-brand-primary);
-  background-color: var(--color-gray-soft);
-}
-.desktopNavButton:focus,
-.desktopGlobalMenuToggle:focus,
-.mobileMenuToggle:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-brand-secondary); /* focus:ring-2 focus:ring-brand-secondary */
-}
-
-.desktopGlobalMenuToggle {
-  /* Default styling for the hamburger/menu button */
-  padding: 0.5rem; /* p-2 */
-  border-radius: 9999px; /* rounded-full */
-  color: var(--color-brand-primary);
-  background-color: var(--color-gray-soft); /* hover:bg-gray-soft */
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-.desktopGlobalMenuToggle:hover {
-  background-color: var(--color-gray-medium); /* Slightly darker on hover */
-  color: var(--color-brand-primary);
-}
-
-/* Mobile/Tablet Controls */
-.mobileTabletControls {
-  display: flex;
-  align-items: center;
-  gap: 1rem; /* space-x-4 */
-}
-@media (min-width: 768px) {
-  /* md breakpoint */
-  .mobileTabletControls {
-    display: none; /* hidden */
-  }
-}
-
-.mobileTabletSearch,
-.mobileMenuToggle {
-  padding: 0.5rem;
-  border-radius: 9999px;
-  color: var(--color-brand-primary);
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-.mobileTabletSearch:hover,
-.mobileMenuToggle:hover {
-  background-color: var(--color-gray-soft);
-}
-
-/* --- Navigation Overlay (Full Screen Menu) --- */
-.navigationOverlay {
-  position: fixed;
-  inset: 0; /* top:0, right:0, bottom:0, left:0 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem; /* p-4 */
-  background-color: rgba(255, 255, 255, 0.98); /* white, 98% opacity */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  z-index: 999; /* Ensure it's on top */
-  opacity: 0; /* Start hidden for animation */
-  visibility: hidden; /* Hide completely when not open */
-  transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
-}
-
-.navigationOverlay.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Overlay Content Area */
-.overlayContentArea {
-  background-color: var(--color-text-white);
-  border-radius: 1rem; /* 16px */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-  width: 95%;
-  max-width: 1400px;
-  height: 90vh;
-  max-height: 950px;
-  display: flex;
-  flex-direction: column; /* Default: column for mobile drill-down */
-  position: relative;
-  overflow: hidden; /* Hide internal scrollbars initially */
-}
-@media (min-width: 768px) {
-  /* md breakpoint */
-  .overlayContentArea {
-    flex-direction: row; /* Row for desktop multi-column */
-  }
-}
-
-.closeButton {
-  position: absolute;
-  top: 1rem; /* top-4 */
-  right: 1rem; /* right-4 */
-  z-index: 50;
-  padding: 0.5rem; /* p-2 */
-  border-radius: 9999px; /* rounded-full */
-  background-color: var(--color-gray-medium);
-  color: var(--color-brand-primary);
-  transition: background-color 0.2s ease, color 0.2s ease;
-  border: none;
-  cursor: pointer;
-}
-.closeButton:hover {
-  background-color: var(--color-brand-primary);
-  color: var(--color-text-white);
-}
-.closeButton:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-brand-secondary);
-}
-
-/* Left Navigation Panel (Categories) */
-.leftNavPanel {
-  background-color: var(--color-gray-soft);
-  padding: 1.5rem; /* p-6 */
-  padding-top: 3rem;
-  flex-shrink: 0; /* Do not shrink */
-  overflow-y: auto; /* Enable scroll if content overflows */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.leftNavPanel::-webkit-scrollbar {
-  display: none;
-}
-@media (min-width: 768px) {
-  /* md breakpoint */
-  .leftNavPanel {
-    width: 33.3333%; /* w-1/3 */
-    border-right: 1px solid var(--color-gray-medium);
-  }
-}
-@media (min-width: 1024px) {
-  /* lg breakpoint */
-  .leftNavPanel {
-    width: 25%; /* w-1/4 */
-  }
-}
-
-.overlayLogo {
-  display: flex;
-  align-items: center;
-  gap: 1rem; /* space-x-4 */
-  margin-bottom: 2rem; /* mb-8 */
-  font-size: 1.5rem; /* text-2xl */
-  font-weight: 700; /* font-bold */
-  color: var(--color-brand-primary);
-  letter-spacing: 0.05em; /* tracking-wide */
-  text-decoration: none;
-}
-.overlayLogo img {
-  height: 3.5rem; /* h-14 */
-  width: 3.5rem; /* w-14 */
-  border-radius: 9999px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
-}
-
-.leftNavList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem; /* space-y-2 */
-}
-
-/* Mega Menu Item Button (Left Nav) */
-.megaMenuItemButton {
-  width: 100%;
-  text-align: left;
-  padding: 1.5rem 2rem;
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 600;
-  border-radius: 0.5rem; /* rounded-lg */
-  transition: background-color 0.2s ease, color 0.2s ease;
-  position: relative;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-text-dark);
-}
-.megaMenuItemButton:hover {
-  background-color: var(--color-gray-soft);
-  color: var(--color-text-body);
-}
-.megaMenuItemButton.activeCategory {
-  background-color: var(--color-text-white);
-  color: var(--color-brand-primary);
-}
-.megaMenuItemButton.activeCategory::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 6px;
-  background-color: var(--color-brand-primary);
-  animation: slideInLeft 0.3s forwards;
-}
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-.megaMenuItemButton:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-brand-secondary);
-}
-
-/* Quick Links in Overlay Footer (Desktop only) */
-.quickLinksOverlay {
-  padding: 2rem;
-  border-top: 1px solid var(--color-gray-medium);
-  margin-top: auto; /* Push to bottom */
-  display: none; /* hidden */
-}
-@media (min-width: 768px) {
-  /* md breakpoint */
-  .quickLinksOverlay {
-    display: block; /* block */
-  }
-}
-.quickLinksOverlay h4 {
-  font-size: 1.125rem; /* text-lg */
-  font-weight: 600;
-  color: var(--color-text-dark);
-  margin-bottom: 1rem; /* mb-4 */
-}
-.quickLinksOverlay ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem; /* space-y-2 */
-}
-.quickLinksOverlay a {
-  color: var(--color-text-dark);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.quickLinksOverlay a:hover {
-  color: var(--color-brand-primary);
-  text-decoration: underline;
-}
-
-/* Right Content Panel (Dynamic) */
-.rightContentPanel {
-  padding: 1.5rem; /* p-6 */
-  overflow-y: auto; /* For scrolling content within the panel */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.rightContentPanel::-webkit-scrollbar {
-  display: none;
-}
-@media (min-width: 768px) {
-  /* md breakpoint */
-  .rightContentPanel {
-    padding: 2.5rem; /* p-10 */
-  }
-}
-
-.megaMenuGrid {
-  display: grid;
-  grid-template-columns: 1fr; /* Default 1 column for mobile */
-  gap: 2rem; /* gap-8 */
-  height: 100%; /* Ensure it fills parent height */
-}
-@media (min-width: 768px) {
-  /* md breakpoint */
-  .megaMenuGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
-  }
-}
-@media (min-width: 1024px) {
-  /* lg breakpoint */
-  .megaMenuGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* lg:grid-cols-3 */
-  }
-}
-
-/* Sub-Link Styles */
-.navSubLink {
-  color: var(--color-text-dark);
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 600; /* font-semibold */
-  display: flex;
-  align-items: center;
-  gap: 0.75rem; /* space-x-3 */
-  text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-.navSubLink:hover {
-  color: var(--color-brand-primary);
-}
-.navSubLink span:first-child {
-  /* The arrow */
-  color: var(--color-brand-primary);
-  font-size: 1.5rem; /* text-2xl */
-  transition: transform 0.2s ease;
-}
-.navSubLink:hover span:first-child {
-  transform: translateX(0.5rem); /* translate-x-2 */
-}
-
-/* CTA Buttons */
-.ctaButton {
-  background-color: var(--color-brand-primary);
-  color: var(--color-text-white);
-  font-weight: 700;
-  padding: 0.9rem 2rem;
-  border-radius: 9999px;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 15px rgba(165, 28, 48, 0.2);
-  text-decoration: none; /* For links */
-  display: inline-flex; /* For text and arrow alignment */
-  align-items: center;
-  justify-content: center;
-}
-.ctaButton:hover {
-  background-color: #8c1929;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(165, 28, 48, 0.3);
-}
-
-/* Card Styling */
-.card {
-  background-color: var(--color-text-white);
-  border-radius: 0.75rem; /* 12px */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; /* Ensure content stays within rounded corners */
-}
-.card:hover {
-  transform: translateY(-0.5rem); /* -8px */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-.storyCardImage {
-  width: 100%;
-  height: 12.5rem; /* 200px */
-  object-fit: cover;
-  border-radius: 0.5rem; /* 8px */
-  margin-bottom: 1rem;
-}
-
-/* Mobile Drill-down specific styles */
-.menuLevelsContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto; /* Enable scrolling for drill-down content */
-}
-.backButton {
-  background: none;
-  border: none;
-  color: var(--color-text-dark);
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 1rem;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  border-bottom: 1px solid var(--color-gray-medium);
-  margin-bottom: 0.5rem;
-  transition: color 0.2s ease;
-}
-.backButton:hover {
-  color: var(--color-brand-primary);
-}
-.backButton:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-brand-secondary);
-}
-
-.level0.navItemContainer,
-.level1.navItemContainer {
-  /* Common spacing for all levels in drilldown */
-  border-bottom: 1px solid var(--color-gray-soft);
-}
-
-.navLink,
-.navButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.125rem; /* text-lg */
-  font-weight: 500;
-  color: var(--color-text-body);
-  padding: 1rem 1.5rem; /* py-4 px-6 */
-  width: 100%;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-decoration: none; /* For links */
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-.navLink:hover,
-.navButton:hover {
-  background-color: var(--color-gray-soft);
-  color: var(--color-brand-primary);
-}
-.navButton.active {
-  background-color: var(--color-brand-primary);
-  color: var(--color-text-white);
-}
-.navButton.active .arrowIcon {
-  color: var(--color-text-white);
-}
-
-.arrowIcon {
-  color: var(--color-text-dark);
-  transition: color 0.2s ease;
-}
-
-/* Contextual content for active categories in desktop mega-menu */
-.activeColumnContent {
-  /* This would contain the heading, description, featured story, etc. */
-  padding: 1.5rem;
-  background-color: var(--color-text-white);
-  border-radius: 0.75rem;
-}
-
-/* Quick Links in header (desktop) */
-.desktopQuickLinks {
-  display: flex;
-  gap: 1rem;
-}
-
-.ctaButtonOutline {
-  /* Used for desktop quick links */
-  background: none;
-  border: 2px solid var(--color-brand-primary);
-  color: var(--color-brand-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-.ctaButtonOutline:hover {
-  background-color: var(--color-brand-primary);
-  color: var(--color-text-white);
-}
-.ctaButtonSolid {
-  /* Used for desktop quick links */
-  background-color: var(--color-brand-primary);
-  color: var(--color-text-white);
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-.ctaButtonSolid:hover {
-  background-color: #8c1929;
-}
-
-/* Enhanced Navigation CSS - Add these to your Navigation.module.css */
-
-/* Full Screen Overlay Enhancements */
-.navigationOverlayFullScreen {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
-}
-
-.navigationOverlayFullScreen.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.fullScreenOverlayContent {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.fullScreenHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid var(--color-gray-medium);
-  margin-bottom: 2rem;
-}
-
-/* Three-Level Grid Layout */
-.fullScreenNavGrid {
-  display: grid;
-  grid-template-columns: 300px 320px 1fr;
-  gap: 2rem;
-  flex: 1;
-  min-height: 0; /* Important for grid overflow */
-}
-
-@media (max-width: 1024px) {
-  .fullScreenNavGrid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr;
-  }
-}
-
-/* Level 1: Main Categories */
-.fullScreenNavLevel1 {
-  background: var(--color-gray-soft);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  overflow-y: auto;
-}
-
-.fullScreenNavLevel1 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.fullScreenNavLevel1 li {
-  margin-bottom: 0.5rem;
-}
-
-.fullScreenNavLevel1 .fullScreenNavLink {
-  display: block;
-  width: 100%;
-  padding: 1rem 1.5rem;
-  background: none;
-  border: none;
-  text-align: left;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--color-text-dark);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.fullScreenNavLevel1 .fullScreenNavLink:hover {
-  background: var(--color-text-white);
-  color: var(--color-brand-primary);
-  transform: translateX(0.25rem);
-}
-
-.fullScreenNavLevel1 .fullScreenNavLink.active {
-  background: var(--color-brand-primary);
-  color: var(--color-text-white);
-}
-
-.fullScreenNavLevel1 .fullScreenNavLink.active::before {
-  content: "";
-  position: absolute;
-  right: -1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 12px solid var(--color-brand-primary);
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-}
-
-/* Level 2: Sub Categories */
-.fullScreenNavLevel2 {
-  background: var(--color-text-white);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  overflow-y: auto;
-  position: relative;
-}
-
-.fullScreenNavLevel2 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.fullScreenNavLevel2 li {
-  margin-bottom: 0.25rem;
-}
-
-.fullScreenNavLevel2 .fullScreenNavLink {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: none;
-  border: none;
-  text-align: left;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-text-body);
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-.fullScreenNavLevel2 .fullScreenNavLink:hover {
-  background: var(--color-gray-soft);
-  color: var(--color-brand-primary);
-  padding-left: 1.25rem;
-}
-
-.fullScreenNavLevel2 .fullScreenNavLink.active {
-  background: var(--color-brand-primary);
-  color: var(--color-text-white);
-}
-
-/* Level 3: Content Area */
-.fullScreenNavLevel3 {
-  background: var(--color-text-white);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.level3Title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-brand-primary);
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--color-brand-secondary);
-}
-
-.fullScreenNavLevel3 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.fullScreenNavSubLink {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  color: var(--color-text-body);
-  text-decoration: none;
-  border-radius: 0.375rem;
-  transition: all 0.2s ease;
-  font-weight: 500;
-}
-
-.fullScreenNavSubLink::before {
-  content: "→";
-  margin-right: 0.75rem;
-  color: var(--color-brand-primary);
-  font-weight: bold;
-  transition: transform 0.2s ease;
-}
-
-.fullScreenNavSubLink:hover {
-  background: var(--color-gray-soft);
-  color: var(--color-brand-primary);
-  transform: translateX(0.25rem);
-}
-
-.fullScreenNavSubLink:hover::before {
-  transform: translateX(0.25rem);
-}
-
-/* Level 3 Content Area for Featured Items */
-.level3Content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: linear-gradient(
-    135deg,
-    var(--color-gray-soft) 0%,
-    var(--color-text-white) 100%
-  );
-  border-radius: 0.75rem;
-  border: 2px solid var(--color-brand-secondary);
-}
-
-.storyCardImage {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.storyCardTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-brand-primary);
-  margin: 0;
-}
-
-.storyCardText {
-  color: var(--color-text-dark);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.storyCardLink {
-  display: inline-flex;
-  align-items: center;
-  color: var(--color-brand-primary);
-  font-weight: 600;
-  text-decoration: none;
-  margin-top: 0.5rem;
-  transition: all 0.2s ease;
-}
-
-.storyCardLink:hover {
-  color: var(--color-brand-primary);
-  transform: translateX(0.25rem);
-}
-
-/* Empty State */
-.emptyMenuSection {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  color: var(--color-text-dark);
-  font-style: italic;
-  text-align: center;
-  background: var(--color-gray-soft);
-  border-radius: 0.75rem;
-  border: 2px dashed var(--color-gray-medium);
-}
-
-/* Footer */
-.fullScreenFooter {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 2px solid var(--color-gray-medium);
-}
-
-/* Enhanced Quick Links */
-.quickLinksOverlay {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-
-.quickLinksOverlay h4 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-brand-primary);
-  margin-bottom: 1rem;
-  grid-column: 1 / -1;
-}
-
-.quickLinksOverlay ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.quickLinksOverlay a {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background: var(--color-gray-soft);
-  color: var(--color-text-body);
-  text-decoration: none;
-  border-radius: 2rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.quickLinksOverlay a:hover {
-  background: var(--color-brand-primary);
-  color: var(--color-text-white);
-  transform: translateY(-2px);
-}
-
-/* Animation Classes */
-.slideInFromLeft {
-  animation: slideInLeft 0.3s ease-out forwards;
-}
-
-.slideInFromRight {
-  animation: slideInRight 0.3s ease-out forwards;
-}
-
-.fadeInUp {
-  animation: fadeInUp 0.4s ease-out forwards;
-}
-
-/* Atur container utama untuk layout tiga kolom */
-.navigationContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 1rem 2rem; /* Sesuaikan sesuai desain */
-    gap: 1.5rem; /* Jarak antar elemen utama */
-}
-
-.logo {
-    flex-shrink: 0; /* Mencegah logo mengecil */
-}
-
-/* Styling untuk navigasi tengah */
-.desktopNav {
-    display: flex; /* Defaultnya sudah flex, ini untuk penegasan */
-    justify-content: center;
-    flex-grow: 1; /* Biarkan bagian ini mengisi ruang kosong di tengah */
-    gap: 2.5rem; /* Jarak antar link */
-}
-
-.desktopNavItem {
-    color: var(--color-text-primary); /* Gunakan variabel warna jika ada */
-    font-weight: 500;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent; /* Untuk efek hover */
-}
-
-.desktopNavItem:hover {
-    color: #A51C30; /* Warna merah utama Anda */
-    border-bottom-color: #A51C30;
-}
-
-/* Styling untuk grup kontrol di sebelah kanan */
-.rightControls {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem; /* Jarak antara CTA dan tombol Menu */
-}
-
-/* Styling untuk tombol CTA "Daftar Sekarang" */
-.ctaButton.primary {
-    display: block; /* Pastikan terlihat */
-    padding: 0.75rem 1.5rem;
-    background-color: #A51C30;
-    color: white;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    white-space: nowrap;
-}
-
-.ctaButton.primary:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(165, 28, 48, 0.3);
-}
-
-
-/* --- Media Query untuk Responsif --- */
-@media (max-width: 1023px) {
-    /* Sembunyikan navigasi tengah dan tombol CTA di luar desktop */
-    .desktopNav {
-        display: none;
-    }
-    .ctaButton.primary {
-        display: none;
-    }
-
-    /* Pastikan container tetap mengisi ruang */
-    .navigationContainer {
-        padding: 1rem 1.5rem;
-    }
-}
-
-/*
- * Sistem Navigasi Drawer Baru
+/* ===============================================
+ * STYLING FINAL UNTUK DRAWER NAVIGASI
+ * ===============================================
  */
 
-.drawerOverlay {
-    position: fixed;
-    inset: 0;
-    background-color: #1A1A1A; /* Warna utama dari Visi Desain */
-    color: white;
-    z-index: 50;
-    transform: translateY(-100%);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    display: flex;
-    flex-direction: column;
-}
-
-.drawerVisible {
-    transform: translateY(0);
+.drawerContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
 }
 
 .drawerHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    flex-shrink: 0;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  position: relative; /* Menjaga z-index di atas panel */
+  z-index: 10;
 }
 
 .backButton {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.backButton:hover {
+  opacity: 1;
 }
 
-.closeButton {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
+/* KUNCI #1: Wadah panel harus 'relative' untuk menjadi konteks posisi */
+.panelsContainer {
+  position: relative;
+  flex-grow: 1;
+  overflow: hidden; /* Sembunyikan panel yang keluar dari layar */
 }
 
-.drawerGrid {
-    flex-grow: 1;
-    display: grid;
-    padding: 1rem 1.5rem 2rem;
-    gap: 2rem;
-    overflow: hidden; /* Mencegah scrollbar horizontal saat animasi */
-    
-    /* Mobile: 1 Kolom */
-    grid-template-columns: 1fr;
+/* KUNCI #2: Setiap panel harus 'absolute' agar bisa ditumpuk */
+.panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 1.5rem;
+  overflow-y: auto;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Tablet: 2 Kolom */
-@media (min-width: 768px) {
-    .drawerGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* Kelas untuk mengontrol posisi panel */
+.panelVisible {
+  transform: translateX(0%);
+  /* Pastikan panel yang terlihat tidak diblokir interaksinya */
+  pointer-events: auto;
+}
+.panelHiddenLeft {
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+.panelInitialRight {
+  transform: translateX(100%);
+  pointer-events: none;
 }
 
-/* Desktop: 3 Kolom */
-@media (min-width: 1024px) {
-    .drawerGrid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.panelTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffc107; /* Emas */
+  margin-bottom: 0.5rem;
+  padding-top: 1rem;
 }
-
-.drawerColumn {
-    overflow-y: auto; /* Izinkan scroll per kolom jika konten panjang */
-    transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
+.panelDescription {
+  color: #a0aec0;
+  margin-bottom: 1.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
-
-.columnVisible {
-    transform: translateX(0);
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.columnHidden {
-    transform: translateX(-30px); /* Efek slide dari kiri */
-    opacity: 0;
-    pointer-events: none;
-    position: absolute; /* Hilangkan dari layout flow agar tidak memakan tempat */
-}
-
-.columnTitle {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #FFC107; /* Emas dari Visi Desain */
-    margin-bottom: 0.5rem;
-}
-
-.columnDescription {
-    color: #a0aec0;
-    margin-bottom: 1.5rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-}
-
 .navList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.navButton, .navLink {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0.75rem 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    color: white;
-    text-decoration: none;
-    transition: color 0.2s ease;
+.navButton,
+.navLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.8rem 0.25rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
 }
-.navButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-}
-
-.navButton:hover, .navLink:hover {
-    color: #FFC107; /* Emas saat hover */
-}
-
-
-.headerLogoImage {
-  display: block; 
-  height: 64px;  
-  width: auto; 
+.navButton:hover,
+.navLink:hover {
+  color: #ffc107;
 }
 
-/* Styling untuk Sistem Navigasi Drill-Down Baru */
-.drillDownOverlay {
-    position: fixed;
-    inset: 0;
-    background-color: #1A1A1A; /* Warna hitam sesuai visi desain */
-    z-index: 40;
-    transform: translateY(-100%);
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    overflow-y: auto;
-    color: white;
+.drawerFooter {
+  padding: 1.5rem;
+  margin-top: auto; /* Mendorong footer ke bawah */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  flex-shrink: 0;
+}
+.quickLink {
+  color: #a0aec0;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+.quickLink:hover {
+  color: white;
 }
 
-.drillDownOverlayVisible {
-    transform: translateY(0);
-}
-
-.drillDownContainer {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 6rem 2rem 2rem; /* pt-24 pb-8 */
-}
-
-.drillDownGrid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 2rem;
-}
-
-@media (min-width: 768px) {
-    .drillDownGrid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.drillDownColumn {
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-    pointer-events: none;
-}
-/* Kolom pertama selalu terlihat */
-.drillDownGrid > :first-child {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.drillDownColumnVisible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.drillDownColumnTitle {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem; /* text-2xl */
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #FFC107; /* Warna emas */
-    text-transform: uppercase;
-}
-
-.drillDownDescription {
-    color: #a0aec0; /* gray-400 */
-    margin-bottom: 1.5rem;
-    font-family: 'Inter', sans-serif;
-}
-
-.drillDownList {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem; /* space-y-3 */
-}
-
-.drillDownItem {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.125rem; /* text-lg */
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
-    transition: color 0.2s ease-in-out;
-}
-.drillDownItem:hover {
-    color: #FFC107; /* Emas saat hover */
-}
-.drillDownItemActive {
-    color: #FFC107; /* Emas saat aktif */
-}
-.drillDownLink {
-    text-decoration: none;
-    color: inherit;
-}
-.drillDownArrow {
-    font-size: 1.5rem;
-    color: #a0aec0; /* gray-400 */
-}
-
-
-@keyframes slideInLeft {
+/* Animasi fade-in sederhana untuk teks saat panel berganti */
+@keyframes fadeIn {
   from {
-    transform: translateX(-100%);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
     opacity: 1;
   }
 }
 
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Mobile Responsive */
-@media (max-width: 1024px) {
-  .fullScreenNavGrid {
-    gap: 1rem;
-  }
-
-  .fullScreenNavLevel1,
-  .fullScreenNavLevel2,
-  .fullScreenNavLevel3 {
-    padding: 1rem;
-  }
-
-  .fullScreenOverlayContent {
-    padding: 1rem;
-  }
+.panelVisible > * {
+  animation: fadeIn 0.5s 0.1s ease forwards;
+  animation-fill-mode: both;
 }

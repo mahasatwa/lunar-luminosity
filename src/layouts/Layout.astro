@@ -1,16 +1,18 @@
 ---
-import Navigation from "../components/navigation/Navigation";
-// Mengimpor base.css yang kini bertanggung jawab untuk mengimpor variabel global
+import GlobalNav from "../components/global/GlobalNav.astro";
+import Footer from '../components/global/Footer.astro';
+import SEO from "../components/utils/SEO.astro"; // <-- 1. Impor komponen SEO
 import "../styles/base.pcss";
 
-interface Props {
+// 2. Perbarui interface Props untuk menerima data SEO
+export interface Props {
   title: string;
+  description: string;
+  image?: string;
+  ogType?: "website" | "article";
 }
 
-const { title } = Astro.props;
-
-// Data navigasi hardcoded tidak lagi diperlukan di sini
-// karena komponen Navigation mengimpornya sendiri dari src/data/NavigationData.ts
+const { title, description, image, ogType } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,64 +20,21 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    
+    {/* 3. Panggil komponen SEO di sini, teruskan semua props */}
+    <SEO 
+      title={title} 
+      description={description} 
+      image={image}
+      ogType={ogType}
+    />
   </head>
 
   <body class="font-sans antialiased text-gray-800">
-    {/* Memanggil komponen Navigation */}
-    {
-      /* Direktif client:load sangat PENTING agar hooks React berfungsi di browser */
-    }
-    {/* Tidak perlu meneruskan prop data navigasi dari sini */}
-    <Navigation client:load />
-
+    <GlobalNav />
     <main>
       <slot />
-      {
-        /* Ini adalah placeholder untuk konten dari halaman .astro yang menggunakan layout ini (misalnya, index.astro) */
-      }
     </main>
+    <Footer />
   </body>
-
-  {
-    /*
-  Blok <style is:global> ini kini bisa kosong atau hanya berisi
-  styling global yang tersisa yang tidak dipindahkan ke base.pcss atau variables.pcss.
-  Definisi variabel global (:root) SUDAH DIPINDAHKAN.
-*/
-  }
-  <style is:global>
-    /* Variabel CSS Global (:root) sudah dipindahkan ke src/styles/variables.pcss */
-    /* dan diimpor melalui src/styles/base.css yang sudah diimpor di atas. */
-    /* Jika ada styling global lain yang spesifik untuk layout ini, letakkan di sini. */
-    /* Contoh: styling dasar untuk elemen HTML atau kelas umum seperti '.prose' */
-    /* Styling dasar untuk kelas prose jika belum disediakan di base.pcss */
-    /* Idealnya styling seperti ini juga ada di base.pcss */
-    .prose h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .prose h2 {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-    }
-    .prose h3 {
-      font-size: 1.75rem;
-      margin-bottom: 0.5rem;
-    }
-    .prose p {
-      margin-bottom: 1em;
-      line-height: 1.6;
-    }
-    .prose ul,
-    .prose ol {
-      margin-bottom: 1em;
-      padding-left: 1.5em;
-    }
-    .prose li {
-      margin-bottom: 0.5em;
-    }
-  </style>
 </html>

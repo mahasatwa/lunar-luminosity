@@ -1,0 +1,73 @@
+---
+// src/components/utils/SEO.astro
+
+// Definisikan tipe Props yang akan diterima oleh komponen ini
+export interface Props {
+  title: string;
+  description: string;
+  image?: string; // URL gambar untuk social sharing (opsional)
+  ogType?: "website" | "article"; // Tipe konten (opsional)
+  // Opsi untuk memberitahu robot pencari (opsional)
+  robots?: {
+    index?: boolean;
+    follow?: boolean;
+  };
+}
+
+// Ambil props yang diberikan, dengan nilai default
+const {
+  title,
+  description,
+  image,
+  ogType = "website",
+  robots = { index: true, follow: true },
+} = Astro.props;
+
+// --- KONFIGURASI SITUS (Ubah sesuai kebutuhan) ---
+const SITE_TITLE = "STIE Dwimulya";
+const SITE_DESCRIPTION =
+  "Sekolah Tinggi Ilmu Ekonomi unggulan yang berkomitmen mencetak lulusan kompeten dan berdaya saing global.";
+const TWITTER_HANDLE = "@stiedwimulya"; // Ganti dengan handle Twitter Anda jika ada
+
+// --- LOGIKA PEMBENTUKAN TAG ---
+
+// Format judul halaman: "Judul Halaman | Nama Situs"
+const formattedTitle = `${title} | ${SITE_TITLE}`;
+
+// Membuat URL absolut untuk gambar dan halaman
+const ogImageUrl = image ? new URL(image, Astro.site) : new URL("/og-default.png", Astro.site);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+// Buat konten untuk tag meta robots
+const robotsContent = [
+  robots.index ? "index" : "noindex",
+  robots.follow ? "follow" : "nofollow",
+].join(", ");
+---
+
+{/* TAG META UTAMA & SEO */}
+<title>{formattedTitle}</title>
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalUrl} />
+<meta name="robots" content={robotsContent} />
+
+{/* OPEN GRAPH (untuk Facebook, LinkedIn, dll.) */}
+<meta property="og:title" content={formattedTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:locale" content="id_ID" />
+
+{/* TWITTER CARD (untuk Twitter/X) */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={TWITTER_HANDLE} />
+<meta name="twitter:title" content={formattedTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+{/* Favicon & Ikon Lainnya */}
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />

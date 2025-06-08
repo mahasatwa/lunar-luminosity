@@ -8,7 +8,7 @@ import partytown from "@astrojs/partytown";
 import icon from "astro-icon";
 import compress from "astro-compress";
 
-import vercel from '@astrojs/vercel/serverless'; 
+import vercel from "@astrojs/vercel/serverless";
 
 // Add path resolution if needed
 import path from "path";
@@ -19,6 +19,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const hasExternalScripts = true;
 
 export default defineConfig({
+  site: "https://www.stiedwimulya.ac.id",
   integrations: [
     react({
       include: ["**/components/**/*.{jsx,tsx}"],
@@ -26,7 +27,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-
 
     sitemap(),
     mdx(),
@@ -51,7 +51,7 @@ export default defineConfig({
     domains: ["res.cloudinary.com"], // Add Cloudinary domain
     // Re-adding Cloudinary image service configuration
     service: {
-      entrypoint: '@astrojs/cloudinary/image-service', // Specify the Cloudinary image service entrypoint
+      entrypoint: "@astrojs/cloudinary/image-service", // Specify the Cloudinary image service entrypoint
       config: {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME, // Pass config options here
       },
@@ -67,16 +67,18 @@ export default defineConfig({
   // Vite configuration
   vite: {
     server: {
-      allowedHosts: process.env.NODE_ENV === 'production'
-        ? ['stiedwimulya.ac.id']
-        : ['he.stiedwimulya.ac.id'], // Keep your existing allowedHosts logic
-    
+      allowedHosts:
+        process.env.NODE_ENV === "production"
+          ? ["stiedwimulya.ac.id"]
+          : ["he.stiedwimulya.ac.id"], // Keep your existing allowedHosts logic
+
       headers: {
-        'Content-Security-Policy': process.env.NODE_ENV === 'production'
-          ? // Production CSP (example - adjust as needed for your actual production setup)
-            "default-src 'self'; img-src 'self' res.cloudinary.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
-          : // Development CSP (example - adjust as needed for your local dev environment)
-            "default-src 'self'; img-src 'self' http://localhost:4321 res.cloudinary.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
+        "Content-Security-Policy":
+          process.env.NODE_ENV === "production"
+            ? // Production CSP (example - adjust as needed for your actual production setup)
+              "default-src 'self'; img-src 'self' res.cloudinary.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
+            : // Development CSP (example - adjust as needed for your local dev environment)
+              "default-src 'self'; img-src 'self' http://localhost:4321 res.cloudinary.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
       },
     },
     resolve: {
@@ -102,7 +104,8 @@ export default defineConfig({
     webAnalytics: {
       enabled: true,
     },
-  }),  build: {
+  }),
+  build: {
     inlineStylesheets: "auto",
   },
 });

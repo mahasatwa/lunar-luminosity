@@ -1,215 +1,138 @@
 // src/data/NavigationData.ts
 
-// Impor hanya tipe yang dibutuhkan, UserRole dihapus
 import type { NavItem, QuickLink } from "../types/navigation";
 
-// Tipe NavItem mungkin perlu disesuaikan di src/types/navigation.ts
-// untuk membuat 'roles' opsional atau menghapusnya.
-
 export const navigationData: NavItem[] = [
-    // --- KATEGORI 1: AKADEMIK ---
+    // 1. AKADEMIK (Apa yang bisa saya pelajari?)
     {
         id: "akademik",
         title: "Akademik",
-        path: "/akademik",
-        heading: 'Program Unggulan STIE Dwimulya',
-        description: 'Jelajahi program studi Sarjana (S1) dan kursus kami yang dirancang untuk mencetak profesional ekonomi dan bisnis yang kompeten.',
+        description: "Jelajahi program studi, kurikulum, dan staf pengajar yang akan membentuk masa depan Anda.",
         subItems: [
             {
                 id: "sarjana",
                 title: "Program Sarjana (S1)",
-                path: "/akademik/sarjana",
-                // Level 3 untuk Program Sarjana
+                description: "Program gelar yang dirancang untuk mempersiapkan para pemimpin dan profesional yang kompeten.",
                 subItems: [
-                    { id: "s1-manajemen", title: "S1 Manajemen", link: "/akademik/sarjana/manajemen" },
-                    { id: "s1-akuntansi", title: "S1 Akuntansi", link: "/akademik/sarjana/akuntansi" },
-                    { id: "kurikulum", title: "Struktur Kurikulum", link: "/akademik/kurikulum" },
+                    { id: "s1-manajemen", title: "S1 Manajemen", link: "/akademik/s1-manajemen" },
+                    { id: "s1-akuntansi", title: "S1 Akuntansi", link: "/akademik/s1-akuntansi" },
                 ],
             },
             {
                 id: "sertifikasi",
                 title: "Kursus & Sertifikasi",
-                path: "/akademik/sertifikasi",
-                // Level 3 untuk Kursus
+                description: "Tingkatkan keahlian spesifik Anda melalui program sertifikasi profesional kami.",
                 subItems: [
                     { id: "brevet-pajak", title: "Brevet Pajak A & B", link: "/akademik/sertifikasi/brevet-pajak" },
                     { id: "digital-marketing", title: "Digital Marketing", link: "/akademik/sertifikasi/digital-marketing" },
                     { id: "ekspor-impor", title: "Manajemen Ekspor-Impor", link: "/akademik/sertifikasi/ekspor-impor" },
                 ],
             },
-            { id: "dosen", title: "Staf Pengajar", path: "/akademik/dosen", link: "/akademik/dosen" },
-            { id: "kalender", title: "Kalender Akademik", path: "/akademik/kalender", link: "/akademik/kalender" },
+            { id: "dosen", title: "Staf Pengajar", link: "/akademik/dosen" },
+            { id: "kalender", title: "Kalender Akademik", link: "/akademik/kalender" },
         ],
-        featured: {
-            title: 'Fokus: Akuntansi Digital',
-            text: 'Pelajari bagaimana STIE Dwimulya mengintegrasikan teknologi terkini dalam kurikulum akuntansi untuk menjawab tantangan era digital.',
-            image: 'https://via.placeholder.com/300x200/CCCCCC/FFFFFF?text=Akuntansi+Digital',
-            link: '/kisah/akuntansi-digital',
-        },
-        quote: {
-            text: '“Pendidikan di STIE Dwimulya membuka wawasan saya tentang dunia bisnis modern.”',
-            author: 'Andi Pratama, Alumni Manajemen 2023'
-        },
     },
 
-    // --- KATEGORI 2: KEHIDUPAN KAMPUS ---
+    // 2. PENDAFTARAN (Bagaimana cara saya bergabung?)
+    {
+        id: "pendaftaran",
+        title: "Pendaftaran",
+        description: "Semua informasi yang Anda butuhkan untuk menjadi bagian dari keluarga STIE Dwimulya.",
+        subItems: [
+            { id: "jalur-masuk", title: "Jalur Pendaftaran", link: "/pendaftaran/jalur" },
+            { id: "prosedur", title: "Prosedur Pendaftaran", link: "/pendaftaran/prosedur" },
+            { id: "biaya", title: "Biaya & Beasiswa", link: "/pendaftaran/biaya" },
+            { id: "faq", title: "Tanya Jawab (FAQ)", link: "/pendaftaran/faq" },
+        ],
+    },
+
+    // 3. KEHIDUPAN KAMPUS (Seperti apa rasanya di sana?)
     {
         id: "kampus",
         title: "Kehidupan Kampus",
-        path: "/kampus",
-        heading: 'Lingkungan Belajar yang Mendukung',
-        description: 'Temukan fasilitas modern, organisasi mahasiswa yang aktif, dan berbagai kegiatan yang memperkaya pengalaman Anda di STIE Dwimulya.',
+        description: "Temukan lingkungan belajar yang dinamis, fasilitas modern, dan komunitas yang mendukung.",
         subItems: [
             {
                 id: "kemahasiswaan",
                 title: "Organisasi Mahasiswa",
-                path: "/kampus/kemahasiswaan",
-                // Level 3 untuk Organisasi
+                description: "Salurkan minat dan bakat Anda melalui berbagai unit kegiatan mahasiswa.",
                 subItems: [
                     { id: "bem", title: "Badan Eksekutif Mahasiswa (BEM)", link: "/kampus/kemahasiswaan/bem" },
                     { id: "ukm-musik", title: "UKM Musik & Seni", link: "/kampus/kemahasiswaan/musik" },
                     { id: "ukm-olahraga", title: "UKM Olahraga", link: "/kampus/kemahasiswaan/olahraga" },
-                    { id: "hima", title: "Himpunan Mahasiswa Jurusan", link: "/kampus/kemahasiswaan/hima" },
                 ],
             },
-            { id: "fasilitas", title: "Fasilitas Kampus", path: "/kampus/fasilitas", link: "/kampus/fasilitas" },
-            { id: "acara", title: "Acara & Kegiatan", path: "/kampus/acara", link: "/kampus/acara" },
-            { id: "layanan", title: "Layanan Mahasiswa", path: "/kampus/layanan", link: "/kampus/layanan" },
+            { id: "fasilitas", title: "Fasilitas Kampus", link: "/kampus/fasilitas" },
+            { id: "layanan", title: "Layanan Mahasiswa", link: "/kampus/layanan" },
         ],
-        featured: {
-            title: 'Dwimulya Business Challenge 2025',
-            text: 'Ajang kompetisi ide bisnis tahunan yang mengasah jiwa kewirausahaan mahasiswa kami.',
-            image: 'https://via.placeholder.com/300x200/CCCCCC/FFFFFF?text=Business+Challenge',
-            link: '/acara/business-challenge-2025',
-        },
-        quote: {
-            text: '“Kampus ini bukan hanya tempat belajar, tapi juga rumah kedua bagi saya.”',
-            author: 'Dewi Lestari, Mahasiswi Akuntansi'
-        },
     },
 
-    // --- KATEGORI 3: PENELITIAN & PENGABDIAN ---
+    // 4. KARIER & ALUMNI (Apa yang terjadi setelah lulus?)
     {
-        id: "penelitian",
-        title: "Penelitian & Pengabdian",
-        path: "/penelitian",
-        heading: 'Inovasi untuk Masyarakat',
-        description: 'Lihat bagaimana dosen dan mahasiswa STIE Dwimulya berkontribusi melalui penelitian terapan dan program pengabdian kepada masyarakat.',
+        id: "alumni",
+        title: "Karier & Alumni",
+        description: "Lihat jejak kesuksesan alumni kami dan bagaimana kami mendukung karier Anda setelah lulus.",
         subItems: [
-            {
-                id: "pusat-studi",
-                title: "Pusat Studi & Riset",
-                path: "/penelitian/pusat-studi",
-                // Level 3 untuk Pusat Studi
-                subItems: [
-                    { id: "pusat-umkm", title: "Pusat Pengembangan UMKM", link: "/penelitian/pusat-studi/umkm" },
-                    { id: "pusat-ekonomi-digital", title: "Pusat Ekonomi Digital", link: "/penelitian/pusat-studi/digital" },
-                ],
-            },
-            { id: "publikasi", title: "Publikasi Ilmiah", path: "/penelitian/publikasi", link: "/penelitian/publikasi" },
-            { id: "pengabdian", title: "Pengabdian Masyarakat (PPM)", path: "/penelitian/ppm", link: "/penelitian/ppm" },
-            { id: "kerjasama", title: "Kerja Sama Industri", path: "/penelitian/kerjasama", link: "/penelitian/kerjasama" },
-        ],
-        featured: {
-            title: 'Pendampingan UMKM Go Digital',
-            text: 'Program PPM kami membantu UMKM lokal memanfaatkan teknologi digital untuk meningkatkan daya saing.',
-            image: 'https://via.placeholder.com/300x200/CCCCCC/FFFFFF?text=UMKM+Go+Digital',
-            link: '/ppm/umkm-go-digital',
-        },
-        quote: {
-            text: '“Riset yang relevan adalah kunci untuk memberikan solusi nyata bagi perekonomian.”',
-            author: 'Dr. Budi Hartono, M.Si., Dosen Peneliti'
-        },
+            { id: "kisah-alumni", title: "Kisah Sukses Alumni", link: "/alumni/kisah-sukses" },
+            { id: "jaringan-alumni", title: "Jaringan Alumni", link: "/alumni/jaringan" },
+            { id: "kerjasama-industri", title: "Kemitraan Industri", link: "/kemitraan" },
+            { id: "pusat-karier", title: "Pusat Karier & Magang", link: "/karier" },
+        ]
     },
 
-    // --- KATEGORI 4: PENDAFTARAN ---
+    // 5. BERITA & ACARA (Apa yang sedang terjadi?)
     {
-        id: "pendaftaran",
-        title: "Pendaftaran",
-        path: "/pendaftaran",
-        heading: 'Bergabung dengan STIE Dwimulya',
-        description: 'Informasi lengkap mengenai prosedur pendaftaran, biaya kuliah, dan beasiswa untuk calon mahasiswa baru.',
+        id: "berita",
+        title: "Berita & Acara",
+        description: "Ikuti terus perkembangan terbaru, prestasi, dan kegiatan menarik di STIE Dwimulya.",
         subItems: [
-            { id: "jalur-masuk", title: "Jalur Pendaftaran", path: "/pendaftaran/jalur", link: "/pendaftaran/jalur" },
-            { id: "prosedur", title: "Prosedur Pendaftaran", path: "/pendaftaran/prosedur", link: "/pendaftaran/prosedur" },
-            { id: "biaya", title: "Biaya & Beasiswa", path: "/pendaftaran/biaya", link: "/pendaftaran/biaya" },
-            { id: "faq", title: "Tanya Jawab (FAQ)", path: "/pendaftaran/faq", link: "/pendaftaran/faq" },
-            { id: "brosur", title: "Unduh Brosur", path: "/pendaftaran/brosur", link: "/pendaftaran/brosur" },
-        ],
-        featured: {
-            title: 'Beasiswa Prestasi Dwimulya',
-            text: 'STIE Dwimulya menyediakan berbagai pilihan beasiswa bagi calon mahasiswa berprestasi.',
-            image: 'https://via.placeholder.com/300x200/CCCCCC/FFFFFF?text=Beasiswa+Prestasi',
-            link: '/pendaftaran/beasiswa/prestasi',
-        },
-        quote: {
-            text: '“Proses pendaftarannya mudah dan informatif. Saya tidak sabar untuk mulai kuliah!”',
-            author: 'Siti Nurhaliza, Calon Mahasiswa'
-        },
+            { id: "berita-kampus", title: "Berita Kampus", link: "/berita" },
+            { id: "agenda-acara", title: "Agenda Acara", link: "/acara" },
+            { id: "galeri", title: "Galeri Kegiatan", link: "/galeri" },
+        ]
     },
 
-    // --- KATEGORI 5: TENTANG KAMI ---
+    // 6. TENTANG KAMI (Siapa institusi ini?)
     {
         id: "tentang",
         title: "Tentang Kami",
-        path: "/tentang",
-        heading: 'Mengenal STIE Dwimulya',
-        description: 'Pelajari lebih dalam tentang sejarah, visi & misi, struktur organisasi, dan kontak STIE Dwimulya.',
+        description: "Kenali lebih dalam sejarah, visi & misi, dan nilai-nilai yang kami anut.",
         subItems: [
-            { id: "sejarah", title: "Sejarah Singkat", path: "/tentang/sejarah", link: "/tentang/sejarah" },
-            { id: "visi-misi", title: "Visi, Misi & Tujuan", path: "/tentang/visi-misi", link: "/tentang/visi-misi" },
-            { id: "struktur", title: "Struktur Organisasi", path: "/tentang/struktur", link: "/tentang/struktur" },
-            { id: "akreditasi", title: "Akreditasi", path: "/tentang/akreditasi", link: "/tentang/akreditasi" },
-            { id: "kontak", title: "Lokasi & Kontak", path: "/kontak", link: "/kontak" },
+            { id: "sejarah", title: "Sejarah Singkat", link: "/tentang/sejarah" },
+            { id: "visi-misi", title: "Visi, Misi & Tujuan", link: "/tentang/visi-misi" },
+            { id: "struktur", title: "Struktur Organisasi", link: "/tentang/struktur" },
+            { id: "akreditasi", title: "Akreditasi Institusi", link: "/tentang/akreditasi" },
+            { id: "kontak", title: "Lokasi & Kontak", link: "/kontak" },
         ],
-        featured: {
-            title: 'Akreditasi "Baik Sekali"',
-            text: 'STIE Dwimulya berkomitmen menjaga kualitas pendidikan melalui akreditasi nasional.',
-            image: 'https://via.placeholder.com/300x200/CCCCCC/FFFFFF?text=Akreditasi+Kampus',
-            link: '/tentang/akreditasi',
-        },
-        quote: {
-            text: '“Kami bangga menjadi bagian dari institusi yang berdedikasi pada kualitas dan integritas.”',
-            author: 'Prof. Dr. Ahmad Subarjo, Ketua STIE Dwimulya'
-        },
     },
 
-    // --- KATEGORI 6: PORTAL (Link Eksternal) ---
+    // 7. PENELITIAN & PENGABDIAN (Kontribusi kepada masyarakat)
+    {
+        id: "penelitian",
+        title: "Penelitian & Pengabdian",
+        description: "Kontribusi nyata STIE Dwimulya bagi perkembangan ilmu pengetahuan dan masyarakat.",
+        subItems: [
+            { id: "pusat-studi", title: "Pusat Studi & Riset", link: "/penelitian/pusat-studi" },
+            { id: "publikasi", title: "Publikasi Ilmiah", link: "/penelitian/publikasi" },
+            { id: "pengabdian-masyarakat", title: "Pengabdian Masyarakat", link: "/penelitian/ppm" },
+        ]
+    },
+
+    // 8. PORTAL (Akses Cepat - Utility)
     {
         id: "portal",
         title: "Portal",
-        heading: 'Akses Cepat Sistem Informasi',
-        description: 'Masuk ke sistem informasi akademik untuk mahasiswa dan dosen.',
+        description: "Akses cepat ke sistem informasi akademik untuk komunitas internal STIE Dwimulya.",
         subItems: [
-            {
-                id: "portal-mahasiswa",
-                title: "Portal Mahasiswa",
-                link: "https://portal.stiedwimulya.ac.id/mahasiswa",
-                isExternal: true,
-            },
-            {
-                id: "portal-dosen",
-                title: "Portal Dosen",
-                link: "https://portal.stiedwimulya.ac.id/dosen",
-                isExternal: true,
-            },
-            {
-                id: "e-learning",
-                title: "E-Learning",
-                link: "https://elearning.stiedwimulya.ac.id",
-                isExternal: true,
-            },
-            {
-                id: "perpustakaan",
-                title: "Perpustakaan Digital",
-                link: "https://library.stiedwimulya.ac.id",
-                isExternal: true,
-            },
+            { id: "portal-mahasiswa", title: "Portal Mahasiswa", link: "https://portal.stiedwimulya.ac.id/mahasiswa", isExternal: true },
+            { id: "portal-dosen", title: "Portal Dosen", link: "https://portal.stiedwimulya.ac.id/dosen", isExternal: true },
+            { id: "e-learning", title: "E-Learning", link: "https://elearning.stiedwimulya.ac.id", isExternal: true },
+            { id: "perpustakaan", title: "Perpustakaan Digital", link: "https://library.stiedwimulya.ac.id", isExternal: true },
         ]
     },
 ];
 
-// --- Tautan Cepat ---
+// --- Tautan Cepat untuk Footer ---
 export const quickLinksData: QuickLink[] = [
     { title: "Pendaftaran Online", link: "/pendaftaran/prosedur" },
     { title: "Hubungi Kami", link: "/kontak" },

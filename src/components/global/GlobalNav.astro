@@ -1,0 +1,27 @@
+---
+// Import data dari file .ts kita
+import { navigationData, quickLinksData } from "../../data/NavigationData";
+import NavShell from "./NavShell.tsx";
+import ResponsiveImage from "../ResponsiveImage.tsx";
+---
+
+<header
+  class="bg-gray-100 text-white p-4 flex justify-between items-center sticky top-0 z-50"
+>
+  <a href="/" aria-label="Beranda STIE Dwimulya">
+    <ResponsiveImage
+      publicId="logo-dwimulya-480_w6qwuq"
+      alt="Logo STIE Dwimulya"
+      width={64}
+      height={64}
+    />
+  </a>
+
+  <nav>
+    <NavShell
+      client:load
+      navigationData={navigationData}
+      quickLinksData={quickLinksData}
+    />
+  </nav>
+</header>
