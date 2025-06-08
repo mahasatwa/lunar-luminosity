@@ -68,6 +68,15 @@ const robotsContent = [
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageUrl} />
 
-{/* Favicon & Ikon Lainnya */}
+{/* Favicon & Ikon Aplikasi */}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+{/* Fallback untuk browser lama */}
+<link rel="shortcut icon" href="/favicon.ico" /> 
+{/* Ikon untuk saat di-pin di iOS */}
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+{/* File manifest untuk Android & PWA */}
+<link rel="manifest" href="/site.webmanifest" />
+{/* Warna tema untuk browser mobile */}
+<meta name="theme-color" content="#A51C30" />
