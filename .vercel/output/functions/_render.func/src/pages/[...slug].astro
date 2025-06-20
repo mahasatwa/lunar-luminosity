@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+// Make sure you have getAllSlugs imported if you choose this path
+// import { getPageContent, getAllSlugs } from '../utils/contentful'; // Commented out Contentful imports
+import type { Params } from "astro"; // Import Params for type safety
+
+// --- Hardcoded getStaticPaths ---
+export async function getStaticPaths() {
+  // Define the list of slugs you want to generate statically
+  const hardcodedSlugs = [
+    undefined, // Represents the homepage (slug is undefined for '/')
+    "tentang-kami", // Example slug for an "About Us" page
+    "program-studi", // Example slug for a "Programs" page
+    "kontak", // Example slug for a "Contact" page
+    // Add more slugs as needed
+  ];
+
+  return hardcodedSlugs.map((slug) => {
+    // Map the hardcoded slugs to Astro's params structure
+    return {
+      params: { slug: slug },
+    };
+  });
+}
+// --- End of hardcoded function ---
+
+const { slug } = Astro.params as Params; // Add type assertion for type safety
+
+// Handle the slug for the homepage vs other pages
+const contentSlug = slug === undefined ? "home" : slug; // Use 'home' as a key for the homepage
+
+// --- Hardcoded pageContent based on slug ---
+let pageContent;
+
+// Define hardcoded content for each slug
+if (contentSlug === "home") {
+  pageContent = {
+    title: "Halaman Utama STIE Dwimulya (Hardcoded)",
+    content: `
+          <p>Ini adalah konten hardcoded untuk <strong>Halaman Utama</strong>.</p>
+          <p>Kami menyambut Anda di website STIE Dwimulya. Temukan informasi tentang program studi, penerimaan mahasiswa baru, dan kehidupan kampus kami.</p>
+          <h2>Bagian Hardcoded Lainnya</h2>
+          <p>Anda bisa menambahkan lebih banyak HTML di sini untuk halaman home hardcoded.</p>
+        `,
+  };
+} else if (contentSlug === "tentang-kami") {
+  pageContent = {
+    title: "Tentang STIE Dwimulya (Hardcoded)",
+    content: `
+          <p>Ini adalah konten hardcoded untuk halaman <strong>Tentang Kami</strong>.</p>
+          <p>STIE Dwimulya memiliki sejarah panjang dalam menyediakan pendidikan berkualitas di bidang Ekonomi dan Bisnis. Kami berkomitmen untuk mencetak lulusan yang siap bersaing di dunia kerja.</p>
+          <h3>Visi & Misi</h3>
+          <p>Deskripsi singkat Visi dan Misi STIE Dwimulya hardcoded.</p>
+        `,
+  };
+} else if (contentSlug === "program-studi") {
+  pageContent = {
+    title: "Program Studi STIE Dwimulya (Hardcoded)",
+    content: `
+          <p>Ini adalah konten hardcoded untuk halaman <strong>Program Studi</strong>.</p>
+          <p>Kami menawarkan program pendidikan unggulan di bidang Manajemen dan Akuntansi.</p>
+          <ul>
+            <li>S1 Manajemen: Fokus pada pengelolaan bisnis modern.</li>
+            <li>S1 Akuntansi: Mempersiapkan profesional akuntansi yang kompeten.</li>
+          </ul>
+          <p>Lihat detail kurikulum dan prospek karir untuk setiap program.</p>
+        `,
+  };
+} else if (contentSlug === "kontak") {
+  pageContent = {
+    title: "Hubungi Kami (Hardcoded)",
+    content: `
+          <p>Ini adalah konten hardcoded untuk halaman <strong>Kontak</strong>.</p>
+          <p>Anda dapat menghubungi kami melalui:</p>
+          <ul>
+            <li>Alamat: Alamat Kampus STIE Dwimulya (Hardcoded)</li>
+            <li>Telepon: (021) XXXX XXXX (Hardcoded)</li>
+            <li>Email: info@stiedwimulya.ac.id (Hardcoded)</li>
+          </ul>
+          <p>Atau kunjungi media sosial kami.</p>
+        `,
+  };
+}
+// Add more else if blocks for other hardcoded slugs
+// Note: If a slug in hardcodedSlugs doesn't have a corresponding if/else if block, pageContent will be undefined.
+// --- End of hardcoded content ---
+
+// const pageContent = await getPageContent(contentSlug); // Commented out Contentful fetch
+
+// Removed the 404 redirect since we are hardcoding known slugs
+// if (!pageContent) {
+//   return Astro.redirect('/404');
+// }
+---
+
+<Layout title={pageContent?.title || "STIE Dwimulya"}>
+  <div class="prose lg:prose-xl mx-auto py-8">
+    {
+      pageContent ? (
+        <>
+          <h1>{pageContent.title}</h1>
+              <div set:html={pageContent.content} />
+        </>
+      ) : (
+        <p>Content not found for this slug (Hardcoded fallback).</p>
+      )
+    }
+  </div>
+</Layout>

@@ -1,0 +1,41 @@
+---
+import { cva, type VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
+
+const button = cva(
+  "inline-flex items-center justify-center rounded-full font-semibold transition-transform duration-200 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2",
+  {
+    variants: {
+      intent: {
+        primary: "bg-brand-red text-white hover:bg-red-700 focus:ring-red-500",
+        secondary:
+          "bg-transparent border-2 border-brand-red text-brand-red hover:bg-red-50 hover:text-red-700 focus:ring-red-500",
+        ghost:
+          "bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-400",
+      },
+      size: {
+        small: "text-sm py-1 px-4",
+        medium: "text-base py-2.5 px-6",
+        large: "text-lg py-3 px-8",
+      },
+    },
+    defaultVariants: {
+      intent: "primary",
+      size: "medium",
+    },
+  }
+);
+
+export interface Props extends VariantProps<typeof button> {
+  href?: string;
+  class?: string;
+}
+
+const { href, intent, size, class: className, ...rest } = Astro.props;
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag class={twMerge(button({ intent, size, className }))} href={href} {...rest}>
+  <slot />
+</Tag>

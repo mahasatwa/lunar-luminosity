@@ -1,18 +1,17 @@
 ---
-import GlobalNav from "../components/global/GlobalNav.astro";
-import Footer from '../components/global/Footer.astro';
-import SEO from "../components/utils/SEO.astro"; // <-- 1. Impor komponen SEO
-import "../styles/base.pcss";
+// Impor menjadi sangat../components/features/global/GlobalNav.astro
+import GlobalNav from "@/components/features/global/GlobalNav.astro";
+import Footer from "@/components/features/global/Footer.astro";
+import SEO from "@/components/utils/SEO.astro";
+import "@/styles/base.pcss";
 
-// 2. Perbarui interface Props untuk menerima data SEO
 export interface Props {
   title: string;
   description: string;
   image?: string;
-  ogType?: "website" | "article";
 }
 
-const { title, description, image, ogType } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,21 +19,22 @@ const { title, description, image, ogType } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    {/* 3. Panggil komponen SEO di sini, teruskan semua props */}
-    <SEO 
-      title={title} 
-      description={description} 
-      image={image}
-      ogType={ogType}
-    />
+    <SEO title={title} description={description} image={image} />
   </head>
-
-  <body class="font-sans antialiased text-gray-800">
+  <body class="font-sans antialiased text-gray-900 bg-gray-50">
     <GlobalNav />
-    <main>
+    <main class="flex-grow">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
+
+<style is:global>
+  /* Styling untuk "sticky footer" */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+</style>

@@ -1,0 +1,223 @@
+/* ===============================================
+ * STYLING FINAL UNTUK DRAWER RESPONSIVE
+ * ===============================================
+ */
+
+.drawerContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+  flex-shrink: 0;
+}
+
+.closeButton,
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  color: #495057;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: color 0.2s, background-color 0.2s;
+}
+.closeButton:hover,
+.backButton:hover {
+  color: #000;
+  background-color: #e9ecef;
+}
+
+/* --- LOGIKA LAYOUT RESPONSIVE --- */
+
+/* Untuk Desktop: Grid 3 Kolom Paralel */
+.desktopGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1.5rem;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.desktopGrid .panel {
+  border-left: 1px solid #dee2e6;
+  padding-left: 1.5rem;
+}
+.desktopGrid .panel:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+/* Untuk Mobile/Tablet: Sliding Viewport */
+.slidingViewport {
+  display: flex; /* Kunci untuk menjejerkan panel secara horizontal */
+  width: 300%; /* Total lebar 3 panel (100% * 3) */
+  flex-grow: 1;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.slidingViewport .panel {
+  width: 33.333%; /* Setiap panel memakan sepertiga dari total lebar */
+  flex-shrink: 0;
+}
+
+/* --- GAYA UMUM PANEL & ITEM --- */
+
+.panel {
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.panelTitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navButton,
+.navLink {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: #495057;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 6px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.navButton:hover,
+.navLink:hover {
+  color: #000;
+  background-color: #f1f3f5;
+}
+.navButton:focus-visible,
+.navLink:focus-visible {
+  outline: 2px solid #339af0;
+  outline-offset: 2px;
+}
+
+/* --- Micro-interaction: Eyebrow Line & Chevron --- */
+
+.navButton::before {
+  content: "";
+  position: absolute;
+  left: -0.5rem; /* Posisi awal di luar */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background-color: #a51c30; /* Warna merah brand Anda */
+  transition: height 0.2s ease;
+}
+
+.navButton[aria-expanded="true"]::before,
+.navButton:hover::before {
+  height: 70%; /* Tinggi eyebrow saat aktif atau di-hover */
+}
+
+.navButton > span:last-child {
+  transition: transform 0.2s ease;
+}
+.navButton:hover > span:last-child {
+  transform: translateX(4px); /* Efek geser pada chevron */
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.navButton,
+.navLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.8rem 0.25rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
+}
+.navButton:hover,
+.navLink:hover {
+  color: #ffc107;
+}
+
+.drawerFooter {
+  padding: 1.5rem;
+  margin-top: auto; /* Mendorong footer ke bawah */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  flex-shrink: 0;
+}
+.quickLink {
+  color: #a0aec0;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+.quickLink:hover {
+  color: #ffc107;
+}
+.quickLinkTitle {
+  color: #a0aec0;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 900;
+  transition: color 0.2s;
+}
+
+/* Animasi fade-in sederhana untuk teks saat panel berganti */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.panelVisible > * {
+  animation: fadeIn 0.5s 0.1s ease forwards;
+  animation-fill-mode: both;
+}
