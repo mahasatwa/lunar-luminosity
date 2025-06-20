@@ -1,0 +1,18 @@
+@import "../../../styles/base/abstracts";
+
+$third-level-menu: ".hbs-global-menu__submenu .hbs-global-menu__submenu";
+
+.hbs-global-menu__submenu-link {
+  @include subtle-link(
+    $c-text-light,
+    $target: ".hbs-global-menu__submenu-link-text"
+  );
+}
+
+#{$third-level-menu} .hbs-global-menu__submenu-link-text {
+  display: block;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: 100%;
+  line-height: $lh-md;
+}

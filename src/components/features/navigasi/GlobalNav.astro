@@ -1,0 +1,29 @@
+---
+import { navigationData, quickLinksData } from "@/data/NavigationData.ts";
+import InteractiveHeader from "./InteractiveHeader.tsx";
+// 1. Impor fungsi untuk membuat URL di sini, di sisi server
+import { getOptimizedImageUrl } from "@/utils/cloudinary.ts";
+
+// 2. Siapkan semua data yang dibutuhkan oleh komponen klien
+const logoUrl = getOptimizedImageUrl("logo_wclp2c", {
+  width: 64, // Kita bisa minta ukuran sedikit lebih besar untuk layar retina
+  height: 64,
+  crop: "fit",
+});
+
+const wordmarkUrl = getOptimizedImageUrl("separator_wordmark_yrjcgy", {
+  height: 64, // Hanya tentukan tinggi, lebar akan otomatis
+  crop: "fit",
+});
+---
+
+{
+  /* 3. Panggil komponen InteractiveHeader dan teruskan URL yang sudah jadi sebagai props */
+}
+<InteractiveHeader
+  client:load
+  logoUrl={logoUrl}
+  wordmarkUrl={wordmarkUrl}
+  navigationData={navigationData}
+  quickLinksData={quickLinksData}
+/>

@@ -1,0 +1,391 @@
+@import "../../../styles/base/abstracts";
+
+.hbs-local-navigation--desktop {
+  display: none;
+
+  @include mq($bp-desktop) {
+    display: block;
+  }
+}
+
+.hbs-local-navigation--mobile {
+  display: block;
+
+  @include mq($bp-desktop) {
+    display: none;
+  }
+}
+
+.hbs-local-navigation__section-title {
+  @include baseline-text($ff-sans);
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-md,
+      $bp-desktop-xl: $fs-lg,
+    )
+  );
+  font-weight: $fw-semibold;
+  margin-bottom: $spacing-md;
+  margin-top: $spacing-xxxs;
+  transition: opacity $transition $t-time-md - 0.15;
+  transform: none;
+
+  @include mq($bp-desktop) {
+    margin-bottom: $spacing-sm;
+
+    &--with-border {
+      margin-bottom: 0;
+      padding-bottom: $spacing-sm;
+      border-bottom: $border-light;
+    }
+  }
+
+  .hbs-site-header--menu-is-open & {
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 0.1s;
+  }
+}
+
+.hbs-local-navigation__section-title-link {
+  @include color-link;
+}
+
+// Mobile nav
+// ---------------------------------------------
+
+// Accordions
+.hbs-local-navigation__accordion-menu {
+  border-top: $border-light;
+}
+
+.hbs-local-navigation__accordion-header {
+  @include margin($spacing-sm x x);
+  @include padding($spacing-sm x);
+  border-top: $border-light;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hbs-local-navigation__accordion-header-title {
+  @include h5;
+  margin-right: $spacing-md;
+}
+
+.hbs-local-navigation__accordion-header-title__link {
+  @include unlink;
+
+  @include hover {
+    color: $c-spot;
+  }
+}
+
+.hbs-local-navigation__accordion-header-button {
+  @include reset-input;
+  align-items: center;
+  display: flex;
+  position: relative;
+
+  &::after {
+    @include pseudo(50% 0 x x);
+    @include size($caret-size);
+    border-bottom: $border-solid;
+    border-right: $border-solid;
+    border-color: currentColor;
+    border-width: 2px;
+    transform: translateY(-75%) translateX(-25%) rotate(45deg);
+
+    [data-state="open"] & {
+      transform: translateY(-35%) translateX(-25%) rotate(-135deg);
+    }
+  }
+
+  @include hover {
+    color: $c-spot;
+  }
+}
+
+.hbs-local-navigation__accordion-header-button-label {
+  @include small-text;
+  padding-right: $spacing-md;
+}
+
+.hbs-local-navigation__accordion-item-trigger {
+  @include unlink;
+  align-items: stretch;
+  border-bottom: $border-light;
+  color: $c-text;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @include hover {
+    color: $c-spot;
+  }
+
+  &[data-state="open"] {
+    border-bottom-color: transparent;
+  }
+}
+
+.hbs-local-navigation__accordion-item-trigger-label {
+  @include body-text($ff-sans);
+  @include padding($spacing-xs x);
+  color: inherit;
+  font-weight: $fw-semibold;
+  letter-spacing: normal;
+}
+
+.hbs-local-navigation__accordion-item-trigger-icon {
+  @include padding($spacing-xs x);
+  align-items: center;
+  color: inherit;
+  display: flex;
+
+  svg {
+    @include size($expand-collapse-arrow-size);
+    stroke: currentColor;
+  }
+}
+
+// Submenu
+.hbs-local-navigation__accordion-submenu {
+  border-bottom: $border-light;
+  padding-bottom: $spacing-sm;
+}
+
+.hbs-local-navigation__accordion-submenu-item-link {
+  @include small-text;
+  @include color-link($c-text, $c-spot);
+  @include padding($spacing-xxs x);
+  display: block;
+
+  &::before {
+    color: $c-text-light;
+    content: "—";
+    font-weight: $fw-reg;
+    margin-right: $spacing-xs;
+
+    .hbs-local-navigation__accordion-submenu-item--primary & {
+      display: none;
+    }
+  }
+
+  @include hover {
+    &::before {
+      color: $c-spot;
+    }
+  }
+}
+
+.hbs-local-navigation__accordion-submenu-item--primary {
+  transform: translateX(-0.06em);
+}
+
+.hbs-local-navigation__mobile-cta {
+  @include margin($spacing-lg x x);
+  display: flex;
+}
+
+// Submenu -> Submenu
+.hbs-local-navigation__accordion-item-trigger--secondary-submenu {
+  border-bottom: none;
+
+  .hbs-local-navigation__accordion-item-trigger-label {
+    @include small-text;
+  }
+}
+
+.hbs-local-navigation__accordion-submenu--secondary-submenu {
+  @include padding(x x 0 $spacing-md);
+  border-bottom: none;
+}
+
+// Desktop nav
+// ---------------------------------------------
+
+// Nav items
+.hbs-local-navigation__items {
+  border-top: $border-light;
+  display: flex;
+  // transition: opacity $transition $t-time-md - 0.15;
+  // ig - this transition caused flash on initial page load - not sure if intended
+
+  .hbs-site-header--sticky.hbs-wk-site-header & {
+    @include margin(x auto);
+  }
+
+  .hbs-site-header--menu-is-open & {
+    transition-delay: 0.1s;
+  }
+
+  .hbs-local-navigation--homepage & {
+    border-top: 0;
+  }
+
+  .hbs-site-header--menu-is-open & {
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 0.1s;
+  }
+
+  @include mq($bp-desktop) {
+    .hbs-site-header--sticky & {
+      border-top-color: transparent;
+    }
+  }
+}
+
+.hbs-local-navigation__item {
+  position: relative;
+
+  &:not(:first-child) {
+    padding-left: $spacing-lg;
+  }
+
+  // Animation to hide a flash of the "more" item when items can't fit in screen
+  @include mq($bp-desktop) {
+    animation-name: fadeIn;
+    animation-timing-function: cubic-bezier(0, 0, 0.28, 0.97);
+    animation-duration: 100ms;
+    animation-delay: 100ms;
+    animation-fill-mode: backwards;
+  }
+
+  @include mq($bp-desktop-xl) {
+    animation: none;
+  }
+}
+
+.hbs-local-navigation__item-link {
+  @include baseline-text;
+  @include padding($spacing-xs x);
+  @include unlink;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &:not(button) {
+    @include subtle-link($text-color: inherit, $text-hover-color: $c-spot);
+  }
+
+  &.hbs-local-navigation__item-link-with-dropdown {
+    margin-right: $caret-size-lg + 5px;
+  }
+
+  @include hover {
+    color: $c-spot;
+  }
+
+  // Bold text when current page matches the nav link ("active" state)
+  .hbs-local-navigation__item--active & {
+    font-weight: $fw-semibold;
+  }
+}
+
+.hbs-local-navigation__item--hidden {
+  visibility: hidden;
+  order: 1;
+}
+
+.hbs-local-navigation__item-trigger {
+  @include absolute(9px 0 x x);
+  width: $caret-size-lg;
+  @include hover {
+    color: $c-spot;
+  }
+}
+
+.hbs-local-navigation__item-caret {
+  @include size($caret-size-lg);
+  fill: none;
+  stroke: currentColor;
+}
+
+// Nav Item Submenu
+.hbs-local-navigation__submenu-wrapper {
+  @include absolute(x x x 50%);
+  padding-top: $spacing-xs;
+  min-width: 250px;
+  transform: translateX(
+    calc(-50% - #{(($caret-size-lg + 5px) * 0.5) - ($spacing-lg * 0.5)})
+  );
+  z-index: $z-index-1;
+
+  &[aria-hidden="true"] {
+    display: none;
+  }
+
+  .hbs-local-navigation__item:first-child & {
+    transform: translateX(calc(-50% - #{($caret-size-lg + 5px) * 0.5}));
+  }
+}
+
+.hbs-local-navigation__submenu {
+  background-color: $c-theme-solid-inverse;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  display: block;
+
+  @include mq-reduced-motion {
+    animation: showUp $t-time $t-ease-out forwards;
+    opacity: 0;
+    transition: opacity $transition;
+  }
+}
+
+.hbs-local-navigation__submenu-item {
+  &:not(:last-child) {
+    .hbs-local-navigation__submenu-item-link {
+      border-bottom: $border-light;
+    }
+  }
+}
+
+.hbs-local-navigation__submenu-item-link {
+  @include color-link($reverse: true);
+  @include baseline-text;
+  @include padding($spacing-xs $spacing-sm);
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+
+  @include hover {
+    .hbs-local-navigation__submenu-item-link-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @include mq-reduced-motion {
+    animation: showUp $t-time-sm $t-ease-out forwards;
+    opacity: 0;
+  }
+
+  @include mq($bp-desktop-lg) {
+    @include padding($spacing-sm $spacing-md);
+  }
+}
+
+.hbs-local-navigation__submenu-item-link-arrow-wrapper {
+  @include size($icon-size);
+  flex-shrink: 0;
+  margin-left: $spacing-md;
+  position: relative;
+  overflow: hidden;
+}
+
+.hbs-local-navigation__submenu-item-link-arrow {
+  @include size($icon-size);
+  opacity: 0;
+  stroke: currentColor;
+  transform: translateX(-$icon-size);
+
+  @include mq-reduced-motion {
+    transition:
+      opacity $transition,
+      transform $transition;
+    transition-timing-function: $t-ease-out;
+  }
+}
