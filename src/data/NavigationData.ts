@@ -1,6 +1,6 @@
 // src/data/NavigationData.ts
 
-import type { NavItem, QuickLink } from "../types/navigation";
+import type { NavItem, QuickLink, LocalMenuItem } from "../types/navigation";
 
 export const navigationData: NavItem[] = [
     // 1. AKADEMIK (Apa yang bisa saya pelajari?)
@@ -138,4 +138,45 @@ export const quickLinksData: QuickLink[] = [
     { title: "Hubungi Kami", link: "/kontak" },
     { title: "Kalender Akademik", link: "/akademik/kalender" },
     { title: "Portal Mahasiswa", link: "https://portal.stiedwimulya.ac.id/mahasiswa", isExternal: true },
+];
+
+export const defaultLocalMenuData: LocalMenuItem[] = [
+    { id: "beranda", title: "Beranda", link: "/" },
+
+    {
+        id: "profil", title: "Profil", link: "/profil",
+        submenu: [
+            { id: "sejarah", title: "Sejarah", link: "/profil/sejarah" },
+            { id: "visi-misi", title: "Visi & Misi", link: "/profil/visi-misi" },
+            { id: "akreditasi", title: "Akreditasi", link: "/profil/akreditasi" },
+            { id: "fasilitas", title: "Fasilitas Kampus", link: "/profil/fasilitas" },
+            { id: "struktur", title: "Struktur Organisasi", link: "/profil/struktur-organisasi" }
+        ]
+    },
+
+    {
+        id: "program-studi", title: "Program Studi", link: "/program-studi",
+        submenu: [
+            { id: "s1-manajemen", title: "S1 Manajemen", link: "/program-studi/manajemen" },
+            { id: "s1-akuntansi", title: "S1 Akuntansi", link: "/program-studi/akuntansi" }
+        ]
+    },
+
+    {
+        id: "penerimaan", title: "Penerimaan Mahasiswa Baru", link: "/penerimaan",
+        submenu: [
+            { id: "alur-pendaftaran", title: "Alur Pendaftaran", link: "/penerimaan/alur-pendaftaran" },
+            { id: "syarat", title: "Persyaratan", link: "/penerimaan/syarat" },
+            { id: "biaya", title: "Biaya Pendidikan", link: "/penerimaan/biaya" },
+            { id: "beasiswa", title: "Beasiswa", link: "/penerimaan/beasiswa" }
+        ]
+    },
+
+    { id: "kemahasiswaan", title: "Kemahasiswaan", link: "/kemahasiswaan" },
+    { id: "karir-alumni", title: "Karier & Alumni", link: "/karir-alumni" },
+    { id: "penelitian", title: "Penelitian & Pengabdian Masyarakat", link: "/penelitian" },
+    { id: "berita", title: "Berita & Acara", link: "/berita" },
+    { id: "galeri", title: "Galeri", link: "/galeri" },
+    { id: "kontak", title: "Kontak", link: "/kontak" },
+    { id: "portal", title: "Portal Mahasiswa", link: "/portal" }
 ];

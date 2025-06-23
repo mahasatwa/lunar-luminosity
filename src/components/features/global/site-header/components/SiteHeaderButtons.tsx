@@ -1,10 +1,33 @@
 import React from "react";
-import { FiSearch, FiMenu, FiX } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 
 interface SiteHeaderButtonsProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (open: boolean) => void;
 }
+
+const AnimatedHamburger: React.FC<{ open: boolean }> = ({ open }) => (
+  <span className="relative w-8 h-8 block">
+    <span
+      className={`absolute left-1/2 top-2 w-6 h-0.5 bg-blue-900 rounded transition-all duration-300 origin-center ${
+        open ? "rotate-45 top-4" : "-translate-x-1/2"
+      }`}
+      style={{ transform: open ? "translate(-50%, 0) rotate(45deg)" : "translate(-50%, 0) rotate(0deg)" }}
+    />
+    <span
+      className={`absolute left-1/2 top-4 w-6 h-0.5 bg-blue-900 rounded transition-all duration-300 origin-center ${
+        open ? "opacity-0" : "-translate-x-1/2"
+      }`}
+      style={{ opacity: open ? 0 : 1, transform: "translate(-50%, 0)" }}
+    />
+    <span
+      className={`absolute left-1/2 top-6 w-6 h-0.5 bg-blue-900 rounded transition-all duration-300 origin-center ${
+        open ? "-rotate-45 top-4" : "-translate-x-1/2"
+      }`}
+      style={{ transform: open ? "translate(-50%, 0) rotate(-45deg)" : "translate(-50%, 0) rotate(0deg)" }}
+    />
+  </span>
+);
 
 const SiteHeaderButtons: React.FC<SiteHeaderButtonsProps> = ({ isMenuOpen, setIsMenuOpen }) => (
   <div className="hbs-site-header__buttons flex items-center gap-2 min-w-0">
@@ -28,7 +51,7 @@ const SiteHeaderButtons: React.FC<SiteHeaderButtonsProps> = ({ isMenuOpen, setIs
       aria-label={isMenuOpen ? "Tutup menu" : "Buka menu"}
       aria-expanded={isMenuOpen}
     >
-      {isMenuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+      <AnimatedHamburger open={isMenuOpen} />
     </button>
   </div>
 );

@@ -8,7 +8,6 @@ interface SiteHeaderOverlayProps {
   quickLinksData: QuickLink[];
 }
 
-const TRANSITION_DURATION = 350; // ms
 const PANEL_TRANSITION = "transition-transform duration-[350ms] ease-[cubic-bezier(0.52,0.16,0.24,1)]";
 
 const SiteHeaderOverlay: React.FC<SiteHeaderOverlayProps> = ({
@@ -17,163 +16,74 @@ const SiteHeaderOverlay: React.FC<SiteHeaderOverlayProps> = ({
   navigationData,
   quickLinksData,
 }) => {
-  // State for active panels
-  const [activeLevel1, setActiveLevel1] = useState<NavItem | null>(null);
-  const [activeLevel2, setActiveLevel2] = useState<NavItem | null>(null);
+  // State for active path
+  const [activeL1, setActiveL1] = useState<number | null>(null);
+  const [activeL2, setActiveL2] = useState<number | null>(null);
   const [display, setDisplay] = useState(false);
   const [animating, setAnimating] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const panel1Ref = useRef<HTMLDivElement>(null);
-  const panel2Ref = useRef<HTMLDivElement>(null);
-  const panel3Ref = useRef<HTMLDivElement>(null);
-
-  // Prevent background scroll when overlay is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
 
   // Show/hide overlay with animation
   useEffect(() => {
     if (isOpen) {
       setDisplay(true);
       setTimeout(() => setAnimating(true), 10);
-      setTimeout(() => {
-        const btn = panel1Ref.current?.querySelector<HTMLElement>("button, a");
-        btn?.focus();
-      }, 100);
     } else {
       setAnimating(false);
-      setTimeout(() => setDisplay(false), TRANSITION_DURATION);
-      setActiveLevel1(null);
-      setActiveLevel2(null);
+      setTimeout(() => setDisplay(false), 350);
+      setActiveL1(null);
+      setActiveL2(null);
     }
   }, [isOpen]);
 
-  // Focus trap and ESC/arrow navigation
+  // Prevent background scroll
+  useEffect(() => {
+    if (isOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
+
+  // Focus trap and ESC
   useEffect(() => {
     if (!display) return;
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-      // Trap focus
-      if (e.key === "Tab" && overlayRef.current) {
-        const focusables = overlayRef.current.querySelectorAll<HTMLElement>(
-          'a, button, [tabindex]:not([tabindex="-1"])'
-        );
-        if (focusables.length === 0) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        } else if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      }
-      // Arrow key navigation (left/back, right/forward)
-      if (e.key === "ArrowLeft") {
-        if (activeLevel2) {
-          setActiveLevel2(null);
-          setTimeout(() => {
-            const btn = panel2Ref.current?.querySelector<HTMLElement>("button, a");
-            btn?.focus();
-          }, 50);
-        } else if (activeLevel1) {
-          setActiveLevel1(null);
-          setTimeout(() => {
-            const btn = panel1Ref.current?.querySelector<HTMLElement>("button, a");
-            btn?.focus();
-          }, 50);
-        }
-      }
-      if (e.key === "ArrowRight") {
-        if (activeLevel1 && !activeLevel2) {
-          const firstSub = activeLevel1.subItems?.[0];
-          if (firstSub) {
-            setActiveLevel2(firstSub);
-            setTimeout(() => {
-              const btn = panel3Ref.current?.querySelector<HTMLElement>("button, a");
-              btn?.focus();
-            }, 50);
-          }
-        }
-      }
+      if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
-  }, [display, onClose, activeLevel1, activeLevel2]);
+  }, [display, onClose]);
 
   if (!display) return null;
 
-  // Panel logic
-  const itemsLevel1 = navigationData;
-  const itemsLevel2 = activeLevel1?.subItems || [];
-  const itemsLevel3 = activeLevel2?.subItems || [];
+  // Panel data
+  const l1Items = navigationData;
+  const l2Items = activeL1 !== null ? l1Items[activeL1]?.subItems || [] : [];
+  const l2Parent = activeL1 !== null ? l1Items[activeL1] : null;
+  const l3Items = (activeL1 !== null && activeL2 !== null) ? l2Items[activeL2]?.subItems || [] : [];
+  const l3Parent = (activeL1 !== null && activeL2 !== null) ? l2Items[activeL2] : null;
 
   // Handlers
-  const handleLevel1 = (item: NavItem) => {
-    setActiveLevel1(item);
-    setActiveLevel2(null);
-    setTimeout(() => {
-      const btn = panel2Ref.current?.querySelector<HTMLElement>("button, a");
-      btn?.focus();
-    }, 100);
+  const handleL1 = (idx: number) => {
+    setActiveL1(idx);
+    setActiveL2(null);
   };
-  const handleLevel2 = (item: NavItem) => {
-    setActiveLevel2(item);
-    setTimeout(() => {
-      const btn = panel3Ref.current?.querySelector<HTMLElement>("button, a");
-      btn?.focus();
-    }, 100);
+  const handleL2 = (idx: number) => {
+    setActiveL2(idx);
   };
-  const handleBackToLevel1 = () => {
-    setActiveLevel1(null);
-    setActiveLevel2(null);
-    setTimeout(() => {
-      const btn = panel1Ref.current?.querySelector<HTMLElement>("button, a");
-      btn?.focus();
-    }, 100);
+  const handleBackL2 = () => {
+    setActiveL1(null);
+    setActiveL2(null);
   };
-  const handleBackToLevel2 = () => {
-    setActiveLevel2(null);
-    setTimeout(() => {
-      const btn = panel2Ref.current?.querySelector<HTMLElement>("button, a");
-      btn?.focus();
-    }, 100);
+  const handleBackL3 = () => {
+    setActiveL2(null);
   };
   const handleLink = () => {
     onClose();
   };
 
-  // Panel transition classes (always in DOM, only one visible)
-  const panelBase =
-    `absolute top-0 left-0 w-full h-full bg-white ${PANEL_TRANSITION}`;
-  const panel1Class =
-    panelBase +
-    (!activeLevel1
-      ? " translate-x-0 opacity-100 pointer-events-auto z-30 shadow-xl border-r border-blue-100"
-      : " -translate-x-full opacity-0 pointer-events-none z-10");
-  const panel2Class =
-    panelBase +
-    (activeLevel1 && !activeLevel2
-      ? " translate-x-0 opacity-100 pointer-events-auto z-30 shadow-xl border-r border-blue-100"
-      : activeLevel2
-      ? " -translate-x-full opacity-0 pointer-events-none z-10"
-      : " translate-x-full opacity-0 pointer-events-none z-10");
-  const panel3Class =
-    panelBase +
-    (activeLevel2
-      ? " translate-x-0 opacity-100 pointer-events-auto z-30 shadow-xl"
-      : " translate-x-full opacity-0 pointer-events-none z-10");
+  // Highlight logic
+  const isActiveL1 = (idx: number) => activeL1 === idx;
+  const isActiveL2 = (idx: number) => activeL2 === idx;
 
   return (
     <div
@@ -188,112 +98,96 @@ const SiteHeaderOverlay: React.FC<SiteHeaderOverlayProps> = ({
     >
       {/* Overlay background */}
       <div
-        className="absolute inset-0 bg-blue-950 bg-opacity-90 backdrop-blur-[2.5px] transition-opacity duration-500"
+        className="absolute inset-0 bg-neutral-900 bg-opacity-95 backdrop-blur-[2.5px] transition-opacity duration-500"
         onClick={onClose}
         aria-hidden="true"
       />
-      {/* 3-panel navigation, always in DOM */}
-      <div className="relative w-full max-w-5xl h-[80vh] flex bg-white rounded-2xl shadow-2xl overflow-hidden border border-blue-200">
-        {/* Panel 1: Top-level nav */}
-        <div
-          ref={panel1Ref}
-          className={`flex-1 px-8 py-10 ${panel1Class}`}
-          aria-label="Kategori utama"
-        >
-          <ul>
-            {itemsLevel1.map((item) => (
-              <li key={item.id} className="mb-2">
-                <button
-                  className={`w-full text-left py-3 px-4 font-bold text-xl rounded transition-colors focus-visible:ring-2 focus-visible:ring-amber-400 ${
-                    activeLevel1?.id === item.id ? "bg-blue-50 text-blue-900" : "hover:bg-blue-50 text-blue-950"
-                  }`}
-                  onClick={() => handleLevel1(item)}
-                  aria-current={activeLevel1?.id === item.id ? "page" : undefined}
-                >
-                  {item.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-        {/* Panel 2: Subnav */}
-        <div
-          ref={panel2Ref}
-          className={`flex-1 px-8 py-10 ${panel2Class}`}
-          aria-label="Subkategori"
-        >
-          {activeLevel1 && (
-            <button
-              onClick={handleBackToLevel1}
-              className="mb-6 flex items-center gap-2 text-blue-900 hover:underline focus-visible:ring-2 focus-visible:ring-amber-400 font-semibold text-base"
-              aria-label="Kembali ke kategori utama"
-            >
-              <span className="text-2xl">←</span> Kembali
-            </button>
-          )}
-          {activeLevel1 && itemsLevel2.length > 0 ? (
-            <ul>
-              {itemsLevel2.map((item) => (
-                <li key={item.id} className="mb-2">
-                  <button
-                    className={`w-full text-left py-3 px-4 font-semibold text-lg rounded transition-colors focus-visible:ring-2 focus-visible:ring-amber-400 ${
-                      activeLevel2?.id === item.id ? "bg-blue-100 text-blue-900" : "hover:bg-blue-50 text-blue-950"
-                    }`}
-                    onClick={() => handleLevel2(item)}
-                    aria-current={activeLevel2?.id === item.id ? "page" : undefined}
-                  >
-                    {item.title}
+      {/* 3-column mega menu */}
+      <div className="relative w-full max-w-7xl h-[80vh] flex flex-col md:flex-row bg-transparent p-6 pt-32">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 w-full h-full">
+          {/* L1: Main menu */}
+          <div className="py-4 border-b md:border-r md:border-b-0 border-white/10 menu-column">
+            <ul className="space-y-1 menu-list">
+              {l1Items.map((item, i) => (
+                <li key={item.id} className={`border-t border-transparent ${isActiveL1(i) ? "text-white has-eyebrow border-t-2 border-white" : "text-neutral-400 hover:text-white hover:bg-white/5"} text-2xl font-semibold`}>
+                  {item.subItems ? (
+                    <button
+                      className="flex items-center w-full text-left p-2 transition-colors duration-200 rounded-md"
+                      onClick={() => handleL1(i)}
+                      aria-current={isActiveL1(i) ? "page" : undefined}
+                    >
+                      {item.title}
+                      <svg className="w-5 h-5 ml-auto text-neutral-500" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
+                    </button>
+                  ) : (
+                    <a href={item.link || "#"} className="flex items-center w-full text-left p-2 transition-colors duration-200 rounded-md" onClick={handleLink}>{item.title}</a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* L2: Submenu + description */}
+          <div className={`py-4 border-b md:border-r md:border-b-0 border-white/10 menu-column ${activeL1 !== null ? "is-active" : ""}`}>
+            <div className="h-full md:pl-8">
+              {activeL1 !== null && (
+                <>
+                  <button onClick={handleBackL2} className="flex items-center gap-2 px-2 py-4 text-lg font-semibold text-white">
+                    <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                    Back
                   </button>
-                </li>
-              ))}
-            </ul>
-          ) : activeLevel1 ? (
-            <div className="text-gray-400 italic mt-8">Tidak ada subkategori.</div>
-          ) : (
-            <div className="text-gray-400 italic mt-8">Pilih kategori utama.</div>
-          )}
-        </div>
-        {/* Panel 3: Details */}
-        <div
-          ref={panel3Ref}
-          className={`flex-1 px-8 py-10 ${panel3Class}`}
-          aria-label="Detail"
-        >
-          {activeLevel2 && (
-            <button
-              onClick={handleBackToLevel2}
-              className="mb-6 flex items-center gap-2 text-blue-900 hover:underline focus-visible:ring-2 focus-visible:ring-amber-400 font-semibold text-base"
-              aria-label="Kembali ke subkategori"
-            >
-              <span className="text-2xl">←</span> Kembali
-            </button>
-          )}
-          {activeLevel2 && itemsLevel3.length > 0 ? (
-            <ul>
-              {itemsLevel3.map((item) => (
-                <li key={item.id} className="mb-2">
-                  <a
-                    href={item.link}
-                    className="block w-full py-3 px-4 font-medium text-lg rounded transition-colors hover:bg-blue-50 text-blue-950 focus-visible:ring-2 focus-visible:ring-amber-400"
-                    onClick={handleLink}
-                    target={item.isExternal ? "_blank" : "_self"}
-                    rel={item.isExternal ? "noopener noreferrer" : undefined}
-                  >
-                    {item.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ) : activeLevel2 ? (
-            <div className="text-gray-400 italic mt-8">Tidak ada detail.</div>
-          ) : (
-            <div className="text-gray-400 italic mt-8">Pilih subkategori.</div>
-          )}
+                  {l2Parent?.description && <p className="px-2 mb-4 text-sm text-neutral-400">{l2Parent.description}</p>}
+                  {l2Items.length > 0 && (
+                    <ul className="space-y-1 menu-list divide-y divide-white/10">
+                      {l2Items.map((item, i) => (
+                        <li key={item.id} className={`text-lg ${isActiveL2(i) ? "text-white bg-white/5" : "text-neutral-400 hover:text-white hover:bg-white/5"}`}>
+                          {item.subItems ? (
+                            <button
+                              className="flex items-center w-full text-left p-2 transition-colors duration-200 rounded-md"
+                              onClick={() => handleL2(i)}
+                              aria-current={isActiveL2(i) ? "page" : undefined}
+                            >
+                              {item.title}
+                              <svg className="w-5 h-5 ml-auto text-neutral-500" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
+                            </button>
+                          ) : (
+                            <a href={item.link || "#"} className="flex items-center w-full text-left p-2 transition-colors duration-200 rounded-md" onClick={handleLink}>{item.title}</a>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+          {/* L3: Submenu of submenu */}
+          <div className={`py-4 menu-column ${activeL2 !== null ? "is-active" : ""}`}>
+            <div className="h-full md:pl-8">
+              {activeL2 !== null && (
+                <>
+                  <button onClick={handleBackL3} className="flex items-center gap-2 px-2 py-4 text-lg font-semibold text-white">
+                    <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                    Back
+                  </button>
+                  {l3Parent?.description && <p className="px-2 mb-4 text-sm text-neutral-400">{l3Parent.description}</p>}
+                  {l3Items.length > 0 && (
+                    <ul className="space-y-1 menu-list divide-y divide-white/10">
+                      {l3Items.map((item, i) => (
+                        <li key={item.id} className="text-base text-neutral-400 hover:text-white hover:bg-white/5">
+                          <a href={item.link || "#"} className="flex items-center w-full text-left p-2 transition-colors duration-200 rounded-md" onClick={handleLink}>{item.title}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
         </div>
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 text-blue-900 bg-white rounded-full p-3 shadow-lg border border-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 z-20 transition-all duration-200 hover:bg-blue-50 hover:scale-110"
+          className="absolute top-6 right-6 text-white bg-neutral-900 rounded-full p-3 shadow-lg border border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 z-20 transition-all duration-200 hover:bg-white/10 hover:scale-110"
           aria-label="Tutup menu"
         >
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

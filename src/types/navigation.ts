@@ -29,3 +29,11 @@ export interface QuickLink {
   link: string;
   isExternal?: boolean;
 }
+
+export interface LocalMenuItem {
+  id: string;         
+  title: string;      
+  link: string;       
+  submenu?: LocalMenuItem[];
+  isExternal?: boolean;
+}

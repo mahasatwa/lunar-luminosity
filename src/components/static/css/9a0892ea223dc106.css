@@ -1,0 +1,2020 @@
+.hbs-section-intro-text {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -8px;
+  margin-right: -8px;
+  width: calc(100% + 16px);
+  background-color: var(--c-bg);
+  color: var(--c-text);
+}
+@media (min-width: 600px) {
+  .hbs-section-intro-text {
+    margin-left: -1vw;
+    margin-right: -1vw;
+    width: calc(100% + 2vw);
+  }
+}
+.hbs-section-intro-text .hbs-section-intro-text__content,
+.hbs-section-intro-text .hbs-section-intro-text__media,
+.hbs-section-intro-text .hbs-section-intro-text__related-people {
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 100%;
+}
+@media (min-width: 600px) {
+  .hbs-section-intro-text .hbs-section-intro-text__content,
+  .hbs-section-intro-text .hbs-section-intro-text__media,
+  .hbs-section-intro-text .hbs-section-intro-text__related-people {
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+}
+.hbs-section-intro-text .hbs-section-intro-text__related-people {
+  width: 100%;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro,
+.hbs-section-intro-text h2,
+.hbs-section-intro-text h3,
+.hbs-section-intro-text h4,
+.hbs-section-intro-text h5,
+.hbs-section-intro-text h6 {
+  font-size: 16px;
+  font-family: Tiempos, serif, system-ui;
+  font-weight: 300;
+  line-height: 1.55;
+  font-size: 20px;
+  font-family: Graphik, sans-serif, system-ui;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+@media screen and (min-width: 300px) and (max-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro,
+  .hbs-section-intro-text h2,
+  .hbs-section-intro-text h3,
+  .hbs-section-intro-text h4,
+  .hbs-section-intro-text h5,
+  .hbs-section-intro-text h6 {
+    font-size: calc(16px + 4 * (100vw - 300px) / 1040);
+  }
+}
+@media screen and (min-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro,
+  .hbs-section-intro-text h2,
+  .hbs-section-intro-text h3,
+  .hbs-section-intro-text h4,
+  .hbs-section-intro-text h5,
+  .hbs-section-intro-text h6 {
+    font-size: 20px;
+  }
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro:first-child
+  > :first-child,
+.hbs-section-intro-text h2:first-child > :first-child,
+.hbs-section-intro-text h3:first-child > :first-child,
+.hbs-section-intro-text h4:first-child > :first-child,
+.hbs-section-intro-text h5:first-child > :first-child,
+.hbs-section-intro-text h6:first-child > :first-child {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro:last-child > :last-child,
+.hbs-section-intro-text h2:last-child > :last-child,
+.hbs-section-intro-text h3:last-child > :last-child,
+.hbs-section-intro-text h4:last-child > :last-child,
+.hbs-section-intro-text h5:last-child > :last-child,
+.hbs-section-intro-text h6:last-child > :last-child {
+  margin-bottom: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6,
+.hbs-section-intro-text h2 > h1,
+.hbs-section-intro-text h2 > h2,
+.hbs-section-intro-text h2 > h3,
+.hbs-section-intro-text h2 > h4,
+.hbs-section-intro-text h2 > h5,
+.hbs-section-intro-text h2 > h6,
+.hbs-section-intro-text h3 > h1,
+.hbs-section-intro-text h3 > h2,
+.hbs-section-intro-text h3 > h3,
+.hbs-section-intro-text h3 > h4,
+.hbs-section-intro-text h3 > h5,
+.hbs-section-intro-text h3 > h6,
+.hbs-section-intro-text h4 > h1,
+.hbs-section-intro-text h4 > h2,
+.hbs-section-intro-text h4 > h3,
+.hbs-section-intro-text h4 > h4,
+.hbs-section-intro-text h4 > h5,
+.hbs-section-intro-text h4 > h6,
+.hbs-section-intro-text h5 > h1,
+.hbs-section-intro-text h5 > h2,
+.hbs-section-intro-text h5 > h3,
+.hbs-section-intro-text h5 > h4,
+.hbs-section-intro-text h5 > h5,
+.hbs-section-intro-text h5 > h6,
+.hbs-section-intro-text h6 > h1,
+.hbs-section-intro-text h6 > h2,
+.hbs-section-intro-text h6 > h3,
+.hbs-section-intro-text h6 > h4,
+.hbs-section-intro-text h6 > h5,
+.hbs-section-intro-text h6 > h6 {
+  transform: translateX(-0.06em);
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1 > a,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2 > a,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3 > a,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4 > a,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5 > a,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6 > a,
+.hbs-section-intro-text h2 > h1 > a,
+.hbs-section-intro-text h2 > h2 > a,
+.hbs-section-intro-text h2 > h3 > a,
+.hbs-section-intro-text h2 > h4 > a,
+.hbs-section-intro-text h2 > h5 > a,
+.hbs-section-intro-text h2 > h6 > a,
+.hbs-section-intro-text h3 > h1 > a,
+.hbs-section-intro-text h3 > h2 > a,
+.hbs-section-intro-text h3 > h3 > a,
+.hbs-section-intro-text h3 > h4 > a,
+.hbs-section-intro-text h3 > h5 > a,
+.hbs-section-intro-text h3 > h6 > a,
+.hbs-section-intro-text h4 > h1 > a,
+.hbs-section-intro-text h4 > h2 > a,
+.hbs-section-intro-text h4 > h3 > a,
+.hbs-section-intro-text h4 > h4 > a,
+.hbs-section-intro-text h4 > h5 > a,
+.hbs-section-intro-text h4 > h6 > a,
+.hbs-section-intro-text h5 > h1 > a,
+.hbs-section-intro-text h5 > h2 > a,
+.hbs-section-intro-text h5 > h3 > a,
+.hbs-section-intro-text h5 > h4 > a,
+.hbs-section-intro-text h5 > h5 > a,
+.hbs-section-intro-text h5 > h6 > a,
+.hbs-section-intro-text h6 > h1 > a,
+.hbs-section-intro-text h6 > h2 > a,
+.hbs-section-intro-text h6 > h3 > a,
+.hbs-section-intro-text h6 > h4 > a,
+.hbs-section-intro-text h6 > h5 > a,
+.hbs-section-intro-text h6 > h6 > a {
+  cursor: pointer;
+  color: var(--c-text);
+  -webkit-text-decoration-color: var(--c-border-dark);
+  text-decoration-color: var(--c-border-dark);
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-style: solid;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+@media not all and (hover: none) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro > h1 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__intro > h2 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__intro > h3 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__intro > h4 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__intro > h5 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__intro > h6 > a:hover,
+  .hbs-section-intro-text h2 > h1 > a:hover,
+  .hbs-section-intro-text h2 > h2 > a:hover,
+  .hbs-section-intro-text h2 > h3 > a:hover,
+  .hbs-section-intro-text h2 > h4 > a:hover,
+  .hbs-section-intro-text h2 > h5 > a:hover,
+  .hbs-section-intro-text h2 > h6 > a:hover,
+  .hbs-section-intro-text h3 > h1 > a:hover,
+  .hbs-section-intro-text h3 > h2 > a:hover,
+  .hbs-section-intro-text h3 > h3 > a:hover,
+  .hbs-section-intro-text h3 > h4 > a:hover,
+  .hbs-section-intro-text h3 > h5 > a:hover,
+  .hbs-section-intro-text h3 > h6 > a:hover,
+  .hbs-section-intro-text h4 > h1 > a:hover,
+  .hbs-section-intro-text h4 > h2 > a:hover,
+  .hbs-section-intro-text h4 > h3 > a:hover,
+  .hbs-section-intro-text h4 > h4 > a:hover,
+  .hbs-section-intro-text h4 > h5 > a:hover,
+  .hbs-section-intro-text h4 > h6 > a:hover,
+  .hbs-section-intro-text h5 > h1 > a:hover,
+  .hbs-section-intro-text h5 > h2 > a:hover,
+  .hbs-section-intro-text h5 > h3 > a:hover,
+  .hbs-section-intro-text h5 > h4 > a:hover,
+  .hbs-section-intro-text h5 > h5 > a:hover,
+  .hbs-section-intro-text h5 > h6 > a:hover,
+  .hbs-section-intro-text h6 > h1 > a:hover,
+  .hbs-section-intro-text h6 > h2 > a:hover,
+  .hbs-section-intro-text h6 > h3 > a:hover,
+  .hbs-section-intro-text h6 > h4 > a:hover,
+  .hbs-section-intro-text h6 > h5 > a:hover,
+  .hbs-section-intro-text h6 > h6 > a:hover {
+    color: var(--c-spot);
+    -webkit-text-decoration-color: var(--c-solid);
+    text-decoration-color: var(--c-solid);
+    outline: none;
+  }
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h1
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h2
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h3
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h4
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h5
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h6
+  > a:focus:not(:hover),
+.hbs-section-intro-text h2 > h1 > a:focus:not(:hover),
+.hbs-section-intro-text h2 > h2 > a:focus:not(:hover),
+.hbs-section-intro-text h2 > h3 > a:focus:not(:hover),
+.hbs-section-intro-text h2 > h4 > a:focus:not(:hover),
+.hbs-section-intro-text h2 > h5 > a:focus:not(:hover),
+.hbs-section-intro-text h2 > h6 > a:focus:not(:hover),
+.hbs-section-intro-text h3 > h1 > a:focus:not(:hover),
+.hbs-section-intro-text h3 > h2 > a:focus:not(:hover),
+.hbs-section-intro-text h3 > h3 > a:focus:not(:hover),
+.hbs-section-intro-text h3 > h4 > a:focus:not(:hover),
+.hbs-section-intro-text h3 > h5 > a:focus:not(:hover),
+.hbs-section-intro-text h3 > h6 > a:focus:not(:hover),
+.hbs-section-intro-text h4 > h1 > a:focus:not(:hover),
+.hbs-section-intro-text h4 > h2 > a:focus:not(:hover),
+.hbs-section-intro-text h4 > h3 > a:focus:not(:hover),
+.hbs-section-intro-text h4 > h4 > a:focus:not(:hover),
+.hbs-section-intro-text h4 > h5 > a:focus:not(:hover),
+.hbs-section-intro-text h4 > h6 > a:focus:not(:hover),
+.hbs-section-intro-text h5 > h1 > a:focus:not(:hover),
+.hbs-section-intro-text h5 > h2 > a:focus:not(:hover),
+.hbs-section-intro-text h5 > h3 > a:focus:not(:hover),
+.hbs-section-intro-text h5 > h4 > a:focus:not(:hover),
+.hbs-section-intro-text h5 > h5 > a:focus:not(:hover),
+.hbs-section-intro-text h5 > h6 > a:focus:not(:hover),
+.hbs-section-intro-text h6 > h1 > a:focus:not(:hover),
+.hbs-section-intro-text h6 > h2 > a:focus:not(:hover),
+.hbs-section-intro-text h6 > h3 > a:focus:not(:hover),
+.hbs-section-intro-text h6 > h4 > a:focus:not(:hover),
+.hbs-section-intro-text h6 > h5 > a:focus:not(:hover),
+.hbs-section-intro-text h6 > h6 > a:focus:not(:hover) {
+  outline: 4px solid var(--c-outline);
+  outline-offset: 1px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h1
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h2
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h3
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h4
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h5
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > h6
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text h2 > h1 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h2 > h2 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h2 > h3 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h2 > h4 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h2 > h5 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h2 > h6 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h3 > h1 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h3 > h2 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h3 > h3 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h3 > h4 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h3 > h5 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h3 > h6 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h4 > h1 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h4 > h2 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h4 > h3 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h4 > h4 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h4 > h5 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h4 > h6 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h5 > h1 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h5 > h2 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h5 > h3 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h5 > h4 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h5 > h5 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h5 > h6 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h6 > h1 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h6 > h2 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h6 > h3 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h6 > h4 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h6 > h5 > a:focus:not(:focus-visible),
+.hbs-section-intro-text h6 > h6 > a:focus:not(:focus-visible) {
+  outline: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1,
+.hbs-section-intro-text h2 > h1,
+.hbs-section-intro-text h3 > h1,
+.hbs-section-intro-text h4 > h1,
+.hbs-section-intro-text h5 > h1,
+.hbs-section-intro-text h6 > h1 {
+  margin: 0 0 0.25em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1:not(:first-child),
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2,
+.hbs-section-intro-text h2 > h1:not(:first-child),
+.hbs-section-intro-text h2 > h2,
+.hbs-section-intro-text h3 > h1:not(:first-child),
+.hbs-section-intro-text h3 > h2,
+.hbs-section-intro-text h4 > h1:not(:first-child),
+.hbs-section-intro-text h4 > h2,
+.hbs-section-intro-text h5 > h1:not(:first-child),
+.hbs-section-intro-text h5 > h2,
+.hbs-section-intro-text h6 > h1:not(:first-child),
+.hbs-section-intro-text h6 > h2 {
+  margin: 1.25em 0 0.25em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4,
+.hbs-section-intro-text h2 > h3,
+.hbs-section-intro-text h2 > h4,
+.hbs-section-intro-text h3 > h3,
+.hbs-section-intro-text h3 > h4,
+.hbs-section-intro-text h4 > h3,
+.hbs-section-intro-text h4 > h4,
+.hbs-section-intro-text h5 > h3,
+.hbs-section-intro-text h5 > h4,
+.hbs-section-intro-text h6 > h3,
+.hbs-section-intro-text h6 > h4 {
+  margin: 1.5em 0 0.25em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6,
+.hbs-section-intro-text h2 > h5,
+.hbs-section-intro-text h2 > h6,
+.hbs-section-intro-text h3 > h5,
+.hbs-section-intro-text h3 > h6,
+.hbs-section-intro-text h4 > h5,
+.hbs-section-intro-text h4 > h6,
+.hbs-section-intro-text h5 > h5,
+.hbs-section-intro-text h5 > h6,
+.hbs-section-intro-text h6 > h5,
+.hbs-section-intro-text h6 > h6 {
+  margin: 1.5em 0 0.5em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6 + h6,
+.hbs-section-intro-text h2 > h1 + h1,
+.hbs-section-intro-text h2 > h1 + h2,
+.hbs-section-intro-text h2 > h1 + h3,
+.hbs-section-intro-text h2 > h1 + h4,
+.hbs-section-intro-text h2 > h1 + h5,
+.hbs-section-intro-text h2 > h1 + h6,
+.hbs-section-intro-text h2 > h2 + h1,
+.hbs-section-intro-text h2 > h2 + h2,
+.hbs-section-intro-text h2 > h2 + h3,
+.hbs-section-intro-text h2 > h2 + h4,
+.hbs-section-intro-text h2 > h2 + h5,
+.hbs-section-intro-text h2 > h2 + h6,
+.hbs-section-intro-text h2 > h3 + h1,
+.hbs-section-intro-text h2 > h3 + h2,
+.hbs-section-intro-text h2 > h3 + h3,
+.hbs-section-intro-text h2 > h3 + h4,
+.hbs-section-intro-text h2 > h3 + h5,
+.hbs-section-intro-text h2 > h3 + h6,
+.hbs-section-intro-text h2 > h4 + h1,
+.hbs-section-intro-text h2 > h4 + h2,
+.hbs-section-intro-text h2 > h4 + h3,
+.hbs-section-intro-text h2 > h4 + h4,
+.hbs-section-intro-text h2 > h4 + h5,
+.hbs-section-intro-text h2 > h4 + h6,
+.hbs-section-intro-text h2 > h5 + h1,
+.hbs-section-intro-text h2 > h5 + h2,
+.hbs-section-intro-text h2 > h5 + h3,
+.hbs-section-intro-text h2 > h5 + h4,
+.hbs-section-intro-text h2 > h5 + h5,
+.hbs-section-intro-text h2 > h5 + h6,
+.hbs-section-intro-text h2 > h6 + h1,
+.hbs-section-intro-text h2 > h6 + h2,
+.hbs-section-intro-text h2 > h6 + h3,
+.hbs-section-intro-text h2 > h6 + h4,
+.hbs-section-intro-text h2 > h6 + h5,
+.hbs-section-intro-text h2 > h6 + h6,
+.hbs-section-intro-text h3 > h1 + h1,
+.hbs-section-intro-text h3 > h1 + h2,
+.hbs-section-intro-text h3 > h1 + h3,
+.hbs-section-intro-text h3 > h1 + h4,
+.hbs-section-intro-text h3 > h1 + h5,
+.hbs-section-intro-text h3 > h1 + h6,
+.hbs-section-intro-text h3 > h2 + h1,
+.hbs-section-intro-text h3 > h2 + h2,
+.hbs-section-intro-text h3 > h2 + h3,
+.hbs-section-intro-text h3 > h2 + h4,
+.hbs-section-intro-text h3 > h2 + h5,
+.hbs-section-intro-text h3 > h2 + h6,
+.hbs-section-intro-text h3 > h3 + h1,
+.hbs-section-intro-text h3 > h3 + h2,
+.hbs-section-intro-text h3 > h3 + h3,
+.hbs-section-intro-text h3 > h3 + h4,
+.hbs-section-intro-text h3 > h3 + h5,
+.hbs-section-intro-text h3 > h3 + h6,
+.hbs-section-intro-text h3 > h4 + h1,
+.hbs-section-intro-text h3 > h4 + h2,
+.hbs-section-intro-text h3 > h4 + h3,
+.hbs-section-intro-text h3 > h4 + h4,
+.hbs-section-intro-text h3 > h4 + h5,
+.hbs-section-intro-text h3 > h4 + h6,
+.hbs-section-intro-text h3 > h5 + h1,
+.hbs-section-intro-text h3 > h5 + h2,
+.hbs-section-intro-text h3 > h5 + h3,
+.hbs-section-intro-text h3 > h5 + h4,
+.hbs-section-intro-text h3 > h5 + h5,
+.hbs-section-intro-text h3 > h5 + h6,
+.hbs-section-intro-text h3 > h6 + h1,
+.hbs-section-intro-text h3 > h6 + h2,
+.hbs-section-intro-text h3 > h6 + h3,
+.hbs-section-intro-text h3 > h6 + h4,
+.hbs-section-intro-text h3 > h6 + h5,
+.hbs-section-intro-text h3 > h6 + h6,
+.hbs-section-intro-text h4 > h1 + h1,
+.hbs-section-intro-text h4 > h1 + h2,
+.hbs-section-intro-text h4 > h1 + h3,
+.hbs-section-intro-text h4 > h1 + h4,
+.hbs-section-intro-text h4 > h1 + h5,
+.hbs-section-intro-text h4 > h1 + h6,
+.hbs-section-intro-text h4 > h2 + h1,
+.hbs-section-intro-text h4 > h2 + h2,
+.hbs-section-intro-text h4 > h2 + h3,
+.hbs-section-intro-text h4 > h2 + h4,
+.hbs-section-intro-text h4 > h2 + h5,
+.hbs-section-intro-text h4 > h2 + h6,
+.hbs-section-intro-text h4 > h3 + h1,
+.hbs-section-intro-text h4 > h3 + h2,
+.hbs-section-intro-text h4 > h3 + h3,
+.hbs-section-intro-text h4 > h3 + h4,
+.hbs-section-intro-text h4 > h3 + h5,
+.hbs-section-intro-text h4 > h3 + h6,
+.hbs-section-intro-text h4 > h4 + h1,
+.hbs-section-intro-text h4 > h4 + h2,
+.hbs-section-intro-text h4 > h4 + h3,
+.hbs-section-intro-text h4 > h4 + h4,
+.hbs-section-intro-text h4 > h4 + h5,
+.hbs-section-intro-text h4 > h4 + h6,
+.hbs-section-intro-text h4 > h5 + h1,
+.hbs-section-intro-text h4 > h5 + h2,
+.hbs-section-intro-text h4 > h5 + h3,
+.hbs-section-intro-text h4 > h5 + h4,
+.hbs-section-intro-text h4 > h5 + h5,
+.hbs-section-intro-text h4 > h5 + h6,
+.hbs-section-intro-text h4 > h6 + h1,
+.hbs-section-intro-text h4 > h6 + h2,
+.hbs-section-intro-text h4 > h6 + h3,
+.hbs-section-intro-text h4 > h6 + h4,
+.hbs-section-intro-text h4 > h6 + h5,
+.hbs-section-intro-text h4 > h6 + h6,
+.hbs-section-intro-text h5 > h1 + h1,
+.hbs-section-intro-text h5 > h1 + h2,
+.hbs-section-intro-text h5 > h1 + h3,
+.hbs-section-intro-text h5 > h1 + h4,
+.hbs-section-intro-text h5 > h1 + h5,
+.hbs-section-intro-text h5 > h1 + h6,
+.hbs-section-intro-text h5 > h2 + h1,
+.hbs-section-intro-text h5 > h2 + h2,
+.hbs-section-intro-text h5 > h2 + h3,
+.hbs-section-intro-text h5 > h2 + h4,
+.hbs-section-intro-text h5 > h2 + h5,
+.hbs-section-intro-text h5 > h2 + h6,
+.hbs-section-intro-text h5 > h3 + h1,
+.hbs-section-intro-text h5 > h3 + h2,
+.hbs-section-intro-text h5 > h3 + h3,
+.hbs-section-intro-text h5 > h3 + h4,
+.hbs-section-intro-text h5 > h3 + h5,
+.hbs-section-intro-text h5 > h3 + h6,
+.hbs-section-intro-text h5 > h4 + h1,
+.hbs-section-intro-text h5 > h4 + h2,
+.hbs-section-intro-text h5 > h4 + h3,
+.hbs-section-intro-text h5 > h4 + h4,
+.hbs-section-intro-text h5 > h4 + h5,
+.hbs-section-intro-text h5 > h4 + h6,
+.hbs-section-intro-text h5 > h5 + h1,
+.hbs-section-intro-text h5 > h5 + h2,
+.hbs-section-intro-text h5 > h5 + h3,
+.hbs-section-intro-text h5 > h5 + h4,
+.hbs-section-intro-text h5 > h5 + h5,
+.hbs-section-intro-text h5 > h5 + h6,
+.hbs-section-intro-text h5 > h6 + h1,
+.hbs-section-intro-text h5 > h6 + h2,
+.hbs-section-intro-text h5 > h6 + h3,
+.hbs-section-intro-text h5 > h6 + h4,
+.hbs-section-intro-text h5 > h6 + h5,
+.hbs-section-intro-text h5 > h6 + h6,
+.hbs-section-intro-text h6 > h1 + h1,
+.hbs-section-intro-text h6 > h1 + h2,
+.hbs-section-intro-text h6 > h1 + h3,
+.hbs-section-intro-text h6 > h1 + h4,
+.hbs-section-intro-text h6 > h1 + h5,
+.hbs-section-intro-text h6 > h1 + h6,
+.hbs-section-intro-text h6 > h2 + h1,
+.hbs-section-intro-text h6 > h2 + h2,
+.hbs-section-intro-text h6 > h2 + h3,
+.hbs-section-intro-text h6 > h2 + h4,
+.hbs-section-intro-text h6 > h2 + h5,
+.hbs-section-intro-text h6 > h2 + h6,
+.hbs-section-intro-text h6 > h3 + h1,
+.hbs-section-intro-text h6 > h3 + h2,
+.hbs-section-intro-text h6 > h3 + h3,
+.hbs-section-intro-text h6 > h3 + h4,
+.hbs-section-intro-text h6 > h3 + h5,
+.hbs-section-intro-text h6 > h3 + h6,
+.hbs-section-intro-text h6 > h4 + h1,
+.hbs-section-intro-text h6 > h4 + h2,
+.hbs-section-intro-text h6 > h4 + h3,
+.hbs-section-intro-text h6 > h4 + h4,
+.hbs-section-intro-text h6 > h4 + h5,
+.hbs-section-intro-text h6 > h4 + h6,
+.hbs-section-intro-text h6 > h5 + h1,
+.hbs-section-intro-text h6 > h5 + h2,
+.hbs-section-intro-text h6 > h5 + h3,
+.hbs-section-intro-text h6 > h5 + h4,
+.hbs-section-intro-text h6 > h5 + h5,
+.hbs-section-intro-text h6 > h5 + h6,
+.hbs-section-intro-text h6 > h6 + h1,
+.hbs-section-intro-text h6 > h6 + h2,
+.hbs-section-intro-text h6 > h6 + h3,
+.hbs-section-intro-text h6 > h6 + h4,
+.hbs-section-intro-text h6 > h6 + h5,
+.hbs-section-intro-text h6 > h6 + h6 {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1 + p,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2 + p,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3 + p,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4 + p,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h5 + p,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h6 + p,
+.hbs-section-intro-text h2 > h1 + p,
+.hbs-section-intro-text h2 > h2 + p,
+.hbs-section-intro-text h2 > h3 + p,
+.hbs-section-intro-text h2 > h4 + p,
+.hbs-section-intro-text h2 > h5 + p,
+.hbs-section-intro-text h2 > h6 + p,
+.hbs-section-intro-text h3 > h1 + p,
+.hbs-section-intro-text h3 > h2 + p,
+.hbs-section-intro-text h3 > h3 + p,
+.hbs-section-intro-text h3 > h4 + p,
+.hbs-section-intro-text h3 > h5 + p,
+.hbs-section-intro-text h3 > h6 + p,
+.hbs-section-intro-text h4 > h1 + p,
+.hbs-section-intro-text h4 > h2 + p,
+.hbs-section-intro-text h4 > h3 + p,
+.hbs-section-intro-text h4 > h4 + p,
+.hbs-section-intro-text h4 > h5 + p,
+.hbs-section-intro-text h4 > h6 + p,
+.hbs-section-intro-text h5 > h1 + p,
+.hbs-section-intro-text h5 > h2 + p,
+.hbs-section-intro-text h5 > h3 + p,
+.hbs-section-intro-text h5 > h4 + p,
+.hbs-section-intro-text h5 > h5 + p,
+.hbs-section-intro-text h5 > h6 + p,
+.hbs-section-intro-text h6 > h1 + p,
+.hbs-section-intro-text h6 > h2 + p,
+.hbs-section-intro-text h6 > h3 + p,
+.hbs-section-intro-text h6 > h4 + p,
+.hbs-section-intro-text h6 > h5 + p,
+.hbs-section-intro-text h6 > h6 + p {
+  margin-top: 8px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > a:not(.hbs-cta-link),
+.hbs-section-intro-text h2 > a:not(.hbs-cta-link),
+.hbs-section-intro-text h3 > a:not(.hbs-cta-link),
+.hbs-section-intro-text h4 > a:not(.hbs-cta-link),
+.hbs-section-intro-text h5 > a:not(.hbs-cta-link),
+.hbs-section-intro-text h6 > a:not(.hbs-cta-link) {
+  cursor: pointer;
+  color: var(--c-solid);
+  -webkit-text-decoration-color: var(--c-border-dark);
+  text-decoration-color: var(--c-border-dark);
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-style: solid;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+@media not all and (hover: none) {
+  .hbs-section-intro-text
+    .hbs-section-intro-text__intro
+    > a:not(.hbs-cta-link):hover,
+  .hbs-section-intro-text h2 > a:not(.hbs-cta-link):hover,
+  .hbs-section-intro-text h3 > a:not(.hbs-cta-link):hover,
+  .hbs-section-intro-text h4 > a:not(.hbs-cta-link):hover,
+  .hbs-section-intro-text h5 > a:not(.hbs-cta-link):hover,
+  .hbs-section-intro-text h6 > a:not(.hbs-cta-link):hover {
+    color: var(--c-spot);
+    -webkit-text-decoration-color: var(--c-solid);
+    text-decoration-color: var(--c-solid);
+    outline: none;
+  }
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > a:not(.hbs-cta-link):focus:not(:hover),
+.hbs-section-intro-text h2 > a:not(.hbs-cta-link):focus:not(:hover),
+.hbs-section-intro-text h3 > a:not(.hbs-cta-link):focus:not(:hover),
+.hbs-section-intro-text h4 > a:not(.hbs-cta-link):focus:not(:hover),
+.hbs-section-intro-text h5 > a:not(.hbs-cta-link):focus:not(:hover),
+.hbs-section-intro-text h6 > a:not(.hbs-cta-link):focus:not(:hover) {
+  outline: 4px solid var(--c-outline);
+  outline-offset: 1px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  > a:not(.hbs-cta-link):focus:not(:focus-visible),
+.hbs-section-intro-text h2 > a:not(.hbs-cta-link):focus:not(:focus-visible),
+.hbs-section-intro-text h3 > a:not(.hbs-cta-link):focus:not(:focus-visible),
+.hbs-section-intro-text h4 > a:not(.hbs-cta-link):focus:not(:focus-visible),
+.hbs-section-intro-text h5 > a:not(.hbs-cta-link):focus:not(:focus-visible),
+.hbs-section-intro-text h6 > a:not(.hbs-cta-link):focus:not(:focus-visible) {
+  outline: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > h1 a,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h2 a,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h3 a,
+.hbs-section-intro-text .hbs-section-intro-text__intro > h4 a,
+.hbs-section-intro-text h2 > h1 a,
+.hbs-section-intro-text h2 > h2 a,
+.hbs-section-intro-text h2 > h3 a,
+.hbs-section-intro-text h2 > h4 a,
+.hbs-section-intro-text h3 > h1 a,
+.hbs-section-intro-text h3 > h2 a,
+.hbs-section-intro-text h3 > h3 a,
+.hbs-section-intro-text h3 > h4 a,
+.hbs-section-intro-text h4 > h1 a,
+.hbs-section-intro-text h4 > h2 a,
+.hbs-section-intro-text h4 > h3 a,
+.hbs-section-intro-text h4 > h4 a,
+.hbs-section-intro-text h5 > h1 a,
+.hbs-section-intro-text h5 > h2 a,
+.hbs-section-intro-text h5 > h3 a,
+.hbs-section-intro-text h5 > h4 a,
+.hbs-section-intro-text h6 > h1 a,
+.hbs-section-intro-text h6 > h2 a,
+.hbs-section-intro-text h6 > h3 a,
+.hbs-section-intro-text h6 > h4 a {
+  text-underline-offset: 0.1em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > ol,
+.hbs-section-intro-text .hbs-section-intro-text__intro > p,
+.hbs-section-intro-text .hbs-section-intro-text__intro > ul,
+.hbs-section-intro-text h2 > ol,
+.hbs-section-intro-text h2 > p,
+.hbs-section-intro-text h2 > ul,
+.hbs-section-intro-text h3 > ol,
+.hbs-section-intro-text h3 > p,
+.hbs-section-intro-text h3 > ul,
+.hbs-section-intro-text h4 > ol,
+.hbs-section-intro-text h4 > p,
+.hbs-section-intro-text h4 > ul,
+.hbs-section-intro-text h5 > ol,
+.hbs-section-intro-text h5 > p,
+.hbs-section-intro-text h5 > ul,
+.hbs-section-intro-text h6 > ol,
+.hbs-section-intro-text h6 > p,
+.hbs-section-intro-text h6 > ul {
+  margin: 1em 0 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > ol:first-child,
+.hbs-section-intro-text .hbs-section-intro-text__intro > p:first-child,
+.hbs-section-intro-text .hbs-section-intro-text__intro > ul:first-child,
+.hbs-section-intro-text h2 > ol:first-child,
+.hbs-section-intro-text h2 > p:first-child,
+.hbs-section-intro-text h2 > ul:first-child,
+.hbs-section-intro-text h3 > ol:first-child,
+.hbs-section-intro-text h3 > p:first-child,
+.hbs-section-intro-text h3 > ul:first-child,
+.hbs-section-intro-text h4 > ol:first-child,
+.hbs-section-intro-text h4 > p:first-child,
+.hbs-section-intro-text h4 > ul:first-child,
+.hbs-section-intro-text h5 > ol:first-child,
+.hbs-section-intro-text h5 > p:first-child,
+.hbs-section-intro-text h5 > ul:first-child,
+.hbs-section-intro-text h6 > ol:first-child,
+.hbs-section-intro-text h6 > p:first-child,
+.hbs-section-intro-text h6 > ul:first-child {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > ol li p,
+.hbs-section-intro-text .hbs-section-intro-text__intro > p li p,
+.hbs-section-intro-text .hbs-section-intro-text__intro > ul li p,
+.hbs-section-intro-text h2 > ol li p,
+.hbs-section-intro-text h2 > p li p,
+.hbs-section-intro-text h2 > ul li p,
+.hbs-section-intro-text h3 > ol li p,
+.hbs-section-intro-text h3 > p li p,
+.hbs-section-intro-text h3 > ul li p,
+.hbs-section-intro-text h4 > ol li p,
+.hbs-section-intro-text h4 > p li p,
+.hbs-section-intro-text h4 > ul li p,
+.hbs-section-intro-text h5 > ol li p,
+.hbs-section-intro-text h5 > p li p,
+.hbs-section-intro-text h5 > ul li p,
+.hbs-section-intro-text h6 > ol li p,
+.hbs-section-intro-text h6 > p li p,
+.hbs-section-intro-text h6 > ul li p {
+  display: inline;
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro > ol,
+  .hbs-section-intro-text .hbs-section-intro-text__intro > p,
+  .hbs-section-intro-text .hbs-section-intro-text__intro > ul,
+  .hbs-section-intro-text h2 > ol,
+  .hbs-section-intro-text h2 > p,
+  .hbs-section-intro-text h2 > ul,
+  .hbs-section-intro-text h3 > ol,
+  .hbs-section-intro-text h3 > p,
+  .hbs-section-intro-text h3 > ul,
+  .hbs-section-intro-text h4 > ol,
+  .hbs-section-intro-text h4 > p,
+  .hbs-section-intro-text h4 > ul,
+  .hbs-section-intro-text h5 > ol,
+  .hbs-section-intro-text h5 > p,
+  .hbs-section-intro-text h5 > ul,
+  .hbs-section-intro-text h6 > ol,
+  .hbs-section-intro-text h6 > p,
+  .hbs-section-intro-text h6 > ul {
+    max-width: 40em;
+  }
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  .hbs-global-align-left:first-child
+  + *,
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  .hbs-global-align-right:first-child
+  + *,
+.hbs-section-intro-text h2 .hbs-global-align-left:first-child + *,
+.hbs-section-intro-text h2 .hbs-global-align-right:first-child + *,
+.hbs-section-intro-text h3 .hbs-global-align-left:first-child + *,
+.hbs-section-intro-text h3 .hbs-global-align-right:first-child + *,
+.hbs-section-intro-text h4 .hbs-global-align-left:first-child + *,
+.hbs-section-intro-text h4 .hbs-global-align-right:first-child + *,
+.hbs-section-intro-text h5 .hbs-global-align-left:first-child + *,
+.hbs-section-intro-text h5 .hbs-global-align-right:first-child + *,
+.hbs-section-intro-text h6 .hbs-global-align-left:first-child + *,
+.hbs-section-intro-text h6 .hbs-global-align-right:first-child + * {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro b,
+.hbs-section-intro-text .hbs-section-intro-text__intro strong,
+.hbs-section-intro-text h2 b,
+.hbs-section-intro-text h2 strong,
+.hbs-section-intro-text h3 b,
+.hbs-section-intro-text h3 strong,
+.hbs-section-intro-text h4 b,
+.hbs-section-intro-text h4 strong,
+.hbs-section-intro-text h5 b,
+.hbs-section-intro-text h5 strong,
+.hbs-section-intro-text h6 b,
+.hbs-section-intro-text h6 strong {
+  font-weight: 600;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro em,
+.hbs-section-intro-text .hbs-section-intro-text__intro i,
+.hbs-section-intro-text h2 em,
+.hbs-section-intro-text h2 i,
+.hbs-section-intro-text h3 em,
+.hbs-section-intro-text h3 i,
+.hbs-section-intro-text h4 em,
+.hbs-section-intro-text h4 i,
+.hbs-section-intro-text h5 em,
+.hbs-section-intro-text h5 i,
+.hbs-section-intro-text h6 em,
+.hbs-section-intro-text h6 i {
+  font-style: italic;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ul,
+.hbs-section-intro-text h2 ul,
+.hbs-section-intro-text h3 ul,
+.hbs-section-intro-text h4 ul,
+.hbs-section-intro-text h5 ul,
+.hbs-section-intro-text h6 ul {
+  list-style: disc;
+  padding-left: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ul > li,
+.hbs-section-intro-text h2 ul > li,
+.hbs-section-intro-text h3 ul > li,
+.hbs-section-intro-text h4 ul > li,
+.hbs-section-intro-text h5 ul > li,
+.hbs-section-intro-text h6 ul > li {
+  margin-left: 1.1em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ul > li::marker,
+.hbs-section-intro-text h2 ul > li::marker,
+.hbs-section-intro-text h3 ul > li::marker,
+.hbs-section-intro-text h4 ul > li::marker,
+.hbs-section-intro-text h5 ul > li::marker,
+.hbs-section-intro-text h6 ul > li::marker {
+  color: var(--c-spot);
+  line-height: 0;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  ul
+  > li:not(:first-child),
+.hbs-section-intro-text h2 ul > li:not(:first-child),
+.hbs-section-intro-text h3 ul > li:not(:first-child),
+.hbs-section-intro-text h4 ul > li:not(:first-child),
+.hbs-section-intro-text h5 ul > li:not(:first-child),
+.hbs-section-intro-text h6 ul > li:not(:first-child) {
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ul ul > li,
+.hbs-section-intro-text h2 ul ul > li,
+.hbs-section-intro-text h3 ul ul > li,
+.hbs-section-intro-text h4 ul ul > li,
+.hbs-section-intro-text h5 ul ul > li,
+.hbs-section-intro-text h6 ul ul > li {
+  list-style: square;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ul ul ul > li,
+.hbs-section-intro-text h2 ul ul ul > li,
+.hbs-section-intro-text h3 ul ul ul > li,
+.hbs-section-intro-text h4 ul ul ul > li,
+.hbs-section-intro-text h5 ul ul ul > li,
+.hbs-section-intro-text h6 ul ul ul > li {
+  list-style: circle;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ul ul ul ul > li,
+.hbs-section-intro-text h2 ul ul ul ul > li,
+.hbs-section-intro-text h3 ul ul ul ul > li,
+.hbs-section-intro-text h4 ul ul ul ul > li,
+.hbs-section-intro-text h5 ul ul ul ul > li,
+.hbs-section-intro-text h6 ul ul ul ul > li {
+  list-style: square;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ul ul ul ul ul > li,
+.hbs-section-intro-text h2 ul ul ul ul ul > li,
+.hbs-section-intro-text h3 ul ul ul ul ul > li,
+.hbs-section-intro-text h4 ul ul ul ul ul > li,
+.hbs-section-intro-text h5 ul ul ul ul ul > li,
+.hbs-section-intro-text h6 ul ul ul ul ul > li {
+  list-style: circle;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ul ul ul ul ul ul > li,
+.hbs-section-intro-text h2 ul ul ul ul ul ul > li,
+.hbs-section-intro-text h3 ul ul ul ul ul ul > li,
+.hbs-section-intro-text h4 ul ul ul ul ul ul > li,
+.hbs-section-intro-text h5 ul ul ul ul ul ul > li,
+.hbs-section-intro-text h6 ul ul ul ul ul ul > li {
+  list-style: square;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ul ul,
+.hbs-section-intro-text h2 ul ul,
+.hbs-section-intro-text h3 ul ul,
+.hbs-section-intro-text h4 ul ul,
+.hbs-section-intro-text h5 ul ul,
+.hbs-section-intro-text h6 ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol,
+.hbs-section-intro-text h2 ol,
+.hbs-section-intro-text h3 ol,
+.hbs-section-intro-text h4 ol,
+.hbs-section-intro-text h5 ol,
+.hbs-section-intro-text h6 ol {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: ol-counter;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol > li,
+.hbs-section-intro-text h2 ol > li,
+.hbs-section-intro-text h3 ol > li,
+.hbs-section-intro-text h4 ol > li,
+.hbs-section-intro-text h5 ol > li,
+.hbs-section-intro-text h6 ol > li {
+  counter-increment: ol-counter;
+  margin-left: 1em;
+  position: relative;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  ol
+  > li:not(:first-child),
+.hbs-section-intro-text h2 ol > li:not(:first-child),
+.hbs-section-intro-text h3 ol > li:not(:first-child),
+.hbs-section-intro-text h4 ol > li:not(:first-child),
+.hbs-section-intro-text h5 ol > li:not(:first-child),
+.hbs-section-intro-text h6 ol > li:not(:first-child) {
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol > li:before,
+.hbs-section-intro-text h2 ol > li:before,
+.hbs-section-intro-text h3 ol > li:before,
+.hbs-section-intro-text h4 ol > li:before,
+.hbs-section-intro-text h5 ol > li:before,
+.hbs-section-intro-text h6 ol > li:before {
+  position: absolute;
+  right: 100%;
+  content: counter(ol-counter) ".";
+  font-size: 0.7em;
+  padding-right: 0.6em;
+  padding-top: 0.3em;
+  font-family: Graphik, sans-serif, system-ui;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--c-spot);
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol,
+.hbs-section-intro-text h2 ol ol,
+.hbs-section-intro-text h3 ol ol,
+.hbs-section-intro-text h4 ol ol,
+.hbs-section-intro-text h5 ol ol,
+.hbs-section-intro-text h6 ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol > li,
+.hbs-section-intro-text h2 ol ol > li,
+.hbs-section-intro-text h3 ol ol > li,
+.hbs-section-intro-text h4 ol ol > li,
+.hbs-section-intro-text h5 ol ol > li,
+.hbs-section-intro-text h6 ol ol > li {
+  counter-increment: li-two-counter;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol > li:before,
+.hbs-section-intro-text h2 ol ol > li:before,
+.hbs-section-intro-text h3 ol ol > li:before,
+.hbs-section-intro-text h4 ol ol > li:before,
+.hbs-section-intro-text h5 ol ol > li:before,
+.hbs-section-intro-text h6 ol ol > li:before {
+  content: counter(li-two-counter, lower-alpha) ". ";
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol ol,
+.hbs-section-intro-text h2 ol ol ol,
+.hbs-section-intro-text h3 ol ol ol,
+.hbs-section-intro-text h4 ol ol ol,
+.hbs-section-intro-text h5 ol ol ol,
+.hbs-section-intro-text h6 ol ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol ol > li,
+.hbs-section-intro-text h2 ol ol ol > li,
+.hbs-section-intro-text h3 ol ol ol > li,
+.hbs-section-intro-text h4 ol ol ol > li,
+.hbs-section-intro-text h5 ol ol ol > li,
+.hbs-section-intro-text h6 ol ol ol > li {
+  counter-increment: li-three-counter;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol ol > li:before,
+.hbs-section-intro-text h2 ol ol ol > li:before,
+.hbs-section-intro-text h3 ol ol ol > li:before,
+.hbs-section-intro-text h4 ol ol ol > li:before,
+.hbs-section-intro-text h5 ol ol ol > li:before,
+.hbs-section-intro-text h6 ol ol ol > li:before {
+  content: counter(li-three-counter, lower-roman) ". ";
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol ol ol,
+.hbs-section-intro-text h2 ol ol ol ol,
+.hbs-section-intro-text h3 ol ol ol ol,
+.hbs-section-intro-text h4 ol ol ol ol,
+.hbs-section-intro-text h5 ol ol ol ol,
+.hbs-section-intro-text h6 ol ol ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol ol ol > li,
+.hbs-section-intro-text h2 ol ol ol ol > li,
+.hbs-section-intro-text h3 ol ol ol ol > li,
+.hbs-section-intro-text h4 ol ol ol ol > li,
+.hbs-section-intro-text h5 ol ol ol ol > li,
+.hbs-section-intro-text h6 ol ol ol ol > li {
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol ol ol ol,
+.hbs-section-intro-text h2 ol ol ol ol ol,
+.hbs-section-intro-text h3 ol ol ol ol ol,
+.hbs-section-intro-text h4 ol ol ol ol ol,
+.hbs-section-intro-text h5 ol ol ol ol ol,
+.hbs-section-intro-text h6 ol ol ol ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol ol ol ol > li,
+.hbs-section-intro-text h2 ol ol ol ol ol > li,
+.hbs-section-intro-text h3 ol ol ol ol ol > li,
+.hbs-section-intro-text h4 ol ol ol ol ol > li,
+.hbs-section-intro-text h5 ol ol ol ol ol > li,
+.hbs-section-intro-text h6 ol ol ol ol ol > li {
+  counter-increment: li-two-counter;
+  margin-top: 5px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  ol
+  ol
+  ol
+  ol
+  ol
+  > li:before,
+.hbs-section-intro-text h2 ol ol ol ol ol > li:before,
+.hbs-section-intro-text h3 ol ol ol ol ol > li:before,
+.hbs-section-intro-text h4 ol ol ol ol ol > li:before,
+.hbs-section-intro-text h5 ol ol ol ol ol > li:before,
+.hbs-section-intro-text h6 ol ol ol ol ol > li:before {
+  content: counter(li-two-counter, lower-alpha) ". ";
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol ol ol ol ol,
+.hbs-section-intro-text h2 ol ol ol ol ol ol,
+.hbs-section-intro-text h3 ol ol ol ol ol ol,
+.hbs-section-intro-text h4 ol ol ol ol ol ol,
+.hbs-section-intro-text h5 ol ol ol ol ol ol,
+.hbs-section-intro-text h6 ol ol ol ol ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro ol ol ol ol ol ol > li,
+.hbs-section-intro-text h2 ol ol ol ol ol ol > li,
+.hbs-section-intro-text h3 ol ol ol ol ol ol > li,
+.hbs-section-intro-text h4 ol ol ol ol ol ol > li,
+.hbs-section-intro-text h5 ol ol ol ol ol ol > li,
+.hbs-section-intro-text h6 ol ol ol ol ol ol > li {
+  counter-increment: li-three-counter;
+  margin-top: 5px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  ol
+  ol
+  ol
+  ol
+  ol
+  ol
+  > li:before,
+.hbs-section-intro-text h2 ol ol ol ol ol ol > li:before,
+.hbs-section-intro-text h3 ol ol ol ol ol ol > li:before,
+.hbs-section-intro-text h4 ol ol ol ol ol ol > li:before,
+.hbs-section-intro-text h5 ol ol ol ol ol ol > li:before,
+.hbs-section-intro-text h6 ol ol ol ol ol ol > li:before {
+  content: counter(li-three-counter, lower-roman) ". ";
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro > hr,
+.hbs-section-intro-text h2 > hr,
+.hbs-section-intro-text h3 > hr,
+.hbs-section-intro-text h4 > hr,
+.hbs-section-intro-text h5 > hr,
+.hbs-section-intro-text h6 > hr {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: 0;
+  height: 1px;
+  background-color: var(--c-border);
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro .hbs-blockquote cite,
+.hbs-section-intro-text h2 .hbs-blockquote cite,
+.hbs-section-intro-text h3 .hbs-blockquote cite,
+.hbs-section-intro-text h4 .hbs-blockquote cite,
+.hbs-section-intro-text h5 .hbs-blockquote cite,
+.hbs-section-intro-text h6 .hbs-blockquote cite {
+  font-size: 16px;
+  font-family: Graphik, sans-serif, system-ui;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  align-items: center;
+  display: flex;
+  font-weight: 400;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro .hbs-blockquote,
+.hbs-section-intro-text h2 .hbs-blockquote,
+.hbs-section-intro-text h3 .hbs-blockquote,
+.hbs-section-intro-text h4 .hbs-blockquote,
+.hbs-section-intro-text h5 .hbs-blockquote,
+.hbs-section-intro-text h6 .hbs-blockquote {
+  margin-top: 36px;
+  margin-bottom: 36px;
+  border-left: 1px solid;
+  color: var(--c-text-light);
+  padding-left: 18px;
+}
+@media (min-width: 600px) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro .hbs-blockquote,
+  .hbs-section-intro-text h2 .hbs-blockquote,
+  .hbs-section-intro-text h3 .hbs-blockquote,
+  .hbs-section-intro-text h4 .hbs-blockquote,
+  .hbs-section-intro-text h5 .hbs-blockquote,
+  .hbs-section-intro-text h6 .hbs-blockquote {
+    padding-left: 36px;
+  }
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro .hbs-blockquote b,
+.hbs-section-intro-text .hbs-section-intro-text__intro .hbs-blockquote strong,
+.hbs-section-intro-text h2 .hbs-blockquote b,
+.hbs-section-intro-text h2 .hbs-blockquote strong,
+.hbs-section-intro-text h3 .hbs-blockquote b,
+.hbs-section-intro-text h3 .hbs-blockquote strong,
+.hbs-section-intro-text h4 .hbs-blockquote b,
+.hbs-section-intro-text h4 .hbs-blockquote strong,
+.hbs-section-intro-text h5 .hbs-blockquote b,
+.hbs-section-intro-text h5 .hbs-blockquote strong,
+.hbs-section-intro-text h6 .hbs-blockquote b,
+.hbs-section-intro-text h6 .hbs-blockquote strong {
+  font-weight: 600;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro .hbs-blockquote__text,
+.hbs-section-intro-text h2 .hbs-blockquote__text,
+.hbs-section-intro-text h3 .hbs-blockquote__text,
+.hbs-section-intro-text h4 .hbs-blockquote__text,
+.hbs-section-intro-text h5 .hbs-blockquote__text,
+.hbs-section-intro-text h6 .hbs-blockquote__text {
+  font-size: 16px;
+  font-family: Graphik, sans-serif, system-ui;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+@media screen and (min-width: 300px) and (max-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro .hbs-blockquote__text,
+  .hbs-section-intro-text h2 .hbs-blockquote__text,
+  .hbs-section-intro-text h3 .hbs-blockquote__text,
+  .hbs-section-intro-text h4 .hbs-blockquote__text,
+  .hbs-section-intro-text h5 .hbs-blockquote__text,
+  .hbs-section-intro-text h6 .hbs-blockquote__text {
+    font-size: calc(16px + 4 * (100vw - 300px) / 1040);
+  }
+}
+@media screen and (min-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro .hbs-blockquote__text,
+  .hbs-section-intro-text h2 .hbs-blockquote__text,
+  .hbs-section-intro-text h3 .hbs-blockquote__text,
+  .hbs-section-intro-text h4 .hbs-blockquote__text,
+  .hbs-section-intro-text h5 .hbs-blockquote__text,
+  .hbs-section-intro-text h6 .hbs-blockquote__text {
+    font-size: 20px;
+  }
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro .hbs-blockquote__text p,
+.hbs-section-intro-text h2 .hbs-blockquote__text p,
+.hbs-section-intro-text h3 .hbs-blockquote__text p,
+.hbs-section-intro-text h4 .hbs-blockquote__text p,
+.hbs-section-intro-text h5 .hbs-blockquote__text p,
+.hbs-section-intro-text h6 .hbs-blockquote__text p {
+  margin-bottom: 18px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  .hbs-blockquote__text
+  p:first-child:before,
+.hbs-section-intro-text h2 .hbs-blockquote__text p:first-child:before,
+.hbs-section-intro-text h3 .hbs-blockquote__text p:first-child:before,
+.hbs-section-intro-text h4 .hbs-blockquote__text p:first-child:before,
+.hbs-section-intro-text h5 .hbs-blockquote__text p:first-child:before,
+.hbs-section-intro-text h6 .hbs-blockquote__text p:first-child:before {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  content: "“";
+  font-family: Tiempos, serif, system-ui;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  .hbs-blockquote__text
+  p:last-of-type:after,
+.hbs-section-intro-text h2 .hbs-blockquote__text p:last-of-type:after,
+.hbs-section-intro-text h3 .hbs-blockquote__text p:last-of-type:after,
+.hbs-section-intro-text h4 .hbs-blockquote__text p:last-of-type:after,
+.hbs-section-intro-text h5 .hbs-blockquote__text p:last-of-type:after,
+.hbs-section-intro-text h6 .hbs-blockquote__text p:last-of-type:after {
+  content: "”";
+  font-family: Tiempos, serif, system-ui;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro .hbs-embed-align-wrapper,
+.hbs-section-intro-text .hbs-section-intro-text__intro .hbs-media-asset,
+.hbs-section-intro-text h2 .hbs-embed-align-wrapper,
+.hbs-section-intro-text h2 .hbs-media-asset,
+.hbs-section-intro-text h3 .hbs-embed-align-wrapper,
+.hbs-section-intro-text h3 .hbs-media-asset,
+.hbs-section-intro-text h4 .hbs-embed-align-wrapper,
+.hbs-section-intro-text h4 .hbs-media-asset,
+.hbs-section-intro-text h5 .hbs-embed-align-wrapper,
+.hbs-section-intro-text h5 .hbs-media-asset,
+.hbs-section-intro-text h6 .hbs-embed-align-wrapper,
+.hbs-section-intro-text h6 .hbs-media-asset {
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  .hbs-embed-align-wrapper:first-child,
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  .hbs-media-asset:first-child,
+.hbs-section-intro-text h2 .hbs-embed-align-wrapper:first-child,
+.hbs-section-intro-text h2 .hbs-media-asset:first-child,
+.hbs-section-intro-text h3 .hbs-embed-align-wrapper:first-child,
+.hbs-section-intro-text h3 .hbs-media-asset:first-child,
+.hbs-section-intro-text h4 .hbs-embed-align-wrapper:first-child,
+.hbs-section-intro-text h4 .hbs-media-asset:first-child,
+.hbs-section-intro-text h5 .hbs-embed-align-wrapper:first-child,
+.hbs-section-intro-text h5 .hbs-media-asset:first-child,
+.hbs-section-intro-text h6 .hbs-embed-align-wrapper:first-child,
+.hbs-section-intro-text h6 .hbs-media-asset:first-child {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__intro .hbs-media-asset--image,
+.hbs-section-intro-text h2 .hbs-media-asset--image,
+.hbs-section-intro-text h3 .hbs-media-asset--image,
+.hbs-section-intro-text h4 .hbs-media-asset--image,
+.hbs-section-intro-text h5 .hbs-media-asset--image,
+.hbs-section-intro-text h6 .hbs-media-asset--image {
+  margin-top: var(--block-spacing-lg);
+  margin-bottom: var(--block-spacing-lg);
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  h1
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  h2
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  h3
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  h4
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  h5
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  h6
+  + .hbs-media-asset--image,
+.hbs-section-intro-text h2 h1 + .hbs-media-asset--image,
+.hbs-section-intro-text h2 h2 + .hbs-media-asset--image,
+.hbs-section-intro-text h2 h3 + .hbs-media-asset--image,
+.hbs-section-intro-text h2 h4 + .hbs-media-asset--image,
+.hbs-section-intro-text h2 h5 + .hbs-media-asset--image,
+.hbs-section-intro-text h2 h6 + .hbs-media-asset--image,
+.hbs-section-intro-text h3 h1 + .hbs-media-asset--image,
+.hbs-section-intro-text h3 h2 + .hbs-media-asset--image,
+.hbs-section-intro-text h3 h3 + .hbs-media-asset--image,
+.hbs-section-intro-text h3 h4 + .hbs-media-asset--image,
+.hbs-section-intro-text h3 h5 + .hbs-media-asset--image,
+.hbs-section-intro-text h3 h6 + .hbs-media-asset--image,
+.hbs-section-intro-text h4 h1 + .hbs-media-asset--image,
+.hbs-section-intro-text h4 h2 + .hbs-media-asset--image,
+.hbs-section-intro-text h4 h3 + .hbs-media-asset--image,
+.hbs-section-intro-text h4 h4 + .hbs-media-asset--image,
+.hbs-section-intro-text h4 h5 + .hbs-media-asset--image,
+.hbs-section-intro-text h4 h6 + .hbs-media-asset--image,
+.hbs-section-intro-text h5 h1 + .hbs-media-asset--image,
+.hbs-section-intro-text h5 h2 + .hbs-media-asset--image,
+.hbs-section-intro-text h5 h3 + .hbs-media-asset--image,
+.hbs-section-intro-text h5 h4 + .hbs-media-asset--image,
+.hbs-section-intro-text h5 h5 + .hbs-media-asset--image,
+.hbs-section-intro-text h5 h6 + .hbs-media-asset--image,
+.hbs-section-intro-text h6 h1 + .hbs-media-asset--image,
+.hbs-section-intro-text h6 h2 + .hbs-media-asset--image,
+.hbs-section-intro-text h6 h3 + .hbs-media-asset--image,
+.hbs-section-intro-text h6 h4 + .hbs-media-asset--image,
+.hbs-section-intro-text h6 h5 + .hbs-media-asset--image,
+.hbs-section-intro-text h6 h6 + .hbs-media-asset--image {
+  margin-top: 24px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  .hbs-copy-link-heading__button
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  h2
+  .hbs-copy-link-heading__button
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  h3
+  .hbs-copy-link-heading__button
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  h4
+  .hbs-copy-link-heading__button
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  h5
+  .hbs-copy-link-heading__button
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  h6
+  .hbs-copy-link-heading__button
+  + .hbs-media-asset--image {
+  margin-top: 18px;
+}
+@media screen and (min-width: 300px) and (max-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro,
+  .hbs-section-intro-text h2,
+  .hbs-section-intro-text h3,
+  .hbs-section-intro-text h4,
+  .hbs-section-intro-text h5,
+  .hbs-section-intro-text h6 {
+    font-size: calc(20px + 11.99 * (100vw - 300px) / 1040);
+  }
+}
+@media screen and (min-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro,
+  .hbs-section-intro-text h2,
+  .hbs-section-intro-text h3,
+  .hbs-section-intro-text h4,
+  .hbs-section-intro-text h5,
+  .hbs-section-intro-text h6 {
+    font-size: 31.99px;
+  }
+}
+@media (min-width: 600px) {
+  .hbs-section-intro-text .hbs-section-intro-text__intro,
+  .hbs-section-intro-text h2,
+  .hbs-section-intro-text h3,
+  .hbs-section-intro-text h4,
+  .hbs-section-intro-text h5,
+  .hbs-section-intro-text h6 {
+    letter-spacing: -0.045em;
+  }
+}
+.hbs-section-intro-text .hbs-section-intro-text__text {
+  font-family: Tiempos, serif, system-ui;
+  font-weight: 300;
+  font-size: 16px;
+  font-family: Graphik, sans-serif, system-ui;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text:first-child
+  > :first-child {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text:last-child > :last-child {
+  margin-bottom: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > h1,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4,
+.hbs-section-intro-text .hbs-section-intro-text__text > h5,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 {
+  transform: translateX(-0.06em);
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 > a,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 > a,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3 > a,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 > a,
+.hbs-section-intro-text .hbs-section-intro-text__text > h5 > a,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 > a {
+  cursor: pointer;
+  color: var(--c-text);
+  -webkit-text-decoration-color: var(--c-border-dark);
+  text-decoration-color: var(--c-border-dark);
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-style: solid;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+@media not all and (hover: none) {
+  .hbs-section-intro-text .hbs-section-intro-text__text > h1 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__text > h2 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__text > h3 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__text > h4 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__text > h5 > a:hover,
+  .hbs-section-intro-text .hbs-section-intro-text__text > h6 > a:hover {
+    color: var(--c-spot);
+    -webkit-text-decoration-color: var(--c-solid);
+    text-decoration-color: var(--c-solid);
+    outline: none;
+  }
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h1
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h2
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h3
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h4
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h5
+  > a:focus:not(:hover),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h6
+  > a:focus:not(:hover) {
+  outline: 4px solid var(--c-outline);
+  outline-offset: 1px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h1
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h2
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h3
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h4
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h5
+  > a:focus:not(:focus-visible),
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > h6
+  > a:focus:not(:focus-visible) {
+  outline: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 {
+  margin: 0 0 0.25em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > h1:not(:first-child),
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 {
+  margin: 1.25em 0 0.25em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > h3,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 {
+  margin: 1.5em 0 0.25em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > h5,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 {
+  margin: 1.5em 0 0.5em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__text > h5 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__text > h5 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__text > h5 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__text > h5 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__text > h5 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__text > h5 + h6,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 + h1,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 + h2,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 + h3,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 + h4,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 + h5,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 + h6 {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 + p,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 + p,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3 + p,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 + p,
+.hbs-section-intro-text .hbs-section-intro-text__text > h5 + p,
+.hbs-section-intro-text .hbs-section-intro-text__text > h6 + p {
+  margin-top: 8px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > a:not(.hbs-cta-link) {
+  cursor: pointer;
+  color: var(--c-solid);
+  -webkit-text-decoration-color: var(--c-border-dark);
+  text-decoration-color: var(--c-border-dark);
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-style: solid;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+@media not all and (hover: none) {
+  .hbs-section-intro-text
+    .hbs-section-intro-text__text
+    > a:not(.hbs-cta-link):hover {
+    color: var(--c-spot);
+    -webkit-text-decoration-color: var(--c-solid);
+    text-decoration-color: var(--c-solid);
+    outline: none;
+  }
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > a:not(.hbs-cta-link):focus:not(:hover) {
+  outline: 4px solid var(--c-outline);
+  outline-offset: 1px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  > a:not(.hbs-cta-link):focus:not(:focus-visible) {
+  outline: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > h1 a,
+.hbs-section-intro-text .hbs-section-intro-text__text > h2 a,
+.hbs-section-intro-text .hbs-section-intro-text__text > h3 a,
+.hbs-section-intro-text .hbs-section-intro-text__text > h4 a {
+  text-underline-offset: 0.1em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > ol,
+.hbs-section-intro-text .hbs-section-intro-text__text > p,
+.hbs-section-intro-text .hbs-section-intro-text__text > ul {
+  margin: 1em 0 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > ol:first-child,
+.hbs-section-intro-text .hbs-section-intro-text__text > p:first-child,
+.hbs-section-intro-text .hbs-section-intro-text__text > ul:first-child {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > ol li p,
+.hbs-section-intro-text .hbs-section-intro-text__text > p li p,
+.hbs-section-intro-text .hbs-section-intro-text__text > ul li p {
+  display: inline;
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .hbs-section-intro-text .hbs-section-intro-text__text > ol,
+  .hbs-section-intro-text .hbs-section-intro-text__text > p,
+  .hbs-section-intro-text .hbs-section-intro-text__text > ul {
+    max-width: 40em;
+  }
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  .hbs-global-align-left:first-child
+  + *,
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  .hbs-global-align-right:first-child
+  + * {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text b,
+.hbs-section-intro-text .hbs-section-intro-text__text strong {
+  font-weight: 600;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text em,
+.hbs-section-intro-text .hbs-section-intro-text__text i {
+  font-style: italic;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ul {
+  list-style: disc;
+  padding-left: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ul > li {
+  margin-left: 1.1em;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ul > li::marker {
+  color: var(--c-spot);
+  line-height: 0;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  ul
+  > li:not(:first-child) {
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ul ul > li {
+  list-style: square;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ul ul ul > li {
+  list-style: circle;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ul ul ul ul > li {
+  list-style: square;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ul ul ul ul ul > li {
+  list-style: circle;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ul ul ul ul ul ul > li {
+  list-style: square;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: ol-counter;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol > li {
+  counter-increment: ol-counter;
+  margin-left: 1em;
+  position: relative;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  ol
+  > li:not(:first-child) {
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol > li:before {
+  position: absolute;
+  right: 100%;
+  content: counter(ol-counter) ".";
+  font-size: 0.7em;
+  padding-right: 0.6em;
+  padding-top: 0.3em;
+  font-family: Graphik, sans-serif, system-ui;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--c-spot);
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol > li {
+  counter-increment: li-two-counter;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol > li:before {
+  content: counter(li-two-counter, lower-alpha) ". ";
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol ol > li {
+  counter-increment: li-three-counter;
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol ol > li:before {
+  content: counter(li-three-counter, lower-roman) ". ";
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol ol ol > li {
+  margin-top: 5px;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol ol ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol ol ol ol > li {
+  counter-increment: li-two-counter;
+  margin-top: 5px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  ol
+  ol
+  ol
+  ol
+  ol
+  > li:before {
+  content: counter(li-two-counter, lower-alpha) ". ";
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol ol ol ol ol {
+  list-style: none;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text ol ol ol ol ol ol > li {
+  counter-increment: li-three-counter;
+  margin-top: 5px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  ol
+  ol
+  ol
+  ol
+  ol
+  ol
+  > li:before {
+  content: counter(li-three-counter, lower-roman) ". ";
+}
+.hbs-section-intro-text .hbs-section-intro-text__text > hr {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: 0;
+  height: 1px;
+  background-color: var(--c-border);
+}
+.hbs-section-intro-text .hbs-section-intro-text__text .hbs-blockquote cite {
+  font-size: 16px;
+  font-family: Graphik, sans-serif, system-ui;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  align-items: center;
+  display: flex;
+  font-weight: 400;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text .hbs-blockquote {
+  margin-top: 36px;
+  margin-bottom: 36px;
+  border-left: 1px solid;
+  color: var(--c-text-light);
+  padding-left: 18px;
+}
+@media (min-width: 600px) {
+  .hbs-section-intro-text .hbs-section-intro-text__text .hbs-blockquote {
+    padding-left: 36px;
+  }
+}
+.hbs-section-intro-text .hbs-section-intro-text__text .hbs-blockquote b,
+.hbs-section-intro-text .hbs-section-intro-text__text .hbs-blockquote strong {
+  font-weight: 600;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text .hbs-blockquote__text {
+  font-size: 16px;
+  font-family: Graphik, sans-serif, system-ui;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+@media screen and (min-width: 300px) and (max-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__text .hbs-blockquote__text {
+    font-size: calc(16px + 4 * (100vw - 300px) / 1040);
+  }
+}
+@media screen and (min-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__text .hbs-blockquote__text {
+    font-size: 20px;
+  }
+}
+.hbs-section-intro-text .hbs-section-intro-text__text .hbs-blockquote__text p {
+  margin-bottom: 18px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  .hbs-blockquote__text
+  p:first-child:before {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  content: "“";
+  font-family: Tiempos, serif, system-ui;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  .hbs-blockquote__text
+  p:last-of-type:after {
+  content: "”";
+  font-family: Tiempos, serif, system-ui;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text .hbs-embed-align-wrapper,
+.hbs-section-intro-text .hbs-section-intro-text__text .hbs-media-asset {
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  .hbs-embed-align-wrapper:first-child,
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  .hbs-media-asset:first-child {
+  margin-top: 0;
+}
+.hbs-section-intro-text .hbs-section-intro-text__text .hbs-media-asset--image {
+  margin-top: var(--block-spacing-lg);
+  margin-bottom: var(--block-spacing-lg);
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  h1
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  h2
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  h3
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  h4
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  h5
+  + .hbs-media-asset--image,
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  h6
+  + .hbs-media-asset--image {
+  margin-top: 24px;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__text
+  .hbs-copy-link-heading__button
+  + .hbs-media-asset--image {
+  margin-top: 18px;
+}
+@media screen and (min-width: 300px) and (max-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__text {
+    font-size: calc(16px + 4 * (100vw - 300px) / 1040);
+  }
+}
+@media screen and (min-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__text {
+    font-size: 20px;
+  }
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__intro
+  + .hbs-section-intro-text__text {
+  margin-top: 1em;
+}
+@media (min-width: 600px) {
+  .hbs-section-intro-text
+    .hbs-section-intro-text__intro
+    + .hbs-section-intro-text__text {
+    margin-top: 2vw;
+  }
+}
+.hbs-section-intro-text .hbs-section-intro-text__media,
+.hbs-section-intro-text .hbs-section-intro-text__related-people {
+  margin-top: 4vw;
+}
+.hbs-section-intro-text
+  .hbs-section-intro-text__media
+  .hbs-section-intro-text__related-people-title,
+.hbs-section-intro-text
+  .hbs-section-intro-text__related-people
+  .hbs-section-intro-text__related-people-title {
+  font-size: 16px;
+  font-family: Graphik, sans-serif, system-ui;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+@media (min-width: 600px) {
+  .hbs-section-intro-text .hbs-section-intro-text__text {
+    column-count: 2;
+    column-gap: 2vw;
+  }
+  .hbs-section-intro-text .hbs-section-intro-text__media {
+    margin-top: 0;
+    width: 37.5%;
+  }
+  .hbs-section-intro-text .hbs-section-intro-text__related-people {
+    width: 100%;
+  }
+  .hbs-section-intro-text.hbs-section-intro-text--has-asset
+    .hbs-section-intro-text__content {
+    width: 62.5%;
+  }
+  .hbs-section-intro-text.hbs-section-intro-text--has-asset
+    .hbs-section-intro-text__text {
+    columns: unset;
+  }
+}
+@media (min-width: 800px) {
+  .hbs-section-intro-text .hbs-section-intro-text__related-people {
+    width: 50%;
+  }
+}
+@media (min-width: 1200px) {
+  .hbs-section-intro-text .hbs-section-intro-text__content {
+    width: 75%;
+  }
+  .hbs-section-intro-text .hbs-section-intro-text__media,
+  .hbs-section-intro-text .hbs-section-intro-text__related-people {
+    margin-top: 0;
+    width: 25%;
+  }
+  .hbs-section-intro-text.hbs-section-intro-text--has-asset
+    .hbs-section-intro-text__content {
+    width: 75%;
+  }
+  .hbs-section-intro-text.hbs-section-intro-text--has-asset
+    .hbs-section-intro-text__text {
+    column-count: 2;
+    column-gap: 2vw;
+  }
+}
+@media (min-width: 1340px) {
+  .hbs-section-intro-text .hbs-section-intro-text__content {
+    margin-right: auto;
+    width: 62.5%;
+  }
+  .hbs-section-intro-text.hbs-section-intro-text--has-asset
+    .hbs-section-intro-text__content {
+    width: 62.5%;
+  }
+}
+/*# sourceMappingURL=9a0892ea223dc106.css.map*/

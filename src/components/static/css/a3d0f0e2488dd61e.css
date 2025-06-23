@@ -1,0 +1,176 @@
+.footnotes {
+  font-size: 16px;
+  font-family: Graphik, sans-serif, system-ui;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-top: 60px;
+  padding-top: 60px;
+  border-top: 1px solid var(--c-border);
+}
+.footnotes ol {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: ol-counter;
+}
+.footnotes ol > li {
+  counter-increment: ol-counter;
+  margin-left: 1em;
+  position: relative;
+}
+.footnotes ol > li:not(:first-child) {
+  margin-top: 5px;
+}
+.footnotes ol > li:before {
+  position: absolute;
+  right: 100%;
+  content: counter(ol-counter) ".";
+  font-size: 0.7em;
+  padding-right: 0.6em;
+  padding-top: 0.3em;
+  font-family: Graphik, sans-serif, system-ui;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--c-spot);
+}
+.footnotes ol ol {
+  list-style: none;
+}
+.footnotes ol ol > li {
+  counter-increment: li-two-counter;
+  margin-top: 5px;
+}
+.footnotes ol ol > li:before {
+  content: counter(li-two-counter, lower-alpha) ". ";
+}
+.footnotes ol ol ol {
+  list-style: none;
+}
+.footnotes ol ol ol > li {
+  counter-increment: li-three-counter;
+  margin-top: 5px;
+}
+.footnotes ol ol ol > li:before {
+  content: counter(li-three-counter, lower-roman) ". ";
+}
+.footnotes ol ol ol ol {
+  list-style: none;
+}
+.footnotes ol ol ol ol > li {
+  margin-top: 5px;
+}
+.footnotes ol ol ol ol ol {
+  list-style: none;
+}
+.footnotes ol ol ol ol ol > li {
+  counter-increment: li-two-counter;
+  margin-top: 5px;
+}
+.footnotes ol ol ol ol ol > li:before {
+  content: counter(li-two-counter, lower-alpha) ". ";
+}
+.footnotes ol ol ol ol ol ol {
+  list-style: none;
+}
+.footnotes ol ol ol ol ol ol > li {
+  counter-increment: li-three-counter;
+  margin-top: 5px;
+}
+.footnotes ol ol ol ol ol ol > li:before {
+  content: counter(li-three-counter, lower-roman) ". ";
+}
+.footnotes li {
+  scroll-margin-top: calc(90px);
+}
+.hbs-landing-page-body .footnotes {
+  margin-bottom: 60px;
+}
+.footnote-marker {
+  display: inline;
+  position: relative;
+  padding-right: 22px;
+  scroll-margin-top: calc(90px);
+}
+.footnote-marker .footnote-marker__link {
+  color: inherit;
+  text-decoration: none;
+  height: 1.7em;
+  width: 1.7em;
+  position: absolute;
+  top: 0;
+  right: 0.1em;
+  align-items: center;
+  background-color: var(--c-spot);
+  border-radius: 50%;
+  color: var(--c-bg);
+  display: inline-flex;
+  font-weight: 600;
+  font-family: Graphik, sans-serif, system-ui;
+  font-size: 10px;
+  justify-content: center;
+  letter-spacing: 0;
+  padding-left: 0.04em;
+}
+.footnote-marker .footnote-marker__link:focus,
+.footnote-marker .footnote-marker__link:hover {
+  color: var(--c-bg);
+  background-color: var(--c-highlight);
+}
+.footnote__back__text {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.footnote__back__text.focusable:active,
+.footnote__back__text.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+.footnote__back {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--c-text-light);
+  -webkit-text-decoration-color: rgba(0, 0, 0, 0);
+  text-decoration-color: rgba(0, 0, 0, 0);
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+  -webkit-text-decoration-style: solid;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+    -webkit-text-decoration-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+  color: var(--c-spot);
+}
+@media not all and (hover: none) {
+  .footnote__back:hover {
+    color: var(--c-spot);
+    -webkit-text-decoration-color: var(--c-text);
+    text-decoration-color: var(--c-text);
+    outline: none;
+  }
+}
+.footnote__back:focus:not(:hover) {
+  outline: 4px solid var(--c-outline);
+  outline-offset: 1px;
+}
+.footnote__back:focus:not(:focus-visible) {
+  outline: none;
+}
+/*# sourceMappingURL=a3d0f0e2488dd61e.css.map*/

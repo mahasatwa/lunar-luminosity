@@ -1,6 +1,7 @@
 ---
 // Impor menjadi sangat../components/features/global/GlobalNav.astro
 import GlobalNav from "@/components/features/global/GlobalNav.astro";
+import NavSystem from "@/components/features/navigation/NavSystem.tsx";
 import Footer from "@/components/features/global/Footer.astro";
 import SEO from "@/components/utils/SEO.astro";
 import "@/styles/base.pcss";
@@ -22,7 +23,7 @@ const { title, description, image } = Astro.props;
     <SEO title={title} description={description} image={image} />
   </head>
   <body class="font-sans antialiased text-gray-900 bg-gray-50">
-    <GlobalNav />
+    <NavSystem />
     <main class="flex-grow">
       <slot />
     </main>

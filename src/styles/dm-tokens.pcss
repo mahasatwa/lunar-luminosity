@@ -1,0 +1,57 @@
+/* src/styles/dm-tokens.pcss */
+
+/*
+  Dwimulya (dm) Design Tokens: Color, Spacing, Typography
+  These tokens are mapped from the HBS MBA system and adapted for STIE Dwimulya's brand.
+  Use these variables in Tailwind config and component styles for full rebranding.
+*/
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --dm-primary: 0, 33, 71;           /* Oxford Blue */
+    --dm-primary-light: 51, 102, 153;  /* Lighter Oxford Blue */
+    --dm-primary-dark: 0, 20, 40;      /* Darkest Oxford Blue */
+    --dm-secondary: 74, 85, 104;       /* Neutral Gray */
+    --dm-accent: 136, 58, 234;         /* Accent Purple (optional) */
+    --dm-accent-light: 224, 204, 250;
+    --dm-accent-dark: 49, 10, 101;
+    --dm-success: 0, 168, 84;          /* Green */
+    --dm-warning: 255, 193, 7;         /* Yellow */
+    --dm-danger: 220, 38, 38;          /* Red */
+
+    /* Neutrals */
+    --dm-bg: 255, 255, 255;
+    --dm-bg-alt: 246, 246, 246;
+    --dm-bg-inverse: 34, 34, 34;
+    --dm-text: 33, 37, 41;
+    --dm-text-light: 102, 102, 102;
+    --dm-text-inverse: 255, 255, 255;
+    --dm-border: 222, 226, 230;
+    --dm-border-dark: 74, 85, 104;
+    --dm-border-light: 240, 240, 240;
+
+    /* UI/Component Specific */
+    --dm-overlay: 0, 33, 71, 0.96;     /* Oxford Blue overlay */
+    --dm-highlight: 0, 102, 204;       /* Bright Blue */
+    --dm-outline: 0, 33, 71;
+    --dm-shadow: 0, 0, 0, 0.08;
+
+    /* Spacing (for reference, use Tailwind scale) */
+    --dm-spacing-xs: 4px;
+    --dm-spacing-sm: 8px;
+    --dm-spacing-md: 16px;
+    --dm-spacing-lg: 24px;
+    --dm-spacing-xl: 40px;
+
+    /* Border Radius */
+    --dm-radius-sm: 4px;
+    --dm-radius-md: 8px;
+    --dm-radius-lg: 16px;
+
+    /* Typography */
+    --dm-font-sans: 'Inter', 'Graphik', 'system-ui', sans-serif;
+    --dm-font-serif: 'Tiempos', 'Georgia', serif;
+    --dm-font-mono: 'Menlo', 'Monaco', 'monospace';
+  }
+}

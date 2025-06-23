@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import type { RefObject } from "react";
 import type { NavItem, QuickLink } from "@/types/navigation";
 import SiteHeaderWrapper from "../components/SiteHeaderWrapper";
 import SiteHeaderLogo from "../components/SiteHeaderLogo";
@@ -25,7 +26,7 @@ const SiteHeader: React.FC<SiteHeaderProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShrink, setIsShrink] = useState(false);
-  const bannerRef = useRef<HTMLDivElement>(null);
+  const bannerRef = useRef<HTMLDivElement>(null) as RefObject<HTMLDivElement>;
 
   const globalNav = navigationData.filter((item) => globalNavIds.includes(item.id));
   const localNav = navigationData.filter((item) => localNavIds.includes(item.id));

@@ -1,0 +1,115 @@
+.hbs-tooltip-highlight {
+  display: inline-block;
+  padding-right: 5px;
+  color: var(--c-spot);
+  cursor: help;
+}
+.hbs-tooltip {
+  position: relative;
+  display: inline-block;
+}
+@media (max-width: 1023px) {
+  .hbs-tooltip--hover {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  .hbs-tooltip--popover {
+    display: none;
+  }
+}
+.hbs-tooltip__trigger-wrapper {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  cursor: help;
+}
+.hbs-tooltip__trigger {
+  height: 1.7em;
+  width: 1.7em;
+  font-size: 10px;
+  align-items: center;
+  background-color: var(--c-spot);
+  border-radius: 50%;
+  color: var(--c-bg);
+  cursor: help;
+  display: flex;
+  justify-content: center;
+}
+.hbs-tooltip__trigger:focus-visible {
+  outline: 4px solid var(--c-spot);
+  outline-offset: 3px;
+}
+.hbs-tooltip__trigger-icon {
+  height: 1em;
+  width: 1em;
+  transform: translate(-0.03em, 0.03em);
+}
+.hbs-tooltip__content {
+  padding: 12px;
+  margin-left: 12px;
+  margin-right: 12px;
+  font-size: 14px;
+  font-family: Graphik, sans-serif, system-ui;
+  font-weight: 400;
+  line-height: 1.2;
+  background-color: var(--c-bg-complementary);
+  box-shadow: 0 10px 45px rgba(0, 0, 0, 0.08);
+  color: var(--c-text);
+  max-width: 300px;
+  display: flex;
+  z-index: 10;
+}
+.hbs-tooltip__content b,
+.hbs-tooltip__content strong {
+  font-weight: 600;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hbs-tooltip__content {
+    animation: showUp 0.4s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+    opacity: 0;
+  }
+}
+.hbs-tooltip__content li + li {
+  margin-top: 8px;
+}
+.hbs-tooltip__close {
+  height: 11px;
+  width: 11px;
+  align-items: center;
+  color: var(--c-text-light);
+  display: flex;
+  justify-content: center;
+  margin-left: 8px;
+  min-width: 11px;
+  order: 2;
+}
+.hbs-tooltip__title {
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  position: relative;
+}
+.hbs-tooltip__title:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  width: auto;
+  margin-right: calc(0 + 8px * 2);
+  margin-left: calc(0 + 8px * 2);
+  border-bottom: 1px solid;
+  color: var(--c-text);
+  pointer-events: none;
+}
+@media (min-width: 600px) {
+  .hbs-tooltip__title:after {
+    margin-right: calc(0 + 1vw * 2);
+    margin-left: calc(0 + 1vw * 2);
+  }
+}
+/*# sourceMappingURL=8edd2dd0b6034503.css.map*/

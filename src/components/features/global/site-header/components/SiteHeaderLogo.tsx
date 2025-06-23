@@ -13,15 +13,15 @@ const SiteHeaderLogo: React.FC<SiteHeaderLogoProps> = ({ logoUrl, wordmarkUrl, i
         src={logoUrl}
         alt="Logo STIE Dwimulya"
         className={`transition-all duration-300 ${isShrink ? "h-8 md:h-9" : "h-10 md:h-12"} w-auto`}
-        width={isShrink ? 48 : 64}
-        height={isShrink ? 48 : 64}
+        width={64}
+        height={64}
       />
       <img
         src={wordmarkUrl}
         alt="Wordmark STIE Dwimulya"
-        className={`transition-all duration-300 ${isShrink ? "h-6 md:h-8" : "h-8 md:h-10"} w-auto`}
-        width={isShrink ? 120 : 180}
-        height={isShrink ? 48 : 64}
+        className={`transition-all duration-300 ${isShrink ? "h-6 md:h-7" : "h-8 md:h-10"} w-auto`}
+        width={180}
+        height={64}
       />
     </a>
   </div>
