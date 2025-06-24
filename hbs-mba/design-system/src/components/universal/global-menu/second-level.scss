@@ -1,0 +1,163 @@
+@import "../../../styles/base/abstracts";
+
+.hbs-global-menu__submenu {
+  @include absolute(0 x x 100%);
+  @include size(100%);
+  @include grid-child;
+  background-color: $c-bg;
+  overflow: visible; // needed to ensure submenu renders correctly
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    visibility 0s linear $t-time-sm,
+    opacity $transition,
+    transform $transition-md;
+  transform: translateX(0);
+  z-index: $z-index-1;
+
+  &::before {
+    @include pseudo(0 x x #{-$grid-padding});
+    @include size($grid-padding * 2, 100vh);
+    background-color: $c-bg;
+    border-left: $border-light;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @include mq($bp-tablet) {
+    opacity: 0;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  @include mq($bp-desktop-lg) {
+    width: calc(#{$col-14} - #{$grid-padding * 1.5});
+
+    .hbs-global-menu__submenu {
+      width: 100%;
+    }
+  }
+}
+
+.hbs-global-menu__submenu-inner {
+  height: 100%;
+  overflow-y: auto; // allow section to scroll if needed
+  padding-bottom: $spacing-xxl;
+  padding-top: 145px;
+
+  //focus outline getting clipped by overflow settings
+  padding-left: 4px;
+  margin-left: -4px;
+}
+
+.hbs-global-menu__submenu-header {
+  margin-bottom: $spacing-md;
+  margin-top: $spacing-md;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: $transition-sm;
+
+  @include mq($bp-tablet) {
+    transition-delay: 0s;
+  }
+}
+
+.hbs-global-menu__submenu-title-link {
+  @include body-text($ff-sans, $fw-semibold);
+  @include link($c-text);
+  @include padding($spacing-xxs x);
+  display: inline-block;
+}
+
+.hbs-global-menu__submenu-subtitle {
+  @include baseline-text;
+  color: $c-text-light;
+  max-width: 25em;
+}
+
+.hbs-global-menu__submenu-bg {
+  background-color: $c-bg;
+  position: relative;
+}
+
+.hbs-global-menu__submenu-last-word {
+  white-space: nowrap;
+  > .hbs-global-menu__submenu-bg {
+    padding-right: $spacing-sm;
+  }
+}
+
+.hbs-global-menu__submenu-item {
+  margin-top: $spacing-xs;
+  line-height: 1;
+}
+.hbs-global-menu__submenu-trigger {
+  @include line;
+
+  &:hover,
+  .hbs-global-menu__submenu-item--active & {
+    @include line(1);
+  }
+}
+
+.hbs-global-menu__submenu-trigger,
+.hbs-global-menu__submenu-link {
+  @include body-text($ff-sans);
+  @include color-link($c-text-light, $c-spot);
+  align-items: center;
+  color: $c-text-light;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &:hover,
+  .hbs-global-menu__submenu-item--active & {
+    .hbs-global-menu__submenu-trigger-icon {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+  }
+
+  &:focus {
+    outline: $outline;
+    outline-offset: 1px;
+  }
+}
+
+.hbs-global-menu__submenu-trigger-icon {
+  @include size(0.75em);
+  fill: none;
+  margin-left: -$spacing-xs;
+  opacity: 1;
+  position: relative;
+  transition:
+    opacity $transition,
+    transform $transition;
+}
+
+.hbs-global-menu__submenu-link {
+  @include subtle-link;
+}
+
+.hbs-global-menu__submenu--open {
+  visibility: visible;
+  pointer-events: initial;
+  transform: translateX(-100%);
+  transition:
+    visibility 0s linear 0s,
+    transform $transition-md;
+
+  > .hbs-global-menu__submenu-inner > .hbs-global-menu__submenu-header {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  @include mq($bp-tablet) {
+    opacity: 1;
+    transform: none;
+  }
+}

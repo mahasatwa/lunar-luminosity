@@ -1,0 +1,524 @@
+.
+├── client/
+│   └── components/
+│       ├── errors/
+│       │   └── stitched-error.ts
+│       └── http-access-fallback/
+│           └── http-access-fallback.ts
+│
+├── design-system/
+│   ├── node_modules/
+│   │   └── date-fns/
+│   │       └── ...
+│   └── src/
+│       ├── components/
+│       │   ├── blocks/
+│       │   │   ├── cta/
+│       │   │   │   ├── cta.scss
+│       │   │   │   └── cta.tsx
+│       │   │   ├── data-visualization-embed/
+│       │   │   │   ├── data-visualization-embed.scss
+│       │   │   │   └── data-visualization-embed.tsx
+│       │   │   ├── data-wrapper-embed/
+│       │   │   │   ├── data-wrapper-embed.scss
+│       │   │   │   └── data-wrapper-embed.tsx
+│       │   │   ├── events-tease/
+│       │   │   │   ├── events-tease.scss
+│       │   │   │   ├── events-tease.tsx
+│       │   │   │   ├── events-tease-item.tsx
+│       │   │   │   └── events-tease.scss
+│       │   │   ├── flourish-embed/
+│       │   │   │   ├── flourish-embed.tsx
+│       │   │   │   └── flourish-embed.scss
+│       │   │   ├── hero-statement/
+│       │   │   │   ├── hero-statement.scss
+│       │   │   │   └── hero-statement.tsx
+│       │   │   ├── hierarchical-tease/
+│       │   │   │   ├── hierarchical-tease-header.tsx
+│       │   │   │   ├── hierarchical-tease.scss
+│       │   │   │   └── hierarchical-tease.tsx
+│       │   │   ├── media-carousel/
+│       │   │   │   ├── media-carousel.scss
+│       │   │   │   └── media-carousel.tsx
+│       │   │   ├── pull-quote/
+│       │   │   │   ├── pull-quote.scss
+│       │   │   │   └── pull-quote.tsx
+│       │   │   ├── section-header/
+│       │   │   │   ├── section-header.scss
+│       │   │   │   └── section-header.tsx
+│       │   │   ├── section-intro-text/
+│       │   │   │   ├── section-intro-text.scss
+│       │   │   │   └── section-intro-text.tsx
+│       │   │   ├── side-by-side-list/
+│       │   │   │   ├── side-by-side-list.scss
+│       │   │   │   └── side-by-side-list.tsx
+│       │   │   ├── tease-feed/
+│       │   │   │   ├── tease-feed.scss
+│       │   │   │   └── tease-feed.tsx
+│       │   │   └── tease-row/
+│       │   │       ├── tease-row-2-up.scss
+│       │   │       ├── tease-row-3-up.scss
+│       │   │       ├── tease-row.scss
+│       │   │       └── tease-row.tsx
+│       │   │
+│       │   ├── icons/
+│       │   │   ├── icon-arrow-left.tsx
+│       │   │   ├── icon-arrow-open.tsx
+│       │   │   ├── icon-arrow.tsx
+│       │   │   ├── icon-bell.tsx
+│       │   │   ├── icon-calendar.tsx
+│       │   │   ├── icon-caret-down.tsx
+│       │   │   ├── icon-caret-heavy.tsx
+│       │   │   ├── icon-caret-light.tsx
+│       │   │   ├── icon-caret.tsx
+│       │   │   ├── icon-check-circle.tsx
+│       │   │   ├── icon-check-large.tsx
+│       │   │   ├── icon-check.tsx
+│       │   │   ├── icon-close-circle.tsx
+│       │   │   ├── icon-close.tsx
+│       │   │   ├── icon-comment.tsx
+│       │   │   ├── icon-compass.tsx
+│       │   │   ├── icon-download.tsx
+│       │   │   ├── icon-ellipses.tsx
+│       │   │   ├── icon-external.tsx
+│       │   │   ├── icon-facebook.tsx
+│       │   │   ├── icon-filter.tsx
+│       │   │   ├── icon-instagram.tsx
+│       │   │   ├── icon-link.tsx
+│       │   │   ├── icon-linkedin.tsx
+│       │   │   ├── icon-mail.tsx
+│       │   │   ├── icon-menu.tsx
+│       │   │   ├── icon-minus.tsx
+│       │   │   ├── icon-nav-arrow.tsx
+│       │   │   ├── icon-pause.tsx
+│       │   │   ├── icon-play.tsx
+│       │   │   ├── icon-plus.tsx
+│       │   │   ├── icon-print.tsx
+│       │   │   ├── icon-question-mark.tsx
+│       │   │   ├── icon-quick-link-circle.tsx
+│       │   │   ├── icon-quick-link.tsx
+│       │   │   ├── icon-search.tsx
+│       │   │   ├── icon-share-circle.tsx
+│       │   │   ├── icon-tiktok.tsx
+│       │   │   ├── icon-x.tsx
+│       │   │   ├── icon-youtube.tsx
+│       │   │   ├── icon.tsx
+│       │   │   └── icon.scss
+│       │   │
+│       │   ├── layouts/
+│       │   │   ├── page-section/
+│       │   │   │   ├── page-section.scss
+│       │   │   │   └── page-section.tsx
+│       │   │   └── base.tsx
+│       │   │
+│       │   ├── pages/
+│       │   │   ├── article-page/
+│       │   │   │   └── article-related-people/
+│       │   │   │       ├── article-related-people-item.tsx
+│       │   │   │       ├── article-related-people.scss
+│       │   │   │       └── article-related-people.tsx
+│       │   │   └── landing-page/
+│       │   │       ├── landing-page-body/
+│       │   │       │   ├── landing-page-body.scss
+│       │   │       │   └── landing-page-body.tsx
+│       │   │       ├── landing-page.scss
+│       │   │       └── landing-page.tsx
+│       │   │
+│       │   ├── primitives/
+│       │   │   ├── arrow-button/
+│       │   │   │   ├── arrow-button.scss
+│       │   │   │   └── arrow-button.tsx
+│       │   │   ├── article-tease/
+│       │   │   │   ├── article-tease.scss
+│       │   │   │   └── article-tease.tsx
+│       │   │   ├── breadcrumbs/
+│       │   │   │   ├── breadcrumbs-item.scss
+│       │   │   │   ├── breadcrumbs-item.tsx
+│       │   │   │   ├── breadcrumbs.scss
+│       │   │   │   └── breadcrumbs.tsx
+│       │   │   ├── byline/
+│       │   │   │   ├── byline.scss
+│       │   │   │   └── byline.tsx
+│       │   │   ├── component-header/
+│       │   │   │   ├── component-header.scss
+│       │   │   │   └── component-header.tsx
+│       │   │   ├── cta-link/
+│       │   │   │   ├── cta-link.scss
+│       │   │   │   └── cta-link.tsx
+│       │   │   ├── cta-list/
+│       │   │   │   ├── cta-list.scss
+│       │   │   │   └── cta-list.tsx
+│       │   │   ├── embed/
+│       │   │   │   ├── embed.scss
+│       │   │   │   └── embed.tsx
+│       │   │   ├── footnotes/
+│       │   │   │   ├── footnotes.scss
+│       │   │   │   └── footnotes.tsx
+│       │   │   ├── form/
+│       │   │   │   └── form.scss
+│       │   │   ├── head/
+│       │   │   │   └── head.tsx
+│       │   │   ├── kaltura-embed/
+│       │   │   │   ├── kaltura-embed.scss
+│       │   │   │   ├── kaltura-embed.tsx
+│       │   │   │   ├── kaltura-video-events.ts
+│       │   │   │   └── third-party-scripts/
+│       │   │   ├── link/
+│       │   │   │   └── link.tsx
+│       │   │   ├── logo/
+│       │   │   │   └── logo.scss
+│       │   │   ├── media-asset/
+│       │   │   │   ├── media-asset-image.tsx
+│       │   │   │   ├── media-asset-kaltura-modal.tsx
+│       │   │   │   ├── media-asset-video.tsx
+│       │   │   │   ├── media-asset.scss
+│       │   │   │   └── media-asset.tsx
+│       │   │   ├── quote-card-content/
+│       │   │   │   ├── quote-card-content.scss
+│       │   │   │   └── quote-card-content.tsx
+│       │   │   ├── social-media-links/
+│       │   │   │   ├── social-media-icon.tsx
+│       │   │   │   ├── social-media-links.scss
+│       │   │   │   └── social-media-links.tsx
+│       │   │   ├── statistic/
+│       │   │   │   ├── statistic.scss
+│       │   │   │   └── statistic.tsx
+│       │   │   ├── tooltip/
+│       │   │   │   ├── tooltip.scss
+│       │   │   │   └── tooltip.tsx
+│       │   │   └── wowza-embed/
+│       │   │       ├── wowza.scss
+│       │   │       └── wowza.tsx
+│       │   │
+│       │   ├── search/
+│       │   │   ├── search-box/
+│       │   │   │   ├── search-box.scss
+│       │   │   │   └── search-box.tsx
+│       │   │   └── search-dropdown/
+│       │   │       ├── search-dropdown.scss
+│       │   │       └── search-dropdown.tsx
+│       │   │
+│       │   ├── system/
+│       │   │   ├── error-boundary/
+│       │   │   │   └── error-boundary.tsx
+│       │   │   ├── lazy-component/
+│       │   │   │   ├── lazy-component.tsx
+│       │   │   │   └── use-lazy-components.tsx
+│       │   │   └── toppers/
+│       │   │       └── media-topper/
+│       │   │           ├── media-topper.scss
+│       │   │           └── media-topper.tsx
+│       │   │
+│       │   └── universal/
+│       │       ├── expanded-local-navigation/
+│       │       │   ├── desktop/
+│       │       │   │   ├── expanded-desktop-navigation.scss
+│       │       │   │   ├── expanded-desktop-navigation.tsx
+│       │       │   │   ├── expanded-navigation-cta.tsx
+│       │       │   │   ├── feature-link.tsx
+│       │       │   │   ├── horizontal-layout.tsx
+│       │       │   │   ├── menu-link.tsx
+│       │       │   │   ├── navigation-link.tsx
+│       │       │   │   ├── page-group.tsx
+│       │       │   │   ├── page-list-or-link.tsx
+│       │       │   │   ├── page-list-wrapper.tsx
+│       │       │   │   ├── page-list.tsx
+│       │       │   │   ├── top-link.tsx
+│       │       │   │   └── vertical-layout.tsx
+│       │       │   ├── local/
+│       │       │   │   └── expanded-local-navigation.tsx
+│       │       │   └── mobile/
+│       │       │       ├── common/
+│       │       │       │   └── expanded-mobile-link.tsx
+│       │       │       ├── horizontal/
+│       │       │       │   ├── expanded-mobile-horizontal-content.tsx
+│       │       │       │   ├── expanded-mobile-horizontal-header.tsx
+│       │       │       │   ├── expanded-mobile-horizontal-page-group.tsx
+│       │       │       │   ├── expanded-mobile-horizontal-page-list.tsx
+│       │       │       │   └── expanded-mobile-horizontal.tsx
+│       │       │       ├── main/
+│       │       │       │   ├── expanded-mobile-cta.tsx
+│       │       │       │   ├── expanded-mobile-item-content.tsx
+│       │       │       │   ├── expanded-mobile-item-header.tsx
+│       │       │       │   ├── expanded-mobile-item.tsx
+│       │       │       │   └── expanded-mobile-main-content.tsx
+│       │       │       └── vertical/
+│       │       │           ├── expanded-mobile-vertical.tsx
+│       │       │           └── expanded-mobile-navigation.tsx
+│       │       │
+│       │       ├── global-menu/
+│       │       │   ├── global-menu-item.tsx
+│       │       │   ├── global-menu-link.tsx
+│       │       │   ├── global-menu-nav.tsx
+│       │       │   ├── global-menu-sub-nav.tsx
+│       │       │   ├── global-menu-sub-nav-trigger.tsx
+│       │       │   ├── global-menu.scss
+│       │       │   └── global-menu.tsx
+│       │       │
+│       │       ├── local-navigation/
+│       │       │   ├── get-fitting-items-index.ts
+│       │       │   ├── local-navigation-menu.tsx
+│       │       │   ├── local-navigation.scss
+│       │       │   └── local-navigation.tsx
+│       │       │
+│       │       ├── site-footer/
+│       │       │   ├── site-footer-black.tsx
+│       │       │   ├── site-footer-primary-cta.tsx
+│       │       │   ├── site-footer.scss
+│       │       │   └── site-footer.tsx
+│       │       │
+│       │       └── site-header/
+│       │           ├── components/
+│       │           ├── site-header-alert.tsx
+│       │           ├── site-header-banner.tsx
+│       │           ├── site-header-buttons.tsx
+│       │           ├── site-header-navigation.tsx
+│       │           ├── site-header-section-title.tsx
+│       │           ├── site-header-working-knowledge-tagline.tsx
+│       │           ├── site-header-topper.tsx
+│       │           ├── useSetSticky.ts
+│       │           ├── site-header.scss
+│       │           └── site-header.tsx
+│       │
+│       ├── hooks/
+│       │   ├── use-breakpoint.ts
+│       │   ├── use-contentful.tsx
+│       │   ├── use-data-layer.ts
+│       │   ├── use-footnotes.tsx
+│       │   ├── use-i18n.ts
+│       │   ├── use-page-navigation.ts
+│       │   ├── use-page-progress.tsx
+│       │   ├── use-prefers-reduced-motion.ts
+│       │   ├── use-program-comparison.tsx
+│       │   ├── use-resize-observer.ts
+│       │   ├── use-script.ts
+│       │   ├── use-search-dropdowns.tsx
+│       │   ├── use-search.ts
+│       │   ├── use-store.ts
+│       │   └── use-translations.ts
+│       │
+│       ├── i18n/
+│       │   └── translations.ts
+│       │
+│       ├── sites/
+│       │   └── exed/
+│       │       └── program-comparison-tray/
+│       │           ├── program-comparison-tray.scss
+│       │           └── program-comparison-tray.tsx
+│       │
+│       ├── store/
+│       │   ├── slice-framework.ts
+│       │   ├── site-location.ts
+│       │   ├── store-provider.tsx
+│       │   └── store.ts
+│       │
+│       ├── styles/
+│       │   ├── base/
+│       │   │   ├── _reset.scss
+│       │   │   └── index.scss
+│       │   ├── abstracts/
+│       │   │   ├── _variables.scss
+│       │   │   └── mixins/
+│       │   │       ├── _border.scss
+│       │   │       ├── _button.scss
+│       │   │       ├── _checkbox.scss
+│       │   │       ├── _fluid-size.scss
+│       │   │       ├── _grid.scss
+│       │   │       ├── _hide-scrollbars.scss
+│       │   │       ├── _hide.scss
+│       │   │       ├── _hover.scss
+│       │   │       ├── _layout.scss
+│       │   │       ├── _link.scss
+│       │   │       ├── _list-reset.scss
+│       │   │       ├── _mq.scss
+│       │   │       ├── _pseudo.scss
+│       │   │       ├── _reset-input.scss
+│       │   │       ├── _rich-text.scss
+│       │   │       ├── _skip-to-header.scss
+│       │   │       ├── _size.scss
+│       │   │       ├── _stat-size.scss
+│       │   │       ├── _themes.scss
+│       │   │       └── _typography.scss
+│       │   ├── global/
+│       │   │   ├── _animations.scss
+│       │   │   ├── _fonts.scss
+│       │   │   ├── _global.scss
+│       │   │   ├── _print.scss
+│       │   │   └── _type-global.scss
+│       │   └── utilities/
+│       │       ├── _hbs-aside.scss
+│       │       ├── _hbs-topper-wrapper.scss
+│       │       └── index.scss
+│       │
+│       └── utils/
+│           ├── cloudinary.ts
+│           ├── constants.ts
+│           ├── data-layer.ts
+│           ├── date-format.ts
+│           ├── debounce.ts
+│           ├── document.ts
+│           ├── external.ts
+│           ├── filter-undefined.ts
+│           ├── style-transition-delay.ts
+│           └── text.ts
+│
+├── src/
+│   ├── client/
+│   │   ├── components/
+│   │   │   ├── router-reducer/
+│   │   │   │   └── reducers.ts
+│   │   │   ├── get-segment-value.ts
+│   │   │   ├── app-router-headers.ts
+│   │   │   ├── forbidden.ts
+│   │   │   ├── is-next-router-error.ts
+│   │   │   ├── navigation.react-server.ts
+│   │   │   ├── navigation.ts
+│   │   │   ├── not-found.ts
+│   │   │   ├── redirect-error.ts
+│   │   │   ├── redirect-status-code.ts
+│   │   │   ├── redirect.ts
+│   │   │   ├── unauthorized.ts
+│   │   │   ├── unsafe-rethrow-browser.ts
+│   │   │   └── unstable-rethrow.ts
+│   │   ├── portal/
+│   │   │   ├── index.tsx
+│   │   │   └── react-client-callbacks/
+│   │   │       ├── on-recoverable-error.ts
+│   │   │       └── report-global-error.ts
+│   │   └── tracing/
+│   │       ├── add-base-path.ts
+│   │       ├── add-locale.ts
+│   │       ├── detect-domain-locale.ts
+│   │       ├── has-base-path.ts
+│   │       ├── head-manager.ts
+│   │       ├── index.tsx
+│   │       ├── next.ts
+│   │       ├── normalize-trailing-slash.ts
+│   │       ├── page-loader.ts
+│   │       ├── remove-base-path.ts
+│   │       ├── remove-locale.ts
+│   │       ├── request-idle-callback.ts
+│   │       ├── resolve-href.ts
+│   │       ├── route-announcer.tsx
+│   │       ├── route-loader.ts
+│   │       ├── router.ts
+│   │       ├── script.tsx
+│   │       ├── set-attributes-from-props.ts
+│   │       ├── trusted-types.ts
+│   │       ├── webpack.ts
+│   │       └── with-router.tsx
+│   ├── components.ts
+│   ├── contentful/
+│   │   ├── components/
+│   │   │   ├── blocks/
+│   │   │   │   ├── cta/
+│   │   │   │   │   ├── cta-banner.contentful.tsx
+│   │   │   │   │   ├── cta-card.props.tsx
+│   │   │   │   │   └── cta.props.tsx
+│   │   │   │   └── teasers/
+│   │   │   │       ├── article-tease.props.tsx
+│   │   │   │       ├── content-tease.props.tsx
+│   │   │   │       ├── events-tease.contentful.tsx
+│   │   │   │       ├── hero-tease.props.tsx
+│   │   │   │       ├── tease-row-contents.contentful.tsx
+│   │   │   │       ├── hero-statement.contentful.tsx
+│   │   │   │       ├── hierarchical-tease.contentful.tsx
+│   │   │   │       ├── page-section-header.contentful.tsx
+│   │   │   │       ├── section-intro-text.contentful.tsx
+│   │   │   │       └── side-by-side-list.contentful.tsx
+│   │   │   └── pages/
+│   │   │       ├── landing-page.contentful.tsx
+│   │   │       └── page-sections.contentful.tsx
+│   │   ├── lib/
+│   │   │   ├── create-contentful-component.ts
+│   │   │   ├── create-contentful-props.ts
+│   │   │   ├── document-to-string.ts
+│   │   │   ├── dull-attribute-factory.ts
+│   │   │   ├── is-content-type.ts
+│   │   │   ├── resolve-asset-uri.ts
+│   │   │   ├── resolve-assets.ts
+│   │   │   ├── resolve-entity-link.ts
+│   │   │   ├── resolve-entity-name.ts
+│   │   │   ├── resolve-entries.ts
+│   │   │   ├── resolve-entry-uri.ts
+│   │   │   ├── resolve-includes.ts
+│   │   │   └── resolve-is-person-past-hbs-faculty.ts
+│   │   └── props/
+│   │       ├── primitives/
+│   │       │   ├── article-related-person.props.tsx
+│   │       │   ├── byline-author.props.tsx
+│   │       │   ├── byline.props.tsx
+│   │       │   ├── component-header.props.tsx
+│   │       │   ├── cta-link.props.tsx
+│   │       │   ├── cta-list.props.tsx
+│   │       │   ├── head-title-description.ts
+│   │       │   ├── head.contentful.tsx
+│   │       │   ├── link.props.tsx
+│   │       │   ├── media-asset.props.tsx
+│   │       │   ├── section-intro-related-people.props.tsx
+│   │       │   ├── statistic.props.tsx
+│   │       │   └── tootlip.props.tsx
+│   │       ├── semantics/
+│   │       │   └── statistic.props.tsx
+│   │       ├── toppers/
+│   │       │   ├── mission-topper-text-pert-details.props.tsx
+│   │       │   ├── mission-topper.props.tsx
+│   │       │   ├── big-art-topper.props.tsx
+│   │       │   ├── card-topper.props.tsx
+│   │       │   ├── dashboard-topper.props.tsx
+│   │       │   ├── directory-topper.props.tsx
+│   │       │   ├── editorial-topper.props.tsx
+│   │       │   ├── event-media-topper.props.tsx
+│   │       │   ├── event-topper.props.tsx
+│   │       │   ├── featured-term-topper.props.tsx
+│   │       │   ├── large-asset-topper.props.tsx
+│   │       │   ├── lazy-topper.props.tsx
+│   │       │   ├── media-topper.props.tsx
+│   │       │   ├── participant-story-topper.props.tsx
+│   │       │   ├── search-topper.props.tsx
+│   │       │   ├── select-topper.props.tsx
+│   │       │   ├── simple-article-topper.props.tsx
+│   │       │   ├── simple-page-topper.props.tsx
+│   │       │   ├── split-article-topper.props.tsx
+│   │       │   ├── split-page-topper-podcast.props.tsx
+│   │       │   ├── split-page-topper.props.tsx
+│   │       │   ├── split-search-topper.props.tsx
+│   │       │   ├── statistics-topper.props.tsx
+│   │       │   ├── wk-feature-topper.props.tsx
+│   │       │   └── wk-profile-topper.props.tsx
+│   │       └── universal/
+│   │           ├── expanded-menu-item.props.tsx
+│   │           ├── global-menu-nav-item.props.tsx
+│   │           ├── navigation-item.props.tsx
+│   │           ├── site-footer.props.tsx
+│   │           ├── site-header.props.tsx
+│   │           └── social-media-links.props.tsx
+│   ├── hooks/
+│   │   ├── use-contentful.tsx
+│   │   ├── use-data-layer.ts
+│   │   ├── use-fetch.ts
+│   │   ├── use-page-footnotes.tsx
+│   │   ├── use-page-navigation.ts
+│   │   ├── use-page-props.tsx
+│   │   ├── use-search-dropdowns.tsx
+│   │   └── use-search.ts
+│   ├── lib/
+│   │   ├── constants.ts
+│   │   ├── get-site-id.ts
+│   │   └── needs-program-comparison.ts
+│   ├── pages/
+│   │   ├── [[...slug]].tsx
+│   │   ├── _app.tsx
+│   │   └── _error.tsx
+│   ├── search/
+│   │   ├── is-search-hit-type.ts
+│   │   ├── search-article-tease.ts
+│   │   ├── search-event-tease.tsx
+│   │   ├── search-hero-tease.ts
+│   │   ├── search-highlight.ts
+│   │   └── contentful-components.ts
+│   ├── shared/
+│   │   └── lib/
+│   │       └── ...
+│
+├── ... (file-file root lainnya seperti package.json, dll.)

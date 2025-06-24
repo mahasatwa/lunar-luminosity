@@ -1,0 +1,259 @@
+@import "../../../styles/base/abstracts";
+
+.hbs-footer {
+  margin-top: auto;
+}
+
+// Footer Primary CTA
+.hbs-footer-primary-cta__link {
+  @include color-link($c-theme-solid, $c-theme-solid);
+  @include padding($spacing-sm x);
+  display: block;
+  transition: background-color $transition;
+  position: relative;
+
+  a {
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  svg {
+    pointer-events: none;
+  }
+  .hbs-text-h3 {
+    transform: none;
+    margin-left: -0.06em;
+  }
+
+  &:focus:not(:hover) {
+    outline-offset: -8px !important;
+  }
+
+  @include hover {
+    --c-bg: #{$c-black};
+
+    .hbs-footer-primary-cta__icon {
+      transform: rotate(-45deg);
+    }
+  }
+
+  @include mq($bp-desktop) {
+    @include padding($spacing-lg x);
+  }
+}
+
+.hbs-footer-primary-cta__wrapper {
+  @include grid-parent;
+  @include site-max-width;
+  align-items: center;
+}
+
+.hbs-footer-primary-cta__title {
+  @include grid-child;
+  @include body-text($ff-sans);
+  font-weight: $fw-semibold;
+  margin-bottom: 0;
+
+  @include mq($bp-tablet) {
+    width: $col-8;
+  }
+
+  @include mq($bp-desktop) {
+    width: $col-4;
+  }
+}
+
+.hbs-footer-primary-cta__description {
+  @include body-text($ff-sans);
+  @include grid-child;
+  align-items: center;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @include mq($bp-tablet) {
+    width: $col-8;
+  }
+
+  @include mq($bp-desktop) {
+    width: $col-12;
+  }
+}
+
+.hbs-footer-primary-cta__icon {
+  @include size(1em);
+  margin-left: $spacing-md;
+  transition: transform $transition;
+}
+
+// Footer Content
+.hbs-footer__content {
+  @include block-spacing;
+  @include block-spacing(bottom, $size: lg);
+}
+
+.hbs-footer__content-wrapper {
+  @include grid-parent;
+  @include site-max-width;
+}
+
+// Footer Block
+.hbs-footer-block {
+  @include grid-child;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+
+  @include mq($bp-tablet) {
+    width: $col-8;
+  }
+
+  @include mq($bp-desktop) {
+    width: $col-4;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: $spacing-lg;
+
+    @include mq($bp-tablet) {
+      margin-bottom: $spacing-xl;
+    }
+
+    @include mq($bp-desktop) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.hbs-footer-block__heading {
+  @include body-text($ff-sans);
+  font-weight: $fw-semibold;
+  line-height: $lh-h1;
+
+  .hbs-footer-block:first-child & {
+    max-width: 6ch;
+
+    a {
+      @include color-link($text-hover-color: $c-highlight);
+    }
+  }
+}
+
+.hbs-footer-block__title {
+  @include baseline-text;
+  font-weight: $fw-semibold;
+  margin-bottom: $spacing-xs;
+}
+
+.hbs-footer-block-item {
+  @include baseline-text;
+  margin-bottom: $spacing-xs;
+
+  .hbs-social-media-links {
+    margin-bottom: 0;
+  }
+
+  a {
+    @include link;
+  }
+}
+
+// Social Links
+.hbs-footer-block-item--social-icons {
+  margin-top: $spacing-xs;
+}
+
+// Footer Legal
+.hbs-footer__legal-wrapper {
+  @include block-spacing($size: sm);
+  @include grid-parent;
+  @include site-max-width;
+  @include border(top);
+  align-items: baseline;
+  position: relative;
+}
+
+.hbs-footer__copyrights {
+  @include grid-child;
+  @include small-text;
+  color: $c-text-light;
+
+  @include mq($bp-tablet) {
+    margin-bottom: 0;
+    width: $col-8;
+  }
+
+  @include mq($bp-desktop) {
+    width: $col-4;
+  }
+}
+
+.hbs-footer__legal-nav {
+  @include grid-child;
+  display: flex;
+  flex-flow: row wrap;
+
+  @include mq($bp-tablet) {
+    width: $col-8;
+  }
+
+  @include mq($bp-desktop) {
+    width: $col-12;
+  }
+}
+
+.hbs-footer-legal-item {
+  @include small-text;
+  @include subtle-link;
+  margin-bottom: $spacing-xs;
+  margin-right: $spacing-sm;
+
+  @include mq($bp-desktop) {
+    margin-bottom: 0;
+  }
+}
+
+.hbs-footer-discrimination-notice {
+  @include small-text;
+  @include grid-child;
+  color: $c-text-light;
+  margin-top: $spacing-md;
+}
+
+// Footer CTA
+.hbs-footer__cta-card {
+  @include grid-parent;
+  @include site-max-width;
+  align-items: baseline;
+}
+
+.hbs-footer__cta-card-inner {
+  @include grid-child;
+  @include padding($grid-padding-mobile * 2 x);
+
+  @include mq($bp-tablet) {
+    @include padding($grid-padding * 2 x);
+
+    .hbs-global-align-full .hbs-cta-card {
+      @include ungrid;
+      @include grid-parent($offset: true);
+    }
+  }
+
+  @include mq($bp-desktop) {
+    margin-left: $col-4;
+    margin-right: 0;
+    width: $col-9;
+  }
+
+  @include mq($bp-desktop-xl) {
+    width: $col-8;
+  }
+}
