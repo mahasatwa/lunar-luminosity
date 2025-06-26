@@ -17,14 +17,14 @@ const Logo: React.FC<{ shrunk?: boolean }> = ({ shrunk }) => {
       <img
         src={logoSrc}
         alt="Logo STIE Dwimulya"
-        className={`h-10 md:h-12 w-auto transition-all duration-300 ${shrunk ? 'h-8 md:h-10' : ''}`}
+        className={`transition-all duration-300 ${shrunk ? 'h-8 md:h-10' : 'h-10 md:h-12'} w-auto`}
         width={64}
         height={64}
       />
       <img
         src={wordmarkSrc}
         alt="Wordmark STIE Dwimulya"
-        className="ml-2 h-8 md:h-10 w-auto max-w-xs transition-all duration-300"
+        className={`ml-2 transition-all duration-300 ${shrunk ? 'h-6 md:h-8' : 'h-8 md:h-10'} w-auto max-w-xs`}
         width={180}
         height={64}
       />

@@ -8,22 +8,19 @@ import Logo from './shared/Logo';
 import CtaButton from './shared/CtaButton';
 import SearchButton from './shared/SearchButton';
 import HamburgerButton from './shared/HamburgerButton';
-// import MobileOverlay from './mobile/MobileOverlay'; // TODO: implement
+import MobileNavMenu from './mobile/MobileNavMenu'; // Integrasi MobileNavMenu
 
 const SCROLL_SHRINK_THRESHOLD = 100;
 
 const NavSystem: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShrunk, setIsShrunk] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false); // for search overlay
   const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
-      if (window.scrollY > SCROLL_SHRINK_THRESHOLD) {
-        setIsShrunk(true);
-      } else {
-        setIsShrunk(false);
-      }
+      setIsShrunk(window.scrollY > SCROLL_SHRINK_THRESHOLD);
     };
     window.addEventListener('scroll', onScroll);
     // Set initial state (do not shrink on first load)
@@ -37,30 +34,55 @@ const NavSystem: React.FC = () => {
     ? 'bg-dm-primary text-white hover:bg-dm-primary-dark'
     : 'bg-white text-dm-primary border border-dm-primary hover:bg-dm-primary hover:text-white';
   const hamburgerIconColor = isShrunk ? '#002147' : '#fff';
+  const headerPadding = isShrunk ? 'py-1 md:py-2' : 'py-4 md:py-4';
 
+  // Refactor: HBS MBA-style header layout
   return (
-    <header className={`sticky top-0 z-50 transition-colors duration-300 shadow ${headerBg}`} role="banner">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2">
-        <Logo shrunk={isShrunk} />
-        <nav className="flex-1 flex justify-center min-w-0">
-          <DesktopNavMenu isShrunk={isShrunk} />
-        </nav>
-        <div className="flex items-center gap-2">
-          <CtaButton href="/daftar" className={ctaClass}>Daftar</CtaButton>
-          <SearchButton color={hamburgerIconColor} />
-          <HamburgerButton
-            ref={hamburgerRef}
-            isOpen={isMenuOpen}
-            onClick={() => setIsMenuOpen((v) => !v)}
-            color={hamburgerIconColor}
-            aria-label={isMenuOpen ? 'Tutup menu' : 'Buka menu'}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-overlay"
-          />
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${headerBg}`}
+      role="banner"
+    >
+      <div className={`max-w-7xl mx-auto flex w-full items-start px-4 ${headerPadding} transition-all duration-300`}> 
+        {/* 1/4 kiri: Logo */}
+        <div className="w-1/4 min-w-[140px] flex items-center">
+          <Logo shrunk={isShrunk} />
+        </div>
+        {/* 3/4 kanan: menu dan tombol */}
+        <div className="w-3/4 flex flex-col relative min-w-0">
+          {/* Spacer for menu positioning */}
+          <div className="h-8"></div>
+
+          {/* Main Navigation Menu */}
+          <div className="w-full flex items-center min-w-0">
+            <nav className="flex-1 flex justify-center min-w-0">
+              <DesktopNavMenu />
+            </nav>
+          </div>
+
+          {/* Buttons: CTA, Search, Hamburger */}
+          <div className="absolute top-3 right-[1vw] flex items-center gap-2 z-40">
+            <CtaButton href="/daftar" className={ctaClass}>
+              Daftar
+            </CtaButton>
+            <SearchButton color={hamburgerIconColor} onClick={() => setIsSearchOpen(true)} />
+            <HamburgerButton
+              ref={hamburgerRef}
+              isOpen={isMenuOpen}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              color={hamburgerIconColor}
+              aria-label={isMenuOpen ? 'Tutup menu' : 'Buka menu'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-overlay"
+            />
+          </div>
         </div>
       </div>
-      {/* Mobile overlay navigation (to be implemented) */}
-      {/* <MobileOverlay open={isMenuOpen} onClose={() => setIsMenuOpen(false)} /> */}
+
+      {/* Mobile Navigation Menu */}
+      <MobileNavMenu open={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
+      {/* Search overlay (to be implemented) */}
+      {/* <SearchOverlay open={isSearchOpen} onClose={() => setIsSearchOpen(false)} /> */}
     </header>
   );
 };

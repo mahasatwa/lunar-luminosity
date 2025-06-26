@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STIE Dwimulya - Navigasi Lanjutan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React and Babel for JSX in the browser -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles for animations and base layout -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        
+        .header-transition {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-overlay-transition {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .menu-panel-container {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        /* Custom styles for the new structure */
+        .site-header-wrapper {
+            background-color: #002147;
+            color: white;
+        }
+        .site-header-wrapper.scrolled {
+            background-color: white;
+            color: #1f2937; /* gray-800 */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useCallback, useRef } = React;
+        const OXFORD_BLUE = '#002147';
+
+        // --- Data Structure for Navigation (in Indonesian) ---
+        const navigationData = [
+            { id: 'akademik', title: 'Pengalaman Akademik', href: '#', children: [ { id: 's1', title: 'Kurikulum', href: '#' } ] },
+            { id: 'kewirausahaan', title: 'Kewirausahaan', href: '#' },
+            { id: 'kehidupan_mahasiswa', title: 'Kehidupan Mahasiswa', href: '#' },
+            { id: 'perjalanan_karir', title: 'Perjalanan Karir', href: '#' },
+            { id: 'penerimaan', title: 'Penerimaan', href: '#' },
+            { id: 'bantuan_keuangan', title: 'Bantuan Keuangan', href: '#' },
+            { id: 'perkenalkan_diri', title: 'Perkenalkan Diri', href: '#'},
+            { id: 'kunjungan', title: 'Kunjungan', href: '#'},
+        ];
+
+        // --- SVG Icons ---
+        const Icons = {
+            Logo: () => (
+                <svg width="48" height="48" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="50" height="50" rx="4" fill={OXFORD_BLUE} stroke="#FFFFFF" strokeWidth="2"/>
+                    <path d="M14 14H38V22L26 30L14 22V14Z" fill="white"/>
+                    <path d="M18 25V38H22V29L26 32L30 29V38H34V25L26 20L18 25Z" fill="white"/>
+                </svg>
+            ),
+            Search: ({ color = 'currentColor' }) => <svg className="w-6 h-6" fill="none" stroke={color} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>,
+            Menu: ({ color = 'currentColor' }) => <svg className="w-6 h-6" fill="none" stroke={color} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>,
+            Close: () => <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>,
+            ChevronRight: () => <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>,
+            ChevronLeft: () => <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>,
+        };
+        
+        // --- Logic for "More" Dropdown ---
+        function getFittingItemsIndex(totalWidth, itemsWidth, moreItemWidth = 0) {
+            let widthLeft = Math.floor(totalWidth);
+            const moreIndex = itemsWidth.findIndex(itemWidth => {
+                if (itemWidth) { widthLeft -= itemWidth; return widthLeft <= 0; }
+                return false;
+            });
+            if (moreIndex === -1) return itemsWidth.length;
+            const lastItemWidth = itemsWidth[moreIndex];
+            if (moreItemWidth && lastItemWidth && widthLeft + lastItemWidth < moreItemWidth) { return moreIndex - 1; }
+            return moreIndex;
+        }
+
+        // --- Custom hook for ResizeObserver ---
+        function useResizeObserver(ref, callback) {
+            useEffect(() => {
+                const observer = new ResizeObserver(entries => { callback(entries); });
+                if (ref.current) { observer.observe(ref.current); }
+                return () => { if (ref.current) { observer.unobserve(ref.current); }};
+            }, [ref, callback]);
+        }
+        
+        // --- Desktop Navigation with "More" Logic (using new class names) ---
+        function DesktopNav() {
+            const navContainerRef = useRef(null);
+            const itemRefs = useRef([]);
+            const [visibleCount, setVisibleCount] = useState(navigationData.length);
+            
+            useResizeObserver(navContainerRef, (entries) => {
+                if(entries[0]) {
+                    const containerWidth = entries[0].contentRect.width;
+                    const widths = itemRefs.current.map(el => el?.offsetWidth || 0);
+                    const moreWidth = 100;
+                    const newVisibleCount = getFittingItemsIndex(containerWidth, widths, moreWidth);
+                    setVisibleCount(Math.min(newVisibleCount, navigationData.length));
+                }
+            });
+            
+            // This ensures the refs array is always up-to-date with the data
+            useEffect(() => {
+                itemRefs.current = itemRefs.current.slice(0, navigationData.length);
+            }, [navigationData]);
+
+            const visibleItems = navigationData.slice(0, visibleCount);
+            const hiddenItems = navigationData.slice(visibleCount);
+
+            return (
+                <nav ref={navContainerRef} className="hbs-local-navigation flex items-center h-full w-full">
+                    <ul className="flex items-center justify-start w-full">
+                        {visibleItems.map((item, index) => (
+                            <li key={item.id} ref={el => itemRefs.current[index] = el} className="hbs-local-navigation__item group relative px-3 py-2">
+                                <a href={item.href} className="text-sm font-medium hover:underline flex items-center whitespace-nowrap">
+                                    {item.title}
+                                </a>
+                            </li>
+                        ))}
+                        {hiddenItems.length > 0 && (
+                            <li className="hbs-local-navigation__item group relative px-3 py-2">
+                                <button className="text-sm font-medium hover:underline flex items-center">
+                                    Lainnya
+                                    <svg className="ml-1 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div className="absolute top-full right-0 hidden group-hover:block bg-white text-black shadow-lg rounded-md mt-2 py-2 w-56 z-10">
+                                    {hiddenItems.map(item => <a key={item.id} href={item.href} className="block px-4 py-2 text-sm hover:bg-gray-100">{item.title}</a>)}
+                                </div>
+                            </li>
+                        )}
+                    </ul>
+                </nav>
+            );
+        }
+        
+        // --- Header Component (Revised Structure) ---
+        function Header({ isScrolled, onMenuToggle }) {
+            const headerClasses = `site-header-wrapper sticky top-0 z-40 header-transition ${isScrolled ? 'scrolled' : ''}`;
+            const buttonHoverClass = isScrolled ? 'hover:bg-gray-200' : 'hover:bg-white/10';
+            
+            return (
+                <header className={headerClasses}>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="hbs-site-header__wrapper flex flex-col justify-center w-full header-transition" style={{ height: isScrolled ? '80px' : '120px' }}>
+                           
+                            {/* Top row with Logo and Actions */}
+                            <div className="flex items-center justify-between w-full h-20">
+                                <div className="flex items-center">
+                                    <div className="hbs-site-header__logo-wrapper">
+                                        <div className="hbs-site-header__logo">
+                                            <a href="#"><Icons.Logo /></a>
+                                        </div>
+                                    </div>
+                                    <div className={`hbs-site-header__section-title pl-4 header-transition ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
+                                        <a href="#" className="text-xl font-bold tracking-wider">STIE Dwimulya</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Bottom row for Navigation */}
+                            <div className={`flex items-center w-full header-transition ${isScrolled ? '-mt-20' : '-mt-8'}`}>
+                                <div className="hbs-site-header__section-title">
+                                     <a href="#" className="text-xl font-bold tracking-wider">Program</a>
+                                </div>
+                                <div className="hbs-site-header__menu flex-grow min-w-0">
+                                    <DesktopNav />
+                                </div>
+                                 <div className="hbs-site-header__buttons flex items-center space-x-2 flex-shrink-0 pl-4">
+                                   <a href="#" className="text-sm font-semibold hover:underline px-2 py-1">Daftar</a>
+                                   <button className={`p-2 rounded-full ${buttonHoverClass}`}><Icons.Search color={isScrolled ? 'black' : 'white'} /></button>
+                                   <button onClick={onMenuToggle} className={`p-2 rounded-full ${buttonHoverClass}`}><Icons.Menu color={isScrolled ? 'black' : 'white'} /></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            );
+        }
+        
+        // --- Reusable Navigation Panel for Mobile Menu ---
+        const NavPanel = React.forwardRef(({ panel, onItemClick, onBack, isRoot, isActive }, ref) => {
+             const panelClasses = `absolute inset-0 flex flex-col bg-gray-900 transform transition-transform duration-300 ease-in-out ${isActive ? 'translate-x-0' : '-translate-x-full'}`;
+             return (
+                <div className={panelClasses} ref={ref}>
+                    <header className="flex items-center p-4 border-b border-gray-700 flex-shrink-0">
+                        {!isRoot && <button onClick={onBack} className="p-2 -ml-2 mr-2 rounded-full hover:bg-gray-800" aria-label="Kembali"><Icons.ChevronLeft /></button>}
+                        <h2 className="text-xl font-semibold">{panel.title}</h2>
+                    </header>
+                    <nav className="flex-grow overflow-y-auto">
+                        <ul>{panel.children.map(item => (<li key={item.id}><a href={item.href} onClick={e => { e.preventDefault(); onItemClick(item); }} className="flex items-center justify-between p-4 text-lg font-medium hover:bg-gray-800"><span>{item.title}</span> {item.children && <Icons.ChevronRight />}</a></li>))}</ul>
+                    </nav>
+                </div>
+            );
+        });
+
+        // --- Mobile Menu Overlay ---
+        function MobileMenuOverlay({ isOpen, onClose }) {
+            const [navStack, setNavStack] = useState([{ id: 'root', title: 'Menu', children: navigationData }]);
+            useEffect(() => { if (!isOpen) setTimeout(() => setNavStack([{ id: 'root', title: 'Menu', children: navigationData }]), 300); }, [isOpen]);
+            const handleItemClick = useCallback((item) => { if (item.children) { setNavStack(prev => [...prev, item]); } else { onClose(); } }, [onClose]);
+            const handleBack = useCallback(() => { setNavStack(prev => prev.slice(0, -1)); }, []);
+            return (
+                <div className={`fixed inset-0 z-50 bg-black/80 menu-overlay-transition ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={onClose} aria-hidden={!isOpen}>
+                    <div className="fixed top-0 left-0 h-full w-full bg-gray-900 text-white flex flex-col menu-panel-container" onClick={e => e.stopPropagation()} style={{ transform: `translateX(${isOpen ? '0%' : '-100%'})` }}>
+                        <div className="flex items-center justify-between p-4 border-b border-gray-700 flex-shrink-0">
+                            <div className="flex items-center space-x-4"><Icons.Logo /><span className="text-xl font-bold tracking-wider">STIE Dwimulya</span></div>
+                            <button onClick={onClose} className="p-2 -mr-2 rounded-full hover:bg-gray-800" aria-label="Tutup menu"><Icons.Close /></button>
+                        </div>
+                        <div className="relative flex-grow overflow-hidden">
+                            {navStack.map((panel, index) => <NavPanel key={panel.id} panel={panel} onItemClick={handleItemClick} onBack={handleBack} isRoot={index === 0} isActive={index === navStack.length - 1} />)}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        // --- Main Content ---
+        function MainContent() {
+            return (
+                <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                    <h1 className="text-4xl font-bold text-gray-800 mb-4">Selamat Datang di STIE Dwimulya</h1>
+                    <p className="text-lg text-gray-600 mb-8">Membentuk pemimpin masa depan dengan kurikulum yang relevan dengan industri dan fokus pada praktik dunia nyata.</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <img src={`https://placehold.co/600x400/${OXFORD_BLUE.slice(1)}/ffffff?text=Mahasiswa`} alt="Mahasiswa" className="rounded-lg shadow-lg" />
+                        <img src={`https://placehold.co/600x400/${OXFORD_BLUE.slice(1)}/ffffff?text=Perkuliahan`} alt="Perkuliahan" className="rounded-lg shadow-lg" />
+                        <img src={`https://placehold.co/600x400/${OXFORD_BLUE.slice(1)}/ffffff?text=Wisuda`} alt="Wisuda" className="rounded-lg shadow-lg" />
+                    </div>
+                    <div className="space-y-6 text-gray-700">{[...Array(20)].map((_, i) => <p key={i}>Ini adalah konten placeholder untuk memungkinkan scrolling dan menguji perilaku header...</p>)}</div>
+                </main>
+            );
+        }
+
+        // --- Main App Component ---
+        function App() {
+            const [isScrolled, setIsScrolled] = useState(false);
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            
+            useEffect(() => {
+                const handleScroll = () => setIsScrolled(window.scrollY > 10);
+                window.addEventListener('scroll', handleScroll, { passive: true });
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            useEffect(() => {
+                document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+            }, [isMenuOpen]);
+
+            return (
+                <div className="min-h-screen">
+                    <Header isScrolled={isScrolled} onMenuToggle={() => setIsMenuOpen(true)} />
+                    <MobileMenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+                    <MainContent />
+                </div>
+            );
+        }
+
+        // --- Render the App ---
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
+</body>
+</html>

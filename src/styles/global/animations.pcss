@@ -1,0 +1,41 @@
+/* Converted from _animations.scss to .pcss for Tailwind/PostCSS compatibility */
+
+@keyframes open {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height, var(--radix-collapsible-content-height));
+    opacity: 1;
+  }
+}
+
+@keyframes close {
+  from {
+    height: var(--radix-accordion-content-height, var(--radix-collapsible-content-height));
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

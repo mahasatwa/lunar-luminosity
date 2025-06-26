@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STIE Dwimulya Navigation Clone</title>
+  <!-- React & Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .panel-enter { transform: translateX(100%); opacity: 0; }
+    .panel-enter-active { transform: translateX(0); opacity: 1; transition: all 300ms; }
+    .panel-exit { transform: translateX(0); opacity: 1; }
+    .panel-exit-active { transform: translateX(-100%); opacity: 0; transition: all 300ms; }
+    .header-shrink { transition: all 300ms; }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div id="root"></div>
+  <script type="text/babel">
+
+    // --- Data ---
+    const NAV_DATA = [
+      {
+        label: "Akademik",
+        children: [
+          { label: "Program Sarjana", children: [
+            { label: "S1 Manajemen" },
+            { label: "S1 Akuntansi" }
+          ]},
+          { label: "Kursus & Sertifikasi", children: [
+            { label: "Brevet Pajak" },
+            { label: "Digital Marketing" }
+          ]},
+          { label: "Staf Pengajar" }
+        ]
+      },
+      {
+        label: "Pendaftaran",
+        children: [
+          { label: "Jalur Pendaftaran" },
+          { label: "Prosedur Pendaftaran" },
+          { label: "Biaya & Beasiswa" }
+        ]
+      },
+      {
+        label: "Kehidupan Kampus",
+        children: [
+          { label: "Organisasi Mahasiswa" },
+          { label: "Fasilitas Kampus" }
+        ]
+      },
+      { label: "Berita & Acara" },
+      { label: "Tentang Kami" },
+      { label: "Portal" }
+    ];
+
+    // --- Hooks ---
+    function useScrollShrink(threshold = 80) {
+      const [shrunk, setShrunk] = React.useState(false);
+      React.useEffect(() => {
+        const onScroll = () => setShrunk(window.scrollY > threshold);
+        window.addEventListener('scroll', onScroll);
+        onScroll();
+        return () => window.removeEventListener('scroll', onScroll);
+      }, [threshold]);
+      return shrunk;
+    }
+
+    // --- Components ---
+    function Logo({ shrunk }) {
+      return (
+        <span className={`font-bold text-white ${shrunk ? "text-lg" : "text-2xl"} transition-all`}>STIE Dwimulya</span>
+      );
+    }
+
+    function Breadcrumb({ shrunk }) {
+      if (!shrunk) return null;
+      return (
+        <nav className="text-sm text-white">
+          <span>STIE Dwimulya</span>
+          <span className="mx-2">&gt;</span>
+          <span>MBA</span>
+        </nav>
+      );
+    }
+
+    function DesktopNav({ navData, shrunk }) {
+      // Overflow logic: show "More" if not enough space (simple demo, not pixel-perfect)
+      const [showMore, setShowMore] = React.useState(false);
+      const visible = navData.slice(0, 5);
+      const overflow = navData.slice(5);
+
+      return (
+        <ul className="flex items-center gap-2">
+          {visible.map((item, idx) => (
+            <li key={idx} className="relative group">
+              <button className="px-3 py-2 rounded text-white hover:bg-blue-900 transition">{item.label}</button>
+              {item.children && (
+                <div className="absolute left-0 top-full mt-2 bg-white text-black rounded shadow-lg opacity-0 group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto z-20 min-w-[200px]">
+                  {item.children.map((sub, i) => (
+                    <div key={i} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">{sub.label}</div>
+                  ))}
+                </div>
+              )}
+            </li>
+          ))}
+          {overflow.length > 0 && (
+            <li className="relative group">
+              <button className="px-3 py-2 rounded text-white hover:bg-blue-900 transition">Lainnya</button>
+              <div className="absolute left-0 top-full mt-2 bg-white text-black rounded shadow-lg opacity-0 group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto z-20 min-w-[200px]">
+                {overflow.map((item, i) => (
+                  <div key={i} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">{item.label}</div>
+                ))}
+              </div>
+            </li>
+          )}
+        </ul>
+      );
+    }
+
+    function Hamburger({ onClick }) {
+      return (
+        <button onClick={onClick} className="ml-2 p-2 rounded bg-blue-900 text-white hover:bg-blue-800 transition">
+          <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
+            <line x1="4" y1="7" x2="20" y2="7"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <line x1="4" y1="17" x2="20" y2="17"/>
+          </svg>
+        </button>
+      );
+    }
+
+    function MobileNavOverlay({ open, onClose, navData }) {
+      const [panelStack, setPanelStack] = React.useState([{ title: "Menu", items: navData }]);
+      const currentPanel = panelStack[panelStack.length - 1];
+
+      function handleItemClick(item) {
+        if (item.children) {
+          setPanelStack([...panelStack, { title: item.label, items: item.children }]);
+        }
+      }
+      function handleBack() {
+        setPanelStack(stack => stack.length > 1 ? stack.slice(0, -1) : stack);
+      }
+      React.useEffect(() => { if (!open) setPanelStack([{ title: "Menu", items: navData }]); }, [open, navData]);
+
+      if (!open) return null;
+      return (
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex">
+          <div className="bg-white w-80 max-w-full h-full shadow-lg flex flex-col animate-slideIn">
+            <div className="flex items-center justify-between p-4 border-b">
+              {panelStack.length > 1 ? (
+                <button onClick={handleBack} className="text-blue-900 font-bold">&lt; Back</button>
+              ) : <span className="font-bold text-blue-900">{currentPanel.title}</span>}
+              <button onClick={onClose} className="text-gray-500 hover:text-red-500">&times;</button>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+              {currentPanel.items.map((item, idx) => (
+                <div key={idx} className="p-4 border-b hover:bg-gray-100 cursor-pointer flex justify-between items-center"
+                  onClick={() => handleItemClick(item)}>
+                  <span>{item.label}</span>
+                  {item.children && <span>&gt;</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex-1" onClick={onClose}></div>
+        </div>
+      );
+    }
+
+    function App() {
+      const shrunk = useScrollShrink(80);
+      const [mobileOpen, setMobileOpen] = React.useState(false);
+
+      return (
+        <div>
+          {/* Header */}
+          <header className={`fixed top-0 left-0 w-full z-40 bg-blue-900 shadow header-shrink ${shrunk ? 'py-2' : 'py-6'} transition-all`}>
+            <div className="max-w-6xl mx-auto flex items-center justify-between px-4">
+              <Logo shrunk={shrunk} />
+              <Breadcrumb shrunk={shrunk} />
+              <nav className="hidden md:block">
+                <DesktopNav navData={NAV_DATA} shrunk={shrunk} />
+              </nav>
+              <div className="flex items-center">
+                <button className="ml-2 px-4 py-2 bg-white text-blue-900 rounded hover:bg-blue-100 transition">Daftar</button>
+                <Hamburger onClick={() => setMobileOpen(true)} />
+              </div>
+            </div>
+          </header>
+          {/* Mobile Nav Overlay */}
+          <MobileNavOverlay open={mobileOpen} onClose={() => setMobileOpen(false)} navData={NAV_DATA} />
+          {/* Dummy content */}
+          <main className="pt-32 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4">Selamat Datang di STIE Dwimulya</h2>
+            <p className="mb-8">Scroll untuk melihat efek shrink header dan navigasi responsif.</p>
+            <div className="h-[2000px] bg-gradient-to-b from-blue-100 to-white"></div>
+          </main>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

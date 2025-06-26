@@ -1,0 +1,43 @@
+/* Converted from _print.scss to .pcss for Tailwind/PostCSS compatibility */
+
+@media print {
+  * {
+    background-color: var(--dm-bg);
+    color: var(--dm-text);
+  }
+  @page {
+    margin: 2cm;
+  }
+  h1 {
+    break-before: always;
+  }
+  pre,
+  blockquote,
+  p,
+  li {
+    page-break-inside: avoid;
+  }
+  table,
+  img,
+  svg {
+    break-inside: avoid;
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+  video {
+    display: none;
+  }
+  a::after {
+    content: " (" attr(href) ")";
+  }
+  .hbs-site-header,
+  .hbs-breadcrumbs,
+  .hbs-sibling-navigation {
+    display: none;
+  }
+  .hbs-tease-row {
+    flex-direction: column;
+  }
+}
