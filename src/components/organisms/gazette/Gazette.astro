@@ -1,0 +1,80 @@
+---
+// src/components/organisms/gazette/Gazette.astro
+import { Image } from 'astro:assets';
+
+interface Article {
+  title: string;
+  url: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  excerpt?: string;
+  leadIn?: string;
+}
+
+interface TrendingItem {
+  title: string;
+  url: string;
+}
+
+interface Props {
+  mainArticle: Article;
+  asideArticles: Article[];
+  trendingItems?: TrendingItem[];
+  theme?: 'light' | 'dark';
+}
+
+const { mainArticle, asideArticles, trendingItems, theme = 'dark' } = Astro.props;
+
+const blockClasses = [
+  'c-block b-gazette',
+  theme === 'light' ? 't-theme--light' : '',
+  !trendingItems || trendingItems.length === 0 ? 'no-trending' : '',
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="l-container">
+    <div class="b-gazette__container">
+      <div class="b-gazette__wrap">
+        <aside class="b-gazette__aside">
+          {asideArticles.map(article => (
+            <a href={article.url} class="b-gazette__article--aside">
+              <div class="b-gazette__article-title b-gazette__article-title--aside">
+                <span>{article.title}</span>
+              </div>
+              {article.imageUrl && (
+                <div class="b-gazette__article-img">
+                  <div class="b-gazette__article-img-bg" style={`background-image: url(${article.imageUrl})`}></div>
+                </div>
+              )}
+            </a>
+          ))}
+        </aside>
+        <main class="b-gazette__main">
+          <a href={mainArticle.url} class="b-gazette__article">
+            {mainArticle.leadIn && <div class="b-gazette__article-lead-in">{mainArticle.leadIn}</div>}
+            <h2 class="b-gazette__article-title b-gazette__article-title--main">
+              <span>{mainArticle.title}</span>
+            </h2>
+            {mainArticle.imageUrl && (
+              <div class="b-gazette__article-img">
+                <div class="b-gazette__article-img-bg" style={`background-image: url(${mainArticle.imageUrl})`}></div>
+              </div>
+            )}
+            {mainArticle.excerpt && <p class="b-gazette__article-excerpt">{mainArticle.excerpt}</p>}
+          </a>
+        </main>
+        {trendingItems && trendingItems.length > 0 && (
+          <aside class="b-gazette__trending">
+            <h3 class="b-gazette__trending-title">Trending</h3>
+            <ol class="b-gazette__trending-list">
+              {trendingItems.map(item => (
+                <li><a href={item.url}>{item.title}</a></li>
+              ))}
+            </ol>
+          </aside>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

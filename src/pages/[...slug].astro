@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 // Make sure you have getAllSlugs imported if you choose this path
 // import { getPageContent, getAllSlugs } from '../utils/contentful'; // Commented out Contentful imports
 import type { Params } from "astro"; // Import Params for type safety
+export const prerender = true;
 
 // --- Hardcoded getStaticPaths ---
 export async function getStaticPaths() {
@@ -36,6 +37,7 @@ let pageContent;
 if (contentSlug === "home") {
   pageContent = {
     title: "Halaman Utama STIE Dwimulya (Hardcoded)",
+    description: "Situs resmi STIE Dwimulya Serang, menyediakan pendidikan berkualitas di bidang ekonomi dan bisnis dengan fokus pada aksesibilitas dan kontribusi sosial.",
     content: `
           <p>Ini adalah konten hardcoded untuk <strong>Halaman Utama</strong>.</p>
           <p>Kami menyambut Anda di website STIE Dwimulya. Temukan informasi tentang program studi, penerimaan mahasiswa baru, dan kehidupan kampus kami.</p>
@@ -46,6 +48,7 @@ if (contentSlug === "home") {
 } else if (contentSlug === "tentang-kami") {
   pageContent = {
     title: "Tentang STIE Dwimulya (Hardcoded)",
+    description: "Pelajari lebih lanjut tentang STIE Dwimulya, sejarah, visi, dan misi kami dalam mencetak lulusan unggul di Serang.",
     content: `
           <p>Ini adalah konten hardcoded untuk halaman <strong>Tentang Kami</strong>.</p>
           <p>STIE Dwimulya memiliki sejarah panjang dalam menyediakan pendidikan berkualitas di bidang Ekonomi dan Bisnis. Kami berkomitmen untuk mencetak lulusan yang siap bersaing di dunia kerja.</p>
@@ -56,6 +59,7 @@ if (contentSlug === "home") {
 } else if (contentSlug === "program-studi") {
   pageContent = {
     title: "Program Studi STIE Dwimulya (Hardcoded)",
+    description: "Temukan program studi S1 Manajemen dan S1 Akuntansi yang terakreditasi di STIE Dwimulya Serang, dengan fokus pada kurikulum relevan dan prospek karir cerah.",
     content: `
           <p>Ini adalah konten hardcoded untuk halaman <strong>Program Studi</strong>.</p>
           <p>Kami menawarkan program pendidikan unggulan di bidang Manajemen dan Akuntansi.</p>
@@ -69,6 +73,7 @@ if (contentSlug === "home") {
 } else if (contentSlug === "kontak") {
   pageContent = {
     title: "Hubungi Kami (Hardcoded)",
+    description: "Dapatkan informasi kontak STIE Dwimulya Serang, termasuk alamat, nomor telepon, email, dan media sosial.",
     content: `
           <p>Ini adalah konten hardcoded untuk halaman <strong>Kontak</strong>.</p>
           <p>Anda dapat menghubungi kami melalui:</p>
@@ -93,7 +98,7 @@ if (contentSlug === "home") {
 // }
 ---
 
-<Layout title={pageContent?.title || "STIE Dwimulya"}>
+<Layout title={pageContent?.title || "STIE Dwimulya"} description={pageContent?.description || "Situs resmi STIE Dwimulya Serang."}>
   <div class="prose lg:prose-xl mx-auto py-8">
     {
       pageContent ? (

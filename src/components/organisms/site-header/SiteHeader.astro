@@ -1,0 +1,43 @@
+---
+// src/components/organisms/site-header/SiteHeader.astro
+import NavigationBar from '../../molecules/navigation-bar/NavigationBar.astro';
+import SearchBox from '../../molecules/search-box/SearchBox.astro';
+// Assuming you have a logo component or include it directly
+// import Logo from '../../atoms/images/Logo.astro';
+---
+
+<header class="site-header">
+  <div class="header-content">
+    <!-- Placeholder for Logo -->
+    <div class="logo">Logo Placeholder</div>
+
+    <NavigationBar />
+    <SearchBox />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff; /* Example background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example shadow */
+    z-index: 100; /* Ensure it stays on top */
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem; /* Example padding */
+    max-width: 1200px; /* Example max width */
+    margin: 0 auto; /* Center the content */
+  }
+
+  .logo {
+    /* Basic styling for logo placeholder */
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+// src/components/organisms/hero/Hero.astro
+interface Props {
+  title: string;
+  leadin?: string;
+  underline?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  backgroundImageUrl?: string;
+  backgroundVideoUrl?: string;
+  theme?: 'light' | 'dark';
+  titleSize?: 'sm' | 'med' | 'large';
+  overlay?: 'soft' | 'medium' | 'dark' | 'darker';
+}
+
+const {
+  title,
+  leadin,
+  underline,
+  ctaLabel,
+  ctaUrl,
+  backgroundImageUrl,
+  backgroundVideoUrl,
+  theme = 'dark',
+  titleSize = 'large',
+  overlay,
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-hero',
+  theme === 'light' ? 't-theme--light' : '',
+  `b-hero__media-overlay--${overlay}`
+].join(' ');
+
+const titleClasses = `b-hero__title b-hero__title--${titleSize}`;
+---
+
+<div class={blockClasses} style={backgroundImageUrl ? `background-image: url(${backgroundImageUrl})` : ''}>
+  {backgroundVideoUrl && (
+    <video class="b-hero__bg-video" autoplay loop muted playsinline>
+      <source src={backgroundVideoUrl} type="video/mp4" />
+    </video>
+  )}
+  <div class="l-container b-hero__content">
+    <div class="c-content-block text-center">
+      {leadin && <div class="c-content-block__leadin b-hero__leadin">{leadin}</div>}
+      <h1 class={titleClasses}>{title}</h1>
+      {underline && <p class="b-hero__underline">{underline}</p>}
+      {ctaLabel && ctaUrl && (
+        <div class="c-content-block__cta">
+          <a href={ctaUrl} class="a-btn a-btn-primary">{ctaLabel}</a>
+        </div>
+      )}
+    </div>
+  </div>
+  <div class="b-hero__bottom-line"></div>
+</div>

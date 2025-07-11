@@ -1,0 +1,46 @@
+---
+// src/components/organisms/featured-stories/FeaturedStories.astro
+import { Image } from 'astro:assets';
+import FeaturedStoriesSlider from './FeaturedStoriesSlider.tsx';
+
+interface Slide {
+  title: string;
+  content: string;
+  imageUrl: string;
+  imageAlt?: string;
+  ctaLabel: string;
+  ctaUrl: string;
+}
+
+interface Props {
+  title: string;
+  slides: Slide[];
+  moreLink?: string;
+  theme?: 'light' | 'dark';
+}
+
+const { title, slides, moreLink, theme = 'dark' } = Astro.props;
+
+const blockClasses = [
+  'c-block b-featured-stories',
+  theme === 'light' ? 't-theme--light' : '',
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="b-featured-stories__container">
+    <div class="c-content-block">
+      <div class="c-block__header">
+        <h2 class="b-featured-stories__title">{title}</h2>
+      </div>
+    </div>
+    <div class="b-featured-stories__slider">
+      <FeaturedStoriesSlider client:load slides={slides} />
+    </div>
+    {moreLink && (
+      <a href={moreLink} class="b-featured-stories__more">
+        View All Stories
+      </a>
+    )}
+  </div>
+</div>

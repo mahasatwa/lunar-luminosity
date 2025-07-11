@@ -1,0 +1,34 @@
+---
+// src/components/molecules/media-asset-row/MediaAssetRow.astro
+---
+
+<div class="media-asset-row">
+  <!-- This component integrates multiple media molecules into a scrollable row -->
+  <!-- Example: You would slot in individual media molecule components here -->
+  <!-- <MediaMolecule /> -->
+  <!-- <MediaMolecule /> -->
+  <!-- <MediaMolecule /> -->
+</div>
+
+<style>
+  .media-asset-row {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem; /* Adjust as needed for spacing between media assets */
+    padding-bottom: 1rem; /* Add some padding for scrollbar visibility */
+  }
+
+  /* Optional: Add styles for scrollbar appearance */
+  .media-asset-row::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .media-asset-row::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Adjust color as needed */
+    border-radius: 4px;
+  }
+
+  .media-asset-row::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Adjust color as needed */
+  }
+</style>

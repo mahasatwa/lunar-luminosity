@@ -1,0 +1,28 @@
+---
+---
+
+<div class="event-schedule">
+  <h2>Event Schedule</h2>
+  <p>Organizes event tease molecules in an interactive calendar format.</p>
+  <div class="calendar-layout">
+    {/* Placeholder for event tease molecules */}
+    <slot />
+  </div>
+</div>
+
+<style>
+  .event-schedule {
+    /* Basic styling for the event schedule container */
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .calendar-layout {
+    /* Basic styling for the calendar layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+</style>

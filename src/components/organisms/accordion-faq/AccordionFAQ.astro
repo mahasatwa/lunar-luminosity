@@ -1,0 +1,27 @@
+---
+// src/components/organisms/accordion-faq/AccordionFAQ.astro
+import AccordionFAQ from './AccordionFAQ.tsx';
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  faqs: FAQItem[];
+}
+
+const { title, faqs } = Astro.props;
+---
+
+<section class="container mx-auto my-12 px-4 md:my-20">
+  {title && (
+    <h2 class="mb-10 text-center text-3xl font-bold text-gray-800 md:text-4xl">
+      {title}
+    </h2>
+  )}
+  <div class="mx-auto max-w-3xl">
+    <AccordionFAQ client:load faqs={faqs} />
+  </div>
+</section>

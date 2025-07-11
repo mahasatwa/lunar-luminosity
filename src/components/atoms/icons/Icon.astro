@@ -1,0 +1,32 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={`icon icon-${name}`}
+  aria-hidden="true"
+>
+  <!-- Placeholder SVG content -->
+  <circle cx="12" cy="12" r="10"></circle>
+</svg>
+
+<style>
+  /* Add basic styling as needed */
+  .icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+</style>

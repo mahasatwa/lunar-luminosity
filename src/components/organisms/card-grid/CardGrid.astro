@@ -1,0 +1,61 @@
+---
+// src/components/organisms/card-grid/CardGrid.astro
+import Card from '../../molecules/card/Card.astro';
+
+interface CardData {
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  meta?: string;
+  wrapperLink?: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  cards: CardData[];
+  theme?: 'light' | 'dark';
+  layout?: 'g-2-up' | 'g-3-up';
+  isSpotlight?: boolean;
+}
+
+const {
+  title,
+  description,
+  cards,
+  theme = 'dark',
+  layout = 'g-3-up',
+  isSpotlight = false,
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-card-grid',
+  theme === 'light' ? 't-theme--light' : '',
+  isSpotlight ? 'spotlight' : '',
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="l-container">
+    {(title || description) && (
+      <div class="c-block__header b-card-grid__header c-block__header--inline">
+        {title && <h2 class="c-block__title b-card-grid__title">{title}</h2>}
+        {description && (
+          <div class="c-content-block__content-wrap">
+            <div class="c-content-block__content" set:html={description}></div>
+          </div>
+        )}
+      </div>
+    )}
+    <div class:list={["b-card-grid__loop g-grid", layout]}>
+      {cards.map(card => (
+        <div class="g-grid__item">
+          <Card {...card} isSpotlight={isSpotlight} />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+---
+// src/components/organisms/buttons/Buttons.astro
+interface Button {
+  label: string;
+  url: string;
+  style?: 'primary' | 'secondary' | 'tertiary';
+}
+
+interface Props {
+  buttons: Button[];
+  alignment?: 'left' | 'center' | 'right';
+}
+
+const { buttons, alignment = 'left' } = Astro.props;
+
+const blockClasses = [
+  'b-buttons',
+  `b-buttons--align-text-${alignment}`,
+].join(' ');
+---
+
+<div class={blockClasses}>
+  {buttons.map(button => (
+    <div class="b-buttons__button">
+      <a href={button.url} class:list={[`a-btn a-btn-${button.style || 'primary'}`]}>
+        <span class="a-btn__text">{button.label}</span>
+      </a>
+    </div>
+  ))}
+</div>

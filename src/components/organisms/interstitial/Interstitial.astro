@@ -1,0 +1,45 @@
+---
+// src/components/organisms/interstitial/Interstitial.astro
+interface Props {
+  title: string;
+  description: string;
+  imageUrl: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  layout?: 'left' | 'right';
+  overlay?: 'soft' | 'medium' | 'dark' | 'darker';
+}
+
+const {
+  title,
+  description,
+  imageUrl,
+  ctaLabel,
+  ctaUrl,
+  layout = 'left',
+  overlay = 'dark',
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-interstitial',
+  `feature-layout-${layout}`,
+  `b-interstitial__media-overlay--${overlay}`,
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="b-interstitial__container">
+    <div class="b-interstitial__img c-image--bg" style={`background-image: url(${imageUrl})`}></div>
+    <div class="b-interstitial__content">
+      <div class="c-content-block b-interstitial__featured_content-container">
+        <h2 class="b-interstitial__feature-title">{title}</h2>
+        <div class="b-interstitial__feature-text c-content-block__content" set:html={description}></div>
+        {ctaLabel && ctaUrl && (
+          <div class="c-content-block__cta">
+            <a href={ctaUrl} class="a-btn a-btn-primary">{ctaLabel}</a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

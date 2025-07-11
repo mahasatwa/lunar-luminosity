@@ -1,0 +1,45 @@
+---
+// src/components/organisms/gallery/Gallery.astro
+import GalleryWrapper from './GalleryWrapper.tsx';
+
+interface Image {
+  src: string;
+  alt: string;
+  thumbnail: string;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  images: Image[];
+  layout?: 'layout-4' | 'layout-8' | 'layout-12';
+  theme?: 'light' | 'dark';
+}
+
+const {
+  title,
+  description,
+  images,
+  layout = 'layout-12',
+  theme = 'dark',
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-gallery',
+  `b-gallery--${layout}`,
+  theme === 'light' ? 't-theme--light' : '',
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="b-gallery__lines"></div>
+  <div class="l-container">
+    <div class="c-content-block b-gallery__content-container">
+      <div class="b-gallery__content">
+        <h2 class="c-block__title b-gallery__title">{title}</h2>
+        {description && <p class="b-gallery__description">{description}</p>}
+        <GalleryWrapper client:load images={images} />
+      </div>
+    </div>
+  </div>
+</div>

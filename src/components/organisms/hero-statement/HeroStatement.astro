@@ -1,0 +1,63 @@
+---
+// src/components/organisms/hero-statement/HeroStatement.astro
+import Heading from '../../atoms/typography/Heading.astro';
+import Button from '../../atoms/buttons/Button.astro';
+// Assuming a Text molecule exists or is a direct atom usage
+// import Text from '../../molecules/text/Text.astro';
+---
+
+<section class="hero-statement">
+  <div class="hero-content">
+    <Heading level="h1">
+      <!-- Dynamic Heading Content Placeholder -->
+      Your Compelling Headline Here
+    </Heading>
+    <p>
+      <!-- Dynamic Text Content Placeholder -->
+      A brief statement about the value proposition or key message, potentially personalized based on user behavior or location.
+    </p>
+    <div class="hero-actions">
+      <Button variant="primary">
+        <!-- Dynamic Button Text Placeholder -->
+        Call to Action 1
+      </Button>
+      <Button variant="secondary">
+        <!-- Dynamic Button Text Placeholder -->
+        Call to Action 2 (Optional)
+      </Button>
+    </div>
+    <!-- Placeholder for other dynamic content like location-based programs -->
+    <div class="dynamic-info">
+      <!-- Dynamic Information Placeholder -->
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-statement {
+    /* Basic styles for a hero section */
+    background-color: #f0f0f0; /* Example background color */
+    padding: 60px 20px; /* Example padding */
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 960px; /* Example max width */
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    margin-top: 30px; /* Space above buttons */
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+  }
+
+  /* Basic responsive adjustment */
+  @media (max-width: 768px) {
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

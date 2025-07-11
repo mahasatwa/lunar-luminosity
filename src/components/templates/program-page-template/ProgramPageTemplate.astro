@@ -1,0 +1,90 @@
+---
+import SiteHeader from '../../organisms/site-header/SiteHeader.astro';
+import SiteFooter from '../../organisms/site-footer/SiteFooter.astro';
+import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
+// This template is structured to present program details and encourage user action.
+// It includes the site header and footer, and sections for program-specific content.
+---
+
+<Layout title="Program Details - Stie Dwimulya">
+  <SiteHeader />
+
+  <main>
+    <section class="program-hero">
+      {/* This section could include the program title, a brief description, and a hero image. */}
+      <h2>[Program Title Placeholder]</h2>
+      <p>[Program Short Description Placeholder]</p>
+      {/* Potential CTA: Apply Now Button or Learn More */}
+    </section>
+
+    <section class="program-overview">
+      {/* This section could include key program highlights, duration, and format. */}
+      <h3>Overview</h3>
+      <p>[Detailed Program Overview Placeholder]</p>
+      {/* Other relevant details like accreditation badges */}
+    </section>
+
+    <section class="program-curriculum">
+      {/* This section could outline the courses or curriculum. */}
+      <h3>Curriculum</h3>
+      <ul>
+        <li>[Course 1 Placeholder]</li>
+        <li>[Course 2 Placeholder]</li>
+        {/* List more courses */}
+      </ul>
+    </section>
+
+    <section class="program-admissions">
+      {/* This section could provide information on admission requirements and how to apply. */}
+      <h3>Admissions</h3>
+      <p>[Admissions Information Placeholder]</p>
+      {/* Potential CTA: Admissions Link or Contact Admissions */}
+    </section>
+
+    <section class="program-faculty">
+      {/* This section could showcase faculty members related to the program. */}
+      <h3>Faculty</h3>
+      {/* List faculty members or link to faculty directory */}
+    </section>
+
+    <section class="program-outcomes">
+      {/* This section could highlight career paths or learning outcomes. */}
+      <h3>Career Outcomes</h3>
+      <p>[Career Outcomes Information Placeholder]</p>
+    </section>
+
+    <section class="program-cta">
+      {/* This section provides clear calls to action at the end of the page. */}
+      <h3>Ready to Apply?</h3>
+      {/* Prominent CTAs */}
+      <button>[Apply Now Placeholder]</button>
+      <button>[Request Information Placeholder]</button>
+    </section>
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style>
+  main {
+    padding: 20px; /* Basic padding */
+  }
+
+  section {
+    margin-bottom: 40px; /* Space between sections */
+  }
+
+  .program-hero {
+    /* Styles for the hero section */
+    text-align: center;
+  }
+
+  .program-cta {
+    text-align: center;
+  }
+
+  button {
+    margin: 10px;
+  }
+</style>

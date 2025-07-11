@@ -1,0 +1,22 @@
+---
+import SiteHeader from '../../organisms/site-header/SiteHeader.astro';
+import HeroStatement from '../../organisms/hero-statement/HeroStatement.astro';
+import MediaCarousel from '../../organisms/media-carousel/MediaCarousel.astro';
+import GridLists from '../../organisms/grid-lists/GridLists.astro';
+import SiteFooter from '../../organisms/site-footer/SiteFooter.astro';
+import Layout from '../../../layouts/Layout.astro';
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+	<SiteHeader />
+	<main>
+		<!-- Homepage Template: Combines site header, hero statement, media carousel, grid lists, and site footer organisms -->
+		<HeroStatement />
+		<MediaCarousel />
+		<GridLists />
+		<!-- Add more organism components here as needed for the homepage -->
+	</main>
+	<SiteFooter />
+</Layout>

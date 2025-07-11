@@ -1,0 +1,37 @@
+---
+// src/components/organisms/inline-stat/InlineStat.astro
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  stats: Stat[];
+  position: 'left' | 'right' | 'full';
+}
+
+const { stats, position } = Astro.props;
+
+const blockClasses = [
+  'b-inline-stat',
+  `b-inline-stat--${position}`,
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="b-inline-stat__container">
+    <aside class="b-inline-stat__list">
+      {stats.map(stat => (
+        <div class="b-inline-stat__list-item">
+          <div class="c-statistic">
+            <div class="c-statistic__value">{stat.value}</div>
+            <div class="c-statistic__label">{stat.label}</div>
+          </div>
+        </div>
+      ))}
+    </aside>
+    <div class="b-inline-stat__content">
+      <slot />
+    </div>
+  </div>
+</div>

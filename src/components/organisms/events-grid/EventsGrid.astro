@@ -1,0 +1,106 @@
+---
+// src/components/organisms/events-grid/EventsGrid.astro
+import { Image } from 'astro:assets';
+
+interface Event {
+  title: string;
+  url: string;
+  date: string;
+  time?: string;
+  type?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  description?: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  events: Event[];
+  layout?: 'card' | 'list';
+  gridColumns?: 'g-2-up' | 'g-3-up';
+  theme?: 'light' | 'dark';
+}
+
+const {
+  title,
+  description,
+  events,
+  layout = 'card',
+  gridColumns = 'g-3-up',
+  theme = 'dark',
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-events-grid',
+  `t-theme--${theme}`,
+  `${layout}_layout`,
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="l-container">
+    {(title || description) && (
+      <header class="c-block__header b-events-grid__header c-block__header--inline">
+        {title && <h2 class="c-block__title b-events-grid__title">{title}</h2>}
+        {description && (
+          <div class="c-content-block__content-wrap">
+            <div class="c-content-block__content" set:html={description}></div>
+          </div>
+        )}
+      </header>
+    )}
+
+    <div class="b-events-grid__container">
+      <div class:list={["b-events-grid__loop g-grid", gridColumns]}>
+        {events.map(event => (
+          <a href={event.url} class="c-card-link-wrapper">
+            <div class="c-card has-target-link">
+              {layout === 'card' ? (
+                <>
+                  <div class="c-card__media">
+                    <div class="c-card__media-meta">
+                      <div class="b-events-grid__card-date">{event.date}</div>
+                      <div class="b-events-grid__card-time">{event.time}</div>
+                    </div>
+                    {event.imageUrl && (
+                      <div class="c-image c-image--events-grid-img">
+                        <Image src={event.imageUrl} alt={event.imageAlt || event.title} width="400" height="300" class="c-image__image" />
+                      </div>
+                    )}
+                  </div>
+                  <div class="c-card__content">
+                    <h3 class="c-card__title">{event.title}</h3>
+                    {event.type && <span class="b-events-grid__card-type">{event.type}</span>}
+                  </div>
+                </>
+              ) : (
+                <div class="c-card__b-event">
+                  <div class="c-card__content">
+                    <div class="date-wrap-list">
+                      <div class="b-events-grid__card-date">{event.date}</div>
+                      <div class="b-events-grid__card-time">{event.time}</div>
+                    </div>
+                    <h3 class="c-card__title">{event.title}</h3>
+                    {event.description && (
+                      <div class="c-card__description">
+                        <p>{event.description}</p>
+                      </div>
+                    )}
+                  </div>
+                  {event.imageUrl && (
+                    <div class="c-card__media">
+                      <div class="c-image c-image--events-grid-img">
+                         <div class="c-image__image" style={`background-image: url(${event.imageUrl})`}></div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+---
+// src/components/molecules/alert/Alert.astro
+interface Props {
+  message: string;
+  linkUrl?: string;
+  linkLabel?: string;
+  type?: 'gray' | 'yellow';
+  size?: 'short' | 'tall';
+}
+
+const {
+  message,
+  linkUrl,
+  linkLabel,
+  type = 'yellow',
+  size = 'short',
+} = Astro.props;
+
+const alertClasses = [
+  'alert',
+  type,
+  size,
+].join(' ');
+---
+
+<div class={alertClasses}>
+  <div class="alert__content">
+    <div class="alert__msg" set:html={message}></div>
+    {linkUrl && linkLabel && (
+      <div class="alert__link-wrap">
+        <a href={linkUrl} class="alert__link">{linkLabel}</a>
+      </div>
+    )}
+  </div>
+</div>

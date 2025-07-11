@@ -1,0 +1,27 @@
+---
+import SiteHeader from '../../organisms/site-header/SiteHeader.astro';
+import SiteFooter from '../../organisms/site-footer/SiteFooter.astro';
+import Layout from '../../../layouts/Layout.astro';
+
+---
+
+<Layout title="Article Page">
+  <SiteHeader />
+  <main>
+    <div class="container">
+      <!-- This template is focused on content consumption -->
+      <slot />
+    </div>
+  </main>
+  <SiteFooter />
+
+  <style>
+    .container {
+      max-width: 800px; /* Example: Limit content width for readability */
+      margin: 0 auto; /* Center the container */
+      padding: 20px; /* Basic padding */
+    }
+
+    /* Add any specific article page styling here */
+  </style>
+</Layout>

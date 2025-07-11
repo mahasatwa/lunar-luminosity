@@ -1,0 +1,66 @@
+---
+// src/components/organisms/content-list/ContentList.astro
+interface ListItem {
+  title: string;
+  url: string;
+  content?: string;
+  domain?: string;
+  linkType?: 'internal' | 'external' | 'multimedia';
+}
+
+interface Props {
+  title?: string;
+  items: ListItem[];
+  theme?: 'light' | 'dark';
+}
+
+const { title, items, theme = 'dark' } = Astro.props;
+
+const blockClasses = [
+  'c-block b-content-list',
+  theme === 'light' ? 't-theme--light' : '',
+].join(' ');
+
+const getIconClass = (type: string) => {
+  switch (type) {
+    case 'external':
+      return 'icon-arrow-up-right';
+    case 'multimedia':
+      return 'icon-play-solid';
+    default:
+      return 'icon-arrow-right';
+  }
+};
+---
+
+<div class={blockClasses}>
+  <div class="l-container">
+    {title && (
+      <div class="c-block__header">
+        <h2 class="c-block__title b-content-list__title">{title}</h2>
+      </div>
+    )}
+    <div class="b-content-list__container">
+      {items.map(item => (
+        <a href={item.url} class="b-content-list__link-wrapper">
+          <div class="b-content-list__list-item">
+            <div class="b-content-list__item-title">
+              <span>{item.title}</span>
+            </div>
+            {item.content && (
+              <div class="b-content-list__item-content" set:html={item.content}></div>
+            )}
+            <div class="b-content-list__list-item__link-wrap">
+              {item.domain && <span class="b-content-list__item-domain">{item.domain}</span>}
+              <span class:list={[`a-btn a-btn-${item.linkType === 'multimedia' ? 'multimedia-' : ''}secondary`]}>
+                <span class="a-btn__text">
+                  <span class="icon" class:list={[getIconClass(item.linkType || 'internal')]}></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

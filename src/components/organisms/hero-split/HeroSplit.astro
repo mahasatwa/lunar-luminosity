@@ -1,0 +1,61 @@
+---
+// src/components/organisms/hero-split/HeroSplit.astro
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  imageUrl: string;
+  imageAlt?: string;
+  videoUrl?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  contentPosition?: 'left' | 'right';
+  theme?: 'light' | 'dark';
+}
+
+const {
+  title,
+  description,
+  imageUrl,
+  imageAlt = 'Hero image',
+  videoUrl,
+  ctaLabel,
+  ctaUrl,
+  contentPosition = 'right',
+  theme = 'dark',
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-herosplit',
+  theme === 'light' ? 't-theme--light' : '',
+  contentPosition === 'left' ? 'content-left-align' : '',
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="b-herosplit__container">
+    <div class="b-herosplit__media">
+      {videoUrl ? (
+        <div class="b-herosplit__bg-video-wrap">
+          <video class="b-herosplit__bg-video" autoplay loop muted playsinline>
+            <source src={videoUrl} type="video/mp4" />
+          </video>
+        </div>
+      ) : (
+        <div class="c-image--bg">
+          <div class="c-image__image b-herosplit__img" style={`background-image: url(${imageUrl})`}></div>
+        </div>
+      )}
+    </div>
+    <div class="b-herosplit__content">
+      <h1 class="b-herosplit__title">{title}</h1>
+      <div class="b-herosplit__description" set:html={description}></div>
+      {ctaLabel && ctaUrl && (
+        <div class="c-content-block__cta">
+          <a href={ctaUrl} class="a-btn a-btn-primary">{ctaLabel}</a>
+        </div>
+      )}
+    </div>
+  </div>
+</div>

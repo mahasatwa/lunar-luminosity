@@ -1,0 +1,60 @@
+---
+// src/components/organisms/quote/Quote.astro
+import { Image } from 'astro:assets';
+
+interface Props {
+  quote: string;
+  citeName?: string;
+  citeTitle?: string;
+  citeImageUrl?: string;
+  citeImageAlt?: string;
+  layout?: 'left' | 'right';
+  iconColor?: 'default' | 'crimson';
+  theme?: 'light' | 'dark';
+}
+
+const {
+  quote,
+  citeName,
+  citeTitle,
+  citeImageUrl,
+  citeImageAlt = 'Citation image',
+  layout = 'right',
+  iconColor = 'default',
+  theme = 'dark',
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-quote',
+  theme === 'light' ? 't-theme--light' : '',
+  `b-quote__layout-${layout}`,
+  iconColor === 'crimson' ? 'b-quote__icon-crimson' : '',
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="l-container">
+    <div class="b-quote__container">
+      <blockquote class="c-quote">
+        <div class="c-block__quote-content">
+          <p class="c-quote__text"><span>{quote}</span></p>
+        </div>
+        {(citeName || citeImageUrl) && (
+          <cite class="c-quote__cite">
+            {citeImageUrl && (
+              <figure class="c-quote__cite-figure">
+                <Image src={citeImageUrl} alt={citeImageAlt} width="200" height="200" class="c-quote__cite-image" />
+              </figure>
+            )}
+            {(citeName || citeTitle) && (
+              <div class="c-quote__cite-meta">
+                {citeName && <p class="c-quote__cite-name">{citeName}</p>}
+                {citeTitle && <p class="c-quote__cite-title">{citeTitle}</p>}
+              </div>
+            )}
+          </cite>
+        )}
+      </blockquote>
+    </div>
+  </div>
+</div>

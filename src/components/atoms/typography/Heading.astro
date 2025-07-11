@@ -1,0 +1,10 @@
+---
+const { level = 'h1' } = Astro.props;
+
+const validLevels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const tag = validLevels.includes(level) ? level : 'h1';
+---
+
+<Fragment as={tag} style="margin: 0;">
+  <slot />
+</Fragment>

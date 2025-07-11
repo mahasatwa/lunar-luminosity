@@ -1,0 +1,40 @@
+---
+// src/components/organisms/icon-text-cluster/IconTextCluster.astro
+import { Icon } from 'astro-icon/components';
+
+interface Item {
+  icon: string; // Icon name from a library like 'mdi'
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title?: string;
+  items: Item[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<section class="container mx-auto my-12 px-4 md:my-20">
+  {title && (
+    <h2 class="mb-10 text-center text-3xl font-bold text-gray-800 md:text-4xl">
+      {title}
+    </h2>
+  )}
+  <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {items.map((item) => (
+      <div class="flex flex-col items-center rounded-lg bg-white p-6 text-center shadow-md transition-shadow duration-300 hover:shadow-xl md:flex-row md:items-start md:text-left">
+        <div class="mb-4 flex-shrink-0 md:mb-0 md:mr-6">
+          <div class="flex h-16 w-16 items-center justify-center rounded-full bg-teal-100 text-teal-800">
+            <Icon name={item.icon} class="h-8 w-8" />
+          </div>
+        </div>
+        <div>
+          <h3 class="mb-2 text-xl font-semibold text-gray-800">{item.title}</h3>
+          <p class="text-gray-600">{item.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

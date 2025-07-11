@@ -1,0 +1,36 @@
+---
+// src/components/organisms/gallery-carousel/GalleryCarousel.astro
+import GalleryCarouselSlider from './GalleryCarouselSlider.tsx';
+
+interface Slide {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  slides: Slide[];
+  theme?: 'light' | 'dark';
+}
+
+const { title, description, slides, theme = 'dark' } = Astro.props;
+
+const blockClasses = [
+  'c-block b-gallery-carousel',
+  theme === 'light' ? 't-theme--light' : '',
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="l-container b-gallery-carousel__container">
+    <header class="b-gallery-carousel__header">
+      <h2 class="b-gallery-carousel__title">{title}</h2>
+      {description && <p>{description}</p>}
+    </header>
+    <div class="b-gallery-carousel__slider">
+      <GalleryCarouselSlider client:load slides={slides} />
+    </div>
+  </div>
+</div>

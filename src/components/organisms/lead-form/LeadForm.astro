@@ -1,0 +1,43 @@
+---
+// src/components/organisms/lead-form/LeadForm.astro
+interface Props {
+  title: string;
+  description: string;
+  width?: 'grid' | 'full';
+  layout?: 'left' | 'center';
+}
+
+const {
+  title,
+  description,
+  width = 'grid',
+  layout = 'left',
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-lead-form',
+  `b-lead-form--width-${width}`,
+  `b-lead-form--layout-${layout}`,
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="l-container">
+    <div class="b-lead-form__container">
+      <div class="b-lead-form__content">
+        <h2 class="c-block__title">{title}</h2>
+        <div class="b-lead-form__description" set:html={description}></div>
+      </div>
+      <div class="b-lead-form__form">
+        <!-- A basic form structure. Implementation would require a backend. -->
+        <form>
+          <div class="form-field">
+            <label for="email" class="sr-only">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Your email address" class="form-input" />
+          </div>
+          <button type="submit" class="a-btn a-btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

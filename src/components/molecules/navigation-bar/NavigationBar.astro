@@ -1,0 +1,48 @@
+---
+// src/components/molecules/navigation-bar/NavigationBar.astro
+---
+
+<nav class="navigation-bar">
+  <!-- Placeholder for Logo Atom -->
+  <div class="logo-placeholder">Logo</div>
+
+  <ul class="nav-links">
+    <!-- Placeholder for Navigation Item Molecule (Links) -->
+    <li>Link 1</li>
+    <li>Link 2</li>
+    <li>Link 3</li>
+  </ul>
+
+  <div class="nav-buttons">
+    <!-- Placeholder for Button Atom -->
+    <button>Button 1</button>
+    <button>Button 2</button>
+  </div>
+</nav>
+
+<style>
+  .navigation-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f0f0f0; /* Example background color */
+  }
+
+  .logo-placeholder {
+    font-weight: bold;
+  }
+
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+</style>

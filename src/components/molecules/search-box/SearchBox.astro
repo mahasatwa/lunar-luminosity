@@ -1,0 +1,22 @@
+---
+import Button from '../../atoms/buttons/Button.astro';
+---
+
+<div class="search-box">
+  <input type="text" placeholder="Search..." class="search-input" />
+  <Button variant="primary">Search</Button>
+</div>
+
+<style>
+  .search-box {
+    display: flex;
+    gap: 10px; /* Adjust as needed for spacing */
+    align-items: center;
+  }
+
+  .search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+</style>

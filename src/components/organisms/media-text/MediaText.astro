@@ -1,0 +1,68 @@
+---
+// src/components/organisms/media-text/MediaText.astro
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  videoUrl?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  mediaPosition?: 'left' | 'right' | 'center';
+  width?: 'grid' | 'full';
+  theme?: 'light' | 'dark';
+  isVerticalContent?: boolean;
+}
+
+const {
+  title,
+  description,
+  imageUrl,
+  imageAlt = 'Media element',
+  videoUrl,
+  ctaLabel,
+  ctaUrl,
+  mediaPosition = 'left',
+  width = 'grid',
+  theme = 'dark',
+  isVerticalContent = false,
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-media-text',
+  `c-block--layout-${mediaPosition}`,
+  `c-block--width-${width}`,
+  theme === 'light' ? 't-theme--light' : '',
+  isVerticalContent ? 'content-vertical' : '',
+  videoUrl ? 'c-block--is-video' : '',
+].join(' ');
+---
+
+<div class={blockClasses}>
+  <div class="b-media-text__container">
+    <div class="b-media-text__media">
+      <div class="b-media-text__img-wrap">
+        {videoUrl ? (
+          <div class="c-video">
+            <iframe src={videoUrl} frameborder="0" allowfullscreen></iframe>
+          </div>
+        ) : imageUrl ? (
+          <Image src={imageUrl} alt={imageAlt} width="800" height="600" class="c-image__image" />
+        ) : null}
+      </div>
+    </div>
+    <div class="b-media-text__content">
+      <div class="b-media-text__content-container c-content-block c-content-block--layout-left">
+        <h2 class="c-block__title b-media-text__title">{title}</h2>
+        <div class="c-content-block__content" set:html={description}></div>
+        {ctaLabel && ctaUrl && (
+          <div class="c-content-block__cta">
+            <a href={ctaUrl} class="a-btn a-btn-primary">{ctaLabel}</a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

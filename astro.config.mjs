@@ -8,7 +8,7 @@ import partytown from "@astrojs/partytown";
 import icon from "astro-icon";
 import compress from "astro-compress";
 
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 
 // Add path resolution if needed
 import path from "path";
@@ -67,6 +67,7 @@ export default defineConfig({
   // Vite configuration
   vite: {
     server: {
+ envDir: '../../',
       allowedHosts:
         process.env.NODE_ENV === "production"
           ? ["stiedwimulya.ac.id"]

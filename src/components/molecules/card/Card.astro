@@ -1,0 +1,68 @@
+---
+// src/components/molecules/card/Card.astro
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  meta?: string;
+  metaSecondary?: string;
+  wrapperLink?: string;
+  style?: 'elevated' | 'outlined';
+  isSpotlight?: boolean;
+}
+
+const {
+  title,
+  description,
+  imageUrl,
+  imageAlt = 'Card image',
+  ctaLabel,
+  ctaUrl,
+  meta,
+  metaSecondary,
+  wrapperLink,
+  style,
+  isSpotlight = false,
+} = Astro.props;
+
+const cardClasses = [
+  'c-card',
+  'h-full', // Ensure cards in a grid take full height
+  wrapperLink ? 'has-target-link' : '',
+  style === 'elevated' ? 'c-card--style-elevated' : '',
+  style === 'outlined' ? 'c-card--style-outlined' : '',
+  isSpotlight ? 'spotlight' : '',
+].join(' ');
+---
+
+<div class={cardClasses}>
+  {wrapperLink && <a href={wrapperLink} class="c-card__wrapper-link" aria-label={title}></a>}
+
+  {imageUrl && (
+    <div class:list={["c-card__media", { "c-image--spotlight": isSpotlight }]}>
+      <Image src={imageUrl} alt={imageAlt} width="400" height="300" class="c-image__image w-full h-auto object-cover" />
+    </div>
+  )}
+
+  <div class="c-card__content">
+    {meta && <div class="c-card__meta t-overline">{meta}</div>}
+    <h3 class="c-card__title">
+      {wrapperLink ? <span>{title}</span> : title}
+    </h3>
+    {description && <div class="c-card__description" set:html={description} />}
+    {metaSecondary && <div class="c-card__meta--secondary">{metaSecondary}</div>}
+  </div>
+
+  {ctaLabel && ctaUrl && (
+    <div class="c-card__cta">
+      <a href={ctaUrl} class="a-btn a-btn-secondary">
+        <span class="a-btn__text">{ctaLabel}</span>
+      </a>
+    </div>
+  )}
+</div>

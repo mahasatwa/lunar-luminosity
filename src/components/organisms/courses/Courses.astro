@@ -1,0 +1,102 @@
+---
+// src/components/organisms/courses/Courses.astro
+import Card from '../../molecules/card/Card.astro';
+
+interface Course {
+  title: string;
+  url: string;
+  imageUrl: string;
+  imageAlt?: string;
+  availability: 'open' | 'closed' | 'waitlist';
+  meta: string[];
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  courses: Course[];
+  layout?: 'grid' | 'list';
+  gridColumns?: 'g-2-up' | 'g-3-up';
+  theme?: 'light' | 'dark';
+}
+
+const {
+  title,
+  description,
+  courses,
+  layout = 'grid',
+  gridColumns = 'g-3-up',
+  theme = 'dark',
+} = Astro.props;
+
+const blockClasses = [
+  'c-block b-courses',
+  theme === 'light' ? 't-theme--light' : '',
+].join(' ');
+
+const getAvailabilityDot = (availability: string) => {
+  switch (availability) {
+    case 'open':
+      return 'dot_green';
+    case 'waitlist':
+      return 'dot_yellow';
+    default:
+      return 'dot_none';
+  }
+};
+---
+
+<div class={blockClasses}>
+  <div class="l-container">
+    {(title || description) && (
+      <div class="c-block__header b-courses__header c-block__header--inline">
+        {title && <h2 class="c-block__title b-courses__title">{title}</h2>}
+        {description && (
+          <div class="c-content-block__content-wrap">
+            <div class="c-content-block__content" set:html={description}></div>
+          </div>
+        )}
+      </div>
+    )}
+
+    {layout === 'grid' ? (
+      <div class:list={["b-courses__loop g-grid", gridColumns]}>
+        {courses.map(course => (
+          <div class="g-grid__item b-content-list__list-item-wrapper">
+            <Card
+              wrapperLink={course.url}
+              imageUrl={course.imageUrl}
+              imageAlt={course.imageAlt}
+              title={course.title}
+              metaSecondary={course.meta.join(' • ')}
+            >
+              <div class="c-card__meta--outside">
+                <p class="b-courses__availability">
+                  <span class:list={["b-course_dot", getAvailabilityDot(course.availability)]}></span>
+                  {course.availability}
+                </p>
+              </div>
+            </Card>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="b-courses__loop-list">
+        {courses.map(course => (
+          <a href={course.url} class="b-content-list__list-item-wrapper">
+            <div class="b-content-list__list-item">
+              <h3 class="b-courses__item-title">{course.title}</h3>
+              <div class="b-courses__course-meta">
+                {course.meta.map(m => <div>{m}</div>)}
+                <div class="course__availability">
+                  <span class:list={["b-course_dot", getAvailabilityDot(course.availability)]}></span>
+                  {course.availability}
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</div>

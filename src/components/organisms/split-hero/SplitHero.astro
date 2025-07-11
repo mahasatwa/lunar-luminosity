@@ -1,0 +1,53 @@
+---
+// src/components/organisms/split-hero/SplitHero.astro
+interface Props {
+  title: string;
+  text: string;
+  imageUrl: string;
+  imageAlt?: string;
+  ctaLabel?: string;
+  ctaUrl?: string;
+  imageSide?: 'left' | 'right';
+}
+
+const {
+  title,
+  text,
+  imageUrl,
+  imageAlt = 'Feature image',
+  ctaLabel,
+  ctaUrl,
+  imageSide = 'left',
+} = Astro.props;
+
+const imageOrderClass = imageSide === 'left' ? 'md:order-first' : 'md:order-last';
+---
+
+<section class="container mx-auto my-12 px-4 md:my-20">
+  <div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
+    <div class={`flex justify-center ${imageOrderClass}`}>
+      <img
+        src={imageUrl}
+        alt={imageAlt}
+        class="w-full max-w-md rounded-lg object-cover shadow-lg"
+        loading="lazy"
+      />
+    </div>
+    <div class="text-center md:text-left">
+      <h2 class="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+        {title}
+      </h2>
+      <p class="mb-6 text-gray-600">
+        {text}
+      </p>
+      {ctaLabel && ctaUrl && (
+        <a
+          href={ctaUrl}
+          class="inline-block rounded-full bg-teal-800 px-8 py-3 font-semibold text-white transition-transform duration-300 hover:scale-105 hover:bg-sky-600"
+        >
+          {ctaLabel}
+        </a>
+      )}
+    </div>
+  </div>
+</section>
