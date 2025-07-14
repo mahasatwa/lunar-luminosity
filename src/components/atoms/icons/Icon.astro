@@ -1,9 +1,27 @@
 ---
 interface Props {
   name: string;
+  class?: string;
 }
 
-const { name } = Astro.props;
+const { name, class: className } = Astro.props;
+
+let svgPath: string = '';
+
+switch (name) {
+  case 'tabler:menu-2':
+    svgPath = '<path d="M4 6h16M4 12h16M4 18h16" />';
+    break;
+  case 'tabler:chevron-down':
+    svgPath = '<path d="m6 9 6 6 6-6" />';
+    break;
+  case 'tabler:x': // For close icon
+    svgPath = '<path d="M18 6 6 18M6 6l12 12" />';
+    break;
+  default:
+    // Placeholder or error for unknown icons
+    svgPath = '<circle cx="12" cy="12" r="10" fill="currentColor" />';
+}
 ---
 
 <svg
@@ -14,15 +32,13 @@ const { name } = Astro.props;
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
-  class={`icon icon-${name}`}
+  class={`icon ${className || ''}`}
   aria-hidden="true"
+  set:html={svgPath}
 >
-  <!-- Placeholder SVG content -->
-  <circle cx="12" cy="12" r="10"></circle>
 </svg>
 
 <style>
-  /* Add basic styling as needed */
   .icon {
     display: inline-block;
     width: 1em;

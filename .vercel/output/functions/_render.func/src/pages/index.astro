@@ -1,0 +1,24 @@
+---
+// src/pages/index.astro
+// Halaman ini bertindak sebagai "Controller".
+// Tugasnya: 1. Mengambil data (dari mock API/Contentful). 2. Meneruskannya ke Template.
+
+import Layout from '../layouts/Layout.astro';
+import HomepageTemplate from '../components/templates/homepage-template/HomepageTemplate.astro';
+
+// 1. Mengambil data dari mock API
+import homepageData from '../data/contentful/homepage.json';
+
+const seo = {
+  title: "STIE Dwimulya - Kampus Rakyat, Kampus Perubahan",
+  description: "Selamat datang di STIE Dwimulya, institusi pendidikan ekonomi dan bisnis terkemuka di Serang, Banten. Temukan program studi, informasi penerimaan, dan berita terbaru kami."
+}
+---
+
+<Layout 
+  title={seo.title} 
+  description={seo.description}
+>
+  {/* 2. Meneruskan data ke Template */}
+  <HomepageTemplate data={homepageData} />
+</Layout>
