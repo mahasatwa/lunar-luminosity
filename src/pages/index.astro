@@ -1,74 +1,32 @@
 ---
-import Layout from "/src/layouts/Layout.astro";
-import HomepageTemplate from "/src/components/templates/homepage-template/HomepageTemplate.astro";
-import HeroSection from "/src/components/home/HeroSection.astro";
-import HeroStatement from "/src/components/home/HeroStatement.astro";
+// src/pages/index.astro
+// The Page is the highest level, responsible for layout and data fetching.
+// It should only contain the Layout and the main Template for the page.
 
+import Layout from '../layouts/Layout.astro';
+import HomepageTemplate from '../components/templates/homepage-template/HomepageTemplate.astro';
 
-// This data would typically come from a CMS
+// This data would typically come from a CMS or an API call.
+// For now, it's defined here. This data will be passed down to the template.
 const homepageData = {
   seo: {
     title: "STIE Dwimulya - Unggul dalam Pendidikan Ekonomi & Bisnis",
     description: "STIE Dwimulya, kampus rakyat dan kampus perubahan di Serang, Banten. Menawarkan S1 Akuntansi dan S1 Manajemen terakreditasi BAN-PT. Fokus pada akses pendidikan, pemberdayaan UMKM, dan penelitian budaya.",
   },
-  heroStatement: {
-    heading: "Selamat Datang di STIE Dwimulya",
-    text: "Kampus Rakyat dan Kampus Perubahan di Serang, Banten.",
-    cta: { label: "Pelajari Lebih Lanjut", url: "/tentang-kami" },
-  },
-  // Add more data fields for other sections based on CMS content
+  // Data for the organisms within the template will be passed down.
+  // Example: heroStatementData, mediaCarouselData, etc.
 };
-
 ---
 
-<Layout title="STIE Dwimulya - Unggul dalam Pendidikan Ekonomi & Bisnis">
-  {/* Updated Title */}
-    <HeroSection />
-    <HeroStatement />
-    {/*
-      HomepageTemplate will structure the page using organisms.
-      We pass dynamic data down to the organisms.
-    */}
-  <HomepageTemplate
+<Layout 
+  title={homepageData.seo.title} 
+  description={homepageData.seo.description}
+>
+  {/* 
+    The Page's only job is to render the appropriate template.
+    All presentational logic is handled by the template and its children (organisms, molecules, atoms).
+  */}
+  <HomepageTemplate 
     heroStatementData={homepageData.heroStatement}
-    // Pass data for other organisms as props
-    // Example:
-    // mediaCarouselData={homepageData.carousel}
-    // gridListsData={homepageData.programHighlights}
-    // eventScheduleData={homepageData.upcomingEvents}
-  >
-    {/*
-      This is where you would integrate the organisms defined in your
-      HomepageTemplate, passing the relevant data fetched from the CMS.
-      For example:
-    */}
-
-    {/* Placeholder for Institutional Foundation and Vision */}
-    <section>
-      <h2>Institusi dan Visi Kami</h2>
-      <p>Didirikan pada 11 Februari 2009 oleh Yayasan Dwimulya Sahati di Serang, Banten, STIE Dwimulya berkomitmen menyediakan pendidikan ekonomi dan bisnis berkualitas, khususnya bagi yang memiliki keterbatasan finansial. Kami adalah "kampus rakyat" dan "kampus perubahan".</p>
-      {/* More dynamic content for mission and social impact */}
-    </section>
-
-    {/* Placeholder for Program Offerings */}
-    <section>
-      <h2>Program Studi Unggulan</h2>
-      {/* GridLists organism would likely be used here to display program cards */}
-      {/* <GridLists items={homepageData.programs} /> */}
-      <p>Temukan program S1 Akuntansi dan S1 Manajemen kami yang terakreditasi BAN-PT.</p>
-      {/* Dynamic list of programs */}
-    </section>
-
-    {/* Placeholder for Community Engagement and Research */}
-    <section>
-      <h2>Pengabdian Masyarakat dan Penelitian</h2>
-      {/* Example: EventSchedule organism for KKM or PKM events */}
-      {/* <EventSchedule events={homepageData.communityEvents} /> */}
-      <p>Kami aktif dalam pengembangan UMKM lokal melalui program KKM dan penelitian di bidang pariwisata budaya.</p>
-      {/* Dynamic content for community projects and research highlights */}
-    </section>
-
-  </HomepageTemplate>
-
-
+  />
 </Layout>

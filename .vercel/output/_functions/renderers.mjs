@@ -1,6 +1,6 @@
 import React, { createElement } from 'react';
 import ReactDOM from 'react-dom/server';
-import { g as renderJSX, h as createVNode, A as AstroJSX, i as AstroUserError } from './chunks/astro/server_BfQs_CC2.mjs';
+import { g as renderJSX, h as createVNode, A as AstroJSX, i as AstroUserError } from './chunks/astro/server_B8HYKlh3.mjs';
 import 'kleur/colors';
 import 'clsx';
 
@@ -246,6 +246,6 @@ const renderer = {
 };
 var server_default = renderer;
 
-const renderers = [Object.assign({"name":"@astrojs/react","clientEntrypoint":"@astrojs/react/client.js","serverEntrypoint":"@astrojs/react/server.js"}, { ssr: server_default$1 }),Object.assign({"name":"astro:jsx","serverEntrypoint":"file:///home/user/lunar-luminosity/node_modules/.pnpm/@astrojs+mdx@4.2.6_astro@5.7.13_@types+node@22.15.17_jiti@2.4.2_lightningcss@1.29.3_rol_f956caf0053495ff6c42845675a8f6b2/node_modules/@astrojs/mdx/dist/server.js"}, { ssr: server_default }),];
+const renderers = [Object.assign({"name":"@astrojs/react","clientEntrypoint":"@astrojs/react/client.js","serverEntrypoint":"@astrojs/react/server.js"}, { ssr: server_default$1 }),Object.assign({"name":"astro:jsx","serverEntrypoint":"file:///home/user/lunar-luminosity/node_modules/@astrojs/mdx/dist/server.js"}, { ssr: server_default }),];
 
 export { renderers };

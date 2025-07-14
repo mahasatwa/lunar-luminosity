@@ -67,7 +67,7 @@ export default defineConfig({
   // Vite configuration
   vite: {
     server: {
- envDir: '../../',
+      envDir: '../../',
       allowedHosts:
         process.env.NODE_ENV === "production"
           ? ["stiedwimulya.ac.id"]
@@ -86,6 +86,8 @@ export default defineConfig({
       alias: {
         "~": path.resolve(__dirname, "./src"),
       },
+      // This helps Vite resolve .tsx files correctly when imported from .astro
+      dedupe: ['react', 'react-dom'],
     },
     css: {
       transformer: "postcss",

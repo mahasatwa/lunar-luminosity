@@ -1,0 +1,37 @@
+---
+// src/components/organisms/GlobalMenuOverlay.astro
+// A simplified, Astro-only version to bypass the build toolchain bug.
+
+import { cn } from '../../utils/cn';
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div id="global-menu-overlay" class={cn("global-menu-overlay", className)}>
+  <!-- 
+    The complex React logic has been temporarily removed.
+    This placeholder ensures the project can build.
+    The interactive menu functionality will need to be re-implemented
+    either with vanilla JS or once the toolchain bug is resolved.
+  -->
+  <div class="placeholder-content p-8 text-white">
+    <h2 class="text-2xl font-bold mb-4">Global Menu</h2>
+    <p>Menu content would be rendered here.</p>
+  </div>
+</div>
+
+<style>
+  .global-menu-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 50;
+  }
+  .global-menu-overlay.is-open {
+    display: block; /* Shown when active */
+  }
+</style>

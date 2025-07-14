@@ -1,0 +1,432 @@
+{
+    "slug": "profil/program-studi-akuntansi",
+    "title": "Program Studi Akuntansi",
+    "meta_description": "Program Studi Akuntansi STIE Dwimulya menghasilkan lulusan kompeten di bidang akuntansi, audit, dan perpajakan dengan kurikulum berbasis industri dan fasilitas modern.",
+    "content": [
+      {
+        "sections": [
+          {
+            "component": "hero-banner",
+            "description": "Header utama dengan gambar dan pernyataan visi",
+            "contents": {
+              "image": "/images/hero-akuntansi.jpg",
+              "alt": "Mahasiswa Program Studi Akuntansi",
+              "title": "Program Studi Akuntansi",
+              "subtitle": "Mencetak Profesional Akuntansi yang Kompeten dan Berintegritas"
+            }
+          },
+          {
+            "component": "about-program",
+            "description": "Deskripsi singkat program studi",
+            "contents": {
+              "overview": "Program Studi Akuntansi STIE Dwimulya telah terakreditasi BAN-PT dengan peringkat B. Kami menawarkan pendidikan akuntansi berbasis kompetensi dengan fokus pada pengembangan keterampilan praktis dan pemahaman teoritis yang mendalam.",
+              "vision": "Menjadi program studi akuntansi terkemuka yang menghasilkan lulusan profesional, beretika, dan mampu bersaing di tingkat nasional maupun global.",
+              "mission": [
+                "Menyelenggarakan pendidikan akuntansi yang berkualitas",
+                "Melakukan penelitian di bidang akuntansi yang relevan dengan kebutuhan industri",
+                "Memberikan pengabdian kepada masyarakat melalui penerapan ilmu akuntansi",
+                "Menjalin kerjasama dengan dunia usaha dan industri"
+              ],
+              "accreditation": {
+                "status": "Terakreditasi B",
+                "institution": "BAN-PT",
+                "year": "2023"
+              }
+            }
+          },
+          {
+            "component": "program-details",
+            "description": "Detail program studi",
+            "contents": {
+              "degree": "Sarjana Akuntansi (S.Ak.)",
+              "duration": "8 semester (4 tahun)",
+              "credit_requirements": "144 SKS",
+              "language": "Bahasa Indonesia",
+              "campus_location": "Kampus A STIE Dwimulya"
+            }
+          },
+          {
+            "component": "curriculum",
+            "description": "Struktur kurikulum program studi",
+            "contents": {
+              "description": "Kurikulum kami dirancang untuk memenuhi standar nasional dan internasional dengan komposisi:",
+              "structure": [
+                {
+                  "semester": 1,
+                  "courses": [
+                    "Pengantar Akuntansi",
+                    "Matematika Bisnis",
+                    "Pengantar Ekonomi",
+                    "Pengantar Manajemen",
+                    "Bahasa Inggris Bisnis"
+                  ]
+                },
+                {
+                  "semester": 2,
+                  "courses": [
+                    "Akuntansi Keuangan Menengah",
+                    "Hukum Bisnis",
+                    "Statistika Bisnis",
+                    "Sistem Informasi Akuntansi",
+                    "Komunikasi Bisnis"
+                  ]
+                },
+                {
+                  "semester": 3,
+                  "courses": [
+                    "Akuntansi Biaya",
+                    "Perpajakan",
+                    "Manajemen Keuangan",
+                    "Etika Bisnis",
+                    "Aplikasi Komputer Akuntansi"
+                  ]
+                },
+                {
+                  "semester": 4,
+                  "courses": [
+                    "Akuntansi Manajemen",
+                    "Auditing",
+                    "Akuntansi Sektor Publik",
+                    "Metode Penelitian",
+                    "Perilaku Organisasi"
+                  ]
+                },
+                {
+                  "semester": 5,
+                  "courses": [
+                    "Akuntansi Keuangan Lanjutan",
+                    "Akuntansi Perpajakan",
+                    "Analisis Laporan Keuangan",
+                    "Manajemen Pajak",
+                    "Kewirausahaan"
+                  ]
+                },
+                {
+                  "semester": 6,
+                  "courses": [
+                    "Akuntansi Internasional",
+                    "Audit Internal",
+                    "Sistem Pengendalian Manajemen",
+                    "Akuntansi Forensik",
+                    "Magang Industri"
+                  ]
+                },
+                {
+                  "semester": 7,
+                  "courses": [
+                    "Seminar Akuntansi",
+                    "Manajemen Strategik",
+                    "Akuntansi Syariah",
+                    "Pemodelan Keuangan",
+                    "Kuliah Kerja Nyata"
+                  ]
+                },
+                {
+                  "semester": 8,
+                  "courses": [
+                    "Skripsi",
+                    "Ujian Komprehensif"
+                  ]
+                }
+              ],
+              "specializations": [
+                {
+                  "name": "Akuntansi Keuangan",
+                  "description": "Fokus pada penyusunan dan analisis laporan keuangan"
+                },
+                {
+                  "name": "Audit dan Sistem Pengendalian",
+                  "description": "Fokus pada pemeriksaan laporan keuangan dan pengendalian internal"
+                },
+                {
+                  "name": "Akuntansi Perpajakan",
+                  "description": "Fokus pada perencanaan dan pelaporan pajak"
+                }
+              ]
+            }
+          },
+          {
+            "component": "learning-outcomes",
+            "description": "Capaian pembelajaran lulusan",
+            "contents": {
+              "knowledge": [
+                "Memahami konsep dasar dan teori akuntansi",
+                "Menguasai prinsip-prinsip akuntansi keuangan dan manajemen",
+                "Memahami sistem perpajakan dan regulasi bisnis"
+              ],
+              "skills": [
+                "Mampu menyusun laporan keuangan sesuai standar",
+                "Mampu melakukan audit dan evaluasi sistem pengendalian internal",
+                "Mampu menganalisis laporan keuangan untuk pengambilan keputusan",
+                "Mampu menggunakan software akuntansi terkini"
+              ],
+              "competencies": [
+                "Memiliki integritas dan etika profesi akuntansi",
+                "Mampu berkomunikasi efektif dalam lingkungan bisnis",
+                "Mampu bekerja dalam tim multidisiplin",
+                "Memiliki jiwa kewirausahaan"
+              ]
+            }
+          },
+          {
+            "component": "faculty",
+            "description": "Dosen pengajar program studi",
+            "contents": [
+              {
+                "name": "Prof. Dr. Ahmad Santoso, M.Si., Ak.",
+                "position": "Ketua Program Studi",
+                "education": "S3 Akuntansi - Universitas Indonesia",
+                "expertise": "Akuntansi Keuangan, Akuntansi Internasional",
+                "image": "/images/dosen-ahmad-santoso.jpg"
+              },
+              {
+                "name": "Dr. Maya Indriati, SE., M.Ak., CA.",
+                "position": "Dosen Tetap",
+                "education": "S3 Akuntansi - Universitas Gadjah Mada",
+                "expertise": "Audit, Sistem Pengendalian Manajemen",
+                "image": "/images/dosen-maya-indriati.jpg"
+              },
+              {
+                "name": "Drs. Bambang Wijaya, M.Ak., BKP.",
+                "position": "Dosen Tetap",
+                "education": "S2 Akuntansi - Universitas Padjadjaran",
+                "expertise": "Perpajakan, Akuntansi Perpajakan",
+                "image": "/images/dosen-bambang-wijaya.jpg"
+              },
+              {
+                "name": "Dian Permata Sari, SE., M.Sc., Ak.",
+                "position": "Dosen Tetap",
+                "education": "S2 Accounting - University of Melbourne",
+                "expertise": "Akuntansi Manajemen, Akuntansi Biaya",
+                "image": "/images/dosen-dian-permata.jpg"
+              }
+            ]
+          },
+          {
+            "component": "career-prospects",
+            "description": "Prospek karir lulusan",
+            "contents": {
+              "description": "Lulusan Program Studi Akuntansi memiliki peluang karir yang luas di berbagai sektor:",
+              "sectors": [
+                {
+                  "name": "Akuntansi Publik",
+                  "jobs": [
+                    "Akuntan Publik",
+                    "Auditor Eksternal",
+                    "Konsultan Pajak"
+                  ]
+                },
+                {
+                  "name": "Perusahaan",
+                  "jobs": [
+                    "Akuntan Manajemen",
+                    "Analis Keuangan",
+                    "Internal Auditor",
+                    "Manajer Keuangan"
+                  ]
+                },
+                {
+                  "name": "Sektor Publik",
+                  "jobs": [
+                    "Akuntan Pemerintah",
+                    "Auditor BPK",
+                    "Analis Anggaran"
+                  ]
+                },
+                {
+                  "name": "Lembaga Keuangan",
+                  "jobs": [
+                    "Analis Kredit",
+                    "Manajer Investasi",
+                    "Spesialis Perpajakan"
+                  ]
+                }
+              ],
+              "certifications": [
+                "Certified Public Accountant (CPA)",
+                "Certified Internal Auditor (CIA)",
+                "Brevet A & B Perpajakan",
+                "Certified Management Accountant (CMA)"
+              ]
+            }
+          },
+          {
+            "component": "facilities",
+            "description": "Fasilitas pendukung",
+            "contents": [
+              {
+                "name": "Laboratorium Akuntansi",
+                "description": "Dilengkapi dengan 30 komputer dengan software akuntansi terbaru seperti Accurate, MYOB, dan SAP",
+                "image": "/images/lab-akuntansi.jpg"
+              },
+              {
+                "name": "Perpustakaan Khusus Akuntansi",
+                "description": "Memiliki koleksi lebih dari 1.000 judul buku teks akuntansi dan 20 jurnal akuntansi terakreditasi",
+                "image": "/images/perpus-akuntansi.jpg"
+              },
+              {
+                "name": "Ruang Simulasi Audit",
+                "description": "Fasilitas untuk praktik simulasi proses audit dengan dokumen-dokumen perusahaan nyata",
+                "image": "/images/ruang-audit.jpg"
+              }
+            ]
+          },
+          {
+            "component": "partnerships",
+            "description": "Kemitraan dengan industri",
+            "contents": {
+              "description": "Program Studi Akuntansi telah menjalin kerjasama dengan berbagai institusi untuk pengembangan kurikulum, magang, dan penyerapan lulusan:",
+              "partners": [
+                {
+                  "name": "Kantor Akuntan Publik Drs. Hadi Sutanto & Rekan",
+                  "type": "Akuntan Publik",
+                  "activities": [
+                    "Magang mahasiswa",
+                    "Guest lecture",
+                    "Rekrutmen lulusan"
+                  ]
+                },
+                {
+                  "name": "PT. Telkom Indonesia Tbk",
+                  "type": "Perusahaan BUMN",
+                  "activities": [
+                    "Penelitian bersama",
+                    "Pelatihan karyawan",
+                    "Kunjungan industri"
+                  ]
+                },
+                {
+                  "name": "Ikatan Akuntan Indonesia (IAI)",
+                  "type": "Organisasi Profesi",
+                  "activities": [
+                    "Sertifikasi profesional",
+                    "Seminar dan workshop",
+                    "Uji kompetensi"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "component": "achievements",
+            "description": "Prestasi mahasiswa",
+            "contents": [
+              {
+                "year": 2023,
+                "achievement": "Juara 1 Lomba Akuntansi Nasional Universitas Indonesia",
+                "team": "Tim Akuntansi STIE Dwimulya"
+              },
+              {
+                "year": 2022,
+                "achievement": "Best Paper dalam Konferensi Akuntansi Nasional",
+                "team": "Mahasiswa Program Studi Akuntansi"
+              },
+              {
+                "year": 2021,
+                "achievement": "Juara 2 Business Case Competition oleh PwC Indonesia",
+                "team": "Tim Auditor Muda STIE Dwimulya"
+              }
+            ]
+          },
+          {
+            "component": "admission",
+            "description": "Informasi penerimaan mahasiswa baru",
+            "contents": {
+              "requirements": [
+                "Lulusan SMA/SMK/MA semua jurusan",
+                "Nilai rata-rata rapor minimal 7.5 (skala 10)",
+                "Lulus tes potensi akademik dan wawancara",
+                "Surat keterangan sehat",
+                "Foto copy ijazah dan transkrip nilai"
+              ],
+              "selection_process": [
+                "Pendaftaran online",
+                "Tes tertulis (Potensi Akademik dan Bahasa Inggris)",
+                "Wawancara",
+                "Pengumuman hasil seleksi"
+              ],
+              "important_dates": [
+                {
+                  "event": "Pendaftaran Gelombang 1",
+                  "date": "1 Januari - 28 Februari 2024"
+                },
+                {
+                  "event": "Tes Seleksi",
+                  "date": "5 Maret 2024"
+                },
+                {
+                  "event": "Pengumuman Hasil",
+                  "date": "15 Maret 2024"
+                }
+              ]
+            }
+          },
+          {
+            "component": "scholarships",
+            "description": "Program beasiswa",
+            "contents": [
+              {
+                "name": "Beasiswa Prestasi Akademik",
+                "description": "Untuk calon mahasiswa dengan nilai UTBK minimal 650",
+                "coverage": "50-100% biaya kuliah"
+              },
+              {
+                "name": "Beasiswa KIP-Kuliah",
+                "description": "Untuk mahasiswa dari keluarga kurang mampu",
+                "coverage": "Full biaya kuliah + tunjangan hidup"
+              },
+              {
+                "name": "Beasiswa Mitra Industri",
+                "description": "Disponsori oleh perusahaan mitra dengan ikatan dinas",
+                "coverage": "Full biaya kuliah + magang berbayar"
+              }
+            ]
+          },
+          {
+            "component": "testimonials",
+            "description": "Testimoni mahasiswa dan alumni",
+            "contents": [
+              {
+                "name": "Rina Wijaya",
+                "graduation_year": 2020,
+                "position": "Auditor di KAP Sutanto & Rekan",
+                "quote": "Pendidikan akuntansi di STIE Dwimulya memberikan fondasi kuat untuk karir saya sebagai auditor profesional."
+              },
+              {
+                "name": "Adi Nugroho",
+                "graduation_year": 2018,
+                "position": "Finance Manager di PT. Global Makmur",
+                "quote": "Kurikulum yang relevan dengan industri dan dosen yang berpengalaman membantu saya cepat beradaptasi di dunia kerja."
+              },
+              {
+                "name": "Siti Aisyah",
+                "graduation_year": 2022,
+                "position": "Tax Consultant di PwC Indonesia",
+                "quote": "Magang melalui program kampus menjadi pintu masuk saya ke dunia konsultan pajak profesional."
+              }
+            ]
+          },
+          {
+            "component": "contact",
+            "description": "Kontak program studi",
+            "contents": {
+              "email": "akuntansi@stiedwimulya.ac.id",
+              "phone": "(021) 12345678",
+              "office_hours": "Senin-Jumat, 08:00-16:00 WIB",
+              "location": "Gedung B Lantai 3, Kampus STIE Dwimulya",
+              "social_media": [
+                {
+                  "platform": "Instagram",
+                  "handle": "@akuntansi_stiedwimulya"
+                },
+                {
+                  "platform": "Facebook",
+                  "handle": "Akuntansi STIE Dwimulya"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }

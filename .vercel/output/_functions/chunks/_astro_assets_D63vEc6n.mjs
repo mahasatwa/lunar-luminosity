@@ -1,9 +1,8 @@
 import { j as joinPaths, i as isRemotePath, t as typeHandlers, a as types } from './index_CCxZAn8N.mjs';
-import { j as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, n as UnsupportedImageConversion, t as toStyleString, o as NoImageMetadata, p as FailedToFetchRemoteImageDimensions, q as ExpectedImageOptions, s as ExpectedNotESMImage, v as InvalidImageService, b as createAstro, c as createComponent, w as ImageMissingAlt, m as maybeRenderHead, e as addAttribute, x as spreadAttributes, a as renderTemplate, y as ExperimentalFontsNotEnabled, z as FontFamilyNotFound, u as unescapeHTML } from './astro/server_BfQs_CC2.mjs';
-import 'clsx';
+import { j as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, o as UnsupportedImageConversion, t as toStyleString, p as NoImageMetadata, q as FailedToFetchRemoteImageDimensions, s as ExpectedImageOptions, v as ExpectedNotESMImage, w as InvalidImageService, c as createAstro, a as createComponent, x as ImageMissingAlt, m as maybeRenderHead, b as addAttribute, y as spreadAttributes, r as renderTemplate, z as ExperimentalFontsNotEnabled, B as FontFamilyNotFound, u as unescapeHTML } from './astro/server_B8HYKlh3.mjs';
 import * as mime from 'mrmime';
+import 'clsx';
 import 'kleur/colors';
-import '../renderers.mjs';
 
 const VALID_SUPPORTED_FORMATS = [
   "jpeg",
@@ -521,7 +520,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './build-service_DBkYapP3.mjs'
+      './build-service_C8iuJRdD.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -592,36 +591,34 @@ async function getImage$1(options, imageConfig) {
     }
   }
   resolvedOptions.src = clonedSrc;
-  const layout = options.layout ?? imageConfig.experimentalLayout;
-  if (imageConfig.experimentalResponsiveImages && layout) {
+  const layout = options.layout ?? imageConfig.layout ?? "none";
+  if (resolvedOptions.priority) {
+    resolvedOptions.loading ??= "eager";
+    resolvedOptions.decoding ??= "sync";
+    resolvedOptions.fetchpriority ??= "high";
+    delete resolvedOptions.priority;
+  } else {
+    resolvedOptions.loading ??= "lazy";
+    resolvedOptions.decoding ??= "async";
+    resolvedOptions.fetchpriority ??= "auto";
+  }
+  if (layout !== "none") {
     resolvedOptions.widths ||= getWidths({
       width: resolvedOptions.width,
       layout,
       originalWidth,
-      breakpoints: imageConfig.experimentalBreakpoints?.length ? imageConfig.experimentalBreakpoints : isLocalService(service) ? LIMITED_RESOLUTIONS : DEFAULT_RESOLUTIONS
+      breakpoints: imageConfig.breakpoints?.length ? imageConfig.breakpoints : isLocalService(service) ? LIMITED_RESOLUTIONS : DEFAULT_RESOLUTIONS
     });
     resolvedOptions.sizes ||= getSizesAttribute({ width: resolvedOptions.width, layout });
-    if (resolvedOptions.priority) {
-      resolvedOptions.loading ??= "eager";
-      resolvedOptions.decoding ??= "sync";
-      resolvedOptions.fetchpriority ??= "high";
-    } else {
-      resolvedOptions.loading ??= "lazy";
-      resolvedOptions.decoding ??= "async";
-      resolvedOptions.fetchpriority ??= "auto";
-    }
-    delete resolvedOptions.priority;
     delete resolvedOptions.densities;
-    if (layout !== "none") {
-      resolvedOptions.style = addCSSVarsToStyle(
-        {
-          fit: cssFitValues.includes(resolvedOptions.fit ?? "") && resolvedOptions.fit,
-          pos: resolvedOptions.position
-        },
-        resolvedOptions.style
-      );
-      resolvedOptions["data-astro-image"] = layout;
-    }
+    resolvedOptions.style = addCSSVarsToStyle(
+      {
+        fit: cssFitValues.includes(resolvedOptions.fit ?? "") && resolvedOptions.fit,
+        pos: resolvedOptions.position
+      },
+      resolvedOptions.style
+    );
+    resolvedOptions["data-astro-image"] = layout;
   }
   const validatedOptions = service.validateOptions ? await service.validateOptions(resolvedOptions, imageConfig) : resolvedOptions;
   const srcSetTransforms = service.getSrcSet ? await service.getSrcSet(validatedOptions, imageConfig) : [];
@@ -679,12 +676,11 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   if (typeof props.height === "string") {
     props.height = parseInt(props.height);
   }
-  const layout = props.layout ?? imageConfig.experimentalLayout ?? "none";
-  const useResponsive = imageConfig.experimentalResponsiveImages && layout !== "none";
-  if (useResponsive) {
-    props.layout ??= imageConfig.experimentalLayout;
-    props.fit ??= imageConfig.experimentalObjectFit ?? "cover";
-    props.position ??= imageConfig.experimentalObjectPosition ?? "center";
+  const layout = props.layout ?? imageConfig.layout ?? "none";
+  if (layout !== "none") {
+    props.layout ??= imageConfig.layout;
+    props.fit ??= imageConfig.objectFit ?? "cover";
+    props.position ??= imageConfig.objectPosition ?? "center";
   }
   const image = await getImage(props);
   const additionalAttributes = {};
@@ -693,7 +689,7 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
   }
   const { class: className, ...attributes } = { ...additionalAttributes, ...image.attributes };
   return renderTemplate`${maybeRenderHead()}<img${addAttribute(image.src, "src")}${spreadAttributes(attributes)}${addAttribute(className, "class")}>`;
-}, "/home/user/lunar-luminosity/node_modules/.pnpm/astro@5.7.13_@types+node@22.15.17_jiti@2.4.2_lightningcss@1.29.3_rollup@4.40.2_terser@5.39.0_typescript@5.8.3_yaml@2.7.1/node_modules/astro/components/Image.astro", void 0);
+}, "/home/user/lunar-luminosity/node_modules/astro/components/Image.astro", void 0);
 
 const $$Astro$1 = createAstro("https://www.stiedwimulya.ac.id");
 const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
@@ -714,12 +710,12 @@ const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
       pictureAttributes.class = scopedStyleClass;
     }
   }
-  const layout = props.layout ?? imageConfig.experimentalLayout ?? "none";
-  const useResponsive = imageConfig.experimentalResponsiveImages && layout !== "none";
+  const layout = props.layout ?? imageConfig.layout ?? "none";
+  const useResponsive = layout !== "none";
   if (useResponsive) {
-    props.layout ??= imageConfig.experimentalLayout;
-    props.fit ??= imageConfig.experimentalObjectFit ?? "cover";
-    props.position ??= imageConfig.experimentalObjectPosition ?? "center";
+    props.layout ??= imageConfig.layout;
+    props.fit ??= imageConfig.objectFit ?? "cover";
+    props.position ??= imageConfig.objectPosition ?? "center";
   }
   for (const key in props) {
     if (key.startsWith("data-astro-cid")) {
@@ -764,7 +760,7 @@ const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
     const srcsetAttribute = props.densities || !props.densities && !props.widths && !useResponsive ? `${image.src}${image.srcSet.values.length > 0 ? ", " + image.srcSet.attribute : ""}` : image.srcSet.attribute;
     return renderTemplate`<source${addAttribute(srcsetAttribute, "srcset")}${addAttribute(mime.lookup(image.options.format ?? image.src) ?? `image/${image.options.format}`, "type")}${spreadAttributes(sourceAdditionalAttributes)}>`;
   })}  <img${addAttribute(fallbackImage.src, "src")}${spreadAttributes(attributes)}${addAttribute(className, "class")}> </picture>`;
-}, "/home/user/lunar-luminosity/node_modules/.pnpm/astro@5.7.13_@types+node@22.15.17_jiti@2.4.2_lightningcss@1.29.3_rollup@4.40.2_terser@5.39.0_typescript@5.8.3_yaml@2.7.1/node_modules/astro/components/Picture.astro", void 0);
+}, "/home/user/lunar-luminosity/node_modules/astro/components/Picture.astro", void 0);
 
 const mod = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null
@@ -787,96 +783,9 @@ const $$Font = createComponent(($$result, $$props, $$slots) => {
     });
   }
   return renderTemplate`${preload && data.preloadData.map(({ url, type }) => renderTemplate`<link rel="preload"${addAttribute(url, "href")} as="font"${addAttribute(`font/${type}`, "type")} crossorigin>`)}<style>${unescapeHTML(data.css)}</style>`;
-}, "/home/user/lunar-luminosity/node_modules/.pnpm/astro@5.7.13_@types+node@22.15.17_jiti@2.4.2_lightningcss@1.29.3_rollup@4.40.2_terser@5.39.0_typescript@5.8.3_yaml@2.7.1/node_modules/astro/components/Font.astro", void 0);
+}, "/home/user/lunar-luminosity/node_modules/astro/components/Font.astro", void 0);
 
-const imageConfig = {"endpoint":{"route":"/_image"},"service":{"entrypoint":"@astrojs/vercel/build-image-service","config":{"sizes":[640,750,828,1080,1200,1920,2048,3840],"domains":["res.cloudinary.com"],"remotePatterns":[]}},"domains":["res.cloudinary.com"],"remotePatterns":[],"experimentalResponsiveImages":false};
+const imageConfig = {"endpoint":{"route":"/_image"},"service":{"entrypoint":"@astrojs/vercel/build-image-service","config":{"sizes":[640,750,828,1080,1200,1920,2048,3840],"domains":["res.cloudinary.com"],"remotePatterns":[]}},"domains":["res.cloudinary.com"],"remotePatterns":[],"responsiveStyles":false,"breakpoints":[640,750,828,1080,1200,1920,2048,3840]};
 							const getImage = async (options) => await getImage$1(options, imageConfig);
 
-const fnv1a52 = (str) => {
-  const len = str.length;
-  let i = 0, t0 = 0, v0 = 8997, t1 = 0, v1 = 33826, t2 = 0, v2 = 40164, t3 = 0, v3 = 52210;
-  while (i < len) {
-    v0 ^= str.charCodeAt(i++);
-    t0 = v0 * 435;
-    t1 = v1 * 435;
-    t2 = v2 * 435;
-    t3 = v3 * 435;
-    t2 += v0 << 8;
-    t3 += v1 << 8;
-    t1 += t0 >>> 16;
-    v0 = t0 & 65535;
-    t2 += t1 >>> 16;
-    v1 = t1 & 65535;
-    v3 = t3 + (t2 >>> 16) & 65535;
-    v2 = t2 & 65535;
-  }
-  return (v3 & 15) * 281474976710656 + v2 * 4294967296 + v1 * 65536 + (v0 ^ v3 >> 4);
-};
-const etag = (payload, weak = false) => {
-  const prefix = weak ? 'W/"' : '"';
-  return prefix + fnv1a52(payload).toString(36) + payload.length.toString(36) + '"';
-};
-
-async function loadRemoteImage(src, headers) {
-  try {
-    const res = await fetch(src, {
-      // Forward all headers from the original request
-      headers
-    });
-    if (!res.ok) {
-      return void 0;
-    }
-    return await res.arrayBuffer();
-  } catch {
-    return void 0;
-  }
-}
-const GET = async ({ request }) => {
-  try {
-    const imageService = await getConfiguredImageService();
-    if (!("transform" in imageService)) {
-      throw new Error("Configured image service is not a local service");
-    }
-    const url = new URL(request.url);
-    const transform = await imageService.parseURL(url, imageConfig);
-    if (!transform?.src) {
-      throw new Error("Incorrect transform returned by `parseURL`");
-    }
-    let inputBuffer = void 0;
-    const isRemoteImage = isRemotePath(transform.src);
-    const sourceUrl = isRemoteImage ? new URL(transform.src) : new URL(transform.src, url.origin);
-    if (isRemoteImage && isRemoteAllowed(transform.src, imageConfig) === false) {
-      return new Response("Forbidden", { status: 403 });
-    }
-    inputBuffer = await loadRemoteImage(sourceUrl, isRemoteImage ? new Headers() : request.headers);
-    if (!inputBuffer) {
-      return new Response("Not Found", { status: 404 });
-    }
-    const { data, format } = await imageService.transform(
-      new Uint8Array(inputBuffer),
-      transform,
-      imageConfig
-    );
-    return new Response(data, {
-      status: 200,
-      headers: {
-        "Content-Type": mime.lookup(format) ?? `image/${format}`,
-        "Cache-Control": "public, max-age=31536000",
-        ETag: etag(data.toString()),
-        Date: (/* @__PURE__ */ new Date()).toUTCString()
-      }
-    });
-  } catch (err) {
-    console.error("Could not process image request:", err);
-    return new Response(`Server Error: ${err}`, { status: 500 });
-  }
-};
-
-const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  GET
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const page = () => _page;
-
-export { baseService as b, isESMImportedImage as i, page as p };
+export { $$Image as $, imageConfig as a, baseService as b, isRemoteAllowed as c, getConfiguredImageService as g, isESMImportedImage as i };

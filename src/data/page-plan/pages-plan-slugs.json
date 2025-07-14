@@ -1,0 +1,154 @@
+{
+    "pages": [
+      {
+        "slug": "beranda",
+        "title": "Beranda STIE Dwimulya",
+        "short_description": "Selamat datang di website resmi STIE Dwimulya, institusi pendidikan tinggi bidang ekonomi dan bisnis terkemuka."
+      },
+      {
+        "slug": "tentang-kami/profil",
+        "title": "Profil STIE Dwimulya",
+        "short_description": "Mengenal sejarah, visi, misi, dan nilai-nilai STIE Dwimulya sebagai perguruan tinggi berkualitas."
+      },
+      {
+        "slug": "tentang-kami/struktur-organisasi",
+        "title": "Struktur Organisasi",
+        "short_description": "Struktur kepemimpinan dan organisasi STIE Dwimulya yang profesional dan transparan."
+      },
+      {
+        "slug": "tentang-kami/akreditasi",
+        "title": "Akreditasi Institusi",
+        "short_description": "Informasi akreditasi nasional STIE Dwimulya dan program studinya oleh BAN-PT."
+      },
+      {
+        "slug": "program-studi/akuntansi",
+        "title": "Program Studi Akuntansi",
+        "short_description": "Program studi akuntansi menghasilkan lulusan kompeten di bidang audit, perpajakan, dan sistem informasi."
+      },
+      {
+        "slug": "program-studi/manajemen",
+        "title": "Program Studi Manajemen",
+        "short_description": "Program studi manajemen dengan konsentrasi pemasaran, SDM, keuangan, dan operasional."
+      },
+      {
+        "slug": "akademik/kalender-akademik",
+        "title": "Kalender Akademik",
+        "short_description": "Jadwal kegiatan akademik tahunan termasuk perkuliahan, ujian, dan libur semester."
+      },
+      {
+        "slug": "akademik/kurikulum",
+        "title": "Kurikulum Program Studi",
+        "short_description": "Struktur kurikulum semua program studi di STIE Dwimulya yang selalu diperbarui."
+      },
+      {
+        "slug": "akademik/registrasi",
+        "title": "Informasi Registrasi",
+        "short_description": "Prosedur dan persyaratan registrasi mahasiswa baru dan mahasiswa aktif."
+      },
+      {
+        "slug": "kemahasiswaan/beasiswa",
+        "title": "Program Beasiswa",
+        "short_description": "Berbagai program beasiswa untuk mahasiswa berprestasi dan kurang mampu."
+      },
+      {
+        "slug": "kemahasiswaan/organisasi",
+        "title": "Organisasi Kemahasiswaan",
+        "short_description": "Unit kegiatan dan organisasi mahasiswa untuk pengembangan soft skills."
+      },
+      {
+        "slug": "kemahasiswaan/prestasi",
+        "title": "Prestasi Mahasiswa",
+        "short_description": "Penghargaan dan prestasi yang diraih mahasiswa STIE Dwimulya di berbagai bidang."
+      },
+      {
+        "slug": "fasilitas/perpustakaan",
+        "title": "Perpustakaan Digital",
+        "short_description": "Fasilitas perpustakaan dengan koleksi buku teks, jurnal, dan akses online."
+      },
+      {
+        "slug": "fasilitas/laboratorium",
+        "title": "Laboratorium Komputer",
+        "short_description": "Fasilitas laboratorium dengan perangkat lunak terkini untuk praktikum mahasiswa."
+      },
+      {
+        "slug": "fasilitas/ruang-kelas",
+        "title": "Fasilitas Ruang Kelas",
+        "short_description": "Ruang kelas nyaman dengan fasilitas multimedia untuk proses belajar mengajar."
+      },
+      {
+        "slug": "penelitian/publikasi",
+        "title": "Publikasi Ilmiah",
+        "short_description": "Karya penelitian dosen dan mahasiswa yang telah dipublikasikan di jurnal nasional/internasional."
+      },
+      {
+        "slug": "penelitian/seminar",
+        "title": "Seminar dan Konferensi",
+        "short_description": "Agenda seminar, workshop, dan konferensi ilmiah yang diselenggarakan kampus."
+      },
+      {
+        "slug": "pengabdian/desa-binaan",
+        "title": "Program Desa Binaan",
+        "short_description": "Kegiatan pengabdian masyarakat melalui program pemberdayaan desa binaan."
+      },
+      {
+        "slug": "pengabdian/pelatihan-masyarakat",
+        "title": "Pelatihan untuk Masyarakat",
+        "short_description": "Berbagai pelatihan keterampilan dan kewirausahaan untuk masyarakat umum."
+      },
+      {
+        "slug": "kerjasama/industri",
+        "title": "Kerjasama dengan Industri",
+        "short_description": "Jaringan kerjasama dengan perusahaan untuk magang, penelitian, dan rekrutmen."
+      },
+      {
+        "slug": "kerjasama/universitas",
+        "title": "Kerjasama Institusi Pendidikan",
+        "short_description": "Kolaborasi dengan perguruan tinggi dalam dan luar negeri untuk pertukaran pelajar."
+      },
+      {
+        "slug": "karir/lowongan-kerja",
+        "title": "Informasi Lowongan Kerja",
+        "short_description": "Peluang karir dan lowongan kerja dari mitra industri untuk lulusan STIE Dwimulya."
+      },
+      {
+        "slug": "karir/alumni",
+        "title": "Jaringan Alumni",
+        "short_description": "Informasi jaringan alumni STIE Dwimulya dan kegiatan yang diselenggarakan."
+      },
+      {
+        "slug": "penerimaan/pmb",
+        "title": "Penerimaan Mahasiswa Baru",
+        "short_description": "Informasi lengkap tentang seleksi penerimaan mahasiswa baru STIE Dwimulya."
+      },
+      {
+        "slug": "penerimaan/biaya",
+        "title": "Biaya Pendidikan",
+        "short_description": "Rincian biaya perkuliahan, uang pangkal, dan biaya lainnya untuk calon mahasiswa."
+      },
+      {
+        "slug": "penerimaan/jalur-masuk",
+        "title": "Jalur Seleksi Masuk",
+        "short_description": "Berbagai jalur seleksi masuk STIE Dwimulya termasuk SNBP, SNBT, dan Mandiri."
+      },
+      {
+        "slug": "kontak/lokasi",
+        "title": "Lokasi Kampus",
+        "short_description": "Peta lokasi kampus STIE Dwimulya dan akses transportasi menuju kampus."
+      },
+      {
+        "slug": "kontak/hubungi-kami",
+        "title": "Hubungi Kami",
+        "short_description": "Formulir kontak dan informasi saluran komunikasi dengan STIE Dwimulya."
+      },
+      {
+        "slug": "berita/kegiatan",
+        "title": "Berita Kegiatan Kampus",
+        "short_description": "Update terbaru tentang berbagai kegiatan akademik dan non-akademik di kampus."
+      },
+      {
+        "slug": "berita/pengumuman",
+        "title": "Pengumuman Resmi",
+        "short_description": "Pengumuman penting dari pihak kampus untuk mahasiswa, dosen, dan staf."
+      }
+    ]
+  }

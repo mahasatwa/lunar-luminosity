@@ -1,77 +1,66 @@
 // src/data/NavigationData.ts
 export interface NavItem {
+  id: string; // Add id for better key handling in React
   text: string;
   href?: string;
+  isExternal?: boolean;
   submenu?: NavItem[];
+  description?: string; // Optional description
 }
 
 export const globalNavigationData: NavItem[] = [
   {
-    text: 'Kampus',
-    submenu: [
-      { text: 'Lokasi & Akses', href: '/kampus/lokasi-akses' },
-      { text: 'Sejarah Kampus', href: '/kampus/sejarah' },
-      { text: 'Visi & Misi', href: '/kampus/visi-misi' },
-      { text: 'Struktur Organisasi', href: '/kampus/struktur-organisasi' },
-    ],
-  },
-  {
+    id: 'akademik',
     text: 'Akademik',
+    description: 'Program studi, kurikulum, dan kalender akademik.',
     submenu: [
-      {
-        text: 'Program Studi',
-        submenu: [
-          { text: 'S1 Akuntansi', href: '/akademik/program-studi/s1-akuntansi' },
-          { text: 'S1 Manajemen', href: '/akademik/program-studi/s1-manajemen' },
-        ],
-      },
-      { text: 'Kalender Akademik', href: '/akademik/kalender' },
-      { text: 'Beasiswa & Biaya', href: '/akademik/beasiswa' },
+      { id: 'prodi', text: 'Program Studi', submenu: [
+          { id: 's1-akuntansi', text: 'S1 Akuntansi', href: '/akademik/program-studi/s1-akuntansi' },
+          { id: 's1-manajemen', text: 'S1 Manajemen', href: '/akademik/program-studi/s1-manajemen' },
+      ]},
+      { id: 'kalender-akademik', text: 'Kalender Akademik', href: '/akademik/kalender' },
+      { id: 'beasiswa-biaya', text: 'Beasiswa & Biaya', href: '/akademik/beasiswa' },
+      { id: 'akreditasi', text: 'Akreditasi', href: '/akreditasi' },
     ],
   },
   {
+    id: 'penerimaan',
+    text: 'Penerimaan',
+    href: '/penerimaan',
+    description: 'Informasi pendaftaran untuk mahasiswa baru.',
+  },
+  {
+    id: 'penelitian',
     text: 'Penelitian',
+    description: 'Pengabdian masyarakat dan publikasi ilmiah.',
     submenu: [
-        {
-            text: 'Program KKM',
-            submenu: [
-              { text: 'Desa Kadubeureum', href: '/penelitian/kkm/desa-kadubeureum' },
-              { text: 'Program Lainnya', href: '/penelitian/kkm/lainnya' },
-            ],
-          },
-      {
-        text: 'Penelitian Mahasiswa (PKM)',
-        submenu: [
-          { text: 'Budaya Debus', href: '/penelitian/pkm/budaya-debus' },
-          { text: 'Penelitian Lainnya', href: '/penelitian/pkm/lainnya' },
-        ],
-      },
-      { text: 'Publikasi Dosen', href: '/penelitian/publikasi-dosen' },
+      { id: 'kkm', text: 'Program KKM', href: '/penelitian/kkm' },
+      { id: 'pkm', text: 'Penelitian Mahasiswa (PKM)', href: '/penelitian/pkm' },
+      { id: 'publikasi-dosen', text: 'Publikasi Dosen', href: '/penelitian/publikasi-dosen' },
     ],
   },
   {
-    text: 'Fasilitas',
+    id: 'tentang-kami',
+    text: 'Tentang Kami',
+    description: 'Sejarah, visi, misi, dan struktur organisasi.',
     submenu: [
-      { text: 'Gedung Perkuliahan', href: '/fasilitas/gedung' },
-      { text: 'Laboratorium', href: '/fasilitas/lab' },
-      { text: 'Perpustakaan', href: '/fasilitas/perpustakaan' },
-      { text: 'Ruang Seminar', href: '/fasilitas/ruang-seminar' },
+      { id: 'sejarah', text: 'Sejarah Kampus', href: '/kampus/sejarah' },
+      { id: 'visi-misi', text: 'Visi & Misi', href: '/kampus/visi-misi' },
+      { id: 'struktur-organisasi', text: 'Struktur Organisasi', href: '/kampus/struktur-organisasi' },
     ],
   },
   {
-    text: 'Alumni',
-    submenu: [
-      { text: 'Jejaring Alumni', href: '/alumni/jejaring' },
-      { text: 'Lowongan Kerja', href: '/alumni/lowongan-kerja' },
-      { text: 'Tracer Study', href: '/alumni/tracer-study' },
-    ],
+    id: 'kontak',
+    text: 'Kontak',
+    href: '/kontak',
+    description: 'Hubungi kami dan temukan lokasi kampus.',
   },
-  {
-    text: 'Tentang',
-    submenu: [
-      { text: 'Akreditasi BAN-PT', href: '/tentang/akreditasi' },
-      { text: 'Penghargaan', href: '/tentang/penghargaan' },
-      { text: 'Kontak Kami', href: '/tentang/kontak' },
-    ],
-  },
+];
+
+export const quickLinksData = [
+  { title: "Penerimaan Mahasiswa Baru", link: "/penerimaan" },
+  { title: "Kontak Kami", link: "/kontak" },
+  { title: "Kalender Akademik", link: "/akademik/kalender" },
+  { title: "Portal Mahasiswa", link: "https://portal.stiedwimulya.ac.id/mahasiswa", isExternal: true },
+  { title: "Berita Terbaru", link: "/berita" }
 ];

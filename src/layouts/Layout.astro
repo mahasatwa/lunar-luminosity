@@ -1,10 +1,10 @@
 ---
-import GlobalNav from "../components/global/GlobalNav.astro";
-import Footer from '../components/global/Footer.astro';
-import SEO from "../components/utils/SEO.astro"; // <-- 1. Impor komponen SEO
+import Footer from '../components/organisms/site-footer/SiteFooter.astro';
+import SiteHeader from "../components/organisms/site-header/SiteHeader.astro";
+import GlobalMenuOverlay from "../components/organisms/GlobalMenuOverlay.astro";
+import SEO from "../components/utils/SEO.astro";
 import "../styles/base.pcss";
 
-// 2. Perbarui interface Props untuk menerima data SEO
 export interface Props {
   title: string;
   description: string;
@@ -21,7 +21,6 @@ const { title, description, image, ogType } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    {/* 3. Panggil komponen SEO di sini, teruskan semua props */}
     <SEO 
       title={title} 
       description={description} 
@@ -30,8 +29,14 @@ const { title, description, image, ogType } = Astro.props;
     />
   </head>
 
-  <body class="font-sans antialiased text-gray-800">
-    <GlobalNav />
+  <body class="font-sans antialiased text-gray-800 relative">
+    {/* 
+      client:* directives are temporarily removed to bypass a persistent toolchain bug.
+      This allows the site to build, but client-side interactivity in these
+      components will need to be re-implemented using a different strategy.
+    */}
+    <SiteHeader />
+    <GlobalMenuOverlay class="global-menu-overlay" />
     <main>
       <slot />
     </main>

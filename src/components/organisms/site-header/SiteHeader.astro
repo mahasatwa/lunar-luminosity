@@ -1,43 +1,86 @@
 ---
 // src/components/organisms/site-header/SiteHeader.astro
-import NavigationBar from '../../molecules/navigation-bar/NavigationBar.astro';
-import SearchBox from '../../molecules/search-box/SearchBox.astro';
-// Assuming you have a logo component or include it directly
-// import Logo from '../../atoms/images/Logo.astro';
+import { cn } from '../../../utils/cn';
+
+// Props are now received directly by the Astro component
+interface Props {
+  sticky?: boolean;
+  position?: 'sticky' | 'relative';
+  hasAlert?: boolean;
+  isWorkingKnowledge?: boolean;
+  isMinimalHeader?: boolean;
+  isHomepage?: boolean;
+  isMenuOpen?: boolean;
+  domain?: 'online' | 'other';
+}
+
+const {
+  sticky = false,
+  position = 'relative',
+  hasAlert = false,
+  isWorkingKnowledge = false,
+  isMinimalHeader = false,
+  isHomepage = false,
+  isMenuOpen = false,
+  domain = 'online',
+} = Astro.props;
+
+// Class logic is now handled in the Astro frontmatter.
+// We will pass the final class string to the header element.
+// Note: React-specific state like `isSticky` will be handled by a client script.
+const headerClass = cn(
+  'site-header', // base class
+  domain === 'online' ? 'site-header--online' : 'noindex',
+  position === 'relative' && 'site-header--relative',
+  isMenuOpen && 'site-header--menu-is-open',
+  hasAlert && 'site-header--header-alert',
+  isWorkingKnowledge && 'wk-site-header',
+  isMinimalHeader && 'site-header--minimal',
+  isHomepage && 'site-header--homepage',
+  // The 'site-header--sticky' class will be toggled by the client script
+);
 ---
-
-<header class="site-header">
-  <div class="header-content">
-    <!-- Placeholder for Logo -->
-    <div class="logo">Logo Placeholder</div>
-
-    <NavigationBar />
-    <SearchBox />
+<header class={headerClass} data-position={position}>
+  <div class="container mx-auto flex items-center justify-between py-4 px-6">
+    <!-- 
+      The actual content of the header (Logo, Navigation, etc.) would go here.
+      This logic is now self-contained within a single .astro file.
+    -->
+    <p>Site Header Content</p>
   </div>
 </header>
 
+<script>
+  // This script handles client-side interactivity, replacing React's useEffect.
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.site-header') as HTMLElement;
+    if (!header) return;
+
+    // Logic for sticky header, formerly a useEffect
+    const handleScroll = () => {
+      const isSticky = window.scrollY > 0;
+      if (header.dataset.position === 'sticky') {
+        header.classList.toggle('site-header--sticky', isSticky);
+      }
+    };
+
+    // Attach event listeners
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial check
+    handleScroll();
+
+    // Cleanup (not strictly necessary in the same way as React, but good practice)
+    // Astro handles script lifecycle, so manual cleanup is less common.
+  });
+</script>
+
 <style>
-  .site-header {
+  /* Basic styles for demonstration */
+  .site-header--sticky {
     position: sticky;
     top: 0;
-    width: 100%;
-    background-color: #ffffff; /* Example background color */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example shadow */
-    z-index: 100; /* Ensure it stays on top */
-  }
-
-  .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem; /* Example padding */
-    max-width: 1200px; /* Example max width */
-    margin: 0 auto; /* Center the content */
-  }
-
-  .logo {
-    /* Basic styling for logo placeholder */
-    font-weight: bold;
-    font-size: 1.5rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 </style>

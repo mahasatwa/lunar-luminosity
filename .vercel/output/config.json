@@ -28,6 +28,14 @@
 			"dest": "_render"
 		},
 		{
+			"src": "^/kontak/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/penerimaan/?$",
+			"dest": "_render"
+		},
+		{
 			"src": "^/programs/akuntansi/?$",
 			"dest": "_render"
 		},
