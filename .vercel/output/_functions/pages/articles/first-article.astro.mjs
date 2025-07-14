@@ -1,12 +1,11 @@
-import { a as createComponent, d as renderComponent, r as renderTemplate, m as maybeRenderHead, e as renderSlot, u as unescapeHTML } from '../../chunks/astro/server_BaeesDGl.mjs';
-import 'kleur/colors';
-import { $ as $$Layout, a as $$SiteHeader, b as $$SiteFooter } from '../../chunks/Layout_zTOg-nuv.mjs';
+import { a as createComponent, d as renderComponent, r as renderTemplate, m as maybeRenderHead, e as renderSlot, u as unescapeHTML } from '../../chunks/astro/server_Dk22_GYL.mjs';
+import { $ as $$Layout, a as $$SiteHeader, b as $$SiteFooter } from '../../chunks/Layout_3IfwthSu.mjs';
 /* empty css                                            */
 export { renderers } from '../../renderers.mjs';
 
 const $$ArticlePageTemplate = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Article Page", "data-astro-cid-q63jksha": true }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "SiteHeader", $$SiteHeader, { "data-astro-cid-q63jksha": true })} ${maybeRenderHead()}<main data-astro-cid-q63jksha> <div class="container" data-astro-cid-q63jksha> <!-- This template is focused on content consumption --> ${renderSlot($$result2, $$slots["default"])} </div> </main> ${renderComponent($$result2, "SiteFooter", $$SiteFooter, { "data-astro-cid-q63jksha": true })}  ` })}`;
-}, "/home/user/lunar-luminosity/src/components/templates/article-page-template/ArticlePageTemplate.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/templates/article-page-template/ArticlePageTemplate.astro", void 0);
 
 const $$FirstArticle = createComponent(($$result, $$props, $$slots) => {
   const articleData = {
@@ -40,9 +39,9 @@ const $$FirstArticle = createComponent(($$result, $$props, $$slots) => {
     // imageAlt: 'STIE Dwimulya students working with UMKM',
   };
   return renderTemplate`${renderComponent($$result, "ArticlePageTemplate", $$ArticlePageTemplate, { "title": articleData.title, "description": articleData.description }, { "default": ($$result2) => renderTemplate`  ${maybeRenderHead()}<div class="prose lg:prose-xl mx-auto py-8"> <h1>${articleData.title}</h1> <!-- You might include author and date here --> <!-- <p>By {articleData.author} on {articleData.publishedDate}</p> --> <!-- You might include an image here --> <!-- <img src={articleData.imageUrl} alt={articleData.imageAlt} /> --> <div>${unescapeHTML(articleData.content)}</div> </div>  ` })}`;
-}, "/home/user/lunar-luminosity/src/pages/articles/first-article.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/pages/articles/first-article.astro", void 0);
 
-const $$file = "/home/user/lunar-luminosity/src/pages/articles/first-article.astro";
+const $$file = "/Users/azimi.arsyad/Documents/astrodm/lumin/src/pages/articles/first-article.astro";
 const $$url = "/articles/first-article";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

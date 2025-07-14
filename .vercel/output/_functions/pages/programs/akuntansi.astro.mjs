@@ -1,12 +1,11 @@
-import { a as createComponent, d as renderComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, u as unescapeHTML } from '../../chunks/astro/server_BaeesDGl.mjs';
-import 'kleur/colors';
-import { $ as $$Layout, a as $$SiteHeader, b as $$SiteFooter } from '../../chunks/Layout_zTOg-nuv.mjs';
+import { a as createComponent, d as renderComponent, r as renderTemplate, m as maybeRenderHead, b as addAttribute, u as unescapeHTML } from '../../chunks/astro/server_Dk22_GYL.mjs';
+import { $ as $$Layout, a as $$SiteHeader, b as $$SiteFooter } from '../../chunks/Layout_3IfwthSu.mjs';
 /* empty css                                        */
 export { renderers } from '../../renderers.mjs';
 
 const $$ProgramPageTemplate = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Program Details - Stie Dwimulya", "data-astro-cid-utwapz2a": true }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "SiteHeader", $$SiteHeader, { "data-astro-cid-utwapz2a": true })} ${maybeRenderHead()}<main data-astro-cid-utwapz2a> <section class="program-hero" data-astro-cid-utwapz2a>  <h2 data-astro-cid-utwapz2a>[Program Title Placeholder]</h2> <p data-astro-cid-utwapz2a>[Program Short Description Placeholder]</p>  </section> <section class="program-overview" data-astro-cid-utwapz2a>  <h3 data-astro-cid-utwapz2a>Overview</h3> <p data-astro-cid-utwapz2a>[Detailed Program Overview Placeholder]</p>  </section> <section class="program-curriculum" data-astro-cid-utwapz2a>  <h3 data-astro-cid-utwapz2a>Curriculum</h3> <ul data-astro-cid-utwapz2a> <li data-astro-cid-utwapz2a>[Course 1 Placeholder]</li> <li data-astro-cid-utwapz2a>[Course 2 Placeholder]</li>  </ul> </section> <section class="program-admissions" data-astro-cid-utwapz2a>  <h3 data-astro-cid-utwapz2a>Admissions</h3> <p data-astro-cid-utwapz2a>[Admissions Information Placeholder]</p>  </section> <section class="program-faculty" data-astro-cid-utwapz2a>  <h3 data-astro-cid-utwapz2a>Faculty</h3>  </section> <section class="program-outcomes" data-astro-cid-utwapz2a>  <h3 data-astro-cid-utwapz2a>Career Outcomes</h3> <p data-astro-cid-utwapz2a>[Career Outcomes Information Placeholder]</p> </section> <section class="program-cta" data-astro-cid-utwapz2a>  <h3 data-astro-cid-utwapz2a>Ready to Apply?</h3>  <button data-astro-cid-utwapz2a>[Apply Now Placeholder]</button> <button data-astro-cid-utwapz2a>[Request Information Placeholder]</button> </section> </main> ${renderComponent($$result2, "SiteFooter", $$SiteFooter, { "data-astro-cid-utwapz2a": true })} ` })} `;
-}, "/home/user/lunar-luminosity/src/components/templates/program-page-template/ProgramPageTemplate.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/templates/program-page-template/ProgramPageTemplate.astro", void 0);
 
 var __freeze = Object.freeze;
 var __defProp = Object.defineProperty;
@@ -63,9 +62,9 @@ const $$Akuntansi = createComponent(($$result, $$props, $$slots) => {
     }
   };
   return renderTemplate`${renderComponent($$result, "ProgramPageTemplate", $$ProgramPageTemplate, { "title": programData.title, "description": programData.description }, { "default": ($$result2) => renderTemplate`   ${maybeRenderHead()}<h1>${programData.programName}</h1> <p>${programData.intro}</p> ${programData.sections.map((section) => renderTemplate`<section> <h2>${section.heading}</h2> <div>${unescapeHTML(section.content)}</div> </section>`)}<a${addAttribute(programData.cta.link, "href")}> <!-- Using Button atom/molecule --> <button>${programData.cta.text}</button> </a>  <section> <h2>Cerita Sukses Alumni</h2> <p>Baca testimoni dari para alumni kami yang sukses di berbagai bidang.</p> <!-- Grid Lists organism or similar (dynamic from CMS) --> </section>  <section> <h2>Dosen Pengajar</h2> <p>Kenali para dosen berpengalaman yang akan membimbing Anda.</p> <!-- Grid Lists organism or similar (dynamic from CMS) --> </section> `, "head": ($$result2) => renderTemplate(_a || (_a = __template(['<script type="application/ld+json">\n    {\n      "@context": "https://schema.org",\n      "@type": "EducationalProgram",\n      "name": "{programData.programName}",\n      "description": "{programData.description}",\n      "provider": {\n        "@type": "Organization",\n        "name": "STIE Dwimulya"\n        // Add other organization details (dynamic from CMS)\n      },\n      "educationalCredentialAwarded": "Sarjana Akuntansi (S.Ak)", // Example\n      "programPrerequisites": "Lulus SMA/SMK Sederajat", // Example\n      // Add other relevant fields (dynamic from CMS)\n    }\n  <\/script>']))) })}`;
-}, "/home/user/lunar-luminosity/src/pages/programs/akuntansi.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/pages/programs/akuntansi.astro", void 0);
 
-const $$file = "/home/user/lunar-luminosity/src/pages/programs/akuntansi.astro";
+const $$file = "/Users/azimi.arsyad/Documents/astrodm/lumin/src/pages/programs/akuntansi.astro";
 const $$url = "/programs/akuntansi";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

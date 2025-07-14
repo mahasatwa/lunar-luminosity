@@ -1,7 +1,7 @@
 // src/components/global/GlobalNavMenu.tsx
 import React, { useState, useRef } from 'react';
-import { globalNavigationData, type NavItem } from '../../data/NavigationData';
-import './GlobalNavMenu.pcss';
+import { homepageNavigationData, globalNavigationData, type NavItem } from '../../../data/NavigationData';
+// import './GlobalNavMenu.pcss';
 
 interface AccordionItemProps {
   item: NavItem;

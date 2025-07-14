@@ -1,32 +1,151 @@
 ---
-const { variant = 'primary' } = Astro.props;
+import { cn } from '../../../utils/cn';
 
-const baseStyles = `
-  padding: 0.5rem 1rem;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-`;
+interface Props {
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  fullWidth?: boolean;
+  leftIcon?: string;
+  rightIcon?: string;
+  ariaLabel?: string;
+  type?: 'button' | 'submit' | 'reset';
+  target?: '_blank' | '_self';
+  rel?: string;
+  onClick?: string;
+  class?: string;
+}
 
-const variantStyles = {
-  primary: `
-    background-color: #007bff; /* Example primary color */
-    color: white;
-  `,
-  secondary: `
-    background-color: #6c757d; /* Example secondary color */
-    color: white;
-  `,
-  tertiary: `
-    background-color: transparent;
-    color: #007bff; /* Example primary color for text */
-    border: 1px solid #007bff;
-  `,
+const { 
+  variant = 'primary',
+  size = 'md',
+  href,
+  disabled = false,
+  loading = false,
+  fullWidth = false,
+  leftIcon,
+  rightIcon,
+  ariaLabel,
+  type = 'button',
+  target,
+  rel,
+  onClick,
+  class: customClass,
+} = Astro.props;
+
+// Base styles using Tailwind classes
+const baseStyles = [
+  'inline-flex',
+  'items-center',
+  'justify-center',
+  'font-medium',
+  'rounded-md',
+  'transition-all',
+  'duration-200',
+  'focus:outline-none',
+  'focus:ring-2',
+  'focus:ring-offset-2',
+  'disabled:opacity-50',
+  'disabled:cursor-not-allowed',
+  'active:scale-95',
+];
+
+// Size variants
+const sizeStyles = {
+  sm: ['px-3', 'py-1.5', 'text-sm'],
+  md: ['px-4', 'py-2', 'text-base'],
+  lg: ['px-6', 'py-3', 'text-lg'],
 };
 
-const buttonStyles = `${baseStyles} ${variantStyles[variant]}`;
+// Variant styles
+const variantStyles = {
+  primary: [
+    'bg-primary',
+    'text-white',
+    'hover:bg-primary/90',
+    'focus:ring-primary/50',
+    'shadow-sm',
+  ],
+  secondary: [
+    'bg-secondary',
+    'text-white',
+    'hover:bg-secondary/90',
+    'focus:ring-secondary/50',
+    'shadow-sm',
+  ],
+  tertiary: [
+    'bg-transparent',
+    'text-primary',
+    'border-2',
+    'border-primary',
+    'hover:bg-primary',
+    'hover:text-white',
+    'focus:ring-primary/50',
+  ],
+  ghost: [
+    'bg-transparent',
+    'text-gray-700',
+    'hover:bg-gray-100',
+    'focus:ring-gray-500/50',
+  ],
+  danger: [
+    'bg-red-600',
+    'text-white',
+    'hover:bg-red-700',
+    'focus:ring-red-500/50',
+    'shadow-sm',
+  ],
+};
+
+// Full width style
+const fullWidthStyle = fullWidth ? ['w-full'] : [];
+
+// Loading state
+const loadingState = loading ? ['opacity-75', 'cursor-wait'] : [];
+
+// Combine all styles
+const buttonClasses = cn(
+  baseStyles,
+  sizeStyles[size],
+  variantStyles[variant],
+  fullWidthStyle,
+  loadingState,
+  customClass
+);
+
+// Choose element type based on href
+const Element = href ? 'a' : 'button';
+
+// Props for different element types
+const elementProps = href ? {
+  href,
+  target,
+  rel: target === '_blank' ? 'noopener noreferrer' : rel,
+} : {
+  type,
+  disabled: disabled || loading,
+  onClick,
+};
 ---
 
-<button class:list={[buttonStyles]}>
+<Element 
+  class={buttonClasses}
+  aria-label={ariaLabel}
+  {...elementProps}
+>
+  {loading && (
+    <svg class="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+  )}
+  {leftIcon && !loading && (
+    <span class="mr-2">{leftIcon}</span>
+  )}
   <slot />
-</button>
+  {rightIcon && (
+    <span class="ml-2">{rightIcon}</span>
+  )}
+</Element>

@@ -1,0 +1,206 @@
+---
+import { cn } from '../../../utils/cn';
+
+interface Props {
+  type?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number' | 'date' | 'datetime-local' | 'month' | 'time' | 'week';
+  name: string;
+  id?: string;
+  value?: string;
+  placeholder?: string;
+  label?: string;
+  helpText?: string;
+  errorMessage?: string;
+  required?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'default' | 'filled' | 'outlined';
+  fullWidth?: boolean;
+  leftIcon?: string;
+  rightIcon?: string;
+  min?: string | number;
+  max?: string | number;
+  step?: string | number;
+  pattern?: string;
+  autocomplete?: string;
+  inputmode?: 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+  class?: string;
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
+}
+
+const {
+  type = 'text',
+  name,
+  id = name,
+  value,
+  placeholder,
+  label,
+  helpText,
+  errorMessage,
+  required = false,
+  disabled = false,
+  readonly = false,
+  size = 'md',
+  variant = 'default',
+  fullWidth = false,
+  leftIcon,
+  rightIcon,
+  min,
+  max,
+  step,
+  pattern,
+  autocomplete,
+  inputmode,
+  class: customClass,
+  ariaLabel,
+  ariaDescribedBy,
+} = Astro.props;
+
+// Base input styles
+const baseStyles = [
+  'block',
+  'border',
+  'rounded-md',
+  'transition-all',
+  'duration-200',
+  'focus:outline-none',
+  'focus:ring-2',
+  'focus:ring-offset-1',
+  'disabled:opacity-50',
+  'disabled:cursor-not-allowed',
+  'disabled:bg-gray-100',
+];
+
+// Size variants
+const sizeStyles = {
+  sm: ['px-3', 'py-1.5', 'text-sm'],
+  md: ['px-3', 'py-2', 'text-base'],
+  lg: ['px-4', 'py-3', 'text-lg'],
+};
+
+// Variant styles
+const variantStyles = {
+  default: [
+    'bg-white',
+    'border-gray-300',
+    'text-gray-900',
+    'placeholder-gray-400',
+    'focus:border-primary',
+    'focus:ring-primary/50',
+  ],
+  filled: [
+    'bg-gray-50',
+    'border-gray-200',
+    'text-gray-900',
+    'placeholder-gray-500',
+    'focus:bg-white',
+    'focus:border-primary',
+    'focus:ring-primary/50',
+  ],
+  outlined: [
+    'bg-transparent',
+    'border-2',
+    'border-gray-300',
+    'text-gray-900',
+    'placeholder-gray-400',
+    'focus:border-primary',
+    'focus:ring-primary/25',
+  ],
+};
+
+// Error state styles
+const errorStyles = errorMessage ? [
+  'border-red-500',
+  'text-red-900',
+  'placeholder-red-400',
+  'focus:border-red-500',
+  'focus:ring-red-500/50',
+] : [];
+
+// Full width style
+const fullWidthStyle = fullWidth ? ['w-full'] : [];
+
+// Combine all styles
+const inputClasses = cn(
+  baseStyles,
+  sizeStyles[size],
+  variantStyles[variant],
+  errorStyles,
+  fullWidthStyle,
+  leftIcon ? 'pl-10' : '',
+  rightIcon ? 'pr-10' : '',
+  customClass
+);
+
+// Generate IDs for accessibility
+const inputId = id;
+const helpTextId = helpText ? `${inputId}-help` : undefined;
+const errorId = errorMessage ? `${inputId}-error` : undefined;
+const describedBy = [helpTextId, errorId, ariaDescribedBy].filter(Boolean).join(' ');
+
+// Label styles
+const labelStyles = cn(
+  'block',
+  'text-sm',
+  'font-medium',
+  'mb-1',
+  errorMessage ? 'text-red-700' : 'text-gray-700',
+  required ? 'after:content-["*"] after:ml-0.5 after:text-red-500' : ''
+);
+---
+
+<div class={cn('relative', fullWidth ? 'w-full' : '')}>
+  {label && (
+    <label for={inputId} class={labelStyles}>
+      {label}
+    </label>
+  )}
+  
+  <div class="relative">
+    {leftIcon && (
+      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <span class="text-gray-400 sm:text-sm">{leftIcon}</span>
+      </div>
+    )}
+    
+    <input
+      type={type}
+      id={inputId}
+      name={name}
+      value={value}
+      placeholder={placeholder}
+      required={required}
+      disabled={disabled}
+      readonly={readonly}
+      min={min}
+      max={max}
+      step={step}
+      pattern={pattern}
+      autocomplete={autocomplete}
+      inputmode={inputmode}
+      class={inputClasses}
+      aria-label={ariaLabel}
+      aria-describedby={describedBy || undefined}
+      aria-invalid={errorMessage ? 'true' : 'false'}
+    />
+    
+    {rightIcon && (
+      <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+        <span class="text-gray-400 sm:text-sm">{rightIcon}</span>
+      </div>
+    )}
+  </div>
+  
+  {helpText && !errorMessage && (
+    <p id={helpTextId} class="mt-1 text-sm text-gray-500">
+      {helpText}
+    </p>
+  )}
+  
+  {errorMessage && (
+    <p id={errorId} class="mt-1 text-sm text-red-600" role="alert">
+      {errorMessage}
+    </p>
+  )}
+</div>

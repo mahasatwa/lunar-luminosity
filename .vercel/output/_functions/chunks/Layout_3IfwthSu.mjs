@@ -1,8 +1,7 @@
-import { a as createComponent, m as maybeRenderHead, b as addAttribute, r as renderTemplate, d as renderComponent, F as Fragment, u as unescapeHTML, c as createAstro, l as renderHead, e as renderSlot } from './astro/server_BaeesDGl.mjs';
-import 'kleur/colors';
+import { a as createComponent, m as maybeRenderHead, b as addAttribute, r as renderTemplate, d as renderComponent, F as Fragment, u as unescapeHTML, c as createAstro, k as renderHead, e as renderSlot } from './astro/server_Dk22_GYL.mjs';
 import { clsx } from 'clsx';
-/* empty css                                 */
 import { twMerge } from 'tailwind-merge';
+/* empty css                                 */
 
 const $$SiteFooter = createComponent(($$result, $$props, $$slots) => {
   const aboutLinks = [
@@ -63,15 +62,41 @@ Hubungi Kami
 </h3> <div class="flex space-x-4 mb-6"> ${socialLinks.map((social) => renderTemplate`<a${addAttribute(social.href, "href")} class="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer"> <span class="sr-only">${social.label}</span> ${renderComponent($$result, "Fragment", Fragment, {}, { "default": ($$result2) => renderTemplate`${unescapeHTML(social.icon)}` })} </a>`)} </div> <address class="not-italic text-gray-400 space-y-2"> <p>STIE Dwimulya</p> <p>Jl. Jenderal Sudirman No.Kav. 52-53</p> <p>Serang, Banten 42118, Indonesia</p> <p>Telepon: (0254) 123-456</p> <p>Email: info@stiedwimulya.ac.id</p> </address> </div> </div> <div class="border-t border-gray-800 pt-8 mt-8 text-center text-gray-500 text-sm"> <p>
 &copy; ${(/* @__PURE__ */ new Date()).getFullYear()} STIE Dwimulya. Hak Cipta Dilindungi Undang-Undang.
 </p> <div class="flex justify-center space-x-4 mt-4"> <a href="/kebijakan-privasi" class="hover:underline">Kebijakan Privasi</a> <span>&bull;</span> <a href="/syarat-ketentuan" class="hover:underline">Syarat & Ketentuan</a> <span>&bull;</span> <a href="/peta-situs" class="hover:underline">Peta Situs</a> </div> </div> </div> </footer>`;
-}, "/home/user/lunar-luminosity/src/components/organisms/site-footer/SiteFooter.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/organisms/site-footer/SiteFooter.astro", void 0);
+
+function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
 
 const $$Astro$6 = createAstro("https://www.stiedwimulya.ac.id");
 const $$Logo = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
   Astro2.self = $$Logo;
-  const { src, alt } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<img${addAttribute(src, "src")}${addAttribute(alt, "alt")}>`;
-}, "/home/user/lunar-luminosity/src/components/atoms/logo/Logo.astro", void 0);
+  const {
+    src = "/logo-primary.svg",
+    alt = "STIE Dwimulya",
+    size = "md",
+    variant = "primary",
+    class: customClass,
+    href = "/",
+    showText = false,
+    loading = "eager"
+  } = Astro2.props;
+  const sizeStyles = {
+    sm: "h-8 w-auto",
+    md: "h-12 w-auto",
+    lg: "h-16 w-auto",
+    xl: "h-20 w-auto"
+  };
+  const variantSrc = {
+    primary: "/logo-primary.svg",
+    white: "/logo-white.svg",
+    dark: "/logo-dark.svg"
+  };
+  const logoSrc = variantSrc[variant] || src;
+  const logoClasses = cn(sizeStyles[size], "object-contain", customClass);
+  return renderTemplate`${href ? renderTemplate`${maybeRenderHead()}<a${addAttribute(href, "href")} class="inline-flex items-center transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 rounded-sm"${addAttribute(`${alt} - Beranda`, "aria-label")}>${showText ? renderTemplate`<div class="flex items-center space-x-3"><img${addAttribute(logoSrc, "src")}${addAttribute(alt, "alt")}${addAttribute(logoClasses, "class")}${addAttribute(loading, "loading")}><div class="flex flex-col"><span class="text-lg font-bold text-primary">STIE Dwimulya</span><span class="text-sm text-gray-600">Sekolah Tinggi Ilmu Ekonomi</span></div></div>` : renderTemplate`<img${addAttribute(logoSrc, "src")}${addAttribute(alt, "alt")}${addAttribute(logoClasses, "class")}${addAttribute(loading, "loading")}>`}</a>` : showText ? renderTemplate`<div class="flex items-center space-x-3"><img${addAttribute(logoSrc, "src")}${addAttribute(alt, "alt")}${addAttribute(logoClasses, "class")}${addAttribute(loading, "loading")}><div class="flex flex-col"><span class="text-lg font-bold text-primary">STIE Dwimulya</span><span class="text-sm text-gray-600">Sekolah Tinggi Ilmu Ekonomi</span></div></div>` : renderTemplate`<img${addAttribute(logoSrc, "src")}${addAttribute(alt, "alt")}${addAttribute(logoClasses, "class")}${addAttribute(loading, "loading")}>`}`;
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/atoms/logo/Logo.astro", void 0);
 
 const $$Astro$5 = createAstro("https://www.stiedwimulya.ac.id");
 const $$Button = createComponent(($$result, $$props, $$slots) => {
@@ -83,7 +108,7 @@ const $$Button = createComponent(($$result, $$props, $$slots) => {
     { "bg-blue-600 text-white hover:bg-blue-700": variant === "primary" },
     { "bg-white text-blue-600 border border-blue-600 hover:bg-gray-100": variant === "secondary" }
   ], "class:list")}> ${label} </a>`;
-}, "/home/user/lunar-luminosity/src/components/atoms/button/Button.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/atoms/button/Button.astro", void 0);
 
 const $$Astro$4 = createAstro("https://www.stiedwimulya.ac.id");
 const $$Icon = createComponent(($$result, $$props, $$slots) => {
@@ -105,7 +130,7 @@ const $$Icon = createComponent(($$result, $$props, $$slots) => {
       svgPath = '<circle cx="12" cy="12" r="10" fill="currentColor" />';
   }
   return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"${addAttribute(`icon ${className || ""}`, "class")} aria-hidden="true" data-astro-cid-s5vmrxnm>${unescapeHTML(svgPath)}</svg> `;
-}, "/home/user/lunar-luminosity/src/components/atoms/icons/Icon.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/atoms/icons/Icon.astro", void 0);
 
 const $$Astro$3 = createAstro("https://www.stiedwimulya.ac.id");
 const $$NavLink = createComponent(($$result, $$props, $$slots) => {
@@ -113,7 +138,7 @@ const $$NavLink = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$NavLink;
   const { text, href, submenu } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<li class="relative group"> <a${addAttribute(href || "#", "href")} class="flex items-center p-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md transition-colors duration-200"> <span>${text}</span> ${submenu && renderTemplate`${renderComponent($$result, "Icon", $$Icon, { "name": "tabler:chevron-down", "class": "w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" })}`} </a> ${submenu && renderTemplate`<ul class="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-200 z-30"> ${submenu.map((item) => renderTemplate`${renderComponent($$result, "Astro.self", Astro2.self, { ...item })}`)} </ul>`} </li>`;
-}, "/home/user/lunar-luminosity/src/components/molecules/nav-link/NavLink.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/molecules/nav-link/NavLink.astro", void 0);
 
 const globalNavigationData = [
   {
@@ -166,11 +191,7 @@ const globalNavigationData = [
 
 const $$SiteHeader = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<header class="sticky top-0 bg-white/80 backdrop-blur-lg shadow-sm z-50" data-astro-cid-6jwomyys> <div class="container mx-auto px-6 flex items-center justify-between h-20" data-astro-cid-6jwomyys> <div class="flex-shrink-0" data-astro-cid-6jwomyys> <a href="/" aria-label="Beranda STIE Dwimulya" data-astro-cid-6jwomyys> ${renderComponent($$result, "Logo", $$Logo, { "src": "/logo-primary.svg", "alt": "STIE Dwimulya Logo", "data-astro-cid-6jwomyys": true })} </a> </div>  <input type="checkbox" id="menu-toggle" class="hidden" data-astro-cid-6jwomyys> <label for="menu-toggle" class="md:hidden cursor-pointer z-50" data-astro-cid-6jwomyys> ${renderComponent($$result, "Icon", $$Icon, { "name": "tabler:menu-2", "class": "w-8 h-8", "data-astro-cid-6jwomyys": true })} </label>  <nav class="hidden md:flex items-center space-x-2" data-astro-cid-6jwomyys> <ul class="flex space-x-2" data-astro-cid-6jwomyys> ${globalNavigationData.map((item) => renderTemplate`${renderComponent($$result, "NavLink", $$NavLink, { ...item, "data-astro-cid-6jwomyys": true })}`)} </ul> </nav> <div class="hidden md:block" data-astro-cid-6jwomyys> ${renderComponent($$result, "Button", $$Button, { "href": "/penerimaan", "label": "Pendaftaran", "data-astro-cid-6jwomyys": true })} </div>  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-white transform -translate-x-full transition-transform duration-300 ease-in-out z-40 md:hidden" data-astro-cid-6jwomyys> <div class="p-6 pt-24" data-astro-cid-6jwomyys> <nav data-astro-cid-6jwomyys> <ul class="flex flex-col space-y-4" data-astro-cid-6jwomyys> ${globalNavigationData.map((item) => renderTemplate`<li data-astro-cid-6jwomyys> <a${addAttribute(item.href || "#", "href")} class="text-lg font-semibold text-gray-800" data-astro-cid-6jwomyys>${item.text}</a> ${item.submenu && renderTemplate`<ul class="mt-2 pl-4 space-y-2" data-astro-cid-6jwomyys> ${item.submenu.map((subItem) => renderTemplate`<li data-astro-cid-6jwomyys><a${addAttribute(subItem.href, "href")} class="text-gray-600" data-astro-cid-6jwomyys>${subItem.text}</a></li>`)} </ul>`} </li>`)} </ul> </nav> <div class="mt-8" data-astro-cid-6jwomyys> ${renderComponent($$result, "Button", $$Button, { "href": "/penerimaan", "label": "Pendaftaran", "data-astro-cid-6jwomyys": true })} </div> </div> </div> </div> </header> `;
-}, "/home/user/lunar-luminosity/src/components/organisms/site-header/SiteHeader.astro", void 0);
-
-function cn(...inputs) {
-  return twMerge(clsx(inputs));
-}
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/organisms/site-header/SiteHeader.astro", void 0);
 
 const $$Astro$2 = createAstro("https://www.stiedwimulya.ac.id");
 const $$GlobalMenuOverlay = createComponent(($$result, $$props, $$slots) => {
@@ -183,7 +204,7 @@ const $$GlobalMenuOverlay = createComponent(($$result, $$props, $$slots) => {
     The interactive menu functionality will need to be re-implemented
     either with vanilla JS or once the toolchain bug is resolved.
   --> <div class="placeholder-content p-8 text-white" data-astro-cid-q4qthebm> <h2 class="text-2xl font-bold mb-4" data-astro-cid-q4qthebm>Global Menu</h2> <p data-astro-cid-q4qthebm>Menu content would be rendered here.</p> </div> </div> `;
-}, "/home/user/lunar-luminosity/src/components/organisms/GlobalMenuOverlay.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/organisms/GlobalMenuOverlay.astro", void 0);
 
 const $$Astro$1 = createAstro("https://www.stiedwimulya.ac.id");
 const $$SEO = createComponent(($$result, $$props, $$slots) => {
@@ -206,7 +227,7 @@ const $$SEO = createComponent(($$result, $$props, $$slots) => {
     robots.follow ? "follow" : "nofollow"
   ].join(", ");
   return renderTemplate`<title>${formattedTitle}</title><meta name="description"${addAttribute(description, "content")}><meta name="generator"${addAttribute(Astro2.generator, "content")}><link rel="canonical"${addAttribute(canonicalUrl, "href")}><meta name="robots"${addAttribute(robotsContent, "content")}><meta property="og:title"${addAttribute(formattedTitle, "content")}><meta property="og:description"${addAttribute(description, "content")}><meta property="og:url"${addAttribute(canonicalUrl, "content")}><meta property="og:image"${addAttribute(ogImageUrl, "content")}><meta property="og:type"${addAttribute(ogType, "content")}><meta property="og:site_name"${addAttribute(SITE_TITLE, "content")}><meta property="og:locale" content="id_ID"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site"${addAttribute(TWITTER_HANDLE, "content")}><meta name="twitter:title"${addAttribute(formattedTitle, "content")}><meta name="twitter:description"${addAttribute(description, "content")}><meta name="twitter:image"${addAttribute(ogImageUrl, "content")}><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#A51C30">`;
-}, "/home/user/lunar-luminosity/src/components/utils/SEO.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/utils/SEO.astro", void 0);
 
 const $$Astro = createAstro("https://www.stiedwimulya.ac.id");
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
@@ -214,6 +235,6 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$Layout;
   const { title, description, image, ogType } = Astro2.props;
   return renderTemplate`<html lang="id"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">${renderComponent($$result, "SEO", $$SEO, { "title": title, "description": description, "image": image, "ogType": ogType })}${renderHead()}</head> <body class="font-sans antialiased text-gray-800 relative">  ${renderComponent($$result, "SiteHeader", $$SiteHeader, {})} ${renderComponent($$result, "GlobalMenuOverlay", $$GlobalMenuOverlay, { "class": "global-menu-overlay" })} <main> ${renderSlot($$result, $$slots["default"])} </main> ${renderComponent($$result, "Footer", $$SiteFooter, {})} </body></html>`;
-}, "/home/user/lunar-luminosity/src/layouts/Layout.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/layouts/Layout.astro", void 0);
 
 export { $$Layout as $, $$SiteHeader as a, $$SiteFooter as b, cn as c, $$Button as d, $$Icon as e };

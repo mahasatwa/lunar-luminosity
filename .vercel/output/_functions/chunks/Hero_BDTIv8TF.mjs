@@ -1,6 +1,5 @@
-import { c as createAstro, a as createComponent, d as renderComponent, r as renderTemplate, m as maybeRenderHead } from './astro/server_BaeesDGl.mjs';
-import 'kleur/colors';
-import { c as cn, d as $$Button } from './Layout_zTOg-nuv.mjs';
+import { c as createAstro, a as createComponent, d as renderComponent, r as renderTemplate, m as maybeRenderHead } from './astro/server_Dk22_GYL.mjs';
+import { c as cn, d as $$Button } from './Layout_3IfwthSu.mjs';
 import { jsx } from 'react/jsx-runtime';
 import 'react';
 import { v2 } from 'cloudinary';
@@ -18,7 +17,7 @@ const $$Heading = createComponent(($$result, $$props, $$slots) => {
   };
   const finalSize = size || (Element === "h1" ? "xl" : Element === "h2" ? "lg" : "md");
   return renderTemplate`${renderComponent($$result, "Element", Element, { "class": cn(sizeClasses[finalSize], addClass) }, { "default": ($$result2) => renderTemplate`${text}` })}`;
-}, "/home/user/lunar-luminosity/src/components/atoms/heading/Heading.astro", void 0);
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/atoms/heading/Heading.astro", void 0);
 
 function getOptimizedImageUrl(publicId, options = {}) {
   const {
@@ -89,7 +88,7 @@ const $$Hero = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Hero;
   const { content } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<section class="relative text-white"> <div class="absolute inset-0 bg-black opacity-50 z-10"></div> ${renderComponent($$result, "ResponsiveImage", ResponsiveImage, { "src": content.image.url, "alt": content.image.alt, "addClass": "absolute inset-0 w-full h-full object-cover", "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/user/lunar-luminosity/src/components/utils/ResponsiveImage.tsx", "client:component-export": "default" })} <div class="relative z-20 container mx-auto px-6 py-24 md:py-32 text-center"> ${renderComponent($$result, "Heading", $$Heading, { "as": "h1", "text": content.title, "addClass": "mb-4" })} <p class="max-w-3xl mx-auto text-lg md:text-xl mb-8">${content.subtitle}</p> ${renderComponent($$result, "Button", $$Button, { "label": content.cta.label, "href": content.cta.href })} </div> </section>`;
-}, "/home/user/lunar-luminosity/src/components/organisms/hero/Hero.astro", void 0);
+  return renderTemplate`${maybeRenderHead()}<section class="relative text-white"> <div class="absolute inset-0 bg-black opacity-50 z-10"></div> ${renderComponent($$result, "ResponsiveImage", ResponsiveImage, { "src": content.image.url, "alt": content.image.alt, "addClass": "absolute inset-0 w-full h-full object-cover", "client:load": true, "client:component-hydration": "load", "client:component-path": "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/utils/ResponsiveImage.tsx", "client:component-export": "default" })} <div class="relative z-20 container mx-auto px-6 py-24 md:py-32 text-center"> ${renderComponent($$result, "Heading", $$Heading, { "as": "h1", "text": content.title, "addClass": "mb-4" })} <p class="max-w-3xl mx-auto text-lg md:text-xl mb-8">${content.subtitle}</p> ${renderComponent($$result, "Button", $$Button, { "label": content.cta.label, "href": content.cta.href })} </div> </section>`;
+}, "/Users/azimi.arsyad/Documents/astrodm/lumin/src/components/organisms/hero/Hero.astro", void 0);
 
 export { $$Hero as $, ResponsiveImage as R, $$Heading as a };
