@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'svg'> {
+  name: string; // Placeholder for icon name
+}
+
+const { name, ...attrs } = Astro.props;
+---
+
+<svg aria-label={name} {...attrs}>
+  {/* Placeholder for icon SVG content */}
+  <title>{name}</title>
+  {/* In a real implementation, you would render SVG paths or use an icon library based on the `name` prop */}
+</svg>
+
+<style>
+  /* Basic styling or include your icon library styles */
+  svg {
+    display: inline-block;
+    width: 1em; /* Example size */
+    height: 1em; /* Example size */
+    vertical-align: middle;
+    fill: currentColor; /* Example color */
+  }
+</style>

@@ -1,0 +1,130 @@
+---
+import { useState } from 'react';
+import { cn } from 'design-system/utils/cn'; // Assuming cn utility is available
+import LogoWithBranding from '../molecules/LogoWithBranding.astro';
+import LocalNavigation from '../molecules/LocalNavigation.astro';
+import ControlButtons from '../molecules/ControlButtons.astro';
+import { defaultLocalMenuData } from '../../data/NavigationData'; // Assuming this is where the data lives
+
+// Props for the header component
+interface Props {
+  sticky?: boolean;
+  position?: 'sticky' | 'relative';
+  hasAlert?: boolean;
+  isWorkingKnowledge?: boolean;
+  isMinimalHeader?: boolean;
+  isHomepage?: boolean;
+  domain?: 'online' | 'other'; // Example domain prop for class variation
+}
+
+const {
+  sticky = false,
+  position = 'relative',
+  hasAlert = false,
+  isWorkingKnowledge = false,
+  isMinimalHeader = false,
+  isHomepage = false,
+  domain = 'online',
+} = Astro.props;
+
+// State for menu open/close (assuming this is managed at a higher level and passed down)
+// For demonstration, we'll use a local state, but in a real app,
+// this might be lifted or managed via a framework state.
+// We'll simulate state management here for the example.
+let isMenuOpen = false;
+
+const handleMenuToggle = () => {
+  isMenuOpen = !isMenuOpen;
+  // In a real React/Preact island, you would update the state here
+  // to trigger re-render and class updates.
+  // e.g., setIsMenuOpen(!isMenuOpen);
+};
+
+// Conditional classes using cn utility
+const headerClass = cn(
+  domain === 'online' ? 'site-header' : 'site-header noindex',
+  domain === 'online' && 'site-header--online',
+  sticky && position === 'sticky' && 'site-header--sticky',
+  position === 'relative' && 'site-header--relative',
+  isMenuOpen && 'site-header--menu-is-open',
+  hasAlert && 'site-header--header-alert',
+  isWorkingKnowledge && 'wk-site-header',
+  isMinimalHeader && 'site-header--minimal',
+  isHomepage && 'site-header--homepage',
+);
+
+// Logic to determine if local navigation should be visible
+// In a pure Astro component, screen size check would be limited.
+// For client-side responsiveness, an Astro island would be necessary.
+// Example pseudo-logic (replace with actual client-side check in an island):
+let showLocalNavigation = !isMenuOpen;
+// In a React/Preact island, you'd use useResizeObserver here to update
+// `showLocalNavigation` based on screen width > 768px and `isMenuOpen`.
+
+---
+
+<header class={headerClass}>
+  <div class="container mx-auto flex items-center justify-between py-4 px-6">
+    {/* Left Section: Logo and Branding */}
+    <div class="flex items-center">
+      <LogoWithBranding src="/assets/logo.svg" alt="STIE Dwimulya Logo" href="/" />
+    </div>
+
+    {/* Center Section: Local Navigation (Desktop Only, Hides when Menu Open) */}
+    {
+      showLocalNavigation && (
+        <div
+          class:list={[
+            'hidden md:flex flex-grow justify-center',
+            {
+              'transition-opacity transition-transform duration-300 opacity-0 transform -translate-x-full': isMenuOpen,
+              'transition-opacity transition-transform duration-300 opacity-100 transform translate-x-0': !isMenuOpen
+            }
+          ]}
+        >
+          <LocalNavigation navItems={defaultLocalMenuData} />
+        </div>
+      )
+    }
+
+    {/* Right Section: Control Buttons */}
+    <div class="flex items-center space-x-4">
+      <ControlButtons onMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} />
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Add specific styles or override Tailwind classes here if needed */
+  /* For the transition on LocalNavigation when menu opens */
+  .transition-opacity {
+    transition-property: opacity;
+  }
+  .transition-transform {
+    transition-property: transform;
+  }
+  .duration-300 {
+    transition-duration: 300ms;
+  }
+</style>
+
+{/*
+  Client-side Interactivity Notes:
+
+  To handle the responsive behavior of the header (like hiding LocalNavigation
+  on smaller screens, animating the hamburger icon, and toggling the
+  full-screen global menu overlay), this component would ideally be wrapped
+  in an Astro island (e.g., using a .tsx or .jsx component and adding
+  `client:load` or `client:visible`).
+
+  Inside the Astro island component (e.g., `SiteHeader.tsx`):
+  1. Use `useState` to manage the `isMenuOpen` state.
+  2. Use the `useResizeObserver` hook (as provided in documentation) to
+     get the current viewport width.
+  3. Update `showLocalNavigation` state based on `isMenuOpen` and viewport width
+     (e.g., `setShowLocalNavigation(!isMenuOpen && width > 768)`).
+  4. Pass the `isMenuOpen` state down to `ControlButtons` to manage the icon animation.
+  5. Implement the full-screen menu overlay toggle based on `isMenuOpen` state.
+     This might involve rendering the global menu component conditionally
+     or using a portal to render it outside the header's DOM tree.
+*/}

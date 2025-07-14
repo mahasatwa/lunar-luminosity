@@ -1,6 +1,6 @@
 import { b as createAstro, c as createComponent, r as renderComponent, F as Fragment, a as renderTemplate, d as renderSlot, m as maybeRenderHead } from '../chunks/astro/server_BfQs_CC2.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_BtTDiZMZ.mjs';
+import { $ as $$Layout } from '../chunks/Layout_Ch54PjWF.mjs';
 import { b as $$Button, $ as $$SiteHeader, a as $$SiteFooter } from '../chunks/SiteFooter_CgioIMBn.mjs';
 /* empty css                                 */
 import 'clsx';

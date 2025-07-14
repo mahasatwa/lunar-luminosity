@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'button'> {
+  text: string;
+}
+
+const { text, onClick, ...attributes } = Astro.props;
+---
+
+<button
+  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  onClick={onClick}
+  {...attributes}
+>
+  {text}
+</button>

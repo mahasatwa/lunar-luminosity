@@ -1,0 +1,20 @@
+---
+import NavLink from '../atoms/NavLink.astro';
+
+interface LocalNavItem {
+  text: string;
+  href: string;
+}
+
+interface Props {
+  items: LocalNavItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="hidden md:flex items-center space-x-6">
+  {items.map(item => (
+    <NavLink href={item.href} text={item.text} />
+  ))}
+</nav>
