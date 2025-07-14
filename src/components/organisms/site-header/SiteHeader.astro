@@ -1,86 +1,77 @@
 ---
 // src/components/organisms/site-header/SiteHeader.astro
-import { cn } from '../../../utils/cn';
+import Logo from '../../atoms/logo/Logo.astro';
+import Button from '../../atoms/button/Button.astro';
+import Icon from '../../atoms/icons/Icon.astro';
+import NavLink from '../../molecules/nav-link/NavLink.astro';
+import type { NavItem } from '../../molecules/nav-link/NavLink.astro';
 
-// Props are now received directly by the Astro component
-interface Props {
-  sticky?: boolean;
-  position?: 'sticky' | 'relative';
-  hasAlert?: boolean;
-  isWorkingKnowledge?: boolean;
-  isMinimalHeader?: boolean;
-  isHomepage?: boolean;
-  isMenuOpen?: boolean;
-  domain?: 'online' | 'other';
-}
-
-const {
-  sticky = false,
-  position = 'relative',
-  hasAlert = false,
-  isWorkingKnowledge = false,
-  isMinimalHeader = false,
-  isHomepage = false,
-  isMenuOpen = false,
-  domain = 'online',
-} = Astro.props;
-
-// Class logic is now handled in the Astro frontmatter.
-// We will pass the final class string to the header element.
-// Note: React-specific state like `isSticky` will be handled by a client script.
-const headerClass = cn(
-  'site-header', // base class
-  domain === 'online' ? 'site-header--online' : 'noindex',
-  position === 'relative' && 'site-header--relative',
-  isMenuOpen && 'site-header--menu-is-open',
-  hasAlert && 'site-header--header-alert',
-  isWorkingKnowledge && 'wk-site-header',
-  isMinimalHeader && 'site-header--minimal',
-  isHomepage && 'site-header--homepage',
-  // The 'site-header--sticky' class will be toggled by the client script
-);
+// Mengimpor data navigasi
+import { globalNavigationData } from '../../../data/NavigationData.ts';
 ---
-<header class={headerClass} data-position={position}>
-  <div class="container mx-auto flex items-center justify-between py-4 px-6">
-    <!-- 
-      The actual content of the header (Logo, Navigation, etc.) would go here.
-      This logic is now self-contained within a single .astro file.
-    -->
-    <p>Site Header Content</p>
-  </div>
+
+<header class="sticky top-0 bg-white/80 backdrop-blur-lg shadow-sm z-50">
+    <div class="container mx-auto px-6 flex items-center justify-between h-20">
+        <div class="flex-shrink-0">
+            <a href="/" aria-label="Beranda STIE Dwimulya">
+                <Logo />
+            </a>
+        </div>
+
+        {/* Hamburger Menu Trigger (Checkbox Hack) */}
+        <input type="checkbox" id="menu-toggle" class="hidden" />
+        <label for="menu-toggle" class="md:hidden cursor-pointer z-50">
+            <Icon name="tabler:menu-2" class="w-8 h-8" />
+        </label>
+
+        {/* Desktop Navigation */}
+        <nav class="hidden md:flex items-center space-x-2">
+            <ul class="flex space-x-2">
+                {globalNavigationData.map((item: NavItem) => (
+                    <NavLink {...item} />
+                ))}
+            </ul>
+        </nav>
+
+        <div class="hidden md:block">
+            <Button href="/penerimaan" label="Pendaftaran" />
+        </div>
+
+        {/* Mobile Navigation Panel */}
+        <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-white transform -translate-x-full transition-transform duration-300 ease-in-out z-40 md:hidden">
+            <div class="p-6 pt-24">
+                <nav>
+                    <ul class="flex flex-col space-y-4">
+                        {globalNavigationData.map((item: NavItem) => (
+                            <li>
+                                <a href={item.href || '#'} class="text-lg font-semibold text-gray-800">{item.text}</a>
+                                {item.submenu && (
+                                    <ul class="mt-2 pl-4 space-y-2">
+                                        {item.submenu.map(subItem => (
+                                            <li><a href={subItem.href} class="text-gray-600">{subItem.text}</a></li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+                <div class="mt-8">
+                    <Button href="/penerimaan" label="Pendaftaran" />
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 
-<script>
-  // This script handles client-side interactivity, replacing React's useEffect.
-  document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('.site-header') as HTMLElement;
-    if (!header) return;
-
-    // Logic for sticky header, formerly a useEffect
-    const handleScroll = () => {
-      const isSticky = window.scrollY > 0;
-      if (header.dataset.position === 'sticky') {
-        header.classList.toggle('site-header--sticky', isSticky);
-      }
-    };
-
-    // Attach event listeners
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Initial check
-    handleScroll();
-
-    // Cleanup (not strictly necessary in the same way as React, but good practice)
-    // Astro handles script lifecycle, so manual cleanup is less common.
-  });
-</script>
-
 <style>
-  /* Basic styles for demonstration */
-  .site-header--sticky {
-    position: sticky;
-    top: 0;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+    /* "Checkbox Hack" untuk menu mobile */
+    #menu-toggle:checked ~ #mobile-menu {
+        transform: translateX(0);
+    }
+
+    #menu-toggle:checked ~ label[for="menu-toggle"] {
+        /* Opsi: Ubah ikon hamburger menjadi 'X' saat menu terbuka */
+        /* Ini memerlukan penambahan ikon kedua yang hanya terlihat saat dicentang */
+    }
 </style>

@@ -1,0 +1,90 @@
+{
+  "pageId": "fasilitas",
+  "pageTitle": "Fasilitas Kampus",
+  "header": {
+    "component": "GlobalNav",
+    "props": {
+      "title": "Fasilitas Kampus"
+      // ...other header properties
+    }
+  },
+  "components": [
+    {
+      "component": "Hero",
+      "props": {
+        "title": "Fasilitas Modern untuk Pengalaman Belajar Terbaik",
+        "subtitle": "Kami menyediakan fasilitas lengkap untuk mendukung setiap aspek kehidupan kampus Anda.",
+        "image": "/images/hero-fasilitas.jpg"
+      }
+    },
+    {
+      "component": "CardGrid",
+      "props": {
+        "title": "Jelajahi Fasilitas Kami",
+        "cards": [
+          {
+            "id": "fasilitas-perpustakaan",
+            "title": "Perpustakaan",
+            "summary": "Perpustakaan modern dengan koleksi buku, jurnal, dan sumber daya digital yang luas. Dilengkapi dengan ruang baca yang nyaman dan area diskusi.",
+            "image": "/images/fasilitas-perpustakaan.jpg",
+            "link": "/fasilitas/perpustakaan"
+          },
+          {
+            "id": "fasilitas-laboratorium",
+            "title": "Laboratorium",
+            "summary": "Laboratorium komputer dan sains yang dilengkapi dengan peralatan canggih untuk mendukung kegiatan praktikum dan penelitian mahasiswa.",
+            "image": "/images/fasilitas-laboratorium.jpg",
+            "link": "/fasilitas/laboratorium"
+          },
+          {
+            "id": "fasilitas-ruang-kelas",
+            "title": "Ruang Kelas Interaktif",
+            "summary": "Ruang kelas yang didesain untuk pembelajaran interaktif, dilengkapi dengan proyektor, sistem audio visual, dan akses internet kecepatan tinggi.",
+            "image": "/images/fasilitas-ruang-kelas.jpg",
+            "link": "/fasilitas/ruang-kelas"
+          },
+          {
+            "id": "fasilitas-olahraga",
+            "title": "Sarana Olahraga",
+            "summary": "Fasilitas olahraga meliputi lapangan basket, lapangan voli, dan area terbuka hijau untuk kegiatan fisik dan rekreasi mahasiswa.",
+            "image": "/images/fasilitas-olahraga.jpg",
+            "link": "/fasilitas/olahraga"
+          },
+           {
+            "id": "fasilitas-kantin",
+            "title": "Kantin Mahasiswa",
+            "summary": "Menyediakan berbagai pilihan makanan dan minuman sehat dengan harga terjangkau. Merupakan tempat favorit mahasiswa untuk berinteraksi.",
+            "image": "/images/fasilitas-kantin.jpg",
+            "link": "/fasilitas/kantin"
+          },
+          {
+            "id": "fasilitas-aula",
+            "title": "Aula Serbaguna",
+            "summary": "Aula berkapasitas besar yang digunakan untuk acara-acara penting seperti wisuda, seminar, dan kegiatan kemahasiswaan lainnya.",
+            "image": "/images/fasilitas-aula.jpg",
+            "link": "/fasilitas/aula"
+          }
+        ]
+      }
+    },
+    {
+      "component": "MediaText",
+      "props": {
+        "title": "Detail Fasilitas Perpustakaan",
+        "text": "Perpustakaan kami adalah pusat pengetahuan di kampus. Dengan koleksi lebih dari 50.000 buku dan akses ke ribuan jurnal elektronik, mahasiswa dan dosen dapat dengan mudah menemukan sumber daya yang mereka butuhkan untuk studi dan penelitian. Tersedia juga ruang belajar kelompok dan individu yang tenang serta akses Wi-Fi gratis di seluruh area perpustakaan.",
+        "image": "/images/detail-perpustakaan.jpg",
+        "imagePosition": "right"
+      }
+    },
+     {
+      "component": "MediaText",
+      "props": {
+        "title": "Detail Laboratorium Komputer",
+        "text": "Laboratorium komputer kami dilengkapi dengan spesifikasi terbaru dan perangkat lunak yang dibutuhkan untuk berbagai program studi. Setiap mahasiswa memiliki akses ke workstation yang memungkinkan mereka untuk melakukan tugas-tugas pemrograman, analisis data, dan desain grafis. Instruktur laboratorium selalu siap memberikan bantuan teknis.",
+        "image": "/images/detail-lab-komputer.jpg",
+        "imagePosition": "left"
+      }
+    }
+    // ... more detailed facility components
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "page": {
+    "title": "Penerimaan Mahasiswa Baru",
+    "slug": "penerimaan",
+    "template": "program-page-template",
+    "sections": [
+      {
+        "component": "Hero",
+        "data": {
+          "title": "Bergabunglah Bersama Kami",
+          "subtitle": "Wujudkan Potensi Akademik Anda di STIE Dwimulya",
+          "image": "/images/hero-penerimaan.jpg",
+          "call_to_action": {
+            "label": "Daftar Sekarang",
+            "url": "/daftar"
+          }
+        }
+      },
+      {
+        "component": "ProgramAbout",
+        "data": {
+          "title": "Proses Penerimaan",
+          "content": "<p>Kami menyambut calon mahasiswa baru yang bersemangat untuk bergabung dengan komunitas akademik kami yang dinamis. Proses penerimaan kami dirancang untuk menjadi sederhana dan transparan.</p><p>Ikuti langkah-langkah di bawah ini untuk mendaftar:</p><ol><li>Lengkapi formulir pendaftaran online.</li><li>Lampirkan dokumen yang diperlukan (ijazah, transkrip nilai, pas foto, dll.).</li><li>Lakukan pembayaran biaya pendaftaran.</li><li>Ikuti tes masuk (jika diperlukan).</li><li>Tunggu pengumuman hasil seleksi.</li></ol>"
+        }
+      },
+      {
+        "component": "AccordionFAQ",
+        "data": {
+          "title": "Persyaratan Penerimaan",
+          "items": [
+            {
+              "question": "Apa saja persyaratan umum untuk mendaftar?",
+              "answer": "Persyaratan umum meliputi lulusan SMA/SMK atau sederajat, memiliki kesehatan jasmani dan rohani, serta memenuhi persyaratan khusus program studi."
+            },
+            {
+              "question": "Dokumen apa saja yang perlu disiapkan?",
+              "answer": "Dokumen yang diperlukan biasanya meliputi fotokopi ijazah dan transkrip nilai yang dilegalisir, fotokopi KTP, fotokopi Kartu Keluarga, pas foto terbaru, dan dokumen lain yang diminta oleh program studi."
+            },
+            {
+              "question": "Apakah ada batasan usia untuk mendaftar?",
+              "answer": "Umumnya tidak ada batasan usia, namun beberapa program studi mungkin memiliki persyaratan usia khusus."
+            }
+          ]
+        }
+      },
+      {
+        "component": "EventSchedule",
+        "data": {
+          "title": "Tanggal Penting",
+          "events": [
+            {
+              "date": "1 April 2024",
+              "description": "Pembukaan Pendaftaran Gelombang 1"
+            },
+            {
+              "date": "30 Juni 2024",
+              "description": "Penutupan Pendaftaran Gelombang 1"
+            },
+            {
+              "date": "15 Juli 2024",
+              "description": "Tes Masuk Gelombang 1"
+            },
+            {
+              "date": "25 Juli 2024",
+              "description": "Pengumuman Hasil Seleksi Gelombang 1"
+            }
+          ]
+        }
+      },
+       {
+        "component": "Quote",
+        "data": {
+          "text": "Pendidikan adalah senjata paling mematikan di dunia, karena dengan pendidikan, Anda dapat mengubah dunia.",
+          "author": "Nelson Mandela"
+        }
+      }
+    ]
+  }
+}

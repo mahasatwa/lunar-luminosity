@@ -1,0 +1,40 @@
+---
+// src/components/organisms/latest-posts/LatestPosts.astro
+import Heading from '../../atoms/heading/Heading.astro';
+import Card from '../../molecules/card/Card.astro'; // Menggunakan kembali Card yang sudah ada
+
+interface Props {
+    content: {
+        title: string;
+        items: {
+            type: string;
+            title: string;
+            date: string;
+            href: string;
+            image: {
+                url: string;
+                alt: string;
+            };
+        }[];
+    };
+}
+
+const { content } = Astro.props;
+---
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <Heading as="h2" text={content.title} addClass="text-center mb-12" />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {content.items.map(item => (
+                <Card 
+                    title={item.title}
+                    imageUrl={item.image.url}
+                    imageAlt={item.image.alt}
+                    description={`Dipublikasikan pada ${new Date(item.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}`}
+                    badgeText={item.type}
+                    href={item.href}
+                />
+            ))}
+        </div>
+    </div>
+</section>

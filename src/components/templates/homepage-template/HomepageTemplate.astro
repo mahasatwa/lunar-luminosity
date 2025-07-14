@@ -1,15 +1,25 @@
 ---
 // src/components/templates/homepage-template/HomepageTemplate.astro
-import HeroStatement from '../../organisms/hero-statement/HeroStatement.astro';
-import MediaCarousel from '../../organisms/media-carousel/MediaCarousel.astro';
-import GridLists from '../../organisms/grid-lists/GridLists.astro';
-// Note: SiteHeader and SiteFooter are removed from here. 
-// They are managed by the main Layout.astro file.
+// Template ini menyusun organisme untuk membentuk halaman utama.
+// Ia tidak tahu tentang sumber data, hanya menerima 'data' dan mendistribusikannya.
+
+import Hero from '../../organisms/hero/Hero.astro';
+import Statistics from '../../organisms/statistics/Statistics.astro';
+import FeaturedPrograms from '../../organisms/featured-programs/FeaturedPrograms.astro';
+import LatestPosts from '../../organisms/latest-posts/LatestPosts.astro';
+import Testimonials from '../../organisms/testimonials/Testimonials.astro';
+
+interface Props {
+  data: any; // Di dunia nyata, ini akan menjadi tipe yang dihasilkan dari Contentful
+}
+
+const { data } = Astro.props;
 ---
+
 <main>
-    <!-- Homepage Template: Assembles the main content organisms for the homepage -->
-    <HeroStatement />
-    <MediaCarousel />
-    <GridLists />
-    <!-- Add more organism components here as needed for the homepage -->
+  <Hero content={data.hero} />
+  <Statistics content={data.key_statistics} />
+  <FeaturedPrograms content={data.featured_programs} />
+  <LatestPosts content={data.news_and_events} />
+  <Testimonials content={data.testimonials} />
 </main>

@@ -1,0 +1,18 @@
+---
+// src/components/atoms/button/Button.astro
+interface Props {
+    label: string;
+    href: string;
+    variant?: 'primary' | 'secondary';
+    icon?: string;
+}
+
+const { label, href, variant = 'primary', icon } = Astro.props;
+---
+<a href={href} class:list={[
+    "inline-flex items-center justify-center px-6 py-3 font-bold rounded-lg transition-transform duration-200 ease-in-out hover:scale-105 shadow-lg",
+    { "bg-blue-600 text-white hover:bg-blue-700": variant === 'primary' },
+    { "bg-white text-blue-600 border border-blue-600 hover:bg-gray-100": variant === 'secondary' }
+]}>
+    {label}
+</a>

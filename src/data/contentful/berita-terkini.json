@@ -1,0 +1,96 @@
+{
+  "pageId": "berita-terkini",
+  "contentType": "page",
+  "pageTitle": "Berita Terkini",
+  "header": {
+    "component": "GlobalNav",
+    "props": {
+      "title": "Berita Terkini"
+    }
+  },
+  "components": [
+    {
+      "component": "Hero",
+      "props": {
+        "title": "Berita dan Pengumuman Terbaru",
+        "subtitle": "Tetap terinformasi dengan perkembangan terbaru di institusi kami.",
+        "image": "/images/hero-berita.jpg"
+      }
+    },
+    {
+      "component": "LatestPosts",
+      "props": {
+        "title": "Berita Terbaru",
+        "posts": [
+          {
+            "id": "berita-1",
+            "contentType": "article",
+            "title": "Acara Pembukaan Tahun Akademik Baru Sukses Digelar",
+            "summary": "Upacara pembukaan tahun akademik baru dihadiri oleh mahasiswa, dosen, dan staf.",
+            "date": "2023-08-15",
+            "slug": "/articles/acara-pembukaan-tahun-akademik-baru",
+            "image": "/images/berita-1.jpg",
+            "category": "acara",
+            "author": "Humas Institusi",
+            "tags": ["tahun akademik", "pembukaan", "kampus"]
+          },
+          {
+            "id": "berita-2",
+            "contentType": "article",
+            "title": "Lokakarya Pengembangan Karir untuk Mahasiswa",
+            "summary": "Lokakarya ini memberikan wawasan berharga tentang perencanaan karir dan pencarian kerja.",
+            "date": "2023-08-10",
+            "slug": "/articles/lokakarya-pengembangan-karir",
+            "image": "/images/berita-2.jpg",
+            "category": "akademik",
+            "author": "Pusat Karir",
+            "tags": ["karir", "mahasiswa", "lokakarya"]
+          },
+          {
+            "id": "berita-3",
+            "contentType": "article",
+            "title": "Pengumuman Hasil Seleksi Penerimaan Mahasiswa Baru Gelombang Pertama",
+            "summary": "Daftar nama calon mahasiswa yang diterima di gelombang pertama telah diumumkan.",
+            "date": "2023-08-05",
+            "slug": "/articles/pengumuman-hasil-seleksi-penerimaan",
+            "image": "/images/berita-3.jpg",
+            "category": "pengumuman",
+            "author": "Panitia Penerimaan",
+            "tags": ["penerimaan", "mahasiswa baru", "seleksi"]
+          },
+          {
+            "id": "berita-4",
+            "contentType": "article",
+            "title": "Pendaftaran Beasiswa Tahun 2023 Dibuka",
+            "summary": "Pendaftaran beasiswa untuk mahasiswa tahun 2023 kini sudah dibuka dengan berbagai pilihan program.",
+            "date": "2023-07-30",
+            "slug": "/articles/pendaftaran-beasiswa-2023",
+            "image": "/images/berita-4.jpg",
+            "category": "beasiswa",
+            "author": "Biro Beasiswa",
+            "tags": ["beasiswa", "pendaftaran", "2023"]
+          },
+          {
+            "id": "berita-5",
+            "contentType": "article",
+            "title": "Seminar Teknologi Terbaru untuk Mahasiswa",
+            "summary": "Seminar ini membahas inovasi teknologi yang akan mempengaruhi dunia kerja di masa depan.",
+            "date": "2023-07-25",
+            "slug": "/articles/seminar-teknologi-terbaru",
+            "image": "/images/berita-5.jpg",
+            "category": "seminar",
+            "author": "Departemen Teknologi",
+            "tags": ["teknologi", "seminar", "mahasiswa"]
+          }
+        ]
+      }
+    },
+    {
+      "component": "Pagination",
+      "props": {
+        "totalPages": 5,
+        "currentPage": 1
+      }
+    }
+  ]
+}

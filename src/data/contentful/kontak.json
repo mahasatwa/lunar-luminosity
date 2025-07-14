@@ -1,0 +1,73 @@
+{
+  "pageType": "ContactPage",
+  "header": {
+    "component": "SiteHeader",
+    "title": "Hubungi Kami",
+    "description": "Kami siap membantu Anda. Silakan hubungi kami melalui informasi di bawah ini atau gunakan formulir kontak."
+  },
+  "contactInfo": {
+    "component": "ContactInfo",
+    "title": "Informasi Kontak",
+    "phone": "+62 123 4567 890",
+    "email": "info@example.com",
+    "address": {
+      "street": "Jl. Contoh Alamat No. 123",
+      "city": "Kota Contoh",
+      "postalCode": "12345",
+      "country": "Indonesia"
+    },
+    "socialMedia": [
+      {
+        "platform": "Facebook",
+        "url": "https://facebook.com/example"
+      },
+      {
+        "platform": "Twitter",
+        "url": "https://twitter.com/example"
+      }
+    ]
+  },
+  "contactForm": {
+    "component": "LeadForm",
+    "title": "Kirim Pesan kepada Kami",
+    "description": "Isi formulir di bawah ini dan kami akan segera menghubungi Anda.",
+    "fields": [
+      {
+        "name": "name",
+        "type": "text",
+        "label": "Nama Lengkap",
+        "required": true
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "label": "Alamat Email",
+        "required": true
+      },
+      {
+        "name": "subject",
+        "type": "text",
+        "label": "Subjek",
+        "required": false
+      },
+      {
+        "name": "message",
+        "type": "textarea",
+        "label": "Pesan Anda",
+        "required": true
+      }
+    ],
+    "submitButtonText": "Kirim Pesan"
+  },
+  "locationMap": {
+    "component": "Map",
+    "title": "Lokasi Kami",
+    "latitude": -6.200000,
+    "longitude": 106.816666,
+    "zoom": 15,
+    "description": "Temukan lokasi kami di peta interaktif."
+  },
+  "footer": {
+    "component": "SiteFooter"
+  }
+}

@@ -1,0 +1,28 @@
+---
+// src/components/molecules/nav-link/NavLink.astro
+import Icon from "../../atoms/icons/Icon.astro";
+
+// Recursive type for nested submenus
+export interface NavItem {
+    id: string;
+    text: string;
+    href?: string;
+    isExternal?: boolean;
+    submenu?: NavItem[];
+}
+
+interface Props extends NavItem {}
+
+const { text, href, submenu } = Astro.props;
+---
+<li class="relative group">
+    <a href={href || '#'} class="flex items-center p-2 text-gray-700 hover:text-blue-600 hover:bg-gray-100 rounded-md transition-colors duration-200">
+        <span>{text}</span>
+        {submenu && <Icon name="tabler:chevron-down" class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" />}
+    </a>
+    {submenu && (
+        <ul class="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-200 z-30">
+            {submenu.map(item => <Astro.self {...item} />)}
+        </ul>
+    )}
+</li>

@@ -1,0 +1,25 @@
+---
+// src/components/atoms/heading/Heading.astro
+import { cn } from '../../../utils/cn';
+
+interface Props {
+    as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    text: string;
+    size?: 'xl' | 'lg' | 'md' | 'sm';
+    addClass?: string;
+}
+
+const { as: Element, text, size, addClass } = Astro.props;
+
+const sizeClasses = {
+    xl: 'text-4xl md:text-5xl lg:text-6xl font-extrabold',
+    lg: 'text-3xl md:text-4xl font-bold',
+    md: 'text-2xl font-bold',
+    sm: 'text-xl font-semibold'
+}
+
+const finalSize = size || (Element === 'h1' ? 'xl' : Element === 'h2' ? 'lg' : 'md');
+---
+<Element class={cn(sizeClasses[finalSize], addClass)}>
+    {text}
+</Element>

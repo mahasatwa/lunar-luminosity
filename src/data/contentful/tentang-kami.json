@@ -1,0 +1,121 @@
+{
+  "pageId": "tentang-kami",
+  "pageTitle": "Tentang Kami - [Nama Institusi]",
+  "header": {
+    "component": "GlobalNav",
+    "settings": {
+      "logo": "/public/logo-primary.svg",
+      "navigation": [
+        {
+          "label": "Beranda",
+          "url": "/"
+        },
+        {
+          "label": "Tentang Kami",
+          "url": "/tentang-kami",
+          "active": true
+        },
+        {
+          "label": "Program Studi",
+          "url": "/programs"
+        },
+        {
+          "label": "Penerimaan",
+          "url": "/penerimaan"
+        },
+        {
+          "label": "Kontak",
+          "url": "/kontak"
+        }
+      ]
+    }
+  },
+  "sections": [
+    {
+      "sectionId": "hero-about",
+      "component": "HeroSplit",
+      "settings": {
+        "title": "Tentang Kami",
+        "subtitle": "Mengenal [Nama Institusi] Lebih Dekat",
+        "image": "/assets/images/about-hero.jpg",
+        "imageAlt": "Gambar gedung institusi",
+        "body": "Jelajahi sejarah panjang dan komitmen kami terhadap keunggulan pendidikan."
+      }
+    },
+    {
+      "sectionId": "sejarah",
+      "component": "MediaText",
+      "settings": {
+        "title": "Sejarah Singkat",
+        "body": "Masukkan teks sejarah institusi di sini. Ceritakan awal mula, perkembangan, dan pencapaian penting.",
+        "media": {
+          "type": "image",
+          "url": "/assets/images/sejarah.jpg",
+          "alt": "Gambar bersejarah institusi"
+        },
+        "mediaPosition": "right"
+      }
+    },
+    {
+      "sectionId": "visi-misi",
+      "component": "IconTextCluster",
+      "settings": {
+        "title": "Visi dan Misi",
+        "items": [
+          {
+            "icon": "eye",
+            "title": "Visi",
+            "text": "Masukkan teks visi institusi di sini."
+          },
+          {
+            "icon": "target",
+            "title": "Misi",
+            "text": "Masukkan teks misi institusi di sini."
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "nilai",
+      "component": "CardGrid",
+      "settings": {
+        "title": "Nilai-nilai Kami",
+        "cards": [
+          {
+            "title": "Integritas",
+            "body": "Deskripsi nilai integritas."
+          },
+          {
+            "title": "Keunggulan",
+            "body": "Deskripsi nilai keunggulan."
+          },
+          {
+            "title": "Inovasi",
+            "body": "Deskripsi nilai inovasi."
+          },
+          {
+            "title": "Kolaborasi",
+            "body": "Deskripsi nilai kolaborasi."
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "struktur-organisasi",
+      "component": "Image",
+      "settings": {
+        "title": "Struktur Organisasi",
+        "imageUrl": "/assets/images/struktur-organisasi.png",
+        "imageAlt": "Diagram struktur organisasi institusi"
+      }
+    }
+  ],
+  "footer": {
+    "component": "SiteFooter",
+    "settings": {
+      "address": "[Alamat Institusi]",
+      "phone": "[Nomor Telepon]",
+      "email": "[Alamat Email]"
+    }
+  }
+}

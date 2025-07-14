@@ -1,0 +1,61 @@
+{
+  "pageId": "akademik",
+  "pageTitle": "Akademik",
+  "header": {
+    "component": "GlobalNav",
+    "props": {
+      "title": "Akademik"
+      // ...other header properties
+    }
+  },
+  "components": [
+    {
+      "component": "Hero",
+      "props": {
+        "title": "Informasi Akademik",
+        "subtitle": "Temukan semua yang perlu Anda ketahui tentang kehidupan akademik di institusi kami.",
+        "image": "/images/hero-akademik.jpg"
+      }
+    },
+    {
+      "component": "CardGrid",
+      "props": {
+        "title": "Area Akademik Utama",
+        "cards": [
+          {
+            "id": "program-studi",
+            "title": "Program Studi",
+            "description": "Jelajahi berbagai program sarjana dan pascasarjana kami.",
+            "link": "/akademik/program-studi",
+            "icon": "book"
+          },
+          {
+            "id": "fakultas",
+            "title": "Fakultas",
+            "description": "Temui fakultas kami yang berpengalaman dan berdedikasi.",
+            "link": "/akademik/fakultas",
+            "icon": "users"
+          },
+          {
+            "id": "kalender-akademik",
+            "title": "Kalender Akademik",
+            "description": "Lihat tanggal-tanggal penting untuk tahun akademik.",
+            "link": "/akademik/kalender",
+            "icon": "calendar"
+          }
+        ]
+      }
+    },
+    {
+      "component": "Interstitial",
+      "props": {
+        "title": "Sumber Daya Akademik",
+        "text": "Akses sumber daya penting seperti perpustakaan, layanan karir, dan dukungan akademik.",
+        "button": {
+          "text": "Jelajahi Sumber Daya",
+          "link": "/akademik/sumber-daya"
+        }
+      }
+    }
+  ]
+}

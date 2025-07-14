@@ -1,57 +1,37 @@
 ---
 // src/components/organisms/hero/Hero.astro
+import Heading from '../../atoms/heading/Heading.astro';
+import Button from '../../atoms/button/Button.astro';
+import ResponsiveImage from '../../utils/ResponsiveImage.tsx';
+
 interface Props {
-  title: string;
-  leadin?: string;
-  underline?: string;
-  ctaLabel?: string;
-  ctaUrl?: string;
-  backgroundImageUrl?: string;
-  backgroundVideoUrl?: string;
-  theme?: 'light' | 'dark';
-  titleSize?: 'sm' | 'med' | 'large';
-  overlay?: 'soft' | 'medium' | 'dark' | 'darker';
+  content: {
+    title: string;
+    subtitle: string;
+    cta: {
+      label: string;
+      href: string;
+    };
+    image: {
+      url: string;
+      alt: string;
+    };
+  };
 }
 
-const {
-  title,
-  leadin,
-  underline,
-  ctaLabel,
-  ctaUrl,
-  backgroundImageUrl,
-  backgroundVideoUrl,
-  theme = 'dark',
-  titleSize = 'large',
-  overlay,
-} = Astro.props;
-
-const blockClasses = [
-  'c-block b-hero',
-  theme === 'light' ? 't-theme--light' : '',
-  `b-hero__media-overlay--${overlay}`
-].join(' ');
-
-const titleClasses = `b-hero__title b-hero__title--${titleSize}`;
+const { content } = Astro.props;
 ---
-
-<div class={blockClasses} style={backgroundImageUrl ? `background-image: url(${backgroundImageUrl})` : ''}>
-  {backgroundVideoUrl && (
-    <video class="b-hero__bg-video" autoplay loop muted playsinline>
-      <source src={backgroundVideoUrl} type="video/mp4" />
-    </video>
-  )}
-  <div class="l-container b-hero__content">
-    <div class="c-content-block text-center">
-      {leadin && <div class="c-content-block__leadin b-hero__leadin">{leadin}</div>}
-      <h1 class={titleClasses}>{title}</h1>
-      {underline && <p class="b-hero__underline">{underline}</p>}
-      {ctaLabel && ctaUrl && (
-        <div class="c-content-block__cta">
-          <a href={ctaUrl} class="a-btn a-btn-primary">{ctaLabel}</a>
-        </div>
-      )}
+<section class="relative text-white">
+    <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
+    <ResponsiveImage
+        src={content.image.url}
+        alt={content.image.alt}
+        addClass="absolute inset-0 w-full h-full object-cover"
+        client:load
+    />
+    <div class="relative z-20 container mx-auto px-6 py-24 md:py-32 text-center">
+        <Heading as="h1" text={content.title} addClass="mb-4" />
+        <p class="max-w-3xl mx-auto text-lg md:text-xl mb-8">{content.subtitle}</p>
+        <Button label={content.cta.label} href={content.cta.href} />
     </div>
-  </div>
-  <div class="b-hero__bottom-line"></div>
-</div>
+</section>

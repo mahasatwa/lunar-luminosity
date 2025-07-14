@@ -1,0 +1,22 @@
+---
+// src/components/organisms/statistics/Statistics.astro
+import StatisticItem from '../../molecules/statistic-item/StatisticItem.astro';
+
+interface Props {
+    content: {
+        value: string;
+        label: string;
+    }[];
+}
+
+const { content } = Astro.props;
+---
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {content.map(item => (
+                <StatisticItem value={item.value} label={item.label} />
+            ))}
+        </div>
+    </div>
+</section>

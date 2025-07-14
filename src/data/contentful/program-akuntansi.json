@@ -1,0 +1,96 @@
+{
+    "slug": "s1-akuntansi",
+    "title": "Program Studi S1 Akuntansi",
+    "header": {
+        "logo": {
+            "url": "/public/logo-primary.svg",
+            "alt": "STIE Dwimulya Logo"
+        },
+        "navigation": [
+            { "label": "Beranda", "url": "/" },
+            { "label": "Tentang Kami", "url": "/tentang" },
+            { "label": "Program Studi", "url": "/program" },
+            { "label": "Penerimaan", "url": "/penerimaan" },
+            { "label": "Kontak", "url": "/kontak" }
+        ]
+    },
+    "hero": {
+      "title": "Program Studi S1 Akuntansi",
+      "subtitle": "Mencetak Profesional Akuntansi yang Kompeten, Berintegritas, dan Siap Bersaing di Era Digital.",
+      "description": "Pelajari dasar-dasar akuntansi hingga keahlian khusus di bidang audit, perpajakan, dan sistem informasi akuntansi. Siapkan diri Anda untuk berkarir di berbagai industri dengan kurikulum yang relevan dan praktik yang intensif.",
+      "backgroundImage": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1630000000/programs/accounting-hero.jpg"
+    },
+    "about": {
+      "accreditation": {
+        "status": "Baik",
+        "institution": "BAN-PT"
+      },
+      "overview": "Program Studi Akuntansi di STIE Dwimulya dirancang untuk menghasilkan lulusan yang memiliki keahlian mendalam di bidang audit, perpajakan, dan sistem informasi akuntansi. Kurikulum kami selaras dengan kebutuhan industri dan perkembangan teknologi terkini.",
+      "vision": "Menjadi program studi akuntansi unggulan yang diakui secara nasional dalam menghasilkan lulusan profesional dan beretika.",
+      "missions": [
+        "Menyelenggarakan pendidikan akuntansi berkualitas yang terintegrasi dengan teknologi.",
+        "Melakukan penelitian terapan di bidang akuntansi yang relevan bagi industri dan masyarakat.",
+        "Menjalin kemitraan strategis dengan dunia usaha untuk meningkatkan kompetensi lulusan."
+      ]
+    },
+    "curriculum_highlights": [
+      { "icon": "tabler:file-certificate", "text": "Kurikulum berbasis Standar Akuntansi Keuangan (SAK) terbaru." },
+      { "icon": "tabler:calculator", "text": "Praktikum intensif dengan software akuntansi modern (Accurate, MYOB)." },
+      { "icon": "tabler:building-factory-2", "text": "Program Magang Industri di perusahaan mitra selama 1 semester." },
+      { "icon": "tabler:users", "text": "Dosen pengajar merupakan praktisi dan akademisi berpengalaman." }
+    ],
+    "career_prospects": {
+        "title": "Prospek Karir Lulusan",
+        "description": "Lulusan kami memiliki peluang karir yang luas di berbagai sektor, antara lain:",
+        "prospects": [
+            "Akuntan Publik",
+            "Auditor Internal & Eksternal",
+            "Konsultan Pajak",
+
+            "Analis Keuangan",
+            "Manajer Akuntansi",
+            "Analis Sistem Informasi Akuntansi"
+        ]
+    },
+    "faculty": {
+        "title": "Dosen Pengajar Unggulan",
+        "lecturers": [
+            {
+                "name": "Prof. Dr. Ahmad Santoso, M.Si., Ak.",
+                "expertise": "Akuntansi Keuangan, Pasar Modal",
+                "image": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1630000000/lecturers/ahmad-santoso.jpg"
+            },
+            {
+                "name": "Dr. Maya Indriati, SE., M.Ak., CA.",
+                "expertise": "Audit, Sistem Pengendalian Internal",
+                "image": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1630000000/lecturers/maya-indriati.jpg"
+            }
+        ]
+    },
+    "testimonials": {
+        "title": "Apa Kata Mereka?",
+        "list": [
+            {
+                "quote": "Program Studi Akuntansi STIE Dwimulya memberikan fondasi yang kuat bagi karir saya sebagai auditor. Praktikumnya sangat relevan dengan dunia kerja.",
+                "author": "Adi Nugroho, Alumni Angkatan 2018",
+                "image": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1630000000/testimonials/adi-nugroho.jpg"
+            },
+             {
+                "quote": "Dosen-dosennya sangat suportif dan materi kuliahnya selalu update dengan perkembangan terbaru di industri akuntansi.",
+                "author": "Siti Aminah, Mahasiswa Tingkat Akhir",
+                "image": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1630000000/testimonials/siti-aminah.jpg"
+            }
+        ]
+    },
+    "cta": {
+        "title": "Bergabunglah dengan Program Studi Akuntansi STIE Dwimulya!",
+        "description": "Raih masa depan cerah sebagai profesional akuntansi yang handal. Daftar sekarang dan jadilah bagian dari komunitas akademik yang dinamis.",
+        "button": {
+            "label": "Daftar Sekarang",
+            "url": "/penerimaan"
+        },
+         "backgroundImage": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1630000000/cta-background.jpg"
+    }
+
+
+}

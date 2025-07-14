@@ -1,0 +1,22 @@
+---
+// src/components/templates/program-detail-template/ProgramDetailTemplate.astro
+import Hero from '../../organisms/hero/Hero.astro';
+import ProgramAbout from '../../organisms/program-about/ProgramAbout.astro';
+import KeyFeatures from '../../organisms/key-features/KeyFeatures.astro';
+import CareerProspects from '../../organisms/career-prospects/CareerProspects.astro';
+import FacultyHighlight from '../../organisms/faculty-highlight/FacultyHighlight.astro';
+
+interface Props {
+  data: any; // Seharusnya tipe data spesifik dari Contentful
+}
+
+const { data } = Astro.props;
+---
+<article>
+  <Hero content={data.hero} />
+  <ProgramAbout content={data.about} />
+  <KeyFeatures content={data.curriculum_highlights} />
+  <CareerProspects content={data.career_prospects} />
+  <FacultyHighlight content={data.faculty} />
+  <!-- Tambahan organisme lain bisa diletakkan di sini, seperti testimoni, dll. -->
+</article>

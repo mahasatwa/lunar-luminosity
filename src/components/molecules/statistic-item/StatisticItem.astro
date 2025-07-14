@@ -1,0 +1,15 @@
+---
+// src/components/molecules/statistic-item/StatisticItem.astro
+import Heading from '../../atoms/heading/Heading.astro';
+
+interface Props {
+    value: string;
+    label: string;
+}
+
+const { value, label } = Astro.props;
+---
+<div class="text-center">
+    <Heading as="p" size="xl" text={value} addClass="text-blue-600" />
+    <p class="text-gray-600 mt-1">{label}</p>
+</div>

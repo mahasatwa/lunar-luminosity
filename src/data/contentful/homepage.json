@@ -1,0 +1,149 @@
+{
+    "header": {
+        "logo": {
+            "url": "/public/logo-primary.svg",
+            "alt": "STIE Dwimulya Logo"
+        },
+        "branding_text": "STIE Dwimulya Serang",
+        "navigation": [
+            {
+                "label": "Beranda",
+                "href": "/"
+            },
+            {
+                "label": "Tentang Kami",
+                "href": "/tentang"
+            },
+            {
+                "label": "Akademik",
+                "href": "/akademik",
+                "submenu": [
+                    {
+                        "label": "Program Studi",
+                        "href": "/akademik/program-studi"
+                    },
+                    {
+                        "label": "Kurikulum",
+                        "href": "/akademik/kurikulum"
+                    },
+                    {
+                        "label": "Dosen & Staf",
+                        "href": "/akademik/dosen-staf"
+                    }
+                ]
+            },
+            {
+                "label": "Penerimaan",
+                "href": "/penerimaan"
+            },
+            {
+                "label": "Kehidupan Kampus",
+                "href": "/kehidupan-kampus",
+                "submenu": [
+                    {
+                        "label": "Organisasi Mahasiswa",
+                        "href": "/kehidupan-kampus/organisasi-mahasiswa"
+                    },
+                    {
+                        "label": "Fasilitas",
+                        "href": "/kehidupan-kampus/fasilitas"
+                    },
+                    {
+                        "label": "Kegiatan Mahasiswa",
+                        "href": "/kehidupan-kampus/kegiatan"
+                    }
+                ]
+            },
+            {
+                "label": "Berita & Agenda",
+                "href": "/berita-agenda"
+            },
+            {
+                "label": "Kontak",
+                "href": "/kontak"
+            }]
+    },
+    "hero": {
+      "title": "Kampus Rakyat, Kampus Perubahan",
+      "subtitle": "STIE Dwimulya berkomitmen menyediakan pendidikan ekonomi dan bisnis berkualitas yang dapat diakses oleh semua kalangan di Serang, Banten.",
+      "cta": {
+        "label": "Jelajahi Program Studi",
+        "href": "/akademik/program-studi"
+      },
+      "image": {
+        "url": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1629882685/campus/building-front-view.jpg",
+        "alt": "Gedung Kampus STIE Dwimulya dari depan"
+      }
+    },
+    "key_statistics": [
+      {
+        "value": "2",
+        "label": "Program Studi Unggulan"
+      },
+      {
+        "value": "95%",
+        "label": "Lulusan Bekerja < 6 Bulan"
+      },
+      {
+        "value": "10+",
+        "label": "Mitra Industri & Universitas"
+      }
+    ],
+    "featured_programs": {
+      "title": "Program Akademik Unggulan",
+      "programs": [
+        {
+          "title": "S1 Akuntansi",
+          "description": "Mencetak akuntan profesional yang siap menghadapi tantangan industri keuangan modern.",
+          "href": "/akademik/program-studi/s1-akuntansi",
+          "icon": "tabler:calculator"
+        },
+        {
+          "title": "S1 Manajemen",
+          "description": "Mengembangkan pemimpin bisnis masa depan dengan keahlian manajerial yang komprehensif.",
+          "href": "/akademik/program-studi/s1-manajemen",
+          "icon": "tabler:briefcase"
+        }
+      ]
+    },
+    "news_and_events": {
+      "title": "Berita & Agenda Terbaru",
+      "items": [
+        {
+          "type": "Berita",
+          "title": "STIE Dwimulya Lakukan Program KKM di Desa Kadubeureum",
+          "date": "2024-07-15",
+          "href": "/berita/kkm-desa-kadubeureum",
+          "image": {
+            "url": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1629882685/news/kkm-event.jpg",
+            "alt": "Mahasiswa KKM di Desa Kadubeureum"
+          }
+        },
+        {
+          "type": "Agenda",
+          "title": "Seminar Nasional: Ekonomi Digital 2024",
+          "date": "2024-08-01",
+          "href": "/agenda/seminar-ekonomi-digital-2024",
+          "image": {
+            "url": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1629882685/events/seminar-digital.jpg",
+            "alt": "Poster Seminar Nasional Ekonomi Digital"
+          }
+        }
+      ]
+    },
+    "testimonials": {
+        "title": "Apa Kata Mereka?",
+        "items": [
+            {
+                "quote": "Kurikulum yang relevan dengan industri dan dosen yang sangat mendukung mempersiapkan saya untuk berkarir di perusahaan multinasional.",
+                "author": "Rina Wijaya, S.Ak.",
+                "title": "Alumni 2022, Finance Analyst di PT. Unilever Indonesia",
+                "image": {
+                    "url": "https://res.cloudinary.com/stie-dwimulya/image/upload/v1629882685/testimonials/rina-wijaya.jpg",
+                    "alt": "Foto Rina Wijaya"
+                }
+            }
+        ]
+    }
+  }
+  

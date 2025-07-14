@@ -1,0 +1,29 @@
+---
+// src/components/molecules/testimonial-card/TestimonialCard.astro
+import ResponsiveImage from '../../utils/ResponsiveImage.tsx';
+
+interface Props {
+    quote: string;
+    author: string;
+    title: string;
+    image: {
+        url: string;
+        alt: string;
+    };
+}
+
+const { quote, author, title, image } = Astro.props;
+---
+<div class="bg-white p-8 rounded-lg shadow-lg text-center">
+    <ResponsiveImage 
+        src={image.url}
+        alt={image.alt}
+        addClass="w-24 h-24 rounded-full mx-auto mb-6 object-cover"
+        client:load
+    />
+    <blockquote class="text-lg italic text-gray-700 mb-4">
+        "{quote}"
+    </blockquote>
+    <p class="font-bold text-gray-900">{author}</p>
+    <p class="text-sm text-gray-500">{title}</p>
+</div>

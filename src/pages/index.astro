@@ -1,32 +1,24 @@
 ---
 // src/pages/index.astro
-// The Page is the highest level, responsible for layout and data fetching.
-// It should only contain the Layout and the main Template for the page.
+// Halaman ini bertindak sebagai "Controller".
+// Tugasnya: 1. Mengambil data (dari mock API/Contentful). 2. Meneruskannya ke Template.
 
 import Layout from '../layouts/Layout.astro';
 import HomepageTemplate from '../components/templates/homepage-template/HomepageTemplate.astro';
 
-// This data would typically come from a CMS or an API call.
-// For now, it's defined here. This data will be passed down to the template.
-const homepageData = {
-  seo: {
-    title: "STIE Dwimulya - Unggul dalam Pendidikan Ekonomi & Bisnis",
-    description: "STIE Dwimulya, kampus rakyat dan kampus perubahan di Serang, Banten. Menawarkan S1 Akuntansi dan S1 Manajemen terakreditasi BAN-PT. Fokus pada akses pendidikan, pemberdayaan UMKM, dan penelitian budaya.",
-  },
-  // Data for the organisms within the template will be passed down.
-  // Example: heroStatementData, mediaCarouselData, etc.
-};
+// 1. Mengambil data dari mock API
+import homepageData from '../data/contentful/homepage.json';
+
+const seo = {
+  title: "STIE Dwimulya - Kampus Rakyat, Kampus Perubahan",
+  description: "Selamat datang di STIE Dwimulya, institusi pendidikan ekonomi dan bisnis terkemuka di Serang, Banten. Temukan program studi, informasi penerimaan, dan berita terbaru kami."
+}
 ---
 
 <Layout 
-  title={homepageData.seo.title} 
-  description={homepageData.seo.description}
+  title={seo.title} 
+  description={seo.description}
 >
-  {/* 
-    The Page's only job is to render the appropriate template.
-    All presentational logic is handled by the template and its children (organisms, molecules, atoms).
-  */}
-  <HomepageTemplate 
-    heroStatementData={homepageData.heroStatement}
-  />
+  {/* 2. Meneruskan data ke Template */}
+  <HomepageTemplate data={homepageData} />
 </Layout>

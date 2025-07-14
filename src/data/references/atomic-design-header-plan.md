@@ -1,8 +1,8 @@
-# Rencana Atomic Design: Revisi Header STIE Dwimulya
+# Rencana Atomic Design: Desain Ulang Header STIE Dwimulya
 
 Dokumen ini menguraikan rencana revisi header eksisting STIE Dwimulya menggunakan prinsip Atomic Design, berdasarkan spesifikasi sistem navigasi yang dijelaskan dalam `sistem-navigasi-stie-dwimulya.md` dan struktur hierarki dari `hierarki-navigasi-stie-dwimulya.md`.
 
-Tujuan utamanya adalah menciptakan header yang modern, responsif, interaktif, dan efisien di berbagai perangkat, sekaligus menjadi pemicu utama untuk menu global overlay.
+Tujuan utamanya adalah menciptakan header yang modern, responsif, mudah dinavigasi, dan efisien di berbagai perangkat, sekaligus menjadi pemicu utama untuk menu global overlay, selaras dengan identitas visual dan panduan branding STIE Dwimulya.
 
 ## Atoms
 
@@ -10,7 +10,7 @@ Atoms adalah elemen UI terkecil yang tidak dapat dipecah lagi. Untuk header STIE
 
 1.  **Logo:**
     *   Representasi visual identitas STIE Dwimulya.
-    *   Sebagai tautan kembali ke halaman utama.
+    *   Berfungsi sebagai tautan kembali ke halaman utama (`/`).
     *   Memiliki properti `src` (untuk gambar) dan `alt` (untuk aksesibilitas).
 2.  **Teks Branding:**
     *   Teks "STIE Dwimulya".
@@ -21,10 +21,11 @@ Atoms adalah elemen UI terkecil yang tidak dapat dipecah lagi. Untuk header STIE
     *   Digunakan untuk navigasi lokal dan item menu global.
     *   Properti: `href`, `target` (opsional, untuk eksternal), `title`.
     *   Variasi: Font tebal (`font-bold`) untuk navigasi lokal desktop.
+    *   Harus memiliki state `active` untuk menandai halaman yang sedang dilihat.
 4.  **Ikon:**
     *   Representasi visual untuk aksi (Pencarian, Hamburger/Close).
-    *   Dapat berupa SVG atau font icon.
     *   Properti: `type` (misal: 'search', 'hamburger', 'close').
+    *   Harus mendukung ukuran dan warna yang berbeda sesuai konteks.
 5.  **Tombol (Button):**
     *   Elemen interaktif untuk memicu aksi (CTA, Pencarian, Hamburger).
     *   Properti: `onClick`, `label` (aksesibilitas).
@@ -39,23 +40,29 @@ Molecules adalah kumpulan atoms yang disatukan menjadi unit fungsional terkecil.
     *   Berfungsi sebagai area klik tunggal untuk navigasi ke beranda.
     *   Posisi: Sisi kiri header.
 2.  **Local Navigation Link:**
-    *   Menggabungkan atom Tautan Navigasi dengan styling khusus untuk navigasi lokal desktop (font tebal, ukuran `1rem`).
+    *   Menggabungkan atom Tautan Navigasi dengan styling khusus untuk navigasi lokal desktop (font tebal, ukuran `1rem`, underline saat active/hover).
 3.  **Search Button:**
     *   Menggabungkan atom Ikon (search) dengan atom Tombol.
     *   Memicu fungsionalitas pencarian.
+    *   Harus memiliki state yang jelas saat aktif/fokus.
 4.  **CTA Button:**
-    *   Menggunakan atom Tombol dengan styling spesifik (latar belakang biru, teks "Daftar Sekarang").
+    *   Menggunakan atom Tombol dengan styling spesifik sesuai panduan branding (misal: latar belakang biru, teks "Daftar Sekarang", border-radius).
     *   Sebagai ajakan bertindak yang menonjol.
+    *   Harus memiliki state hover dan active yang jelas.
 5.  **Hamburger/Close Button:**
     *   Menggabungkan atom Ikon (hamburger atau close) dengan atom Tombol.
     *   Merupakan pemicu utama untuk menu global.
     *   Memiliki animasi perubahan ikon dari hamburger ke 'X' dan perubahan warna (abu-abu ke putih) saat menu global aktif (`isMenuOpen`).
+    *   Area klik harus cukup besar untuk kemudahan penggunaan di perangkat sentuh.
 
 ## Organisms
 
 Organisms adalah kelompok molecules dan/atau atoms yang membentuk bagian yang kompleks dan fungsional dari antarmuka.
 
 1.  **Header:**
+    *   Merupakan container utama di bagian atas viewport.
+    *   Memiliki ketinggian tetap di desktop dan mobile (dengan penyesuaian jika ada notifikasi/alert bar di atasnya).
+    *   Menggunakan warna latar belakang dan gaya sesuai panduan branding.
     *   Menggabungkan Brand Identity, Local Navigation Links (desktop), Search Button, CTA Button, dan Hamburger/Close Button.
     *   Struktur: Terbagi menjadi sisi kiri (Brand Identity), tengah (Navigasi Lokal - desktop only), dan kanan (Menu Kontrol Cepat: Search, CTA, Hamburger).
     *   Properti:
@@ -68,6 +75,7 @@ Organisms adalah kelompok molecules dan/atau atoms yang membentuk bagian yang ko
     *   Mengelola visibilitas Navigasi Lokal: Navigasi lokal menghilang halus saat `isMenuOpen` bernilai `true`.
     *   Mengelola status animasi Hamburger/Close Button berdasarkan `isMenuOpen`.
     *   Menggunakan kelas CSS yang dikondisikan dengan fungsi `cn` (misal: `headerClass`).
+    *   Harus memiliki `aria-label` atau atribut aksesibilitas lain untuk identifikasi peran.
 2.  **Global Menu Overlay:**
     *   *Catatan: Meskipun bukan bagian langsung dari header itu sendiri, header bertanggung jawab memicu dan mengelola status buka/tutup menu global ini.*
     *   Overlay layar penuh yang muncul saat header Hamburger Button diklik (`isMenuOpen` menjadi `true`).

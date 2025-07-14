@@ -1,0 +1,29 @@
+---
+// src/components/organisms/featured-programs/FeaturedPrograms.astro
+import Heading from '../../atoms/heading/Heading.astro';
+import ProgramCard from '../../molecules/program-card/ProgramCard.astro';
+
+interface Props {
+    content: {
+        title: string;
+        programs: {
+            title: string;
+            description: string;
+            href: string;
+            icon: string;
+        }[];
+    };
+}
+
+const { content } = Astro.props;
+---
+<section class="py-16">
+    <div class="container mx-auto px-6 text-center">
+        <Heading as="h2" text={content.title} addClass="mb-12" />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+            {content.programs.map(program => (
+                <ProgramCard {...program} />
+            ))}
+        </div>
+    </div>
+</section>

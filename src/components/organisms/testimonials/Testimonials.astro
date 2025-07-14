@@ -1,0 +1,32 @@
+---
+// src/components/organisms/testimonials/Testimonials.astro
+import Heading from '../../atoms/heading/Heading.astro';
+import TestimonialCard from '../../molecules/testimonial-card/TestimonialCard.astro';
+
+interface Props {
+    content: {
+        title: string;
+        items: {
+            quote: string;
+            author: string;
+            title: string;
+            image: {
+                url: string;
+                alt: string;
+            };
+        }[];
+    };
+}
+
+const { content } = Astro.props;
+---
+<section class="py-16">
+    <div class="container mx-auto px-6">
+        <Heading as="h2" text={content.title} addClass="text-center mb-12" />
+        <div class="max-w-3xl mx-auto">
+            {content.items.map(item => (
+                <TestimonialCard {...item} />
+            ))}
+        </div>
+    </div>
+</section>
