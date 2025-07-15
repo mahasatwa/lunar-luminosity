@@ -10,3 +10,11 @@ Menjadi Perguruan Tinggi Ekonomi yang unggul, berintegritas, dan inovatif dalam 
 3.  Melaksanakan pengabdian kepada masyarakat melalui penerapan ilmu pengetahuan dan teknologi di bidang ekonomi untuk meningkatkan kesejahteraan masyarakat.
 4.  Membangun suasana akademik yang kondusif, inklusif, dan partisipatif untuk mendukung pengembangan potensi civitas akademika.
 5.  Membina kerjasama dengan berbagai pihak, baik di tingkat nasional maupun internasional, untuk meningkatkan kualitas dan relevansi pendidikan.
+
+## Nilai-Nilai Institusi
+
+(Opsional: Cantumkan nilai-nilai utama yang dipegang teguh oleh STIE Dwimulya di sini. Contoh: Integritas, Profesionalisme, Inovasi, Kolaborasi, Pelayanan Masyarakat.)
+
+- [Nilai 1]
+- [Nilai 2]
+- [Nilai 3]

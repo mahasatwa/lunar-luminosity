@@ -58,8 +58,9 @@ const socialLinks = [
   },
 ];
 ---
-
-<footer class="bg-[#1A1A1A] text-white py-16 px-6 sm:px-8">
+<!-- Apply modern, minimalist, and professional styling to the footer -->
+<!-- Ensure sufficient white space and clear typographic hierarchy -->
+<footer class="bg-[#F5F5F5] text-gray-800 py-20 px-6 sm:px-10 md:py-24">
   <div class="max-w-7xl mx-auto">
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8 mb-10"
@@ -67,6 +68,7 @@ const socialLinks = [
       <div>
         <h3 class="text-lg font-bold mb-4 font-poppins text-gray-200">
           Tentang STIE Dwimulya
+          <!-- Consider using a brand-specific heading style and font (e.g., Swiss-style) -->
         </h3>
         <ul class="space-y-2">
           {
@@ -75,6 +77,7 @@ const socialLinks = [
                 <a
                   href={link.href}
                   class="text-gray-400 hover:text-white hover:underline transition-colors"
+                  <!-- Refine hover state transition for a smoother, modern feel -->
                 >
                   {link.text}
                 </a>
@@ -87,6 +90,7 @@ const socialLinks = [
       <div>
         <h3 class="text-lg font-bold mb-4 font-poppins text-gray-200">
           Informasi Mahasiswa
+          <!-- Consider using a brand-specific heading style and font (e.g., Swiss-style) -->
         </h3>
         <ul class="space-y-2">
           {
@@ -95,6 +99,7 @@ const socialLinks = [
                 <a
                   href={link.href}
                   class="text-gray-400 hover:text-white hover:underline transition-colors"
+                  <!-- Refine hover state transition for a smoother, modern feel -->
                 >
                   {link.text}
                 </a>
@@ -107,6 +112,7 @@ const socialLinks = [
       <div>
         <h3 class="text-lg font-bold mb-4 font-poppins text-gray-200">
           Sumber Daya
+          <!-- Consider using a brand-specific heading style and font (e.g., Swiss-style) -->
         </h3>
         <ul class="space-y-2">
           {
@@ -116,6 +122,7 @@ const socialLinks = [
                   href={link.href}
                   class="text-gray-400 hover:text-white hover:underline transition-colors"
                   target={link.isExternal ? "_blank" : "_self"}
+                  <!-- Refine hover state transition for a smoother, modern feel -->
                   rel={link.isExternal ? "noopener noreferrer" : ""}
                 >
                   {link.text}
@@ -129,6 +136,7 @@ const socialLinks = [
       <div>
         <h3 class="text-lg font-bold mb-4 font-poppins text-gray-200">
           Hubungi Kami
+          <!-- Consider using a brand-specific heading style and font (e.g., Swiss-style) -->
         </h3>
         <div class="flex space-x-4 mb-6">
           {
@@ -136,6 +144,7 @@ const socialLinks = [
               <a
                 href={social.href}
                 class="text-gray-400 hover:text-white transition-colors"
+                <!-- Refine hover state transition for a smoother, modern feel -->
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -144,8 +153,9 @@ const socialLinks = [
               </a>
             ))
           }
+          <!-- Ensure sufficient color contrast for social icons for accessibility -->
         </div>
-        <address class="not-italic text-gray-400 space-y-2">
+        <address class="not-italic text-gray-600 space-y-2">
           <p>STIE Dwimulya</p>
           <p>Jl. Jenderal Sudirman No.Kav. 52-53</p>
           <p>Serang, Banten 42118, Indonesia</p>
@@ -156,21 +166,26 @@ const socialLinks = [
     </div>
 
     <div
-      class="border-t border-gray-800 pt-8 mt-8 text-center text-gray-500 text-sm"
+      class="border-t border-gray-300 pt-10 mt-10 text-center text-gray-600 text-sm"
+      <!-- Adjust border color and spacing for a minimalist look -->
     >
       <p>
         &copy; {new Date().getFullYear()} STIE Dwimulya. Hak Cipta Dilindungi Undang-Undang.
+        <!-- Ensure sufficient color contrast for copyright text -->
       </p>
       <div class="flex justify-center space-x-4 mt-4">
-        <a href="/kebijakan-privasi" class="hover:underline"
+        <a href="/kebijakan-privasi" class="hover:underline hover:text-gray-800 transition-colors"
           >Kebijakan Privasi</a
+        <!-- Refine hover state transition for a smoother, modern feel -->
         >
         <span>&bull;</span>
-        <a href="/syarat-ketentuan" class="hover:underline"
+        <a href="/syarat-ketentuan" class="hover:underline hover:text-gray-800 transition-colors"
           >Syarat & Ketentuan</a
+        <!-- Refine hover state transition for a smoother, modern feel -->
         >
         <span>&bull;</span>
-        <a href="/peta-situs" class="hover:underline">Peta Situs</a>
+        <a href="/peta-situs" class="hover:underline hover:text-gray-800 transition-colors">Peta Situs</a>
+        <!-- Refine hover state transition for a smoother, modern feel -->
       </div>
     </div>
   </div>

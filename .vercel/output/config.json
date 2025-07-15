@@ -104,7 +104,19 @@
 			"dest": "_render"
 		},
 		{
+			"src": "^/penelitian/arsip-mahasiswa/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/penelitian/kemitraan/?$",
+			"dest": "_render"
+		},
+		{
 			"src": "^/penelitian/kkm/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/penelitian/pendanaan/?$",
 			"dest": "_render"
 		},
 		{
@@ -113,6 +125,10 @@
 		},
 		{
 			"src": "^/penelitian/publikasi-dosen/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/penelitian/?$",
 			"dest": "_render"
 		},
 		{

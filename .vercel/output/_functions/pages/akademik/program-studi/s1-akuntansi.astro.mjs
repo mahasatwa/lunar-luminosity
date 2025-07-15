@@ -1,7 +1,7 @@
-import { a as createComponent, d as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../../../chunks/astro/server_BaeesDGl.mjs';
+import { a as createComponent, d as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../../../chunks/astro/server_DaCzSFzi.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../../../chunks/Layout_Y_pXMfm_.mjs';
-import { $ as $$Hero } from '../../../chunks/Hero_D-edu_WB.mjs';
+import { $ as $$Layout } from '../../../chunks/Layout_DUFz-yKd.mjs';
+import { $ as $$Hero } from '../../../chunks/Hero_BZUYs9dj.mjs';
 export { renderers } from '../../../renderers.mjs';
 
 const $$S1Akuntansi = createComponent(async ($$result, $$props, $$slots) => {

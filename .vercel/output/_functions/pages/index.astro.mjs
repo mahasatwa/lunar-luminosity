@@ -1,10 +1,10 @@
-import { c as createAstro, a as createComponent, m as maybeRenderHead, d as renderComponent, r as renderTemplate, b as addAttribute, u as unescapeHTML } from '../chunks/astro/server_BaeesDGl.mjs';
+import { c as createAstro, a as createComponent, m as maybeRenderHead, d as renderComponent, r as renderTemplate, b as addAttribute, u as unescapeHTML } from '../chunks/astro/server_DaCzSFzi.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_Y_pXMfm_.mjs';
-import { a as $$Heading, R as ResponsiveImage, $ as $$Hero } from '../chunks/Hero_D-edu_WB.mjs';
+import { $ as $$Layout } from '../chunks/Layout_DUFz-yKd.mjs';
+import { a as $$Heading, R as ResponsiveImage, $ as $$Hero } from '../chunks/Hero_BZUYs9dj.mjs';
 import 'clsx';
 /* empty css                                 */
-import { $ as $$Card } from '../chunks/Card_D9I3Etmd.mjs';
+import { $ as $$Card } from '../chunks/Card_CMFR0zbW.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro$8 = createAstro("https://www.stiedwimulya.ac.id");

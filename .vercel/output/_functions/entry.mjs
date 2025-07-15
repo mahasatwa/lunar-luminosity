@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
-import { c as createExports } from './chunks/entrypoint_BMzVdb27.mjs';
-import { manifest } from './manifest_D1WC96R-.mjs';
+import { c as createExports } from './chunks/entrypoint_D6PyxPX5.mjs';
+import { manifest } from './manifest_Cvgxb1Pv.mjs';
 
 const serverIslandMap = new Map();;
 
@@ -27,15 +27,19 @@ const _page19 = () => import('./pages/kontak.astro.mjs');
 const _page20 = () => import('./pages/layanan-mahasiswa.astro.mjs');
 const _page21 = () => import('./pages/lokasi-kampus.astro.mjs');
 const _page22 = () => import('./pages/peluang-karir.astro.mjs');
-const _page23 = () => import('./pages/penelitian/kkm.astro.mjs');
-const _page24 = () => import('./pages/penelitian/pkm.astro.mjs');
-const _page25 = () => import('./pages/penelitian/publikasi-dosen.astro.mjs');
-const _page26 = () => import('./pages/penelitian.astro.mjs');
-const _page27 = () => import('./pages/penerimaan.astro.mjs');
-const _page28 = () => import('./pages/prestasi.astro.mjs');
-const _page29 = () => import('./pages/programs/akuntansi.astro.mjs');
-const _page30 = () => import('./pages/index.astro.mjs');
-const _page31 = () => import('./pages/_---slug_.astro.mjs');
+const _page23 = () => import('./pages/penelitian/arsip-mahasiswa.astro.mjs');
+const _page24 = () => import('./pages/penelitian/kemitraan.astro.mjs');
+const _page25 = () => import('./pages/penelitian/kkm.astro.mjs');
+const _page26 = () => import('./pages/penelitian/pendanaan.astro.mjs');
+const _page27 = () => import('./pages/penelitian/pkm.astro.mjs');
+const _page28 = () => import('./pages/penelitian/publikasi-dosen.astro.mjs');
+const _page29 = () => import('./pages/penelitian.astro.mjs');
+const _page30 = () => import('./pages/penelitian.astro2.mjs');
+const _page31 = () => import('./pages/penerimaan.astro.mjs');
+const _page32 = () => import('./pages/prestasi.astro.mjs');
+const _page33 = () => import('./pages/programs/akuntansi.astro.mjs');
+const _page34 = () => import('./pages/index.astro.mjs');
+const _page35 = () => import('./pages/_---slug_.astro.mjs');
 const pageMap = new Map([
     ["node_modules/astro/dist/assets/endpoint/generic.js", _page0],
     ["src/pages/404.astro", _page1],
@@ -60,15 +64,19 @@ const pageMap = new Map([
     ["src/pages/layanan-mahasiswa.astro", _page20],
     ["src/pages/lokasi-kampus.astro", _page21],
     ["src/pages/peluang-karir.astro", _page22],
-    ["src/pages/penelitian/kkm.astro", _page23],
-    ["src/pages/penelitian/pkm.astro", _page24],
-    ["src/pages/penelitian/publikasi-dosen.astro", _page25],
-    ["src/pages/penelitian.astro", _page26],
-    ["src/pages/penerimaan.astro", _page27],
-    ["src/pages/prestasi.astro", _page28],
-    ["src/pages/programs/akuntansi.astro", _page29],
-    ["src/pages/index.astro", _page30],
-    ["src/pages/[...slug].astro", _page31]
+    ["src/pages/penelitian/arsip-mahasiswa.astro", _page23],
+    ["src/pages/penelitian/kemitraan.astro", _page24],
+    ["src/pages/penelitian/kkm.astro", _page25],
+    ["src/pages/penelitian/pendanaan.astro", _page26],
+    ["src/pages/penelitian/pkm.astro", _page27],
+    ["src/pages/penelitian/publikasi-dosen.astro", _page28],
+    ["src/pages/penelitian/index.astro", _page29],
+    ["src/pages/penelitian.astro", _page30],
+    ["src/pages/penerimaan.astro", _page31],
+    ["src/pages/prestasi.astro", _page32],
+    ["src/pages/programs/akuntansi.astro", _page33],
+    ["src/pages/index.astro", _page34],
+    ["src/pages/[...slug].astro", _page35]
 ]);
 
 const _manifest = Object.assign(manifest, {
@@ -79,7 +87,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "middlewareSecret": "c01b5ecf-1fbf-4bb1-ae26-e3ad6663cfce",
+    "middlewareSecret": "2ecec9b7-3026-4653-b531-326c1d364eba",
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);

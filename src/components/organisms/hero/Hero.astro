@@ -20,17 +20,24 @@ interface Props {
 
 const { title, subtitle, backgroundImage, buttons, imageAlt } = Astro.props;
 ---
-<section class="relative text-white">
-    <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
+<section class="hero relative text-white">
+    <!-- Add a class to the overlay for potential styling/animation hooks -->
+ <div class="hero-overlay absolute inset-0 bg-black opacity-50 z-10"></div>
+ <!-- Background Image -->
     <ResponsiveImage
         src={backgroundImage}
         alt={imageAlt || `Background image for ${title}`}
+  data-animation="hero-image"
         addClass="absolute inset-0 w-full h-full object-cover"
         client:load
     />
-    <div class="relative z-20 container mx-auto px-6 py-24 md:py-32 text-center">
-        <Heading as="h1" text={title} addClass="mb-4" />
-        <p class="max-w-3xl mx-auto text-lg md:text-xl mb-8">{subtitle}</p>
+    <!-- Hero Content -->
+    <div class="hero-content relative z-20 container mx-auto px-6 py-24 md:py-32 text-center">
+        <!-- Heading with data attribute for animation -->
+ <Heading as="h1" text={title} addClass="mb-4" data-animation="hero-title" />
+ <!-- Subtitle with data attribute for animation -->
+ <p class="max-w-3xl mx-auto text-lg md:text-xl mb-8" data-animation="hero-subtitle">{subtitle}</p>
+ <!-- Buttons with data attribute for animation -->
         {
           buttons && buttons.length > 0 && (
             <div class="flex justify-center space-x-4">
@@ -42,3 +49,10 @@ const { title, subtitle, backgroundImage, buttons, imageAlt } = Astro.props;
         }
     </div>
 </section>
+
+<!-- Add a script tag for potential GSAP or other JS animations -->
+<!-- Ensure GSAP is installed and imported if needed -->
+<script>
+  // TODO: Add JavaScript/GSAP code here to implement animations based on data-animation attributes
+  // Examples: Fade-in for text, subtle move-up for buttons, parallax for image
+</script>

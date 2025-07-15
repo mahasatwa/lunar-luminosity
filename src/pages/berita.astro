@@ -6,7 +6,7 @@ import type { NavItem } from '../data/NavigationData';
 
 const breadcrumbs: NavItem[] = [
   { text: 'Home', href: '/' },
-  { text: 'Berita Terbaru', href: '/berita' },
+  { text: 'Berita & Pembaruan', href: '/berita' },
 ];
 
 const allNews = await Astro.glob('../data/news/*.md');
@@ -20,18 +20,26 @@ const newsItems = allNews.map(post => ({
 }));
 
 newsItems.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const pressReleasesContent = await Astro.glob('../data/facts/rilis-pers.md');
+const mediaHighlightsContent = await Astro.glob('../data/facts/sorotan-media.md');
+const socialMediaFeedContent = await Astro.glob('../data/facts/media-sosial-feed.md');
+
+const PressReleasesContent = pressReleasesContent[0].Content;
+const MediaHighlightsContent = mediaHighlightsContent[0].Content;
+const SocialMediaFeedContent = socialMediaFeedContent[0].Content;
 ---
 
-<Layout title="Berita Terbaru - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+<Layout title="Berita & Pembaruan - STIE Dwimulya" breadcrumbs={breadcrumbs}>
   <Hero
-    title="Berita Terbaru STIE Dwimulya"
+    title="Berita & Pembaruan STIE Dwimulya"
     subtitle="Ikuti perkembangan terkini, acara, dan pengumuman penting dari kampus kami."
     backgroundImage="https://images.pexels.com/photos/17628514/pexels-photo-17628514/free-photo-of-kota-bangunan-jalan-gang.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   />
 
   <section class="section">
     <div class="container">
-      <h2 class="text-3xl font-bold text-center mb-8">Berita Pilihan</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">Berita Terbaru</h2>
       <CardGrid items={newsItems}>
         {newsItems.map(news => (
           <div class="bg-white rounded-lg shadow-md overflow-hidden">
@@ -50,4 +58,32 @@ newsItems.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
       )}
     </div>
   </section>
+
+  <section class="section bg-gray-100">
+    <div class="container">
+      <h2 class="text-3xl font-bold text-center mb-8">Rilis Pers</h2>
+      <div class="prose mx-auto">
+        <PressReleasesContent />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="text-3xl font-bold text-center mb-8">Sorotan Media</h2>
+      <div class="prose mx-auto">
+        <MediaHighlightsContent />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-gray-100">
+    <div class="container">
+      <h2 class="text-3xl font-bold text-center mb-8">Media Sosial & Feed</h2>
+      <div class="prose mx-auto">
+        <SocialMediaFeedContent />
+      </div>
+    </div>
+  </section>
+
 </Layout>

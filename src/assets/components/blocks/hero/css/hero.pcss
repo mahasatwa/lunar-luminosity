@@ -5,25 +5,30 @@
  * ----------------------------------------------------------------------------- */
 
 .b-hero {
-	background: var(--color-parchment);
+	/* TODO: Apply specific brand background color variable if needed */
+	background: var(--color-parchment); 
 	position: relative;
 	display: flex;
 	align-items: flex-start;
 	margin: 0;
 	overflow: hidden;
-	padding: 200px 0;
+	/* Adjust padding for more white space and minimalist feel */
+	padding: var(--spacing-jumbo) 0; /* Use a variable for consistent large spacing */
 	z-index: 1;
 
 	&.has-featured-story,
 	&.no-featured-story:not(.no-caption) {
-		padding-bottom: var(--spacer-40);
+		padding-bottom: var(--spacing-large); /* Use a variable */
 	}
 
 	@media (--viewport-medium) {
-		padding-top: 140px;
+		/* Adjust padding for medium viewports */
+		padding-top: var(--spacing-extra-large); /* Use a variable */
 	}
 
 	.c-content-block__leadin {
+		/* TODO: Apply brand typography variable based on Swiss style principles */
+		/* font-family: var(--font-family-swiss-style); */
 		font-size: 14px;
 		margin-bottom: var(--spacer-30);
 
@@ -40,13 +45,18 @@
 	}
 
 	.c-content-block__underline {
+		/* Adjust margins for better spacing */
 		margin-bottom: var(--spacer-40);
 		margin-top: var(--spacer-40);
 	}
 
 	.c-content-block__cta {
 		display: flex;
+		/* Add some gap for minimalist button spacing */
+		gap: var(--spacing-medium); 
 		justify-content: center;
+		/* Adjust margin top for spacing from subtitle */
+		margin-top: var(--spacing-large); /* Use a variable */
 		margin-top: var(--spacer-60);
 	}
 
@@ -64,7 +74,8 @@
 	}
 
 	&:after {
-		background: linear-gradient(180deg, rgba(225, 225, 225, 0) 29.9%, var(--color-parchment) 100%);
+		/* Review overlay background for professional feel */
+		background: linear-gradient(180deg, rgba(225, 225, 225, 0) 29.9%, var(--color-parchment-subtle-overlay) 100%); /* Use a variable or adjust opacity */
 		content: '';
 		left: 0;
 		position: absolute;
@@ -77,6 +88,7 @@
 	&.t-theme--light {
 		background: var(--color-wrought-iron);
 
+		/* Review light theme overlay background */
 		&:after {
 			background: linear-gradient(180deg, rgba(14, 14, 14, 0) 29.9%, var(--color-wrought-iron) 100%);
 		}
@@ -143,7 +155,8 @@
 
 				li {
 					color: var(--color-ink);
-					font-family: var(--font-family-gt-america-standard-bold);
+					/* TODO: Apply brand typography variable for list items */
+					/* font-family: var(--font-family-swiss-style-bold); */
 					text-align: left;
 					padding-left: 5px;
 					padding-right: 5px;
@@ -219,7 +232,8 @@
 	}
 }
 
-@keyframes heroTopLine {
+/* Existing animation review: Can this be smoother or more aligned with 'kampus perubahan'? */
+@keyframes heroTopLine { 
 	0% {
 		height: 0;
 	}
@@ -314,13 +328,15 @@
  * ----------------------------------------------------------------------------- */
 
 .b-hero__content {
-	padding-bottom: var(--spacer-30);
+	/* Adjust padding for content block */
+	padding-bottom: var(--spacing-medium); /* Use a variable */
 	position: relative;
 	z-index: 1;
 
 	@media (--viewport-medium) {
-		padding-bottom: var(--spacer-60);
-		padding-top: var(--spacer-70);
+		/* Adjust padding for medium viewports */
+		padding-bottom: var(--spacing-large); /* Use a variable */
+		padding-top: var(--spacing-extra-large); /* Use a variable */
 	}
 }
 
@@ -355,7 +371,8 @@
 	}
 }
 
-@keyframes heroBottomLineNoCTA {
+/* Existing animation review: Can this be smoother or more aligned with 'kampus perubahan'? */
+@keyframes heroBottomLineNoCTA { 
 	0% {
 		height: 0;
 	}
@@ -364,7 +381,8 @@
 	}
 }
 
-@keyframes heroBottomLine {
+/* Existing animation review: Can this be smoother or more aligned with 'kampus perubahan'? */
+@keyframes heroBottomLine { 
 	0% {
 		height: 0;
 	}
@@ -375,6 +393,8 @@
 }
 
 .b-hero__leadin {
+	/* TODO: Apply brand typography variable */
+	/* font-family: var(--font-family-swiss-style-medium); */
 	font-family: var(--font-family-gt-america-standard-med);
 	display: block;
 }
@@ -397,7 +417,8 @@
 }
 
 .b-hero__leadin-in-focus {
-	font-family: var(--font-family-gt-america-standard-bold);
+	/* TODO: Apply brand typography variable */
+	/* font-family: var(--font-family-swiss-style-bold); */
 	font-size: 20px;
 	letter-spacing: -0.1px;
 	margin-bottom: var(--spacer-30);
@@ -412,7 +433,8 @@
 			background-color: var(--color-ink);
 			border-radius: 50%;
 			color: var(--color-parchment);
-			content: var(--icon-chevron-left);
+			/* TODO: Ensure icon styling aligns with brand - potentially use SVG */
+			content: var(--icon-chevron-left); 
 			display: flex;
 			font-family: var(--font-family-core-icons);
 			font-size: 12px;
@@ -443,6 +465,7 @@
 .b-hero__underline {
 	@mixin t-body;
 
+	/* Adjust margin top for better spacing */
 	letter-spacing: -0.1px;
 	margin: 36px auto 0;
 	max-width: var(--grid-6-col);
@@ -454,64 +477,80 @@
 
 .c-block__header .b-hero__title--sm {
 	@mixin t-display-xx-small;
-
+	/* TODO: Apply brand typography variable based on Swiss style */
+	/* font-family: var(--font-family-swiss-style-headline); */
 	font-family: var(--font-family-canela-deck);
 	font-weight: normal;
 
 	@media (--viewport-medium) {
 		@mixin t-display-x-small;
-
+		/* TODO: Apply brand typography variable based on Swiss style */
+		/* font-family: var(--font-family-swiss-style-headline); */
 		font-family: var(--font-family-canela-deck);
 		font-weight: normal;
 	}
 
 	@media (--viewport-full) {
 		@mixin t-display-small;
+		/* TODO: Apply brand typography variable based on Swiss style */
+		/* font-family: var(--font-family-swiss-style-headline); */
 	}
 
 	@media (--viewport-large) {
 		@mixin t-display;
+		/* TODO: Apply brand typography variable based on Swiss style */
+		/* font-family: var(--font-family-swiss-style-headline); */
 	}
 }
 
 .c-block__header .b-hero__title--med {
 	@mixin t-display-x-small;
-
+	/* TODO: Apply brand typography variable based on Swiss style */
+	/* font-family: var(--font-family-swiss-style-headline); */
 	font-family: var(--font-family-canela-deck);
 	font-weight: normal;
 
 	@media (--viewport-medium) {
 		@mixin t-display-small;
-
+		/* TODO: Apply brand typography variable based on Swiss style */
+		/* font-family: var(--font-family-swiss-style-headline); */
 		font-family: var(--font-family-canela-deck);
 		font-weight: normal;
 	}
 
 	@media (--viewport-full) {
 		@mixin t-display;
+		/* TODO: Apply brand typography variable based on Swiss style */
+		/* font-family: var(--font-family-swiss-style-headline); */
 	}
 
 	@media (--viewport-large) {
 		@mixin t-display-large;
+		/* TODO: Apply brand typography variable based on Swiss style */
+		/* font-family: var(--font-family-swiss-style-headline); */
 	}
 }
 
 .c-block__header .b-hero__title--large {
 	@mixin t-display-small;
-
 	@media (--viewport-medium) {
 		@mixin t-display;
-
+		/* TODO: Apply brand typography variable based on Swiss style */
+		/* font-family: var(--font-family-swiss-style-headline); */
 		font-family: var(--font-family-canela-deck);
 		font-weight: normal;
 	}
 
 	@media (--viewport-full) {
 		@mixin t-display-large;
+		/* TODO: Apply brand typography variable based on Swiss style */
+		/* font-family: var(--font-family-swiss-style-headline); */
 	}
 
 	@media (--viewport-large) {
 		@mixin t-display-xxx-large;
+		/* TODO: Apply brand typography variable based on Swiss style */
+		/* font-family: var(--font-family-swiss-style-headline); */
 	}
 }
 
@@ -563,7 +602,8 @@
 	@mixin t-body-small;
 
 	color: var(--color-ink);
-	font-family: var(--font-family-gt-america-standard-med);
+	/* TODO: Apply brand typography variable */
+	/* font-family: var(--font-family-swiss-style-medium); */
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 1.5;
@@ -641,7 +681,8 @@
 .b-hero__featured-article-title {
 	@mixin t-display-x-small;
 
-	font-family: var(--font-family-canela-deck);
+	/* TODO: Apply brand typography variable based on Swiss style */
+	/* font-family: var(--font-family-swiss-style-headline); */
 	font-weight: normal;
 	margin-bottom: 16px;
 
@@ -654,6 +695,7 @@
 
 .b-hero__featured-article-text {
 	@mixin t-body;
+	/* TODO: Apply brand typography variable for body text (Swiss style) */
 
 	margin-bottom: 32px;
 }

@@ -37,12 +37,17 @@ export const globalNavigationData: NavItem[] = [
   },
   {
     id: 'penelitian',
-    text: 'Penelitian & Publikasi', // Changed text to be more explicit
-    description: 'Pengabdian masyarakat, penelitian mahasiswa, dan publikasi ilmiah dosen.', // Enhanced description
+    text: 'Penelitian & Publikasi',
+    href: '/penelitian', // Now points to the overview page
+    description: 'Pengabdian masyarakat, penelitian mahasiswa, dan publikasi ilmiah dosen.',
     submenu: [
+      { id: 'ikhtisar-penelitian', text: 'Ikhtisar Penelitian', href: '/penelitian' }, // Link to the main research overview
       { id: 'kkm', text: 'Program KKM', href: '/penelitian/kkm' },
       { id: 'pkm', text: 'Penelitian Mahasiswa (PKM)', href: '/penelitian/pkm' },
+      { id: 'arsip-mahasiswa', text: 'Arsip Skripsi & Tesis', href: '/penelitian/arsip-mahasiswa' }, // New
       { id: 'publikasi-dosen', text: 'Publikasi Dosen', href: '/penelitian/publikasi-dosen' },
+      { id: 'kemitraan-penelitian', text: 'Kemitraan Penelitian', href: '/penelitian/kemitraan' }, // New
+      { id: 'pendanaan-penelitian', text: 'Pendanaan Penelitian', href: '/penelitian/pendanaan' }, // New
     ],
   },
   {

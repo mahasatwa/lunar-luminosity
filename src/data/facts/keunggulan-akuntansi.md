@@ -1,6 +1,6 @@
 # Keunggulan Program Studi S1 Akuntansi STIE Dwimulya
 
-Program Studi S1 Akuntansi STIE Dwimulya dirancang untuk menghasilkan akuntan profesional yang siap menghadapi tantangan di dunia kerja yang dinamis. Kami fokus pada kombinasi teori dan praktik untuk memastikan lulusan memiliki pemahaman yang mendalam dan keterampilan yang relevan.
+Program Studi S1 Akuntansi STIE Dwimulya dirancang untuk menghasilkan akuntan profesional yang kompeten, berintegritas, dan siap menghadapi tantangan di dunia kerja yang dinamis, termasuk era digital dan tantangan ekonomi global. Kami fokus pada kombinasi teori yang kuat dan praktik yang relevan untuk memastikan lulusan memiliki pemahaman yang mendalam dan keterampilan yang dibutuhkan oleh industri.
 
 ## Mengapa Memilih Akuntansi di STIE Dwimulya?
 

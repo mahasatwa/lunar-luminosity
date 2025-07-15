@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/organisms/hero/Hero.astro';
+import type { NavItem } from '../../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Penelitian & Publikasi', href: '/penelitian' },
+  { text: 'Kemitraan Penelitian', href: '/penelitian/kemitraan' },
+];
+
+const pageContent = await Astro.glob('../../../data/facts/kemitraan-penelitian.md');
+const { Content } = pageContent[0];
+---
+
+<Layout title="Kemitraan Penelitian - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Kemitraan Penelitian"
+    subtitle="Menjalin kolaborasi strategis untuk mendorong inovasi dan dampak penelitian."
+    backgroundImage="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    </div>
+  </section>
+</Layout>

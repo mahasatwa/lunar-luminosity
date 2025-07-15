@@ -22,3 +22,21 @@ Ormawa merupakan wadah bagi mahasiswa untuk mengembangkan minat dan bakat, belaj
 *   **Unit Kegiatan Mahasiswa (UKM) Penalaran:** Fokus pada diskusi, penelitian, dan pengembangan potensi akademik.
 
 Melalui partisipasi dalam Ormawa, mahasiswa dapat mengasah jiwa kepemimpinan, kemampuan bekerja sama, dan membangun persahabatan yang erat. Kami yakin, pengalaman ini akan menjadi bekal berharga di masa depan.
+
+## Kalender Acara Kampus
+
+Bagian ini idealnya menampilkan kalender dinamis yang memuat jadwal lengkap acara akademik dan non-akademik, seperti perkuliahan, ujian, seminar, lokakarya, festival, dan acara penting lainnya.
+
+<!-- PLACEHOLDER: Integrasikan kalender acara atau tambahkan daftar acara mendatang secara manual di sini -->
+
+## Konferensi dan Seminar Internasional
+
+STIE Dwimulya aktif berpartisipasi dan menyelenggarakan konferensi dan seminar berskala internasional untuk mendorong pertukaran pengetahuan dan kolaborasi.
+
+<!-- PLACEHOLDER: Tambahkan informasi tentang konferensi dan seminar internasional yang relevan, termasuk tanggal, topik, pembicara, dan detail partisipasi -->
+
+## Hari Terbuka dan Kunjungan Kampus
+
+Kami mengundang calon mahasiswa dan masyarakat umum untuk mengunjungi kampus STIE Dwimulya melalui program Hari Terbuka (Open Day) atau kunjungan kampus terjadwal.
+
+<!-- PLACEHOLDER: Tambahkan informasi tentang jadwal Hari Terbuka, prosedur pendaftaran kunjungan kampus, kontak person, dan detail kegiatan -->

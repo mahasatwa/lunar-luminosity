@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/organisms/hero/Hero.astro';
+import type { NavItem } from '../../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Penelitian & Publikasi', href: '/penelitian' },
+  { text: 'Arsip Skripsi dan Tesis', href: '/penelitian/arsip-mahasiswa' },
+];
+
+const pageContent = await Astro.glob('../../../data/facts/arsip-skripsi-tesis.md');
+const { Content } = pageContent[0];
+---
+
+<Layout title="Arsip Skripsi dan Tesis - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Arsip Skripsi dan Tesis Mahasiswa"
+    subtitle="Jelajahi karya ilmiah mahasiswa STIE Dwimulya."
+    backgroundImage="https://images.pexels.com/photos/340152/pexels-photo-340152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    </div>
+  </section>
+</Layout>
