@@ -1,0 +1,28 @@
+import { a as createComponent, m as maybeRenderHead, u as unescapeHTML, r as renderTemplate } from './astro/server_BaeesDGl.mjs';
+import 'kleur/colors';
+import 'clsx';
+
+const html = () => "<h1 id=\"struktur-biaya-kuliah-stie-dwimulya\">Struktur Biaya Kuliah STIE Dwimulya</h1>\n<p>STIE Dwimulya berkomitmen untuk menyediakan pendidikan berkualitas dengan biaya yang terjangkau. Berikut adalah estimasi struktur biaya kuliah untuk mahasiswa baru:</p>\n<h2 id=\"biaya-pendaftaran\">Biaya Pendaftaran:</h2>\n<ul>\n<li><strong>Formulir Pendaftaran:</strong> Rp [Jumlah]</li>\n<li><strong>Tes Potensi Akademik (TPA):</strong> Rp [Jumlah] (jika ada)</li>\n</ul>\n<h2 id=\"biaya-kuliah-pokok-per-semester\">Biaya Kuliah Pokok (per Semester):</h2>\n<ul>\n<li><strong>Sumbangan Pembinaan Pendidikan (SPP):</strong> Rp [Jumlah] per semester</li>\n<li><strong>SKS (Sistem Kredit Semester):</strong> Rp [Jumlah] per SKS\n<ul>\n<li>Estimasi rata-rata [Jumlah] SKS per semester.</li>\n</ul>\n</li>\n</ul>\n<h2 id=\"biaya-lain-lain-pembayaran-awaltahun-pertama\">Biaya Lain-lain (Pembayaran Awal/Tahun Pertama):</h2>\n<ul>\n<li><strong>Dana Pengembangan Institusi/Gedung:</strong> Rp [Jumlah] (dibayarkan sekali di awal)</li>\n<li><strong>Biaya Matrikulasi/Orientasi:</strong> Rp [Jumlah] (jika ada)</li>\n<li><strong>Jaket Almamater:</strong> Rp [Jumlah]</li>\n<li><strong>Perpustakaan:</strong> Rp [Jumlah] per semester/tahun</li>\n</ul>\n<h2 id=\"contoh-estimasi-total-biaya-semester-pertama\">Contoh Estimasi Total Biaya Semester Pertama:</h2>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<table><thead><tr><th align=\"left\">Komponen Biaya</th><th align=\"left\">Jumlah (Rp)</th></tr></thead><tbody><tr><td align=\"left\">Pendaftaran</td><td align=\"left\">[Jumlah]</td></tr><tr><td align=\"left\">Dana Pengembangan</td><td align=\"left\">[Jumlah]</td></tr><tr><td align=\"left\">SPP</td><td align=\"left\">[Jumlah]</td></tr><tr><td align=\"left\">Biaya SKS ([Jumlah] SKS)</td><td align=\"left\">[Jumlah]</td></tr><tr><td align=\"left\"><strong>Total Estimasi</strong></td><td align=\"left\"><strong>[Jumlah]</strong></td></tr></tbody></table>\n<p><strong>Catatan Penting:</strong></p>\n<ul>\n<li>Biaya di atas adalah estimasi dan dapat berubah sewaktu-waktu. Informasi resmi akan disampaikan saat proses pendaftaran.</li>\n<li>Tersedia berbagai program beasiswa dan bantuan keuangan untuk membantu meringankan beban biaya kuliah. Kunjungi halaman <a href=\"link_ke_halaman_beasiswa\">Beasiswa &#x26; Bantuan Keuangan</a> untuk detail lebih lanjut.</li>\n<li>Pembayaran dapat dilakukan melalui [Metode Pembayaran, contoh: transfer bank, cicilan].</li>\n</ul>\n<p>Untuk informasi lebih lanjut atau konsultasi mengenai biaya, silakan hubungi bagian keuangan kami.</p>";
+
+				const frontmatter = {};
+				const file = "/home/user/lunar-luminosity/src/data/facts/struktur-biaya-kuliah.md";
+				const url = undefined;
+				function rawContent() {
+					return "# Struktur Biaya Kuliah STIE Dwimulya\n\nSTIE Dwimulya berkomitmen untuk menyediakan pendidikan berkualitas dengan biaya yang terjangkau. Berikut adalah estimasi struktur biaya kuliah untuk mahasiswa baru:\n\n## Biaya Pendaftaran:\n\n*   **Formulir Pendaftaran:** Rp [Jumlah]\n*   **Tes Potensi Akademik (TPA):** Rp [Jumlah] (jika ada)\n\n## Biaya Kuliah Pokok (per Semester):\n\n*   **Sumbangan Pembinaan Pendidikan (SPP):** Rp [Jumlah] per semester\n*   **SKS (Sistem Kredit Semester):** Rp [Jumlah] per SKS\n    *   Estimasi rata-rata [Jumlah] SKS per semester.\n\n## Biaya Lain-lain (Pembayaran Awal/Tahun Pertama):\n\n*   **Dana Pengembangan Institusi/Gedung:** Rp [Jumlah] (dibayarkan sekali di awal)\n*   **Biaya Matrikulasi/Orientasi:** Rp [Jumlah] (jika ada)\n*   **Jaket Almamater:** Rp [Jumlah]\n*   **Perpustakaan:** Rp [Jumlah] per semester/tahun\n\n## Contoh Estimasi Total Biaya Semester Pertama:\n\n| Komponen Biaya           | Jumlah (Rp) |\n| :----------------------- | :---------- |\n| Pendaftaran              | [Jumlah]    |\n| Dana Pengembangan        | [Jumlah]    |\n| SPP                      | [Jumlah]    |\n| Biaya SKS ([Jumlah] SKS) | [Jumlah]    |\n| **Total Estimasi**       | **[Jumlah]**|\n\n**Catatan Penting:**\n\n*   Biaya di atas adalah estimasi dan dapat berubah sewaktu-waktu. Informasi resmi akan disampaikan saat proses pendaftaran.\n*   Tersedia berbagai program beasiswa dan bantuan keuangan untuk membantu meringankan beban biaya kuliah. Kunjungi halaman [Beasiswa & Bantuan Keuangan](link_ke_halaman_beasiswa) untuk detail lebih lanjut.\n*   Pembayaran dapat dilakukan melalui [Metode Pembayaran, contoh: transfer bank, cicilan].\n\nUntuk informasi lebih lanjut atau konsultasi mengenai biaya, silakan hubungi bagian keuangan kami.\n";
+				}
+				async function compiledContent() {
+					return await html();
+				}
+				function getHeadings() {
+					return [{"depth":1,"slug":"struktur-biaya-kuliah-stie-dwimulya","text":"Struktur Biaya Kuliah STIE Dwimulya"},{"depth":2,"slug":"biaya-pendaftaran","text":"Biaya Pendaftaran:"},{"depth":2,"slug":"biaya-kuliah-pokok-per-semester","text":"Biaya Kuliah Pokok (per Semester):"},{"depth":2,"slug":"biaya-lain-lain-pembayaran-awaltahun-pertama","text":"Biaya Lain-lain (Pembayaran Awal/Tahun Pertama):"},{"depth":2,"slug":"contoh-estimasi-total-biaya-semester-pertama","text":"Contoh Estimasi Total Biaya Semester Pertama:"}];
+				}
+
+				const Content = createComponent((result, _props, slots) => {
+					const { layout, ...content } = frontmatter;
+					content.file = file;
+					content.url = url;
+
+					return renderTemplate`${maybeRenderHead()}${unescapeHTML(html())}`;
+				});
+
+export { Content, compiledContent, Content as default, file, frontmatter, getHeadings, rawContent, url };

@@ -1,7 +1,7 @@
 import { c as createAstro, a as createComponent, m as maybeRenderHead, b as addAttribute, u as unescapeHTML, r as renderTemplate, d as renderComponent } from '../chunks/astro/server_BaeesDGl.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_zTOg-nuv.mjs';
-import { $ as $$Hero } from '../chunks/Hero_CfPE-CmR.mjs';
+import { $ as $$Layout } from '../chunks/Layout_Y_pXMfm_.mjs';
+import { $ as $$Hero } from '../chunks/Hero_D-edu_WB.mjs';
 import 'clsx';
 export { renderers } from '../renderers.mjs';
 

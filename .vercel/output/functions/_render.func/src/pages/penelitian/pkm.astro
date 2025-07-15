@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/organisms/hero/Hero.astro';
+import type { NavItem } from '../../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Penelitian & Publikasi', href: '/penelitian' },
+  { text: 'Penelitian Mahasiswa (PKM)', href: '/penelitian/pkm' },
+];
+
+const pageContent = await Astro.glob('../../../data/facts/penelitian-mahasiswa.md');
+const { Content } = pageContent[0];
+---
+
+<Layout title="Penelitian Mahasiswa (PKM) - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Penelitian Mahasiswa (PKM)"
+    subtitle="Mengembangkan kreativitas dan inovasi mahasiswa melalui riset ilmiah."
+    backgroundImage="https://images.pexels.com/photos/4146300/pexels-photo-4146300.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/organisms/hero/Hero.astro';
+import CardGrid from '../components/organisms/card-grid/CardGrid.astro';
+import type { NavItem } from '../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Berita Terbaru', href: '/berita' },
+];
+
+const allNews = await Astro.glob('../data/news/*.md');
+
+const newsItems = allNews.map(post => ({
+  title: post.frontmatter.title,
+  description: post.frontmatter.description,
+  imageUrl: post.frontmatter.image,
+  link: `/berita/${post.file.split('/').pop().replace('.md', '')}`,
+  date: new Date(post.frontmatter.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }),
+}));
+
+newsItems.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<Layout title="Berita Terbaru - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Berita Terbaru STIE Dwimulya"
+    subtitle="Ikuti perkembangan terkini, acara, dan pengumuman penting dari kampus kami."
+    backgroundImage="https://images.pexels.com/photos/17628514/pexels-photo-17628514/free-photo-of-kota-bangunan-jalan-gang.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container">
+      <h2 class="text-3xl font-bold text-center mb-8">Berita Pilihan</h2>
+      <CardGrid items={newsItems}>
+        {newsItems.map(news => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src={news.imageUrl} alt={news.title} class="w-full h-48 object-cover" />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">{news.title}</h3>
+              <p class="text-gray-600 text-sm mb-2">{news.date}</p>
+              <p class="text-gray-700 mb-4">{news.description}</p>
+              <a href={news.link} class="text-blue-600 hover:underline">Baca Selengkapnya</a>
+            </div>
+          </div>
+        ))}
+      </CardGrid>
+      {newsItems.length === 0 && (
+        <p class="text-center text-gray-500">Belum ada berita terbaru saat ini.</p>
+      )}
+    </div>
+  </section>
+</Layout>

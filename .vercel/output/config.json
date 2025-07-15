@@ -24,7 +24,67 @@
 			"dest": "_render"
 		},
 		{
+			"src": "^/akademik/kalender/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/akademik/program-studi/s1-akuntansi/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/akademik/program-studi/s1-manajemen/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/akreditasi/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/alumni/?$",
+			"dest": "_render"
+		},
+		{
 			"src": "^/articles/first-article/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/beasiswa/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/berita/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/biaya-kuliah/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/dosen/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/fakta-cepat/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/kampus/kehidupan-kampus/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/kampus/sejarah/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/kampus/struktur-organisasi/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/kampus/visi-misi/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/kemitraan/?$",
 			"dest": "_render"
 		},
 		{
@@ -32,7 +92,39 @@
 			"dest": "_render"
 		},
 		{
+			"src": "^/layanan-mahasiswa/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/lokasi-kampus/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/peluang-karir/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/penelitian/kkm/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/penelitian/pkm/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/penelitian/publikasi-dosen/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/penelitian/?$",
+			"dest": "_render"
+		},
+		{
 			"src": "^/penerimaan/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^/prestasi/?$",
 			"dest": "_render"
 		},
 		{

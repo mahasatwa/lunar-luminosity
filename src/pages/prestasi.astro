@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/organisms/hero/Hero.astro';
+import Interstitial from '../components/organisms/interstitial/Interstitial.astro';
+import type { NavItem } from '../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Prestasi Mahasiswa', href: '/prestasi' },
+];
+
+const pageContent = await Astro.glob('../data/facts/prestasi-mahasiswa.md');
+const { Content } = pageContent[0];
+---
+
+<Layout title="Prestasi Mahasiswa - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Prestasi Mahasiswa STIE Dwimulya"
+    subtitle="Kisah-kisah inspiratif dan pencapaian gemilang mahasiswa kami di berbagai bidang."
+    backgroundImage="https://images.pexels.com/photos/5940841/pexels-photo-5940841.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    </div>
+  </section>
+
+  <Interstitial
+    title="Raih Prestasi Anda Bersama Kami"
+    content="STIE Dwimulya mendukung penuh setiap mahasiswa untuk mengembangkan potensi dan mengukir prestasi. Bergabunglah dengan lingkungan yang inspiratif ini!"
+    button={{ text: 'Lihat Program Studi', href: '/akademik/program-studi/s1-akuntansi' }}
+    backgroundImage="https://images.pexels.com/photos/3861962/pexels-photo-3861962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+</Layout>

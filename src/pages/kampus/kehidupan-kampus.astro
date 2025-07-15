@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/organisms/hero/Hero.astro';
+import type { NavItem } from '../../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Tentang Kami', href: '#' },
+  { text: 'Kehidupan Kampus', href: '/kampus/kehidupan-kampus' },
+];
+
+const pageContent = await Astro.glob('../../data/facts/kehidupan-kampus-ormawa.md');
+const { Content } = pageContent[0];
+---
+
+<Layout title="Kehidupan Kampus - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Kehidupan Kampus & Organisasi Mahasiswa"
+    subtitle="Lebih dari sekadar belajar, temukan pengalaman berharga di kampus STIE Dwimulya."
+    backgroundImage="https://images.pexels.com/photos/159775/library-books-bookshelf-study-159775.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/organisms/hero/Hero.astro';
+import type { NavItem } from '../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Alumni', href: '/alumni' },
+];
+
+const pageContent = await Astro.glob('../data/facts/profil-alumni-sukses.md');
+const { Content } = pageContent[0];
+---
+
+<Layout title="Alumni - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Kisah Sukses Alumni STIE Dwimulya"
+    subtitle="Inspirasi dari para lulusan yang telah mengukir prestasi di berbagai bidang."
+    backgroundImage="https://images.pexels.com/photos/340152/pexels-photo-340152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    </div>
+  </section>
+</Layout>

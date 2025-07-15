@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/organisms/hero/Hero.astro';
+import Interstitial from '../components/organisms/interstitial/Interstitial.astro';
+import AccordionFAQ from '../components/organisms/accordion-faq/AccordionFAQ.astro';
+import CardGrid from '../components/organisms/card-grid/CardGrid.astro';
+import ResponsiveImage from '../components/utils/ResponsiveImage.tsx'; // Corrected import
+import type { NavItem } from '../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Beasiswa & Bantuan Keuangan', href: '/beasiswa' },
+];
+
+const scholarships = [
+  {
+    title: 'Beasiswa Unggulan',
+    description: 'Beasiswa penuh untuk mahasiswa berprestasi dengan IPK tinggi.',
+    imageUrl: 'https://images.pexels.com/photos/4146459/pexels-photo-4146459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    link: '#',
+  },
+  {
+    title: 'Beasiswa Bidikmisi',
+    description: 'Bantuan biaya pendidikan bagi calon mahasiswa dari keluarga kurang mampu.',
+    imageUrl: 'https://images.pexels.com/photos/3762804/pexels-photo-3762804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    link: '#',
+  },
+  {
+    title: 'Beasiswa Peningkatan Prestasi Akademik (PPA)',
+    description: 'Beasiswa parsial untuk mahasiswa dengan prestasi akademik yang konsisten.',
+    imageUrl: 'https://images.pexels.com/photos/4050319/pexels-photo-4050319.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    link: '#',
+  },
+  {
+    title: 'Bantuan UKT (Uang Kuliah Tunggal)',
+    description: 'Bantuan subsidi UKT bagi mahasiswa yang membutuhkan.',
+    imageUrl: 'https://images.pexels.com/photos/4050327/pexels-photo-4050327.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    link: '#',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Bagaimana cara mengajukan beasiswa?',
+    answer: 'Proses pengajuan beasiswa melibatkan pengisian formulir online, pengiriman dokumen pendukung, dan wawancara. Detail lengkap dapat dilihat di halaman masing-masing beasiswa.'
+  },
+  {
+    question: 'Apa saja syarat umum untuk mendapatkan beasiswa?',
+    answer: 'Syarat umum meliputi status sebagai mahasiswa aktif, IPK minimal tertentu, dan tidak sedang menerima beasiswa lain. Syarat spesifik bervariasi untuk setiap jenis beasiswa.'
+  },
+  {
+    question: 'Kapan batas waktu pendaftaran beasiswa?',
+    answer: 'Batas waktu pendaftaran bervariasi setiap tahun akademik. Informasi terkini akan diumumkan di website dan papan pengumuman kampus.'
+  },
+];
+---
+
+<Layout title="Beasiswa & Bantuan Keuangan - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Beasiswa & Bantuan Keuangan"
+    subtitle="Wujudkan pendidikan impian Anda bersama STIE Dwimulya melalui berbagai program beasiswa dan bantuan keuangan."
+    backgroundImage="https://images.pexels.com/photos/3058277/pexels-photo-3058277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    buttons={[{ text: 'Lihat Persyaratan', href: '#persyaratan', style: 'primary' }]}
+  />
+
+  <section class="section">
+    <div class="container">
+      <h2 class="text-3xl font-bold text-center mb-8">Program Beasiswa Unggulan</h2>
+      <CardGrid items={scholarships}>
+        {scholarships.map(scholarship => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src={scholarship.imageUrl} alt={scholarship.title} class="w-full h-48 object-cover" />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">{scholarship.title}</h3>
+              <p class="text-gray-600 mb-4">{scholarship.description}</p>
+              <a href={scholarship.link} class="text-blue-600 hover:underline">Pelajari Lebih Lanjut</a>
+            </div>
+          </div>
+        ))}
+      </CardGrid>
+    </div>
+  </section>
+
+  <Interstitial
+    title="Jangan Biarkan Biaya Menjadi Penghalang"
+    content="STIE Dwimulya berkomitmen untuk mendukung setiap mahasiswa meraih pendidikan terbaik. Berbagai program bantuan keuangan tersedia untuk memastikan Anda fokus pada studi."
+    button={{ text: 'Hubungi Kami untuk Konsultasi', href: '/kontak' }}
+    backgroundImage="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 class="text-3xl font-bold text-center mb-8">Pertanyaan Umum (FAQ)</h2>
+      <AccordionFAQ items={faqs} />
+    </div>
+  </section>
+</Layout>

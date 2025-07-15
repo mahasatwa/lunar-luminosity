@@ -1,0 +1,29 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Hero from '~/components/organisms/hero/Hero.astro';
+import type { NavItem } from '~/data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Akademik', href: '#' },
+  { text: 'Program Studi', href: '#' },
+  { text: 'S1 Manajemen', href: '/akademik/program-studi/s1-manajemen' },
+];
+
+const pageContent = await import.meta.glob('../../../../data/facts/keunggulan-manajemen.md', { eager: true });
+const { Content } = Object.values(pageContent)[0] as any;
+---
+
+<Layout title="S1 Manajemen - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Program Studi S1 Manajemen"
+    subtitle="Membekali Anda dengan keterampilan kepemimpinan dan strategi bisnis untuk masa depan yang sukses."
+    backgroundImage="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    </div>
+  </section>
+</Layout>

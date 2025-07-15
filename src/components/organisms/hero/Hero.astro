@@ -4,34 +4,41 @@ import Heading from '../../atoms/heading/Heading.astro';
 import Button from '../../atoms/button/Button.astro';
 import ResponsiveImage from '../../utils/ResponsiveImage.tsx';
 
-interface Props {
-  content: {
-    title: string;
-    subtitle: string;
-    cta: {
-      label: string;
-      href: string;
-    };
-    image: {
-      url: string;
-      alt: string;
-    };
-  };
+interface ButtonProps {
+  text: string;
+  href: string;
+  style?: 'primary' | 'secondary';
 }
 
-const { content } = Astro.props;
+interface Props {
+  title: string;
+  subtitle: string;
+  backgroundImage: string;
+  buttons?: ButtonProps[]; // Make buttons optional
+  imageAlt?: string; // Optional alt text for the background image
+}
+
+const { title, subtitle, backgroundImage, buttons, imageAlt } = Astro.props;
 ---
 <section class="relative text-white">
     <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
     <ResponsiveImage
-        src={content.image.url}
-        alt={content.image.alt}
+        src={backgroundImage}
+        alt={imageAlt || `Background image for ${title}`}
         addClass="absolute inset-0 w-full h-full object-cover"
         client:load
     />
     <div class="relative z-20 container mx-auto px-6 py-24 md:py-32 text-center">
-        <Heading as="h1" text={content.title} addClass="mb-4" />
-        <p class="max-w-3xl mx-auto text-lg md:text-xl mb-8">{content.subtitle}</p>
-        <Button label={content.cta.label} href={content.cta.href} />
+        <Heading as="h1" text={title} addClass="mb-4" />
+        <p class="max-w-3xl mx-auto text-lg md:text-xl mb-8">{subtitle}</p>
+        {
+          buttons && buttons.length > 0 && (
+            <div class="flex justify-center space-x-4">
+              {buttons.map(btn => (
+                <Button label={btn.text} href={btn.href} style={btn.style} />
+              ))}
+            </div>
+          )
+        }
     </div>
 </section>

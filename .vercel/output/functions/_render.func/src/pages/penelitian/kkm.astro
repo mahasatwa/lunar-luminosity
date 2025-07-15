@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/organisms/hero/Hero.astro';
+import type { NavItem } from '../../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Penelitian & Publikasi', href: '/penelitian' },
+  { text: 'Program KKM', href: '/penelitian/kkm' },
+];
+
+const pageContent = await Astro.glob('../../../data/facts/program-kkm.md');
+const { Content } = pageContent[0];
+---
+
+<Layout title="Program KKM - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Program Kuliah Kerja Mahasiswa (KKM)"
+    subtitle="Mewujudkan pengabdian kepada masyarakat melalui aplikasi ilmu ekonomi secara langsung."
+    backgroundImage="https://images.pexels.com/photos/593158/pexels-photo-593158.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    </div>
+  </section>
+</Layout>

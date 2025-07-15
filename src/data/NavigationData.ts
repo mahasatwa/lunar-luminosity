@@ -19,7 +19,7 @@ export const globalNavigationData: NavItem[] = [
           { id: 's1-manajemen', text: 'S1 Manajemen', href: '/akademik/program-studi/s1-manajemen' },
       ]},
       { id: 'kalender-akademik', text: 'Kalender Akademik', href: '/akademik/kalender' },
-      { id: 'beasiswa-biaya', text: 'Beasiswa & Biaya', href: '/akademik/beasiswa' },
+      // Beasiswa & Biaya will be a top-level item
       { id: 'akreditasi', text: 'Akreditasi', href: '/akreditasi' },
     ],
   },
@@ -30,9 +30,15 @@ export const globalNavigationData: NavItem[] = [
     description: 'Informasi pendaftaran untuk mahasiswa baru.',
   },
   {
+    id: 'beasiswa-biaya',
+    text: 'Beasiswa & Bantuan Keuangan',
+    href: '/beasiswa',
+    description: 'Informasi lengkap tentang beasiswa, bantuan biaya, dan panduan pengajuan.',
+  },
+  {
     id: 'penelitian',
-    text: 'Penelitian',
-    description: 'Pengabdian masyarakat dan publikasi ilmiah.',
+    text: 'Penelitian & Publikasi', // Changed text to be more explicit
+    description: 'Pengabdian masyarakat, penelitian mahasiswa, dan publikasi ilmiah dosen.', // Enhanced description
     submenu: [
       { id: 'kkm', text: 'Program KKM', href: '/penelitian/kkm' },
       { id: 'pkm', text: 'Penelitian Mahasiswa (PKM)', href: '/penelitian/pkm' },

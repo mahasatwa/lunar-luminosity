@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/organisms/hero/Hero.astro';
+import type { NavItem } from '../../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Akademik', href: '#' },
+  { text: 'Kalender Akademik', href: '/akademik/kalender' },
+];
+
+const pageContent = await Astro.glob('../../../data/facts/kalender-akademik.md');
+const { Content } = pageContent[0];
+---
+
+<Layout title="Kalender Akademik - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Kalender Akademik STIE Dwimulya"
+    subtitle="Informasi lengkap jadwal perkuliahan, ujian, dan kegiatan akademik penting lainnya."
+    backgroundImage="https://images.pexels.com/photos/3862635/pexels-photo-3862635.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    }</div>
+  </section>
+</Layout>

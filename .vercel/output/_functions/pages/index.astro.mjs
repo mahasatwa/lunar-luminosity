@@ -1,25 +1,49 @@
-import { c as createAstro, a as createComponent, m as maybeRenderHead, d as renderComponent, r as renderTemplate, b as addAttribute } from '../chunks/astro/server_BaeesDGl.mjs';
+import { c as createAstro, a as createComponent, m as maybeRenderHead, d as renderComponent, r as renderTemplate, b as addAttribute, u as unescapeHTML } from '../chunks/astro/server_BaeesDGl.mjs';
 import 'kleur/colors';
-import { e as $$Icon, $ as $$Layout } from '../chunks/Layout_zTOg-nuv.mjs';
-import { a as $$Heading, R as ResponsiveImage, $ as $$Hero } from '../chunks/Hero_CfPE-CmR.mjs';
+import { $ as $$Layout } from '../chunks/Layout_Y_pXMfm_.mjs';
+import { a as $$Heading, R as ResponsiveImage, $ as $$Hero } from '../chunks/Hero_D-edu_WB.mjs';
+import 'clsx';
+/* empty css                                 */
 import { $ as $$Card } from '../chunks/Card_D9I3Etmd.mjs';
 export { renderers } from '../renderers.mjs';
 
-const $$Astro$7 = createAstro("https://www.stiedwimulya.ac.id");
+const $$Astro$8 = createAstro("https://www.stiedwimulya.ac.id");
 const $$StatisticItem = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$7, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$8, $$props, $$slots);
   Astro2.self = $$StatisticItem;
   const { value, label } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<div class="text-center"> ${renderComponent($$result, "Heading", $$Heading, { "as": "p", "size": "xl", "text": value, "addClass": "text-blue-600" })} <p class="text-gray-600 mt-1">${label}</p> </div>`;
 }, "/home/user/lunar-luminosity/src/components/molecules/statistic-item/StatisticItem.astro", void 0);
 
-const $$Astro$6 = createAstro("https://www.stiedwimulya.ac.id");
+const $$Astro$7 = createAstro("https://www.stiedwimulya.ac.id");
 const $$Statistics = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$7, $$props, $$slots);
   Astro2.self = $$Statistics;
   const { content } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<section class="py-16 bg-gray-50"> <div class="container mx-auto px-6"> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> ${content.map((item) => renderTemplate`${renderComponent($$result, "StatisticItem", $$StatisticItem, { "value": item.value, "label": item.label })}`)} </div> </div> </section>`;
 }, "/home/user/lunar-luminosity/src/components/organisms/statistics/Statistics.astro", void 0);
+
+const $$Astro$6 = createAstro("https://www.stiedwimulya.ac.id");
+const $$Icon = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
+  Astro2.self = $$Icon;
+  const { name, class: className } = Astro2.props;
+  let svgPath = "";
+  switch (name) {
+    case "tabler:menu-2":
+      svgPath = '<path d="M4 6h16M4 12h16M4 18h16" />';
+      break;
+    case "tabler:chevron-down":
+      svgPath = '<path d="m6 9 6 6 6-6" />';
+      break;
+    case "tabler:x":
+      svgPath = '<path d="M18 6 6 18M6 6l12 12" />';
+      break;
+    default:
+      svgPath = '<circle cx="12" cy="12" r="10" fill="currentColor" />';
+  }
+  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"${addAttribute(`icon ${className || ""}`, "class")} aria-hidden="true" data-astro-cid-s5vmrxnm>${unescapeHTML(svgPath)}</svg> `;
+}, "/home/user/lunar-luminosity/src/components/atoms/icons/Icon.astro", void 0);
 
 const $$Astro$5 = createAstro("https://www.stiedwimulya.ac.id");
 const $$ProgramCard = createComponent(($$result, $$props, $$slots) => {

@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/organisms/hero/Hero.astro';
 import Columns from '../components/organisms/columns/Columns.astro';
 import Card from '../components/molecules/card/Card.astro';
+import Interstitial from '../components/organisms/interstitial/Interstitial.astro';
 ---
 
 <Layout 
@@ -12,7 +13,8 @@ import Card from '../components/molecules/card/Card.astro';
   <Hero
     title="Penerimaan Mahasiswa Baru"
     subtitle="Bergabunglah dengan STIE Dwimulya dan jadilah bagian dari perubahan."
-    backgroundImage="/assets/campus-reception.jpg"
+    backgroundImage="https://images.pexels.com/photos/4146237/pexels-photo-4146237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    buttons={[{ text: 'Daftar Sekarang', href: '#form-pendaftaran', style: 'primary' }]}
   />
 
   <section class="py-16">
@@ -41,10 +43,39 @@ import Card from '../components/molecules/card/Card.astro';
   <section class="bg-gray-100 py-16">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl font-bold text-center mb-12">Jadwal Penting</h2>
-      <!-- Placeholder untuk tabel jadwal -->
-      <div class="text-center">
-        <p>Jadwal pendaftaran untuk tahun ajaran 2024/2025 akan segera diumumkan. Mohon periksa kembali halaman ini secara berkala.</p>
+      <div class="text-center mb-8">
+        <p class="text-lg text-gray-700 mb-4">Untuk informasi jadwal pendaftaran, seleksi, dan daftar ulang terlengkap, silakan kunjungi:</p>
+        <a href="/akademik/kalender" class="btn btn-primary inline-block">Kalender Akademik Lengkap</a>
       </div>
+      
+      <div class="text-center">
+        <h3 class="text-2xl font-semibold mb-4">Gelombang Pendaftaran [Tahun Akademik]</h3>
+        <ul class="list-disc list-inside mx-auto max-w-md text-left">
+          <li>**Gelombang I:** [Tanggal Mulai] - [Tanggal Akhir]</li>
+          <li>**Pengumuman Gelombang I:** [Tanggal Pengumuman]</li>
+          <li>**Daftar Ulang Gelombang I:** [Tanggal Daftar Ulang]</li>
+          <li>**Gelombang II:** [Tanggal Mulai] - [Tanggal Akhir]</li>
+          <li>**Pengumuman Gelombang II:** [Tanggal Pengumuman]</li>
+          <li>**Daftar Ulang Gelombang II:** [Tanggal Daftar Ulang]</li>
+        </ul>
+        <p class="text-sm text-gray-500 mt-4">*Jadwal dapat berubah sewaktu-waktu. Mohon pantau pengumuman resmi.</p>
+      </div>
+    </div>
+  </section>
+
+  <Interstitial
+    title="Kesempatan Beasiswa & Bantuan Keuangan"
+    content="Jangan biarkan biaya menjadi penghalang mimpi Anda. STIE Dwimulya menyediakan beragam program beasiswa dan bantuan keuangan untuk mahasiswa berprestasi dan yang membutuhkan."
+    button={{ text: 'Pelajari Beasiswa', href: '/beasiswa' }}
+    backgroundImage="https://images.pexels.com/photos/3762804/pexels-photo-3762804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="py-16" id="form-pendaftaran">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-8">Siap Bergabung?</h2>
+      <p class="text-lg text-gray-700 mb-6">Daftar sekarang dan mulailah perjalanan akademik Anda bersama STIE Dwimulya!</p>
+      <a href="#" class="btn btn-lg btn-secondary">Isi Formulir Pendaftaran Online</a>
+      <p class="text-sm text-gray-500 mt-4">*Link pendaftaran akan segera diaktifkan.</p>
     </div>
   </section>
 </Layout>

@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/organisms/hero/Hero.astro';
+import Interstitial from '../components/organisms/interstitial/Interstitial.astro';
+import type { NavItem } from '../data/NavigationData';
+
+const breadcrumbs: NavItem[] = [
+  { text: 'Home', href: '/' },
+  { text: 'Peluang Karir', href: '/peluang-karir' },
+];
+
+const pageContent = await Astro.glob('../data/facts/peluang-karir.md');
+const { Content } = pageContent[0];
+---
+
+<Layout title="Peluang Karir - STIE Dwimulya" breadcrumbs={breadcrumbs}>
+  <Hero
+    title="Peluang Karir Lulusan STIE Dwimulya"
+    subtitle="Membuka gerbang masa depan yang cemerlang di berbagai industri."
+    backgroundImage="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+
+  <section class="section">
+    <div class="container mx-auto px-4 py-8 max-w-3xl prose">
+      <Content />
+    </div>
+  </section>
+
+  <Interstitial
+    title="Siap Memulai Karir Impian Anda?"
+    content="STIE Dwimulya tidak hanya mendidik, tetapi juga mempersiapkan Anda untuk menjadi profesional yang sukses dan berdaya saing global."
+    button={{ text: 'Daftar Sekarang', href: '/penerimaan' }}
+    backgroundImage="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  />
+</Layout>
